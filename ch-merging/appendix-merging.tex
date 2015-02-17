@@ -1,0 +1,87 @@
+\chapter{Merging Data\label{app:merging}}
+
+\graphicspath{{ch-merging/figures/}}
+
+\section{Chemical Reaction Network Parameters} \label{app:rxn}
+
+We consider the following network of chemical reactions.
+\begin{equation}
+\begin{array}{rcl}
+E + S \overset{e_1}{\underset{e_{-1}}{\leftrightharpoons}} & E:S & \overset{e_2}{\rightarrow} E + S^{*} \\
+S + E \overset{b_1}{\underset{b_{-1}}{\leftrightharpoons}} & S:E & \overset{b_2}{\rightarrow} S + E^{*}\\
+D + S^{*} \overset{d_1}{\underset{d_{-1}}{\leftrightharpoons}} & D:S^{*} & \overset{d_2}{\rightarrow} D + S\\
+F + E^{*} \overset{f_1}{\underset{f_{-1}}{\leftrightharpoons}} & F:E^{*} & \overset{f_2}{\rightarrow} F + E
+\end{array}
+\end{equation}
+
+In the limit of a large number of molecules, the dynamics of this network is governed by the following ODEs.
+\begin{equation}
+    \begin{array}{rcl}
+        S^\prime & = & -e_1 S E + e_{-1} E:S -b_1 S E + b_{-1} S:E + b_2 S:E + d_2 D:S^{*} \\
+        E^\prime & = & -e_1 S E + e_{-1} E:S + e_2 E:S - b_1 S E +b_{-1} S:E + f_2 F:E^{*} \\
+        E:S^\prime & = & e_1 S E -e_{-1} E:S -e_2 E:S \\
+        S:E^\prime & = & b_1 S E -b_{-1} S:E -b_2 S:E \\
+        {S^{*}}^\prime & = & e_2 E:S -d_1 D S^{*} + d_{-1} D:S^{*} \\
+        {E^{*}}^\prime & = & b_2 S:E -f_1 F E^{*} + d_{-1} F:E^{*} \\
+        D^\prime & = & -d_1 D S^{*} + d_{-1} D:S^{*} + d_2 D:S^{*} \\
+        F^\prime & = & -f_1 F E^{*} + f_{-1} F:E^{*} + f_2 F:E^{*} \\
+        {D:S^{*}}^\prime & = & d_1 D S^{*} - d_{-1} D:S^{*} -d_2 D:S^{*} \\
+        {F:E^{*}}^\prime & = & f_1 FE^{*} - f_{-1} F:E^{*} -f_2 F:E^{*}
+    \end{array}
+\end{equation}
+
+We can write four balance equations for the conservation of total $S$, $E$, $D$, and $F$.
+\begin{equation}
+    \begin{array}{rcl}
+        S_T & = & S^{*} + S + E:S + S:E + D:S^{*} \\
+        E_T & = & E^{*} + E + E:S + S:E + F:E^{*} \\
+        D_T & = & D + D:S^{*} \\
+        F_T & = & F + F:E^{*}
+    \end{array}
+\end{equation}
+
+We choose to eliminate $S^{*}$, $E^{*}$, $D$, and $F$ from the system of ODEs.
+%
+We therefore obtain a system of 6 ODEs.
+\begin{equation}
+    \begin{array}{rcl}
+        S^\prime & = & -e_1 S E + e_{-1} E:S -b_1 S E \\
+                        &   & + b_{-1} S:E + b_2 S:E + d_2 D:S^{*} \\
+        E^\prime & = & -e_1 S E + e_{-1} E:S + e_2 E:S \\
+                        &   & - b_1 S E +b_{-1} S:E + f_2 F:E^{*} \\
+        E:S^\prime  & = & e_1 S E -e_{-1} E:S -e_2 E:S \\
+        S:E^\prime & = & b_1 S E -b_{-1} S:E -b_2 S:E \\
+        {D:S^{*}}^\prime & = & d_1 (D_T - D:S^{*}) (S_T - S - E:S - S:E - D:S^{*}) - d_{-1} D:S^{*} -d_2 D:S^{*} \\
+        {F:E^{*}}^\prime & = & f_1 (F_T - F:E^{*}) (E_T - E - E:S - S:E - F:E^{*}) - f_{-1} F:E^{*} -f_2 F:E^{*}
+    \end{array}
+\end{equation}
+
+Alternatively, we can write the rates for the 12 chemical reactions as
+\begin{equation}
+    \begin{array}{rcl}
+        r_1 & = & e_1 S E \\
+        r_2 & = & e_{-1} E:S \\
+        r_3 & = & e_2 E:S \\
+        r_4 & = & b_1 S E \\
+        r_5 & = & b_{-1} S:E \\
+        r_6 & = & b_2 S:E \\
+        r_7 & = & d_1 (D_T - D:S^{*}) (S_T - S - E:S - S:E - D:S^{*}) \\
+        r_8 & = & d_{-1} D:S^{*} \\
+        r_9 & = & d_2 D:S^{*} \\
+        r_{10} & = & f_1 (F_T - F:E^{*}) (E_T - E - E:S - S:E - F:E^{*}) \\
+        r_{11} & = & f_{-1} F:E^{*} \\
+        r_{12} & = & f_2 F:E^{*}
+    \end{array}
+\end{equation}
+
+For the Gillespie SSA, we use these rates to adjust the {\em number} of each molecule, depending on which reaction occurs.
+%
+We take the volume of the reactor $V=10^5$.
+%
+We use the parameters $b_1=5/V$, $d_1=0.0009/V$, $e_1=0.1/V$, $f_1=0.1/V$, $b_{-1} = 10.6$, $d_{-1}=0.05$, $e_{-1}=0.5$, $f_{-1} =0.01$, $b_2=0.4$, $d_2=0.85$, $e_2=0.05$, and $f_2=2$.
+%
+We take $S_T=E_T=D_T=1V$, and $F_T=0.02V$, where $S_T$, $E_T$, $D_T$, and $F_T$ are total number of $S$, $E$, $D$, and $F$, respectively.
+%
+In this parameter regime, the relevant timescales around the steady state ($-1/\lambda_i$, where $\lambda_i$ are the eigenvalues of the Hessian) are 1176, 9.731, 1.594, 1.111, 0.4975, 0.06498.
+%
+Therefore, we choose to evolve forward for 10 time units to find points on a perceived two-dimensional manifold.
