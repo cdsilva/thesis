@@ -10,11 +10,11 @@ Molecular systems often have complicated trajectories that cannot be analyzed by
 \label{LJ}
 V_{LJ}=\epsilon\left\{\left(\frac{r^{*}}{r}\right)^{12}-2\left(\frac{r^{*}}{r}\right)^{6}\right\}
 \end{equation}
-where $r$ is the interparticle distance, $r^{*}$ is the minimum in the interaction potential, and $\epsilon$ is the depth of the potential well.\footnote{Terrell L. Hill, \underline{An Introduction to Statistical Thermodynamics}, Dover Publications, 1986, pp. 484-485} 
+where $r$ is the interparticle distance, $r^{*}$ is the minimum in the interaction potential, and $\epsilon$ is the depth of the potential well \cite{hill2012introduction}.
 
 I used molecular dynamics to simulate this cluster at constant energy. Molecular dynamics integrates the equations of motion beginning from some initial configuration. At each time step, the forces on each particle are calculated from the Lennard-Jones potential; the acceleration, $\mathbf{a}$, of each particle can then be calculated from the forces, and new positions, $\mathbf{x}$, and velocities, $\mathbf{v}$, can then be calculated since $\mathbf{a}=\frac{d\mathbf{v}}{dt}$ and $\mathbf{v}=\frac{d\mathbf{x}}{dt}$. I then analyzed the configurations obtained from the molecular dynamics simulations using diffusion maps. 
 
-\section{Comparing configurations}
+\section{Comparing configurations} \label{sec:moments}
 Using diffusion maps to analyze particle trajectories requires a distance measure for comparing pairs of particle configurations. The simplest method is to construct a set of features that contains all the information relevant to a particular configuration, and then compare features. Because I looked at clusters of identical particles, I required features that are invariant to permutations of particle labels, as well as translations and rotations. I first mean-centered each configuration, to remove any translational degrees of freedom. I treated the particle coordinates as points in the complex plane, so each particle was represented as
 \begin{equation}
 z_j=r_{j}e^{i\theta_j} \ \ j=1,\dots,7
@@ -41,7 +41,7 @@ such that
 \end{equation}
 These products will be rotationally invariant.
 
-The following independent rotationally-invariant quantities were proposed by Flusser \footnote{Jan Flusser, ``On the independence of rotation moment invariants,'' \underline{The Journal of the Pattern Recognition Society}, Vol. 33, pp. 1405-1410}:
+The following independent rotationally-invariant quantities were proposed by Flusser \cite{flusser2000independence}:
 \begin{itemize}
 \item $x_1=c_{11}$
 \item $x_2=c_{12}c_{21}$
@@ -80,7 +80,7 @@ where $\overline{\psi_{k}}$ is the average $\psi_{k}$ taken over configurations 
 
 \section{Diffusion Maps}
 I then used diffusion maps to analyze the system dynamics. The original trajectory consisted of 50,000 configurations. Due to computational resources, I used every third configuration in the analysis. I constructed the weight matrix $W$, with
-$$W_{ij}=exp\left(-\frac{d_{ij}^2}{\sqrt{\epsilon}}\right)$$
+$$W_{ij}=\exp\left(-\frac{d_{ij}^2}{\sqrt{\epsilon}}\right)$$
 where $\epsilon$ is the kernel width (chose $\epsilon=25$). 
 
 Define the diagonal matrix $D$ with
@@ -136,11 +136,11 @@ Note that the original system has 14 degrees of freedom, and removing the 2 tran
 
 \begin{figure}[t]
 \includegraphics[width=11cm]{dmap_noreflec.eps}
-\caption[Diffusion maps embedding of Lennard-Jones cluster using rotation-invariant moments]{Diffusion map embedding from using the moments defined in \ref{mom_list}; the green point and green circle correspond to the two green points in Figure \ref{dmap}}
+\caption[Diffusion maps embedding of Lennard-Jones cluster using rotation-invariant moments]{Diffusion map embedding from using the moments defined in Section~\ref{sec:moments}; the green point and green circle correspond to the two green points in Figure~\ref{dmap}}
 \label{dmap_noreflec}
 \end{figure}
 
-As you can see, in Figure \ref{dmap_noreflec}, the two green points in Figure \ref{dmap} collapse into one point. From Figure \ref{fig2}, we can see that the two green points correspond to mirror image configurations. Therefore, removing the imaginary moments removed the reflective degrees of freedom, as expected. 
+As you can see, in Figure~\ref{dmap_noreflec}, the two green points in Figure~\ref{dmap} collapse into one point. From Figure \ref{fig2}, we can see that the two green points correspond to mirror image configurations. Therefore, removing the imaginary moments removed the reflective degrees of freedom, as expected. 
 
 \subsection{Comparison of Diffusion Maps with Principal Components Analysis}
 Using all 11 moments, Principal Components Analysis (PCA) was performed. As seen in Figure \ref{PCA}, no significant structure is uncovered using PCA.

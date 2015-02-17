@@ -8,6 +8,7 @@
 \section{Introduction}
 
 \begin{figure}[t]
+\centering
 \includegraphics{fig1}
 \caption[Caricature illustrating the tasks of image registration and temporal ordering]{Caricature illustrating the tasks of image registration and temporal ordering. (A) Images of ``samples'', each in a different orientation and a different stage of development. (B) Registered and ordered samples. For this caricature, the registration and ordering is straightforward because the data set is small, the landmarks are visually apparent, and the developmental changes are easy to recognize.}
 \label{fig:fish}
@@ -86,7 +87,9 @@ We assume that this main direction of remaining variability in these images is p
 %
 As a consequence, uncovering this direction should reveal the underlying dynamics.
 
+
 \begin{figure}[t]
+\centering
 \includegraphics{fig2}
 \caption[Schematic illustrating angular synchronization and diffusion maps]{Schematic illustrating angular synchronization and diffusion maps. (A) Set of vectors, each in a different orientation. The pairwise alignment angles are indicated. (B) The vectors from A, each rotated about their midpoint so that the set is globally aligned. Note that the chosen rotation angles are consistent with the pairwise alignments in A: the difference between a pair of angles in B is the same as the pairwise angle in A. (C) Data points (in black) which lie on a one-dimensional nonlinear curve in two dimensions. Each pair of points is connected by an edge, and the edge weight is related to the Euclidean distance between the points through a Gaussian kernel (see \SI), so that pairs of data point which are close are connected by darker (``stronger'') edges. (D) The data in C, colored by the first (non-trivial) eigenvector from the diffusion map computational procedure. The color intensity is monotonic with the perceived curve arclength, thus parametrizing the curve.}
 \label{fig:schematics}
@@ -137,7 +140,7 @@ Furthermore, the corresponding eigenvalues will allow us to test our assumption 
 \subsubsection{{\em Drosophila} gastrulation}
 
 \begin{figure}[t]
-\includegraphics{fig3}
+\includegraphics[width=\textwidth]{fig3}
 \caption[Method validation using live imaging of \textit{Drosophila} embryos]{Method validation using live imaging of \textit{Drosophila} embryos. (A) Selected images from a live imaging study of a \textit{Drosophila} embryo during gastrulation. Scale bar indicates 50$\mu$m. Each frame is in an arbitrary rotational orientation, and the order of the frames has been shuffled. (B) Images from A registered and ordered by vector diffusion maps. The dorsal side of each embryo now appears at the top of each image, and the ventral side appears at the bottom. (C) The correlation between the recovered rotation angle (using vector diffusion maps) and the true rotation angle. The average absolute error in the recovered angles is $8.37 ^\circ$. (D) The correlation between the recovered rank (using vector diffusion maps) and the true rank. The rank correlation coefficient is $0.9989$. (E) The average error in the recovered angle and the rank correlation coefficient for $5$ independent live imaging studies. }
 \label{fig:drosophila_live_imaging}
 \end{figure}
@@ -182,7 +185,7 @@ The errors in the recovered angles are all less than 10$^\circ$, and the rank co
 \subsubsection{Zebrafish epiboly}
 
 \begin{figure}[t]
-\includegraphics{fig4}
+\includegraphics[width=\textwidth]{fig4}
 \caption[Method validation using live imaging of a zebrafish embryo]{Method validation using live imaging of a zebrafish embryo. (A) Selected images from a movie of zebrafish epiboly. Scale bar indicates 200$\mu$m. Each frame is in an arbitrary rotational orientation, and the order of the frames has been shuffled. (B) Images from A after registration and ordering using vector diffusion maps. The real time of each frame is also indicated. (C) Correlation between the rank recovered using vector diffusion maps and the true rank.  The rank correlation coefficient is $0.9954$. The larger errors in the recovered ranks towards the beginning of the trajectory are due to the slow cell movement within that time window. }
 \label{fig:zebrafish}
 \end{figure}
@@ -266,7 +269,7 @@ Each snapshot in the average trajectory is the (weighted) average of a group of 
 Averaging successive images removes some of the interembryo variability, so that sequential snapshots of this averaged trajectory, shown in \fig~\ref{fig:drosophila_fixed_images}C, serve as a summary of the stereotypic developmental dynamics.
 
 \begin{figure}[t]
-\includegraphics{fig5}
+\includegraphics[width=\textwidth]{fig5}
 \caption[Analysis of images of fixed \textit{Drosophila} embryos]{Analysis of images of fixed \textit{Drosophila} embryos. {(A)} Images of \textit{ Drosophila} embryos, stained for nuclei (gray), Twi (green), and dpERK (red). Scale bar indicates approximately 50$\mu$m (images have been rescaled to remove slight interembryo size variations).  Each image is of a different embryo arrested at a different developmental time and in a different rotational orientation. {(B)} Data from {\it A}, registered and ordered using vector diffusion maps. The expert rank for each image is indicated. {(C)} A representative ``developmental trajectory'' obtained from local averaging of the entire set of registered and ordered images (see \SI). {(D)} Correlation between the image ranks calculated from the vector diffusion maps algorithm and the ranks obtained from ordering by an expert. The rank correlation coefficient is $0.9716$. }
 \label{fig:drosophila_fixed_images}
 \end{figure}
@@ -301,7 +304,7 @@ The ranks from the ordering provided by the embryologist, which we will refer to
 \subsubsection{Fixed z-stacks of {\em Drosophila} wing discs}
 
 \begin{figure}[t]
-\includegraphics{fig6}
+\includegraphics[width=\textwidth]{fig6}
 \caption[Analysis of three-dimensional {\em Drosophila} wing disc z-stacks]{Analysis of three-dimensional {\em Drosophila} wing disc z-stacks. (A) Maximum projections of an example three-dimensional {\em Drosophila} wing disc z-stack. The anterior-posterior (A-P) and dorsal-ventral (D-V) axes are indicated. Discs express the Dad-GFP reporter construct (green), and are stained for Spalt (red), Wingless (gray), and Patched (gray). Projections along the $x$-, $y$-, and $z$-axes are shown. (B) Example three-dimensional images, ordered using diffusion maps. The time cohort, as assessed by an expert, is indicated for each image, and the rank correlation coefficient between the diffusion maps ordering and the expert timing is 0.9427. (C) The average developmental trajectory for the registered and ordered images. }
 \label{fig:wing_disc}
 \end{figure}
@@ -358,7 +361,7 @@ We can now clearly see the growth of the wing disc, even though averaging somewh
 \subsection{Computational requirements}
 
 \begin{figure}[t]
-\includegraphics{fig7}
+\includegraphics[width=\textwidth]{fig7}
 \caption[Computational requirements for registration and ordering of biological images]{Computational requirements for the presented methodology. (A) CPU time as a function of the number of images in the data set (for $100 \times 100$ pixel images, and $10^\circ$ angular discretization). Empirically, the CPU time is $\sim \mathcal{O}(n^{1.33})$ in number of images. (B) CPU time as a function of the number of pixels in the images (for $120$ images, and $10^\circ$ angular discretization). Empirically, the CPU time is $\sim \mathcal{O}(n^{1.83})$ in the number of pixels. (C) CPU time as a function of the number of rotations (for $120$ images of $100 \times 100$ pixels). Empirically, the CPU time is $\sim \mathcal{O}(n^{-0.77})$ in the angular discretization. (D) The algorithm settings and computational requirements for the data sets analyzed. All times are reported for an Intel Core i7 2.93 GHz processor.}
 \label{fig:cpu_time}
 \end{figure}

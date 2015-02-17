@@ -351,7 +351,7 @@ By Taylor expansion of $\mathbf{g}(y) = \mathbf{f}^{-1}(y)$ around $\mathbf{y}(t
 \begin{aligned}
 & E_M\left( \mathbf{y}(t_1), \mathbf{y}(t_2) \right)
  = \\
-\begin{aligned}[t]
+& \begin{aligned}[t]
  \frac{1}{2} \sum_{i=1}^n \sum_{jkl=1}^{d} &
 \left( g_{i, (j)} (\mathbf{y}(t_1)) g_{i, (k,l)} (\mathbf{y}(t_1)) -  g_{i, (j)} (\mathbf{y}(t_2)) g_{i, (k,l)} (\mathbf{y}(t_2)) \right) \times \\
 & ({y}_j(t_2) - {y}_j(t_1)) ({y}_k(t_2) - {y}_k(t_1))({y}_l(t_2) - {y}_l(t_1))
@@ -441,8 +441,8 @@ By It\^{o}-Taylor expansion of $\mathbf{f}$ and $\mathbf{x}(t)$ \cite{kloeden199
 %
 \begin{equation} \label{eq:cov_error}
 \begin{aligned}
-E_{C, ij} (\mathbf{x}(t), \delta t) =&
- \frac{1}{\delta t} \sum_{k=1}^n f_{i,(k)}(\mathbf{x}(t)) \mathbb{E} \left[ \int_t^{t+\delta t} \left( \int_{s_2}^{t+\delta t} f_{j,(k,0)}(\mathbf{x}(s_1)) ds_1
+& E_{C, ij} (\mathbf{x}(t), \delta t) = \\
+ & \frac{1}{\delta t} \sum_{k=1}^n f_{i,(k)}(\mathbf{x}(t)) \mathbb{E} \left[ \int_t^{t+\delta t} \left( \int_{s_2}^{t+\delta t} f_{j,(k,0)}(\mathbf{x}(s_1)) ds_1
 + \int_t^{s_2} f_{j,(0,k)}(\mathbf{x}(s_1)) ds_1 \right) ds_2 \right] \\
 &+  \frac{1}{\delta t} \sum_{k=1}^n f_{j,(k)}(\mathbf{x}(t))  \mathbb{E} \left[ \int_t^{t+\delta t} \left( \int_{s_2}^{t + \delta t} f_{i,(k,0)}(\mathbf{x}(s_1)) ds_1
 +  \int_t^{s_2} f_{i,(0,k)}(\mathbf{x}(s_1)) ds_1 \right) ds_2 \right] \\
@@ -787,20 +787,19 @@ However, when $\sigma_{kernel}^2$ corresponds to a region where $|E_M | \gg \|\m
 From \eqref{eq:cov_error}, we find that, for the example in \eqref{eq:nonlinear_function},
 %
 \begin{equation}
-\small
 \begin{aligned}
 E_{C,11} (\mathbf{x}(t), \delta t)
 =&
 \frac{2 \delta t}{\epsilon^2}
 - \frac{8 x_2(t)}{\epsilon^2 \delta t} \mathbb{E} \left[ \int_t^{t+\delta t} \left( \int_{s_2}^{t+\delta t} 2 x_2(s_1) ds_1
-+  \int_t^{s_2} x_2(s_1) ds_1 \right) ds_2\right]  + \mathcal{O} (\delta t^{3/2}) \\
++  \int_t^{s_2} x_2(s_1) ds_1 \right) ds_2\right]  \\ &+ \mathcal{O} (\delta t^{3/2}) \\
 %%
 E_{C, 12} (\mathbf{x}(t), \delta t)
 = &
 E_{C, 21} (\mathbf{x}(t), \delta t)\\
 =&
 - \frac{x_2(t) \delta t}{\epsilon^2}
-- \frac{2}{\epsilon^2 \delta t} \mathbb{E} \left[ \int_t^{t+\delta t} \left( \int_{s_2}^{t + \delta t} 2 x_2(s_1) ds_1 + \int_t^{s_2} x_2(s_1) ds_1 \right) ds_2 \right] + \mathcal{O} (\delta t^{3/2})\\
+- \frac{2}{\epsilon^2 \delta t} \mathbb{E} \left[ \int_t^{t+\delta t} \left( \int_{s_2}^{t + \delta t} 2 x_2(s_1) ds_1 + \int_t^{s_2} x_2(s_1) ds_1 \right) ds_2 \right] \\ &+ \mathcal{O} (\delta t^{3/2})\\
 %%
 E_{C, 22} (\mathbf{x}(t), \delta t)
 =&
