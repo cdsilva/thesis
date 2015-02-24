@@ -2,3 +2,417 @@
 \chapter{Introduction\label{ch:intro}}
 
 All the stuff for the introduction
+
+\section{Diffusion maps} \label{sec:dmaps}
+
+Given $\ndata$ data points $\data(1), \dots, \data(\ndata)$ (typically vectors in a high-dimensional vector space) which lie on a lower-dimensional manifold $\manifold$, we want to find a coordinate transformation $f(\data)$ that preserves local geometry: points that are ``close" in the original space should also be ``close" in the coordinates $f$.
+%
+%From pairwise distances, we want to extract a {\em global} parametrization of the data that represents the slow variables.
+%
+We will use diffusion maps \cite{Coifman2006, coifman2005geometric}, a kernel-based manifold learning technique, to extract a global parametrization using the local distances.
+%
+We first construct the kernel matrix $\mathbf{W} \in \mathbb{R}^{\ndata \times \ndata}$, where
+\begin{equation} \label{eq:dmaps_kernel}
+W_{ij} = \exp \left( -\frac{\|\data(i) - \data(j) \|^2}{\dmeps^2} \right).
+\end{equation}
+Here, $\| \cdot \|$ denotes the appropriate norm, and $\dmeps$ is the kernel scale
+and denotes a characteristic distance within the data set.
+%
+Note that $\dmeps$ induces a notion of locality: if $\|\data(i) - \data(j) \| \gg \dmeps$, then $W_{ij}$ is negligible.
+%
+Therefore, we only need our metric to be informative within a ball of radius $\dmeps$.
+%
+Points less than $\dmeps$ apart are thus considered ``close'' and points farther than $\dmeps$ apart are considered ``far away''.
+%
+$\dmeps$ can be chosen using several techniques (see, for example \citep{coifman2008graph, rohrdanz2011determination});
+
+We then construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{\ndata \times \ndata}$, with
+\begin{equation}
+D_{ii} = \sum_{j=1}^\ndata W_{ij}.
+\end{equation}
+%
+We compute the eigenvalues $\lambda_0, \dots, \lambda_{\ndata-1}$ and eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ of the matrix $\mathbf{A} = \mathbf{D}^{-1}\mathbf{W}$, and order them such that $1 = \lambda_0 \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata-1}|$.
+%
+$\phi_0 = \begin{bmatrix} 1 & 1 & \cdots & 1 \end{bmatrix}^T$
+is the trivial eigenvector; the next few eigenvectors provide embedding coordinates for the data, so that $\phi_j(i)$, the $i^{th}$ entry of $\phi_j$, provides the $j^{th}$ embedding coordinate for $\data(i)$ (modulo higher harmonics which characterize
+the same direction in the data \cite{ferguson2010systematic}).
+%
+This is analogous to how the eigenfunctions $\cos x$ and $\cos 2x$ of the usual Laplacian in one spatial dimension
+and with no flux boundary conditions are one-to-one with the values of $x$ for $0 \le x \le 1$;
+one must check for correlations between the eigenvectors before selecting those that describe the underlying manifold geometry.
+
+
+We note that the eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ solve the following optimization problem \citep{Belkin2003}
+\begin{equation} \label{eq:dmaps_opt_problem}
+\argmin_{f} \sum_{ij} W_{ij} (f(\data(i)) - f(\data(j)))^2
+\end{equation}
+and therefore preserves the local geometry in the data.
+
+Ignoring the higher harmonics, each retained eigenvector then describes an intrinsic variable for the data set of interest.
+%
+We note that the eigenvectors can be determined up to a scaling factor.
+%
+For some applications, the magnitude and/or sign of the eigenvectors are important. 
+%
+For the work presented in \chap~\ref{ch:merging}, we must normalize the eigenvectors from different data sets so that the resulting embeddings are consistent.
+%
+We first scale the eigenvectors so that $\|\phi_i\| = \ndata$, where $\ndata$ is the number of data points,
+to make the embedding coordinates invariant to the size of the data set.
+%twice as many samples as another data set, but with the same underlying geometry, should have twice the norm.
+%
+Still, the computed embedding eigenvectors, even for two identical data sets, may differ by a sign.
+%
+Reconciling the signs for the embeddings of different data sets can be rationally done in several ways and is somewhat problem-specific.
+%
+For example, if the mean of the embedding is sufficiently far from 0, we can require $\langle \phi_i \rangle > 0$;
+alternatively, if there is a common region sampled by both data sets, the sign of each eigenvector can be chosen to optimize the consistency of the embeddings of the common region data.
+%
+%We will return to the issue of embedding consistency for different data sets in our concluding discussion; for the moment, we will assume that our different sets sample the same region of data space in a representative enough way such that the correspondence between the sequences of retained eigenvectors for different embeddings is obvious.
+
+For the examples in \chap~\ref{ch:drosophila}, the sign of the eigenvector is important, as it determines the start and end of the ordered data trajectory.
+%
+The signs are determined after analysis using {\em a priori} knowledge of the developmental dynamics. 
+
+\begin{algorithm}[th!]
+\caption{Nonlinear Intrinsic Variables Construction}
+\begin{enumerate}
+
+\item
+Obtain a sequence of high-dimensional observation samples $\data(t)$.
+
+\item
+Compute the empirical covariance matrix $\widehat{\mathbf{C}}(t)$ of each sample $\data(t)$ {\em in a short window in time} according to \eqref{eq:cov}.
+
+\item
+Using the samples and their associated covariance matrices, compute the Mahalanobis distance between the observations \eqref{eq:mahalanobis1} .
+
+\item
+Build the pairwise affinity matrix $\mathbf{W}$ and the corresponding normalized kernel $\mathbf{W}^{(\alpha)}$ (\ref{eq:kernel2}).
+
+\item
+Apply eigenvalue decomposition to the normalized kernel and view the values of its principal eigenvectors (modulo the possibility of
+ ``higher harmonics", see text) as the Nonlinear Intrinsic Variables (NIV) of the given observations.
+
+\end{enumerate}
+\hrule
+\label{algo}
+\end{algorithm}
+
+
+\subsection{Family of operators} \label{sec:diff_limit}
+
+In the limit $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$, the matrix $\mathbf{A}$ converges to the continuous backward Fokker-Planck operator \cite{nadler2006diffusion}
+\begin{equation}
+	\mathcal{L} = \Delta - 2 \nabla U \cdot \nabla.
+	\label{eq:limiting_operator}
+\end{equation}
+where the data $\data_1, \dots , \data_\ndata$ are sampled from $\manifold$ with density $p \propto e^{-U}$. 
+%
+However, we can construct a family of diffusion operators 
+\begin{equation} \label{eq:kernel2}
+\mathbf{A}^{(\alpha)} = {\mathbf{D}^{(\alpha)}}^{-1} \mathbf{W}^{(\alpha)}
+\end{equation}
+where $\mathbf{W}^{(\alpha)} = \mathbf{D}^{-\alpha} \mathbf{W} \mathbf{D}^{-\alpha}$ 
+and $\mathbf{D}^{(\alpha)}$ is a diagonal matrix with $\mathbf{D}^{(\alpha)}_{ii} = \sum_{j=1}^\ndata \mathbf{W}^{(\alpha)}$.
+%
+We then have \cite{coifman2005geometric}
+\begin{equation}
+\begin{aligned}
+\mathbf{A}^{(0)} & \rightarrow \Delta - 2 \nabla U \cdot \nabla \\
+\mathbf{A}^{(1/2)} & \rightarrow \Delta - \nabla U \cdot \nabla \\
+\mathbf{A}^{(1)} & \rightarrow \Delta  
+\end{aligned}
+\end{equation}
+
+
+
+\section{Nonlinear Intrinsic Variables}
+
+In order to recover the slow variables from data, we will utilize a local metric that collapses the fast directions.
+%
+Typically, such a metric averages out the fast variables.
+%
+However, simple averages are inadequate to describe data which is observed through a complicated nonlinear function.
+%
+Instead, we propose to use the Mahalanobis distance, which measures distances normalized by the respective variances in each local principal direction.
+%
+Using this metric, we still retain information about both the fast and slow directions and can
+more clearly observe complex dynamic behavior within the data set.
+
+If two points $\mathbf{x}(t_1)$ and $\mathbf{x}(t_2)$ are drawn from an $n$-dimensional
+Gaussian distribution with covariance $\mathbf{C}_x$, the Mahalanobis distance between the points is defined as \cite{mahalanobis1936generalized}
+\begin{equation}
+	\| \mathbf{x}(t_1) - \mathbf{x}(t_2) \| _M = \sqrt{ (\mathbf{x}(t_1) - \mathbf{x}(t_2))^T \mathbf{C}_x^{-1} (\mathbf{x}(t_1) - \mathbf{x}(t_2) )  }.
+\end{equation}
+In particular, 
+%%%YGK+CDS if $\mathbf{x}(t_1)$ and $\mathbf{x}(t_2)$ are samples 
+for \eqref{eq:general_SDE}, whose covariance does not depend on $\mathbf{x}$,  $\mathbf{C}_x^{-1} = \mathrm{diag}(e_1, \ldots, e_\lowdim)$ is a constant matrix where
+\begin{equation} \label{eq:e_def}
+\begin{aligned}
+e_i =& 1, \: & 1 \le i \le \lowdim_1 \\
+e_i =& \epsilon, \: & \lowdim_1+1 \le i \le \lowdim,
+\end{aligned}
+\end{equation}
+and the Mahalanobis distance between samples is
+\begin{equation} \label{eq:rescale_x_dist}
+\| \mathbf{x}(t_2) - \mathbf{x}(t_1) \|^2_M = \sum_{i=1}^\lowdim e_i \left( x_i(t_2) - x_i(t_1) \right)^2.
+\end{equation}
+Note that in \eqref{eq:rescale_x_dist}, the fast variables are collapsed and become $\mathcal{O}(\sqrt{\epsilon})$ small,
+and so this metric is implicitly insensitive to variations in the fast variables.
+%
+The metric \eqref{eq:rescale_x_dist} can be rewritten as
+\begin{equation} \label{eq:norm_z}
+\| \mathbf{x}(t_2) - \mathbf{x}(t_1) \|^2_M = \| \mathbf{z}(t_2) - \mathbf{z}(t_1) \|^2_2
+\end{equation}
+where
+\begin{equation} \label{eq:general_rescale}
+z_i(t) = \sqrt{e_i} x_i(t).
+\end{equation}
+$\mathbf{z}(t)$ is a stochastic process of the same dimension as $\mathbf{x}(t)$, rescaled so that each variable has unit diffusivity.
+%
+This rescaling transforms our problem from one of detecting the slow variables within dynamic data to one of traditional data mining.
+%
+The Mahalanobis distance incorporates information about the dynamics and relevant time scales, so that using traditional data mining techniques with this metric will allow us to detect the slow variables in our data \cite{singer2009detecting}.
+%
+It is important to note that, in practice, we {\em never construct} $\mathbf{z}(t)$ {\em explicitly}.
+%
+It was shown in \cite{singer2008non} that, assuming $\mathbf{f}$ is bilipschitz, the Mahalanobis distance can be extended to approximate (to fourth order) the Euclidean distance between the rescaled samples $\mathbf{z}(t)$ from accessible $\data(t) = \mathbf{f} (\mathbf{x}(t))$,
+%
+\begin{equation} \label{eq:mahalanobis2}
+\| \data(t_2) - \data(t_1) \|^2_M = \| \mathbf{z}(t_2) - \mathbf{z}(t_1) \|^2_2 + \mathcal{O}(\| \data(t_2) - \data(t_1) \|^4_2).
+\end{equation}
+%
+This approximation is accurate when $\| \data(t_2) - \data(t_1) \|$ is small.
+%
+Because we will integrate these distances into a manifold learning algorithm which only considers local distances, we can recover a parametrization of the data which is consistent with the underlying system variables $\mathbf{x}(t)$, even when the data are obscured by a function $\mathbf{f}$.
+%
+In Section~\ref{sec:analysis}, we will show how we can approximate this distance directly from data $\data(t)$.
+%
+
+
+\subsection{Mahalanobis Distance}
+\label{subsec:mahalanobis}
+
+Let $\mathbf{C}(t)$ be the covariance matrix associated with the measured sample $\data(t)$. In practice, the covariance matrix can be estimated from a short trajectory of samples in time around the sample $\data(t)$ by
+\begin{equation}
+	\widehat{\mathbf{C}}(t) = \sum \limits _{\tau = t-L}^{t+L} (\data(\tau) - \widehat{\boldsymbol{\mu}}(t))(\data(\tau) - \widehat{\boldsymbol{\mu}}(t))^T,
+	\label{eq:cov}
+\end{equation}
+where $\widehat{\boldsymbol{\mu}}(t)$ is the empirical mean of the short trajectory of samples.
+%
+We define a Riemannian metric between a pair of samples using the associated covariance matrices as
+\begin{equation}
+	d^2(\data(t), \data(\tau)) = 2 (\data(t) - \data(\tau))^T(\widehat{\mathbf{C}}(t) + \widehat{\mathbf{C}}(\tau))^{\dagger}(\data(t) - \data(\tau));
+	\label{eq:mahalanobis1}
+\end{equation}
+this is the Mahalanobis distance (and $^{\dagger}$ denotes a pseudoinverse, as discussed below).
+%
+As previously described, the covariance matrices convey the local variability of the measurements and are utilized to explore and learn the tangent planes of the observable manifold.
+%
+This information is then utilized in \eqref{eq:mahalanobis1} to compare a pair of points according to the directions of their respective tangent planes.
+%
+The Mahalanobis distance is invariant under affine transformations.
+%
+Thus, by assuming that the observation function $\measfn$ is bi-Lipschitz and smooth, and by using local linearization of the function, i.e., $\data(t) = \mathbf{J}(t) \mathbf{x}(t) + \boldsymbol{\epsilon}(t)$ where $\mathbf{J}(t)$ is the Jacobian of $\measfn(\mathbf{x}(t))$ and $\boldsymbol{\epsilon}(t)$ is the residual consisting of higher-order terms, it was shown by Singer and Coifman \cite{singer2008non} that $\mathbf{C}(t) = \mathbf{J}(t)\mathbf{J}^T(t)$ and that the Mahalanobis distance approximates the Euclidean distance between the corresponding samples of the underlying process to second order, i.e.,
+\begin{equation}
+	\| \mathbf{x}(t) - \mathbf{x}(\tau) \|^2 = d^2(\data(t), \data(\tau)) + \mathcal{O}(\| \data(t) - \data(\tau)\|^4).
+\end{equation}
+%
+This result implies that the Mahalanobis distance is invariant to the measurement function $\measfn$, and hence,
+it yields the same distances between samples obtained under different observation functions or even partial observations.
+%
+We would like to note that, in general, $\measfn$ being bi-Lipschitz implies that $\measfn$ is invertible (on the $d$-dimensional
+manifold $\manifold$).
+%
+However, in practice, determining whether $\measfn$ contains sufficient information and is ``rich enough'' to completely determine the underlying process is a non-trivial task.
+%
+In this work, we exploit the fact that $\mathbf{C}(t) = \mathbf{J}(t)\mathbf{J}^T(t)$, which implies that $\mathbf{C}(t)$ is an $\highdim \times \highdim$ positive semidefinite matrix of rank $d$, to empirically infer the dimension $\lowdim$.
+%
+According to the spectrum of the local covariance matrices and their corresponding spectral gaps, we approximate the rank of the matrices.
+%
+Consistent rank estimates among these local covariance matrices are taken to imply that the measurements are ``rich enough", and hence, may be good indicators for the dimension $\lowdim$.
+%
+Since the dimension $\lowdim$ of the underlying process is typically considerably smaller than the dimension of the measured process $\highdim$,
+the covariance matrix is singular and non-invertible;
+%
+thus, we use the pseudo-inverse in \eqref{eq:mahalanobis1}.
+
+
+\section{Angular synchronization }
+
+The angular synchronization algorithm aligns pairs of data points with respect to a given symmetry group from pairs of alignment measurements \citep{singer2011angular}. 
+%
+Let $ \data_1, \dots, \data_\ndata$ denote the signals that we wish to align with respect to rotations;
+each signal is a function defined on the unit circle (on the plane).
+%
+First assume that each signal $\data_i$ is a {\it noisy} rotated copy of the underlying signal $\data_{true}$
+(which we are {\it not} given), such that
+\begin{equation}
+\data_i = f(\data_{true}, \theta_i) + \mathbf{\xi}_i
+\end{equation}
+where the function $f(\data_{true}, \theta_i)$ rotates the signal $x_{true}$ by $\theta_i$ degrees, and $\mathbf{\xi}_i$ is a (typically Gaussian) noise term.
+%
+Our goal is to recover $\theta_1, \dots, \theta_\ndata$.
+%
+Up to noise,
+\begin{equation} \label{eq:pairwise_rot}
+\data_i \approx f(\data_j, \theta_i - \theta_j) ;
+\end{equation}
+note that \eqref{eq:pairwise_rot} does not require knowledge of $x_{true}$.
+%
+We can obtain an {\it estimate} of $\theta_i - \theta_j$ by computing the rotation that optimally aligns $\data_j$ to $\data_i$,
+i.e., %$\theta_{ij} \approx \theta_i - \theta_j$, where
+%
+\begin{equation} \label{eq:opt_angle}
+\theta_i - \theta_j \approx \theta_{ij} = \argmin_{\theta} \|\data_i - f(\data_j, \theta)\|^2.
+\end{equation}
+%
+Practically, the signals are discretized in a $\highdim$-long vector (the local intensity at $n$ equidistant points around the circle);
+rotating the function by an angle $\theta$ then corresponds to cyclically shifting the elements of $\data_i$
+by $\frac{\theta_i}{2 \pi} \highdim$ (rounded to the nearest integer to obtain a valid shift).
+%
+For the one-dimensional discretized profiles shown in \fig~\ref{fig:1d_demo}, we exhaustively search over all $\highdim=100$ possible shifts of the signals to obtain the optimal angles in \eqref{eq:opt_angle}.
+%
+Alternatively, for continuous signals, an optimization algorithm
+can be used \citep{ahuja2007template}.
+
+Rather than work with the angles $\theta_{ij}$ directly, it is more convenient to consider the rotation matrices,
+\begin{equation} \label{eq:R_theta}
+R(\theta_{ij}) = \begin{bmatrix}
+\cos(\theta_{ij}) & -\sin(\theta_{ij}) \\
+\sin(\theta_{ij}) & \cos(\theta_{ij})
+\end{bmatrix},
+\end{equation}
+which we can think of as operating on the points of the unit circle (on the plane) on which our signal is defined.
+%
+Successive rotations correspond to multiplication of the corresponding rotation matrices: $R(\alpha_1 + \alpha_2) = R(\alpha_1) R(\alpha_2)$.
+%
+Due to the orthogonality of rotation matrices, $R(-\alpha) = R(\alpha)^T$.
+
+Let $d$ denote the dimension of the rotation matrices we are considering (for planar rotations, $R(\theta_{ij}) \in \mathbb{R}^{2 \times 2}$ and $d=2$).
+%
+We construct the matrix $H \in \mathbb{R}^{\ndata d \times \ndata d}$, where $H$ is an $m \times m$ matrix of $d \times d$ blocks, with the $i,j^{th}$ block of $H$, $H_{ij}$, defined as
+\begin{equation} \label{eq:H_to_R}
+H_{ij} = R(\theta_{ij}).
+\end{equation}
+%
+%
+Under our assumption that $\theta_{ij} \approx \theta_i - \theta_j$, $H_{ij} \approx R(\theta_i) R(\theta_j)^T$
+%\begin{equation}
+%H_{ij} = R(\theta_{ij}) \approx R(\theta_i - \theta_j) = R(\theta_i) R(-\theta_j) = R(\theta_i) R(\theta_j)^T,
+%\end{equation}
+ and
+\begin{equation} \label{eq:H_low_rank}
+	H \approx
+	\begin{bmatrix}
+	R(\theta_1) \\
+	R(\theta_2) \\
+	\vdots \\
+	R(\theta_\ndata)
+	\end{bmatrix}
+	\begin{bmatrix}
+	R(\theta_1)^T R(\theta_2)^T \dots R(\theta_\ndata)^T
+	\end{bmatrix}.
+\end{equation}
+%
+It follows directly from \eqref{eq:H_low_rank} that the top block eigenvector of $H$ contains our best estimates of $R(\theta_1), R(\theta_2), \dots, R(\theta_m)$.
+%
+Let $\phi_1, \phi_2, \dots, \phi_{md}$ denote the eigenvectors of $H$ ordered so that $|\lambda_1| \ge |\lambda_2| \ge \dots \ge |\lambda_{\ndata d}|$, where $\lambda_i$ is the eigenvalue corresponding to $\phi_i$.
+%
+Then,
+\begin{equation} \label{eq:R_hat}
+\hat{R} =
+\begin{bmatrix}
+\hat{R}_1 \\
+\hat{R}_2 \\
+\vdots \\
+\hat{R}_\ndata
+\end{bmatrix} =
+\begin{bmatrix}
+| & | & & | \\
+\phi_1 & \phi_2 & \dots & \phi_d \\
+| & | & & |
+\end{bmatrix},
+\end{equation}
+where $\hat{R}_i \in \mathbb{R}^{d \times d}$ is (nearly) the estimate for $R(\theta_i)$.
+%
+To obtain our estimate of $R(\theta_i$), denoted $R_{i, est}$, we project $\hat{R}_i$ onto the closest orthogonal matrix,
+\begin{equation} \label{eq:R_est}
+R_{i, est} = U_i V_i^T,
+\end{equation}
+where $U_i$ and $V_i$ are the left and right singular vectors, respectively, of $\hat{R}_i$.
+%
+We adjust the sign of $\phi_1$ so that $det(R_{i, est}) = +1$, ensuring proper rotations 
+(note that systematically incorporating improper rotations is also possible \citep{goemans1995improved, bandeira2013cheeger}).
+%
+We estimate $\theta_{i}$ by inverting \eqref{eq:R_theta}, and register the signals by rotating signal $i$ by $-\theta_i$.
+%
+We note that, in our actual computations, the pairwise rotations $\theta_{ij}$ are computed in a discrete setting, then the overall
+synchronization is performed in the continuum context to obtain $\theta_i$, and the results are rounded to give the closest
+discrete shift.
+
+Importantly, this formulation also considers {\it higher-order} consistency information.
+%
+For example, given our pairwise estimates $R_{ij}$, we know that relationships of the form
+\begin{equation} \label{eq:triplet_consistency}
+R(\theta_{ik}) R(\theta_{kj}) \approx R(\theta_i) R(\theta_k)^T R(\theta_k) R(\theta_j)^T = R(\theta_i) R(\theta_j)^T
+\end{equation}
+should also hold.
+%
+Note that
+\begin{equation}
+(H^2)_{ij} = \sum_k R(\theta_{ik}) R(\theta_{kj});
+\end{equation}
+therefore, {\it all} information of the form in \eqref{eq:triplet_consistency} is contained in the matrix $H^2$ (and higher order
+consistency information in its higher powers).
+%
+Because $H$ and $H^2$ have the same eigenvectors, our problem formulation accounts for not only pairwise alignment information, but also these higher-order considerations.
+
+\section{Vector diffusion maps}
+
+In vector diffusion maps \cite{singer2012vector}, given data points $\data_1, \dots, \data_\ndata$, one first constructs the matrix $S \in \mathbb{R}^{\ndata d \times \ndata d}$, with the $i,j^{th}$ block of $S$, $S_{ij}$, defined as
+\begin{equation} \label{eq:vdm_S}
+	S_{ij} = A_{ij} H_{ij}
+\end{equation}
+%
+where $A_{ij} \in \mathbb{R}$ (defined in \sec~\ref{sec:dmaps}) pertains to the diffusion kernel between data points, and $H_{ij} \in \mathbb{R}^{d \times d}$ (defined in \eqref{eq:H_to_R}) pertains to the pairwise alignment between data points.
+%
+It is important to note that distance $d(\data_i, \data_j)$ used in the diffusion kernel in \eqref{eq:dmaps_kernel} is the distance between data points {\it after} after pairwise alignment, i.e., the minimum distance between all possible shifts of the two data points (which is obtained in \eqref{eq:opt_pairwise}).
+%
+In the language of symmetry groups, this distance is a metric between the orbits induced by the relevant symmetry group.
+
+One then computes the eigenvalues $\lambda_1, \lambda_2, \dots, \lambda_{\ndata d}$ and eigenvectors $\phi_1, \phi_2, \dots, \phi_{\ndata d}$ of $S$, ordered such that $|\lambda_1| \ge |\lambda_2| \ge \dots \ge |\lambda_{\ndata d}|$.
+%
+These eigenvectors contain information about {\it both} the optimal rotations (the ``synchronization" component) and the
+variation of the data {\it after} the spatial symmetries have been factored out (in our case, their temporal variation).
+%
+Assuming that the data (after symmetries have been factored out) are relatively closely clustered, it is reasonable
+to expect, as in angular synchronization, that the top (block) eigenvector of $S$ contains approximations of the optimal rotations,
+which can be computed in the same way from \eqref{eq:R_est}.
+%
+We then expect subsequent eigenvectors to contain information about the main direction(s) of data variability modulo the geometric symmetries.
+
+In general, the embedding coordinates are given by
+\begin{equation} \label{eq:vdm_coord}
+\psi_{k,l} (i) = \langle \phi_k(i), \phi_l(i) \rangle,
+\end{equation}
+where $\phi_k(i) \in \mathbb{R}^d$ denotes the $i^{th}$ block of $\phi_k$,
+%
+If we assume that the rotations and the dynamics are uncoupled and therefore separable, then the eigenvectors of $S$ have the following structure: each block eigenvector contains estimates of the optimal rotations (up to a constant rotation) multiplied by the corresponding embedding coordinate (a scalar)
+%
+As the first diffusion maps coordinate is constant over the data, the first block eigenvector contains only the optimal rotations.
+%
+The second block eigenvector (eigenvectors $d+1$ through $2d$) contains the optimal rotations, each multiplied by their second diffusion maps coordinate.
+%
+We can therefore recover this diffusion maps coordinate by taking inner products of the columns of the second block eigenvector with columns of the first block eigenvector.
+%
+The $j^{th}$ embedding coordinate will be given by $\psi_{k,l}$, where $jd +1 < k \le (j+1)d$ and $1 \le l \le d$,
+and we select $k, l$ such that the coordinate $\psi_{k, l}$ has the largest variability, i.e., the $j^{th}$ coordinate is $\psi_{k,l}$, where $k, l$ is the solution to
+\begin{equation} \label{eq:first_embed_vdm}
+\max_{
+\begin{matrix}
+jd +1 \le k \le (j+1)d \\
+1 \le l \le d
+\end{matrix}}
+ \sum_i \psi_{k,l} (i)^2. 
+\end{equation}

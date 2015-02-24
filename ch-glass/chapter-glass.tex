@@ -121,6 +121,7 @@ Then the diffusion map is given by the eigenvectors of $A$, $\phi_{1},\dots,\phi
 \end{figure}
 
 \begin{figure}[t]
+\centering
 \includegraphics[width=8cm]{evals.eps}
 \caption[Eigenvalue spectrum for diffusion maps embedding of Lennard-Jones cluster]{Plot of the top 10 eigenvalues from the diffusion map embedding}
 \label{evals}
@@ -135,6 +136,7 @@ As Flusser states, using only the real parts of the rotation-invariant moments w
 Note that the original system has 14 degrees of freedom, and removing the 2 translational, 1 rotational, and 1 refective degrees of freedom leaves 10 degrees of freedom. Therefore, the 7 refelction-invariant moments defined above do not uniquely determine the configuration. 
 
 \begin{figure}[t]
+\centering
 \includegraphics[width=11cm]{dmap_noreflec.eps}
 \caption[Diffusion maps embedding of Lennard-Jones cluster using rotation-invariant moments]{Diffusion map embedding from using the moments defined in Section~\ref{sec:moments}; the green point and green circle correspond to the two green points in Figure~\ref{dmap}}
 \label{dmap_noreflec}
@@ -145,6 +147,7 @@ As you can see, in Figure~\ref{dmap_noreflec}, the two green points in Figure~\r
 \subsection{Comparison of Diffusion Maps with Principal Components Analysis}
 Using all 11 moments, Principal Components Analysis (PCA) was performed. As seen in Figure \ref{PCA}, no significant structure is uncovered using PCA.
 \begin{figure}[t]
+\centering
 \includegraphics[width=8cm]{PCA.eps}
 \caption[Principal components embedding of Lennard-Jones cluster]{The projection of the data onto the first 3 principal components}
 \label{PCA}
@@ -154,6 +157,7 @@ Using all 11 moments, Principal Components Analysis (PCA) was performed. As seen
 The use of weighting factors in the distance computation proved important for the use of diffusion maps. As seen in Figure \ref{dmap_nosigma}, removing the weighting factors significantly distorts the embedding. The transition pathways are much clearer in the embedding in Figure \ref{dmap}.
 
 \begin{figure}[t]
+\centering
 \includegraphics[width=10cm]{dmap_nosigma.eps}
 \caption[Diffusion maps embedding of Lennard-Jones cluster without weight factors]{The diffusion map embedding of the configurations without the weighting factors $\sigma_k$ in the distance definition; the colored points correspond to the configurations in Figure \ref{fig2}}
 \label{dmap_nosigma}

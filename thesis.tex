@@ -90,6 +90,20 @@
 
 \usepackage{natbib}
 
+%% notation
+\def \data {\mathbf{y}}
+\def \measfn {\mathbf{f}}
+\def \ndata {m}
+\def \lowdim {d}
+\def \lowdimslow { {d_1} }
+\def \highdim {n}
+\def \dmeps {\sigma_{kernel}}
+\def \manifold {\mathcal{M}_\lowdim}
+
+\def \chap {Chapter}
+\def \fig {Figure}
+\def \sec {Section}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Printed vs. online formatting
 \ifdefined\printmode
@@ -177,7 +191,6 @@
 
 %\renewcommand{\figurename}{Fig.}
 \newcommand{\SI}[0]{supplementary material}
-\newcommand{\fig}[0]{Fig.}
 
 \usepackage[size=small]{caption}
 \usepackage{newfloat}
@@ -263,7 +276,7 @@
 \appendix % all chapters following will be labeled as appendices
 \include{ch-multiscale/appendix-multiscale}
 \include{ch-merging/appendix-merging}
-\include{ch-drosophila/appendix-drosophila}
+%\include{ch-drosophila/appendix-drosophila}
 %\include{ch-appendicies/printing}
 
 
