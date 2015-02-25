@@ -108,10 +108,10 @@ and $\mathbf{x}(t)$ is a diffusion process that consists of $d$ underlying varia
 %
 Second, the dynamics of the diffusion process in each of its underlying variables are described by normalized stochastic differential equations as
 \begin{equation}
-	d x_i(t) = a_i (\mathbf{x}(t)) dt + d w_i(t), \ i=1,\ldots,\lowdim,
+	d x_i(t) = a_i (\mathbf{x}(t)) dt + d W_i(t), \ i=1,\ldots,\lowdim,
 	\label{eq:dynamics}
 \end{equation}
-where $a_i$ are unknown drift functions and $\dot{w}_i(t)$ are independent white noises.
+where $a_i$ are unknown drift functions and $\dot{W}_i(t)$ are independent white noises.
 %
 The independence is our second critical assumption.
 
@@ -175,7 +175,7 @@ from geometry by normalizing the diffusion kernel with the sample density.
 This has been explored for diffusion maps independently of NIV \cite{coifman2005geometric}.
 %
 When the $\alpha=1$ kernel normalization is used,
-the limiting diffusion operator is the Laplace-Beltrami operator \cite{nadler2006diffusion}, given by $\widetilde{\mathcal{L}} = \Delta$.
+the limiting diffusion operator is the Laplace-Beltrami operator \cite{nadler2006diffusion}.
 %
 In other words, this diffusion captures only the geometry of the observations and is invariant to the potential (or, alternatively,
 to the details of the sampling density).
@@ -298,8 +298,9 @@ are constructed and later extended to create the multiscale approximations as de
 %
 The LP algorithm for the inverse mapping is summarized in Algorithm \ref{algo_LP}.
 
-\begin{algorithm}[tb]
-\caption{Laplacian Pyramids for Inverse Mapping}
+\begin{table}[tb]
+\caption{Laplacian Pyramids Algorithm for Inverse Mapping}
+\hrule
 \begin{enumerate}
 
 \item
@@ -317,7 +318,7 @@ Use the extended smoothing operators to approximate the value of $Y(\tilde{i})$ 
 \end{enumerate}
 \hrule
 \label{algo_LP}
-\end{algorithm}
+\end{table}
 
 
 \begin{figure}[t]

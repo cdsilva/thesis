@@ -68,8 +68,9 @@ We also show how to compute an average trajectory from a set of registered and o
 
 \section{Algorithms}
 
-\begin{algorithm}[t]
+\begin{table}[t]
 \caption{Outline of algorithm used to temporally order images}
+\hrule
 \begin{enumerate}
 \item Compute the alignments for each pair of images, as described in \eqref{eq:opt_pairwise}.
 Retain both the optimal pairwise rotations as well as the minimum distances obtained when pairs are optimally aligned.
@@ -91,7 +92,7 @@ $A_{ij}$ is computed from \eqref{eq:dmaps_kernel}, using the pairwise distances 
 \item To order the images, sort them by the values of this embedding coordinate $\psi_{k,l}(i)$.
 \end{enumerate} 
 \hrule
-\end{algorithm}
+\end{table}
 
 We demonstrate the algorithms for registration and temporal ordering using a synthetic data set.
 %
@@ -263,20 +264,20 @@ See \citep{kemelmacher2011exploring} for a more detailed discussion.
 
 \begin{figure}
 \centering
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.22\textwidth}
 \includegraphics[width=\textwidth]{figS3}
 \caption{}
 \end{subfigure}
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.22\textwidth}
 \includegraphics[width=\textwidth]{figS4}
 \caption{}
 \end{subfigure}
-
-\begin{subfigure}{0.4\textwidth}
+%
+\begin{subfigure}{0.22\textwidth}
 \includegraphics[width=\textwidth]{figS5}
 \caption{}
 \end{subfigure}
-\begin{subfigure}{0.4\textwidth}
+\begin{subfigure}{0.22\textwidth}
 \includegraphics[width=\textwidth]{figS6}
 \caption{}
 \end{subfigure}
@@ -672,7 +673,7 @@ Overall, the tasks of image preprocessing and parameter selection are relatively
 \section{Discussion}
 
 \begin{table}
-\textsf{
+\caption[PCA and vector diffusion maps comparison]{Comparison between rank correlation coefficients when ordering using the first vector diffusion maps (VDM) embedding coordinate, and rank correlation coefficients when ordering by the first principal component analysis (PCA) \citep{shlens2005tutorial} projection coefficient. For ordering using PCA, we computed the first principal component of the registered images, and then ordered the images by the projection coefficients onto this first mode. The PCA ordering is always less accurate than the vector diffusion maps ordering. In the zebrafish data set, the ordering is much less accurate using PCA, as the dynamics of the morphing and spreading of the cell mass are highly nonlinear. The PCA and VDM orderings are comparable for the wing disc data; this is to be expected, as the tissue simply grows in time.  }\textsf{
 \begin{tabular}{| r | c | c |}
 \hline
 Data set & \parbox[c]{4cm}{ \centering VDM Rank Correlation} & \parbox[c]{4cm}{ \centering PCA Rank Correlation} \\
@@ -684,7 +685,7 @@ Zebrafish epiboly & 0.9955 & 0.6351 \\
 \hline
 \end{tabular}
 }
-\caption[PCA and vector diffusion maps comparison]{Comparison between rank correlation coefficients when ordering using the first vector diffusion maps (VDM) embedding coordinate, and rank correlation coefficients when ordering by the first principal component analysis (PCA) \citep{shlens2005tutorial} projection coefficient. For ordering using PCA, we computed the first principal component of the registered images, and then ordered the images by the projection coefficients onto this first mode. The PCA ordering is always less accurate than the vector diffusion maps ordering. In the zebrafish data set, the ordering is much less accurate using PCA, as the dynamics of the morphing and spreading of the cell mass are highly nonlinear. The PCA and VDM orderings are comparable for the wing disc data; this is to be expected, as the tissue simply grows in time.  }
+
 \label{fig:PCA_compare}
 \end{table}
 
