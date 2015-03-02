@@ -31,7 +31,7 @@ Such an analysis crucially hinges on knowing in which variables (or, more genera
 Moving averages and subsampling have often been used in simple cases as appropriate functions of variables in which to formulate slow lower-dimensional models \cite{pavliotis2007parameter}.
 %
 However, if the underlying dynamics are sufficiently nonlinear, such statistics may
-fail to capture the relevant structures and time scales within the data (see Figure~\ref{fig:schematic_fastslow} for a schematic illustration).
+fail to capture the relevant structures and time scales within the data (see \fig~\ref{fig:schematic_fastslow} for a schematic illustration).
 %
 For well-studied systems, one often has some {\em a priori} knowledge of the appropriate observables (such as phase field variables) with which to formulate the reduced dynamics \cite{chen2002phase, wheeler1992phase}.
 %
@@ -97,17 +97,19 @@ our framework and analysis readily extends to systems with multiple time scale s
 \centering
 \includegraphics[width=2in]{schematic_DS1}
 \caption{}
+\label{subfig:schematic_fastslow1}
 \end{subfigure}
 %
 \begin{subfigure}{0.4\textwidth}
 \centering
 \includegraphics[width=2in]{schematic_DS2}
 \caption{}
+\label{subfig:schematic_fastslow2}
 \end{subfigure}
 %
-\caption[Schematic of two-time scale data]{(a) Schematic of a two-dimensional, two-time scale ($\tau_1 = 50$ and $\tau_2=2$) ordinary differential equation system where the value of $x_2$ becomes slaved to the value of $x_1$.
+\caption[Schematic of two-time scale data]{(\subref*{subfig:schematic_fastslow1}) Schematic of a two-dimensional, two-time scale ($\tau_1 = 50$ and $\tau_2=2$) ordinary differential equation system where the value of $x_2$ becomes slaved to the value of $x_1$.
 %
-In such an example, traditional data mining algorithms are sufficient to recover the slow variable. (b) Schematic of a two-scale two-dimensional stochastic dynamical system where {\em the statistics} of $x_2$ become slaved to $x_1$.
+In such an example, traditional data mining algorithms are sufficient to recover the slow variable. (\subref*{subfig:schematic_fastslow2}) Schematic of a two-scale two-dimensional stochastic dynamical system where {\em the statistics} of $x_2$ become slaved to $x_1$.
 %
 In such an example, traditional data mining algorithms will not recover the slow variable if the variance in the fast variable is too large. }
 \label{fig:schematic_fastslow}
@@ -163,12 +165,74 @@ For our analysis, we require $\mathbf{g} = \measfn ^{-1}$ to be well-defined on 
 Given data $\data(t_1),\ldots,\data(t_\ndata)$ on $\manifold$ we would like to recover a parametrization of the data that is one-to-one with the
 slow variables $x_1, \dots, x_\lowdimslow$.
 
+%\section{Nonlinear Intrinsic Variables}
+
+In order to recover the slow variables from data, we will utilize a local metric that collapses the fast directions.
+%
+Typically, such a metric averages out the fast variables.
+%
+However, simple averages are inadequate to describe data which is observed through a complicated nonlinear function.
+%
+Instead, we propose to use the Mahalanobis distance, which measures distances normalized by the respective variances in each local principal direction.
+%
+Using this metric, we still retain information about both the fast and slow directions and can
+more clearly observe complex dynamic behavior within the data set.
+
+If two points $\mathbf{x}(t_1)$ and $\mathbf{x}(t_2)$ are drawn from an $n$-dimensional
+Gaussian distribution with covariance $\mathbf{C}_x$, the Mahalanobis distance between the points is defined as \cite{mahalanobis1936generalized}
+\begin{equation}
+	\| \mathbf{x}(t_1) - \mathbf{x}(t_2) \| _M = \sqrt{ (\mathbf{x}(t_1) - \mathbf{x}(t_2))^T \mathbf{C}_x^{-1} (\mathbf{x}(t_1) - \mathbf{x}(t_2) )  }.
+\end{equation}
+In particular, 
+%%%YGK+CDS if $\mathbf{x}(t_1)$ and $\mathbf{x}(t_2)$ are samples 
+for \eqref{eq:general_SDE}, whose covariance does not depend on $\mathbf{x}$,  $\mathbf{C}_x^{-1} = \mathrm{diag}(e_1, \ldots, e_\lowdim)$ is a constant matrix where
+\begin{equation} \label{eq:e_def}
+\begin{aligned}
+e_i =& 1, \: & 1 \le i \le \lowdim_1 \\
+e_i =& \epsilon, \: & \lowdim_1+1 \le i \le \lowdim,
+\end{aligned}
+\end{equation}
+and the Mahalanobis distance between samples is
+\begin{equation} \label{eq:rescale_x_dist}
+\| \mathbf{x}(t_2) - \mathbf{x}(t_1) \|^2_M = \sum_{i=1}^\lowdim e_i \left( x_i(t_2) - x_i(t_1) \right)^2.
+\end{equation}
+Note that in \eqref{eq:rescale_x_dist}, the fast variables are collapsed and become $\mathcal{O}(\sqrt{\epsilon})$ small,
+and so this metric is implicitly insensitive to variations in the fast variables.
+%
+The metric \eqref{eq:rescale_x_dist} can be rewritten as
+\begin{equation} \label{eq:norm_z}
+\| \mathbf{x}(t_2) - \mathbf{x}(t_1) \|^2_M = \| \mathbf{z}(t_2) - \mathbf{z}(t_1) \|^2_2
+\end{equation}
+where
+\begin{equation} \label{eq:general_rescale}
+z_i(t) = \sqrt{e_i} x_i(t).
+\end{equation}
+$\mathbf{z}(t)$ is a stochastic process of the same dimension as $\mathbf{x}(t)$, rescaled so that each variable has unit diffusivity.
+%
+This rescaling transforms our problem from one of detecting the slow variables within dynamic data to one of traditional data mining.
+%
+The Mahalanobis distance incorporates information about the dynamics and relevant time scales, so that using traditional data mining techniques with this metric will allow us to detect the slow variables in our data \cite{singer2009detecting}.
+%
+It is important to note that, in practice, we {\em never construct} $\mathbf{z}(t)$ {\em explicitly}.
+%
+As discussed in \sec~\ref{subsec:mahalanobis} and \cite{singer2008non}, assuming $\mathbf{f}$ is bilipschitz, the Mahalanobis distance can be extended to approximate (to fourth order) the Euclidean distance between the rescaled samples $\mathbf{z}(t)$ from accessible $\data(t) = \mathbf{f} (\mathbf{x}(t))$,
+%
+\begin{equation} \label{eq:mahalanobis2}
+\| \data(t_2) - \data(t_1) \|^2_M = \| \mathbf{z}(t_2) - \mathbf{z}(t_1) \|^2_2 + \mathcal{O}(\| \data(t_2) - \data(t_1) \|^4_2).
+\end{equation}
+%
+This approximation is accurate when $\| \data(t_2) - \data(t_1) \|$ is small.
+%
+Because we will integrate these distances into a manifold learning algorithm which only considers local distances, we can recover a parametrization of the data which is consistent with the underlying system variables $\mathbf{x}(t)$, even when the data are obscured by a function $\mathbf{f}$.
+%
+In \sec~\ref{sec:analysis}, we will show how we can approximate this distance directly from data $\data(t)$.
+
 \section{Estimation of the Mahalanobis Distance} \label{sec:analysis}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{schematic}
-\caption[Schematic of analysis parameters for multiscale data]{Illustration of how to choose $\delta t$ and $\dmeps$ appropriately. 	Curvature effects and other nonlinearities should be negligible within a time window $\delta t$ and within a ball of radius $dmeps$.}
+\caption[Schematic of analysis parameters for multiscale data]{Illustration of how to choose $\delta t$ and $\dmeps$ appropriately. 	Curvature effects and other nonlinearities should be negligible within a time window $\delta t$ and within a ball of radius $\dmeps$.}
 \label{fig:schematic}
 \end{figure}
 
@@ -306,7 +370,7 @@ From \eqref{eq:dmaps_kernel}, distances which are much greater than $\sigma_{ker
 %
 Therefore, we want to choose $\dmeps^2$ on the order of $\|\data(t_2) - \data(t_1)\|^2_M$ in a regime where $| E_M(\data(t_1), \data(t_2))|  \ll \|\data(t_2) - \data(t_1)\|^2_M$.
 %
-This is illustrated in Figure~\ref{fig:schematic}, where we want to choose $\dmeps$ small enough so that the curvature and other nonlinear effects (captured in the error term $E_M$) are negligible.
+This is illustrated in \fig~\ref{fig:schematic}, where we want to choose $\dmeps$ small enough so that the curvature and other nonlinear effects (captured in the error term $E_M$) are negligible.
 %
 This will ensure that the errors in the Mahalanobis distance approximation do not greatly effect our overall analysis.
 
@@ -378,7 +442,7 @@ f_{i,(0, k)} &= \frac{1}{\sqrt{e_k}} \sum_{l=1}^n \left( \frac{a_l(\mathbf{x})}{
 From \eqref{eq:cov_error}, the error in the covariance is $\mathcal{O}(\delta t)$ (as the $ds$ integrals are each $\mathcal{O}(\delta t)$ and the $dW$ integrals are each $\mathcal{O}(\sqrt{\delta t})$) and a function of the derivatives of the observation function $\measfn$ and the drift $\mathbf{a}$.
 %
 We want to set $\delta t$ such that $\|\mathbf{E}_C \| \ll \| \mathbf{C} \|$
-(this is illustrated in Figure~\ref{fig:schematic}), so that the estimated covariances are accurate.
+(this is illustrated in \fig~\ref{fig:schematic}), so that the estimated covariances are accurate.
 %
 Note that in practice, we compute $\hat{\mathbf{C}}$ by running many simulations of length $\delta t$ starting from $\mathbf{x}(t)$, and use the sample average to approximate the expected values in \eqref{eq:estimated_cov_expected_value}.
 %
@@ -403,7 +467,7 @@ where $a$ is an $\mathcal{O}(1)$ constant, as a specific example of \eqref{eq:ge
 %
 $x_1$ is the slow variable, and $x_2$ is a fast noise whose equilibrium measure is bounded and $\mathcal{O}(1)$.
 %
-Figure~\ref{fig:initial_data} shows data simulated from this SDE colored by time.
+\fig~\ref{fig:initial_data} shows data simulated from this SDE colored by time.
 %
 We would like to recover a parametrization of this data which is one-to-one with the slow variable $x_1$.
 
@@ -438,14 +502,14 @@ In this case, there is no error incurred due to the measurement function $\measf
 
 We want to demonstrate the utility of using the Mahalanobis distance compared to the typical Euclidean distance.
 %
-We compute the diffusion map embedding for the data in Figure~\ref{fig:initial_data},
+We compute the diffusion map embedding for the data in \fig~\ref{fig:initial_data},
 using both the standard Euclidean distance and the Mahalanobis distance for the computation of the kernel in \eqref{eq:dmaps_kernel}.
 %
-The data, colored by $\phi_1$ using the two different metrics, are shown in Figure~\ref{fig:NIV_versus_DMAPS}.
+The data, colored by $\phi_1$ using the two different metrics, are shown in \fig~\ref{fig:NIV_versus_DMAPS}.
 %
-When using the standard Euclidean distance which does not account for the underlying dynamics, the first diffusion maps recovers the fast variable $x_2$, suggesting the fast modes is the dominant scale purely in terms of data analysis (Figure~\ref{fig:NIV_versus_DMAPS}(a)).
+When using the standard Euclidean distance which does not account for the underlying dynamics, the first diffusion maps recovers the fast variable $x_2$, suggesting the fast modes is the dominant scale purely in terms of data analysis (\fig~\ref{fig:NIV_versus_DMAPS}\subref*{subfig:NIV_versus_DMAPS1}).
 %
-In contrast, the slow variable is recovered when using the Mahalanobis distance, as the coloring in Figure~\ref{fig:NIV_versus_DMAPS}(b) (where the data are colored by the first diffusion maps variable) is consistent with the coloring in Figure~\ref{fig:initial_data} (where the data are colored by time).
+In contrast, the slow variable is recovered when using the Mahalanobis distance, as the coloring in \fig~\ref{fig:NIV_versus_DMAPS}\subref*{subfig:NIV_versus_DMAPS2} (where the data are colored by the first diffusion maps variable) is consistent with the coloring in \fig~\ref{fig:initial_data} (where the data are colored by time).
 
 \begin{figure}[t]
 \centering
@@ -453,14 +517,16 @@ In contrast, the slow variable is recovered when using the Mahalanobis distance,
 \centering
 \includegraphics[width=\textwidth]{data_linear_DMAPS}
 \caption{}
+\label{subfig:NIV_versus_DMAPS1}
 \end{subfigure}
 \begin{subfigure}{0.45\textwidth}
 \centering
 \includegraphics[width=\textwidth]{data_linear_NIV}
 \caption{}
+\label{subfig:NIV_versus_DMAPS2}
 \end{subfigure}
 %
-\caption[Comparison of using the Euclidean distance and the Mahalanobis distance in multiscale data mining]{Comparison of using the Euclidean distance and the Mahalanobis distance in multiscale data mining. (a) The data from Figure~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Euclidean distance in the kernel in \eqref{eq:dmaps_kernel}. Note that we do {\em not} recover the slow variable. (b) The data from Figure~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Mahalanobis distance in the kernel in \eqref{eq:dmaps_kernel}. The good correspondence between this coordinate and the slow variable is visually obvious.}
+\caption[Comparison of using the Euclidean distance and the Mahalanobis distance in multiscale data mining]{Comparison of using the Euclidean distance and the Mahalanobis distance in multiscale data mining. (\subref*{subfig:NIV_versus_DMAPS1}) The data from \fig~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Euclidean distance in the kernel in \eqref{eq:dmaps_kernel}. Note that we do {\em not} recover the slow variable. (\subref*{subfig:NIV_versus_DMAPS2}) The data from \fig~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Mahalanobis distance in the kernel in \eqref{eq:dmaps_kernel}. The good correspondence between this coordinate and the slow variable is visually obvious.}
 \label{fig:NIV_versus_DMAPS}
 \end{figure}
 
@@ -486,20 +552,20 @@ From \eqref{eq:cov_error}, we find
 + \mathcal{O} (\delta t^{3/2}) .
 \end{equation}
 %
-Therefore, $\| \mathbf{C} \| = \mathcal{O} \left( \frac{1}{\epsilon} \right)$ and $\|\mathbf{E}_C \| = \mathcal{O}\left(\frac{\delta t}{\epsilon^2} \right)$ (provided $\frac{1}{\epsilon^2} \gg \sqrt{\delta t}$; this will be discussed further in Section~\ref{subsec:fastvar}).
+Therefore, $\| \mathbf{C} \| = \mathcal{O} \left( \frac{1}{\epsilon} \right)$ and $\|\mathbf{E}_C \| = \mathcal{O}\left(\frac{\delta t}{\epsilon^2} \right)$ (provided $\frac{1}{\epsilon^2} \gg \sqrt{\delta t}$; this will be discussed further in \sec~\ref{subsec:fastvar}).
 %
-These terms are shown in Figure~\ref{fig:cov_error}(a) as a function of $\delta t$.
+These terms are shown in \fig~\ref{fig:cov_error}\subref*{subfig:cov_error1} as a function of $\delta t$.
 %
-We want to choose $\delta t$ in a regime where $\| \mathbf{E}_C \| \ll \| \mathbf{C} \|$ (the yellow shaded region in Figure~\ref{fig:cov_error} indicates where $\| \mathbf{E}_C \| < \| \mathbf{C} \|$), so that the errors in the estimated covariance are small with respect to the covariance.
+We want to choose $\delta t$ in a regime where $\| \mathbf{E}_C \| \ll \| \mathbf{C} \|$ (the yellow shaded region in \fig~\ref{fig:cov_error} indicates where $\| \mathbf{E}_C \| < \| \mathbf{C} \|$), so that the errors in the estimated covariance are small with respect to the covariance.
 
 When we do not analytically know the functions $\measfn$ or $\mathbf{g}$, we can find such a regime empirically by
 estimating the covariance for several values of $\delta t$.
 %
 This provides an estimate of $\hat{\mathbf{C}} = \mathbf{C} + \mathbf{E}_C$ as a function of $\delta t$.
 %
-From Figure~\ref{fig:cov_error}(a), we expect a ``knee" in the plot of $\| \hat{\mathbf{C}} \|$ versus $\delta t$ when $\| \mathbf{E}_C \|$ becomes larger than $\| \mathbf{C}\|$.
+From \fig~\ref{fig:cov_error}\subref*{subfig:cov_error1}, we expect a ``knee" in the plot of $\| \hat{\mathbf{C}} \|$ versus $\delta t$ when $\| \mathbf{E}_C \|$ becomes larger than $\| \mathbf{C}\|$.
 %
-Figure~\ref{fig:cov_error}(b) shows the empirical $\| \hat{\mathbf{C}} \|$ as a function of $\delta t$ for the data in Figure~\ref{fig:initial_data}, and the knee in this curve is consistent with the intersection in Figure~\ref{fig:cov_error}(a).
+\fig~\ref{fig:cov_error}\subref*{subfig:cov_error2} shows the empirical $\| \hat{\mathbf{C}} \|$ as a function of $\delta t$ for the data in \fig~\ref{fig:initial_data}, and the knee in this curve is consistent with the intersection in \fig~\ref{fig:cov_error}\subref*{subfig:cov_error1}.
 
 \begin{figure}[t]
 \centering
@@ -507,15 +573,18 @@ Figure~\ref{fig:cov_error}(b) shows the empirical $\| \hat{\mathbf{C}} \|$ as a 
 \centering
 \includegraphics[height=2in]{C_dt_analytical_linear}
 \caption{}
+\label{subfig:cov_error1}
 \end{subfigure}
 %
 \begin{subfigure}{0.4\textwidth}
 \centering
 \includegraphics[height=2in]{C_dt_linear}
 \caption{}
+\label{subfig:cov_error2}
 \end{subfigure}
 %
-\caption[Errors in covariance estimation for linear multiscale example]{Errors in covariance estimation for linear example. (a) The analytical contributions to the covariance for the example in Section~\ref{subsec:linear_example} as a function of $\delta t$. (b) The average estimated covariance $\| \hat{ \mathbf{C}} \|$ as a function of $\delta t$. The average is computed over $10$ data points and using $50$ sample points to estimate each covariance. The shaded yellow region indicates the range of $\delta t$ over which the errors in the estimated covariance are less than the norm of the covariance. }
+\caption[Errors in covariance estimation for linear multiscale example]{Errors in covariance estimation for linear example. (\subref*{subfig:cov_error1}
+) The analytical contributions to the covariance for the example in \sec~\ref{subsec:linear_example} as a function of $\delta t$. (\subref*{subfig:cov_error2}) The average estimated covariance $\| \hat{ \mathbf{C}} \|$ as a function of $\delta t$. The average is computed over $10$ data points and using $50$ sample points to estimate each covariance. The shaded yellow region indicates the range of $\delta t$ over which the errors in the estimated covariance are less than the norm of the covariance. }
 \label{fig:cov_error}
 \end{figure}
 
@@ -541,19 +610,19 @@ As the time scale separation increases, the relative importance of the slow and 
 %
 This implies that the eigenvalue corresponding to the eigenvector which parameterizes the fast direction will decrease, and the number of harmonics of the slow mode which appear before the fast mode will increase.
 
-Figure~\ref{fig:recover_fast} shows results for three different values of $\delta t$ (the corresponding values are indicated by the dashed lines in Figure~\ref{fig:cov_error}).
+\fig~\ref{fig:recover_fast} shows results for three different values of $\delta t$ (the corresponding values are indicated by the dashed lines in \fig~\ref{fig:cov_error}).
 %
 When the time scale of the simulation burst used to estimate the local covariance (indicated by the red clouds in the top row of figures), is sufficiently shorter than that of the equilibration time of the fast variable, the estimated local covariance is accurate and the fast variable is collapsed significantly relative to the slow variable.
 %
 This means that the fast variable is recovered {\em very} far down in the diffusion maps eigenvectors.
 %
-The left two columns of Figure~\ref{fig:recover_fast} show that, for this example, when the simulation burst is shorter than the equilibration time, the fast variable is recovered as $\phi_{10}$.
+The left two columns of \fig~\ref{fig:recover_fast} show that, for this example, when the simulation burst is shorter than the equilibration time, the fast variable is recovered as $\phi_{10}$.
 %
 However, if the time scale of the burst is {\em longer} than the saturation time of the fast variable, the estimated covariance changes: the variance in the slow direction continues to grow, while the variance in the fast direction is fixed.
 %
 This means that the apparent time scale separation is smaller, the collapse of the fast variable is less pronounced relative to the slow variable, and the fast variable is recovered in an earlier eigenvector (in our ordering of the spectrum).
 %
-The right column of Figure~\ref{fig:recover_fast} shows that, when the burst is now longer than the equilibration time, the fast variable appears earlier in the eigenvalue spectrum and is recovered as $\phi_6$.
+The right column of \fig~\ref{fig:recover_fast} shows that, when the burst is now longer than the equilibration time, the fast variable appears earlier in the eigenvalue spectrum and is recovered as $\phi_6$.
 
 \begin{figure}[t]
 \includegraphics[width=0.3\textwidth]{data_linear_burst1}
@@ -593,7 +662,7 @@ x_2(t)
 \end{aligned}
 \end{equation}
 %
-Figure~\ref{fig:initial_data_nonlinear} shows the data from Figure~\ref{fig:initial_data} transformed by the function $\measfn$ in \eqref{eq:nonlinear_function} and colored by time.
+\fig~\ref{fig:initial_data_nonlinear} shows the data from \fig~\ref{fig:initial_data} transformed by the function $\measfn$ in \eqref{eq:nonlinear_function} and colored by time.
 %
 It is important to note that this is a difficult class of problem in practice, as none of the observed
 variables are purely fast or slow, and the observed system appears, at first inspection, to possess no separation
@@ -624,7 +693,7 @@ We need to use the Mahalanobis distance to obtain a parametrization that is cons
 \centering
 \includegraphics[width=0.5\textwidth]{data_init_nonlinear}
 %
-\caption[Nonlinear multiscale data]{The data from Figure~\ref{fig:initial_data}, transformed by $\measfn$ in \eqref{eq:nonlinear_function}}
+\caption[Nonlinear multiscale data]{The data from \fig~\ref{fig:initial_data}, transformed by $\measfn$ in \eqref{eq:nonlinear_function}}
 \label{fig:initial_data_nonlinear}
 \end{figure}
 
@@ -645,7 +714,7 @@ Therefore, for the example in \eqref{eq:nonlinear_function}, we have
 E_M(\data(t_1), \data(t_2)) = - (y_2(t_2) - y_2(t_1))^4.
 \end{equation}
 
-Figure~\ref{fig:cov_error_nonlinear}(a) shows $\| \data(t_2) - \data(t_1) \|^2_M$ and $| E_M |$ as a function of $\| \data(t_2) - \data(t_1) \|_2$.
+\fig~\ref{fig:cov_error_nonlinear}\subref*{subfig:dist_error_nonlinear1} shows $\| \data(t_2) - \data(t_1) \|^2_M$ and $| E_M |$ as a function of $\| \data(t_2) - \data(t_1) \|_2$.
 %
 The Mahalanobis distance is an accurate approximation to the true intrinsic distance $\| \mathbf{z}(t_2) - \mathbf{z}(t_1) \|_2$ when $|E_M| \ll \| \data(t_2) - \data(t_1) \|^2_M$ (the shaded yellow region in the plot indicates where $|E_M| < \| \data(t_2) - \data(t_1) \|^2_M$).
 %
@@ -653,9 +722,9 @@ We want to choose $\sigma_{kernel}^2$ in a regime where $|E_M(\data(t_1), \data(
 %
 We can find such a regime empirically by plotting $\| \data(t_2) - \data(t_1) \|^2_M$ as a function of $\| \data(t_2) - \data(t_1) \|_2$, and assessing when the relationship deviates from quadratic.
 %
-This is shown in Figure~\ref{fig:cov_error_nonlinear}(b), and the deviation from quadratic behavior is consistent with the intersection of the analytical expressions plotted in Figure~\ref{fig:cov_error_nonlinear}(a).
+This is shown in \fig~\ref{fig:cov_error_nonlinear}\subref*{subfig:dist_error_nonlinear2}, and the deviation from quadratic behavior is consistent with the intersection of the analytical expressions plotted in \fig~\ref{fig:cov_error_nonlinear}\subref*{subfig:dist_error_nonlinear1}.
 
-Figures~\ref{fig:colored_data_nonlinear_cases}(a) and (b) show the data from Figure~\ref{fig:initial_data_nonlinear}, colored by $\phi_1$ for two different values of $\dmeps$.
+\fig~\ref{fig:colored_data_nonlinear_cases} shows the data from \fig~\ref{fig:initial_data_nonlinear}, colored by $\phi_1$ for two different values of $\dmeps$.
 %
 The corresponding values of $\dmeps^2$ are indicated by the dashed lines.
 %
@@ -669,27 +738,31 @@ However, when $\dmeps^2$ corresponds to a region where $|E_M | \gg \|\data(t_2) 
 \centering
 \includegraphics[height=2in]{dist_dy_analytical_nonlinear}
 \caption{}
+\label{subfig:dist_error_nonlinear1}
 \end{subfigure}
 %
 \begin{subfigure}{0.4\textwidth}
 \centering
 \includegraphics[height=2in]{dist_dy_nonlinear}
 \caption{}
+\label{subfig:dist_error_nonlinear2}
 \end{subfigure}
 
 \begin{subfigure}{0.4\textwidth}
 \centering
 \includegraphics[height=2in]{C_dt_analytical_nonlinear}
 \caption{}
+\label{subfig:cov_error_nonlinear1}
 \end{subfigure}
 %
 \begin{subfigure}{0.4\textwidth}
 \centering
 \includegraphics[height=2in]{C_dt_nonlinear}
 \caption{}
+\label{subfig:cov_error_nonlinear2}
 \end{subfigure}
 %
-\caption[Errors in the Mahalanobis distance and the covariance estimation for the nonlinear data]{Errors in the Mahalanobis distance and the covariance estimation for the nonlinear example in \eqref{eq:nonlinear_function}. (a) The analytical expressions for the contributions to the distance approximation as a function of $\| \data_2 - \data_1\|_2$. (b) The average estimated Mahalanobis distance $\| \data_2 - \data_1\|^2_M$ as a function of the distance $\| \data_2 - \data_1\|_2$. The line $\| \data_2 - \data_1\|^2_M = \| \data_2 - \data_1\|_2$ is shown for reference. The yellow region indicates the range in which $\sigma_{kernel}$ should be chosen. (c) The analytical expressions for the contributions to the covariance as a function of $\delta t$. (d) The average estimated covariance $\| \hat{\mathbf{C}} \|$ as a function of $\delta t$. The yellow region indicates the range of $\delta t$ over which the errors in the estimated covariance are small relative to the norm of the covariance. }
+\caption[Errors in the Mahalanobis distance and the covariance estimation for the nonlinear data]{Errors in the Mahalanobis distance and the covariance estimation for the nonlinear example in \eqref{eq:nonlinear_function}. (\subref*{subfig:dist_error_nonlinear1}) The analytical expressions for the contributions to the distance approximation as a function of $\| \data_2 - \data_1\|_2$. (\subref*{subfig:dist_error_nonlinear2}) The average estimated Mahalanobis distance $\| \data_2 - \data_1\|^2_M$ as a function of the distance $\| \data_2 - \data_1\|_2$. The line $\| \data_2 - \data_1\|^2_M = \| \data_2 - \data_1\|_2$ is shown for reference. The yellow region indicates the range in which $\sigma_{kernel}$ should be chosen. (\subref*{subfig:cov_error_nonlinear2}) The analytical expressions for the contributions to the covariance as a function of $\delta t$. (\subref*{subfig:cov_error_nonlinear2}) The average estimated covariance $\| \hat{\mathbf{C}} \|$ as a function of $\delta t$. The yellow region indicates the range of $\delta t$ over which the errors in the estimated covariance are small relative to the norm of the covariance. }
 \label{fig:cov_error_nonlinear}
 \end{figure}
 
@@ -724,15 +797,15 @@ As expected, the error grows with increasing $\delta t$.
 %
 We can also see the explicit dependence of the covariance error on the time scale separation $\epsilon$; larger time scale separation results in a larger covariance error, as a more refined simulation burst is required to estimate the covariance of the fast directions.
 %
-$\|\mathbf{C} \|$ and $\| \mathbf{E}_C\|  $ are plotted as a function of $\delta t$ in Figure~\ref{fig:cov_error_nonlinear}(c); the shaded yellow portion denotes the region where $\| \mathbf{E}_C \| < \| \mathbf{C} \|$.
+$\|\mathbf{C} \|$ and $\| \mathbf{E}_C\|  $ are plotted as a function of $\delta t$ in \fig~\ref{fig:cov_error_nonlinear}\subref*{subfig:cov_error_nonlinear1}; the shaded yellow portion denotes the region where $\| \mathbf{E}_C \| < \| \mathbf{C} \|$.
 %
 As in the previous example, we can empirically find where $\| \mathbf{E}_C \| \ll \| \mathbf{C} \|$  by plotting $\| \hat{\mathbf{C}} \|$ as a function of $\delta t $ and looking for a knee in the plot.
 %
-These results are shown in Figure~\ref{fig:cov_error_nonlinear}(d).
+These results are shown in \fig~\ref{fig:cov_error_nonlinear}\subref*{subfig:cov_error_nonlinear2}.
 
-Figures~\ref{fig:colored_data_nonlinear_cases}(a) and (c) show the data from Figure~\ref{fig:initial_data_nonlinear}, colored by $\phi_1$ for two different values of $\delta t$.
+\fig~\ref{fig:colored_data_nonlinear_cases} shows the data from \fig~\ref{fig:initial_data_nonlinear}, colored by $\phi_1$ for two different values of $\delta t$.
 %
-The corresponding values of $\delta t$ are indicated by the dashed lines in Figure~\ref{fig:cov_error_nonlinear}(c)~and~(d).
+The corresponding values of $\delta t$ are indicated by the dashed lines in \fig~\ref{fig:cov_error_nonlinear}\subref*{subfig:cov_error_nonlinear1},\subref*{subfig:cov_error_nonlinear2}.
 %
 When $\delta t$ corresponds to a region where $\|\mathbf{E}_C \| \ll \| \mathbf{C} \|$, the slow variable is recovered by the first diffusion maps coordinate.
 %
@@ -752,11 +825,11 @@ However, when $\delta t$ corresponds to a region where $\|\mathbf{E}_C \| \gg \|
 \end{subfigure}
 
 \begin{subfigure}{\textwidth}
-\includegraphics[height=\figheight]{data_nonlinear_NIV_dt1_kernel2.eps}
+\includegraphics[height=\figheight]{data_nonlinear_NIV_dt1_kernel2}
 \hfill
-\includegraphics[height=\figheight]{C_dt_nonlinear_dt1_kernel2.eps}
+\includegraphics[height=\figheight]{C_dt_nonlinear_dt1_kernel2}
 \hfill
-\includegraphics[height=\figheight]{dist_dy_nonlinear_dt1_kernel2.eps}
+\includegraphics[height=\figheight]{dist_dy_nonlinear_dt1_kernel2}
 \end{subfigure}
 
 \begin{subfigure}{\textwidth}
@@ -767,7 +840,7 @@ However, when $\delta t$ corresponds to a region where $\|\mathbf{E}_C \| \gg \|
 \includegraphics[height=\figheight]{dist_dy_nonlinear_dt2_kernel1}
 \end{subfigure}
 
-\caption[Comparison of results for different parameter settings]{Data from Figure~\ref{fig:initial_data_nonlinear}, colored by the first diffusion maps variable $\phi_1$ using the Mahalanobis distance for three different parameter settings. The relevant values of $\delta t$ and $\sigma_{kernel}$ are indicated by the red dashed lines on the corresponding plots.  (Row~1) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{-2}$. Note that the parametrization is one-to-one with the slow variable.  (Row~2) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{1}$. We do not recover the slow variable because $\sigma_{kernel}$ is too large. (Row~3)  $\delta t = 10^{-3}$ and $\sigma_{kernel}^2 = 10^{-2}$. We do not recover the slow variable because $\delta t$ is too large.  }
+\caption[Comparison of results for different parameter settings]{Data from \fig~\ref{fig:initial_data_nonlinear}, colored by the first diffusion maps variable $\phi_1$ using the Mahalanobis distance for three different parameter settings. The relevant values of $\delta t$ and $\sigma_{kernel}$ are indicated by the red dashed lines on the corresponding plots.  (Row~1) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{-2}$. Note that the parametrization is one-to-one with the slow variable.  (Row~2) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{1}$. We do not recover the slow variable because $\sigma_{kernel}$ is too large. (Row~3)  $\delta t = 10^{-3}$ and $\sigma_{kernel}^2 = 10^{-2}$. We do not recover the slow variable because $\delta t$ is too large.  }
 \label{fig:colored_data_nonlinear_cases}
 \end{figure}
 

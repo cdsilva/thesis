@@ -24,29 +24,37 @@ Therefore, we only need our metric to be informative within a ball of radius $\d
 %
 Points less than $\dmeps$ apart are thus considered ``close'' and points farther than $\dmeps$ apart are considered ``far away''.
 %
-$\dmeps$ can be chosen using several techniques (see, for example \citep{coifman2008graph, rohrdanz2011determination});
+$\dmeps$ can be chosen using several techniques (see, for example \citep{coifman2008graph, rohrdanz2011determination}).
+%
+We often use the median of the pairwise distances as $\dmeps$, as it empirically often yields good results (since each data point is connected to approximately half of the other data points), and does not require any manual input. 
 
-We then construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{\ndata \times \ndata}$, with
+%We note that the eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ solve the following optimization problem \citep{Belkin2003}
+We then consider solving the following optimization problem \citep{Belkin2003}
+\begin{equation} \label{eq:dmaps_opt_problem}
+\argmin_{f} \sum_{ij} W_{ij} (f(\data(i)) - f(\data(j)))^2.
+\end{equation}
+%
+Because of our definition of the matrix $\mathbf{W}$, solving this optimization problem will preserve local geometry, such that $f(\data(i))$ and $f(\data(j))$ will be similar if $\data(i)$ and $\data(j)$ are close. 
+%
+To solve \eqref{eq:dmaps_opt_problem}, we construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{\ndata \times \ndata}$, with
 \begin{equation}
 D_{ii} = \sum_{j=1}^\ndata W_{ij}.
 \end{equation}
 %
 We compute the eigenvalues $\lambda_0, \dots, \lambda_{\ndata-1}$ and eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ of the matrix $\mathbf{A} = \mathbf{D}^{-1}\mathbf{W}$, and order them such that $1 = \lambda_0 \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata-1}|$.
 %
-$\phi_0 = \begin{bmatrix} 1 & 1 & \cdots & 1 \end{bmatrix}^T$
-is the trivial eigenvector; the next few eigenvectors provide embedding coordinates for the data, so that $\phi_j(i)$, the $i^{th}$ entry of $\phi_j$, provides the $j^{th}$ embedding coordinate for $\data(i)$ (modulo higher harmonics which characterize
-the same direction in the data \cite{ferguson2010systematic}).
+The eigenvectors are then solutions to \eqref{eq:dmaps_opt_problem}, such that each each eigenvector is a solution which is orthogonal to the previous eigenvector solutions. 
 %
-This is analogous to how the eigenfunctions $\cos x$ and $\cos 2x$ of the usual Laplacian in one spatial dimension
-and with no flux boundary conditions are one-to-one with the values of $x$ for $0 \le x \le 1$;
-one must check for correlations between the eigenvectors before selecting those that describe the underlying manifold geometry.
+Because the matrix $\mathbf{A}$ is row-stochastic, the first eigenvector will always be the trivial eigenvector $\phi_0 = \begin{bmatrix} 1 & 1 & \cdots & 1 \end{bmatrix}^T$ (which corresponds to a trivial solution to \eqref{eq:dmaps_opt_problem}).
+%
+The next few eigenvectors provide embedding coordinates for the data, so that $\phi_j(i)$, the $i^{th}$ entry of $\phi_j$, provides the $j^{th}$ embedding coordinate for $\data(i)$ (modulo higher harmonics which characterize
+the same direction in the data; see \cite{ferguson2010systematic} and \chap~\ref{ch:harmonics}).
+%
+%This is analogous to how the eigenfunctions $\cos x$ and $\cos 2x$ of the usual Laplacian in one spatial dimension and with no flux boundary conditions are one-to-one with the values of $x$ for $0 \le x \le 1$;
+%one must check for correlations between the eigenvectors before selecting those that describe the underlying manifold geometry.
 
 
-We note that the eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ solve the following optimization problem \citep{Belkin2003}
-\begin{equation} \label{eq:dmaps_opt_problem}
-\argmin_{f} \sum_{ij} W_{ij} (f(\data(i)) - f(\data(j)))^2
-\end{equation}
-and therefore preserves the local geometry in the data.
+
 
 Ignoring the higher harmonics, each retained eigenvector then describes an intrinsic variable for the data set of interest.
 %
@@ -68,46 +76,22 @@ For example, if the mean of the embedding is sufficiently far from 0, we can req
 alternatively, if there is a common region sampled by both data sets, the sign of each eigenvector can be chosen to optimize the consistency of the embeddings of the common region data.
 %
 %We will return to the issue of embedding consistency for different data sets in our concluding discussion; for the moment, we will assume that our different sets sample the same region of data space in a representative enough way such that the correspondence between the sequences of retained eigenvectors for different embeddings is obvious.
-
-For the examples in \chap~\ref{ch:drosophila}, the sign of the eigenvector is important, as it determines the start and end of the ordered data trajectory.
+%
+Similairly, for the examples in \chap~\ref{ch:drosophila}, the sign of the eigenvector is important, as it determines the start and end of the ordered data trajectory.
 %
 The signs are determined after analysis using {\em a priori} knowledge of the developmental dynamics. 
 
-\begin{table}[tb]
-\caption{Nonlinear Intrinsic Variables Construction Algorithm}
-\hrule
-\begin{enumerate}
 
-\item
-Obtain a sequence of high-dimensional observation samples $\data(t)$.
-
-\item
-Compute the empirical covariance matrix $\widehat{\mathbf{C}}(t)$ of each sample $\data(t)$ {\em in a short window in time} according to \eqref{eq:cov}.
-
-\item
-Using the samples and their associated covariance matrices, compute the Mahalanobis distance between the observations \eqref{eq:mahalanobis1} .
-
-\item
-Build the pairwise affinity matrix $\mathbf{W}$ and the corresponding normalized kernel $\mathbf{W}^{(\alpha)}$ (\ref{eq:kernel2}).
-
-\item
-Apply eigenvalue decomposition to the normalized kernel and view the values of its principal eigenvectors (modulo the possibility of
- ``higher harmonics", see text) as the Nonlinear Intrinsic Variables (NIV) of the given observations.
-
-\end{enumerate}
-\hrule
-\label{algo}
-\end{table}
 
 
 \subsection{Family of operators} \label{sec:diff_limit}
 
-In the limit $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$, the matrix $\mathbf{A}$ converges to the continuous backward Fokker-Planck operator \cite{nadler2006diffusion}
+In the limit $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$, the matrix $\mathbf{I} - \mathbf{A}$ converges to the continuous backward Fokker-Planck operator \cite{nadler2006diffusion}
 \begin{equation}
 	\mathcal{L} = \Delta - 2 \nabla U \cdot \nabla.
 	\label{eq:limiting_operator}
 \end{equation}
-where the data $\data_1, \dots , \data_\ndata$ are sampled from $\manifold$ with density $p \propto e^{-U}$. 
+where the data $\data_1, \dots , \data_\ndata$ are sampled from $\manifold$ with density proportional to $e^{-U}$. 
 %
 However, we can construct a family of diffusion operators 
 \begin{equation} \label{eq:kernel2}
@@ -124,82 +108,14 @@ We then have \cite{coifman2005geometric}
 \mathbf{A}^{(1)} & \rightarrow \Delta  
 \end{aligned}
 \end{equation}
+%
+Therefore, choosing different values of $\alpha$ results in different kernel normalizations which can remove sampling density effects along the manifold. 
 
 
-
-\section{Nonlinear Intrinsic Variables}
-
-In order to recover the slow variables from data, we will utilize a local metric that collapses the fast directions.
-%
-Typically, such a metric averages out the fast variables.
-%
-However, simple averages are inadequate to describe data which is observed through a complicated nonlinear function.
-%
-Instead, we propose to use the Mahalanobis distance, which measures distances normalized by the respective variances in each local principal direction.
-%
-Using this metric, we still retain information about both the fast and slow directions and can
-more clearly observe complex dynamic behavior within the data set.
-
-If two points $\mathbf{x}(t_1)$ and $\mathbf{x}(t_2)$ are drawn from an $n$-dimensional
-Gaussian distribution with covariance $\mathbf{C}_x$, the Mahalanobis distance between the points is defined as \cite{mahalanobis1936generalized}
-\begin{equation}
-	\| \mathbf{x}(t_1) - \mathbf{x}(t_2) \| _M = \sqrt{ (\mathbf{x}(t_1) - \mathbf{x}(t_2))^T \mathbf{C}_x^{-1} (\mathbf{x}(t_1) - \mathbf{x}(t_2) )  }.
-\end{equation}
-In particular, 
-%%%YGK+CDS if $\mathbf{x}(t_1)$ and $\mathbf{x}(t_2)$ are samples 
-for \eqref{eq:general_SDE}, whose covariance does not depend on $\mathbf{x}$,  $\mathbf{C}_x^{-1} = \mathrm{diag}(e_1, \ldots, e_\lowdim)$ is a constant matrix where
-\begin{equation} \label{eq:e_def}
-\begin{aligned}
-e_i =& 1, \: & 1 \le i \le \lowdim_1 \\
-e_i =& \epsilon, \: & \lowdim_1+1 \le i \le \lowdim,
-\end{aligned}
-\end{equation}
-and the Mahalanobis distance between samples is
-\begin{equation} \label{eq:rescale_x_dist}
-\| \mathbf{x}(t_2) - \mathbf{x}(t_1) \|^2_M = \sum_{i=1}^\lowdim e_i \left( x_i(t_2) - x_i(t_1) \right)^2.
-\end{equation}
-Note that in \eqref{eq:rescale_x_dist}, the fast variables are collapsed and become $\mathcal{O}(\sqrt{\epsilon})$ small,
-and so this metric is implicitly insensitive to variations in the fast variables.
-%
-The metric \eqref{eq:rescale_x_dist} can be rewritten as
-\begin{equation} \label{eq:norm_z}
-\| \mathbf{x}(t_2) - \mathbf{x}(t_1) \|^2_M = \| \mathbf{z}(t_2) - \mathbf{z}(t_1) \|^2_2
-\end{equation}
-where
-\begin{equation} \label{eq:general_rescale}
-z_i(t) = \sqrt{e_i} x_i(t).
-\end{equation}
-$\mathbf{z}(t)$ is a stochastic process of the same dimension as $\mathbf{x}(t)$, rescaled so that each variable has unit diffusivity.
-%
-This rescaling transforms our problem from one of detecting the slow variables within dynamic data to one of traditional data mining.
-%
-The Mahalanobis distance incorporates information about the dynamics and relevant time scales, so that using traditional data mining techniques with this metric will allow us to detect the slow variables in our data \cite{singer2009detecting}.
-%
-It is important to note that, in practice, we {\em never construct} $\mathbf{z}(t)$ {\em explicitly}.
-%
-It was shown in \cite{singer2008non} that, assuming $\mathbf{f}$ is bilipschitz, the Mahalanobis distance can be extended to approximate (to fourth order) the Euclidean distance between the rescaled samples $\mathbf{z}(t)$ from accessible $\data(t) = \mathbf{f} (\mathbf{x}(t))$,
-%
-\begin{equation} \label{eq:mahalanobis2}
-\| \data(t_2) - \data(t_1) \|^2_M = \| \mathbf{z}(t_2) - \mathbf{z}(t_1) \|^2_2 + \mathcal{O}(\| \data(t_2) - \data(t_1) \|^4_2).
-\end{equation}
-%
-This approximation is accurate when $\| \data(t_2) - \data(t_1) \|$ is small.
-%
-Because we will integrate these distances into a manifold learning algorithm which only considers local distances, we can recover a parametrization of the data which is consistent with the underlying system variables $\mathbf{x}(t)$, even when the data are obscured by a function $\mathbf{f}$.
-%
-In Section~\ref{sec:analysis}, we will show how we can approximate this distance directly from data $\data(t)$.
-%
-
-
-\subsection{Mahalanobis Distance}
+\section{Nonlinear Intrinsic Variables and the Mahalanobis Distance}
 \label{subsec:mahalanobis}
 
-Let $\mathbf{C}(t)$ be the covariance matrix associated with the measured sample $\data(t)$. In practice, the covariance matrix can be estimated from a short trajectory of samples in time around the sample $\data(t)$ by
-\begin{equation}
-	\widehat{\mathbf{C}}(t) = \sum \limits _{\tau = t-L}^{t+L} (\data(\tau) - \widehat{\boldsymbol{\mu}}(t))(\data(\tau) - \widehat{\boldsymbol{\mu}}(t))^T,
-	\label{eq:cov}
-\end{equation}
-where $\widehat{\boldsymbol{\mu}}(t)$ is the empirical mean of the short trajectory of samples.
+Let $\mathbf{C}(t)$ be the covariance matrix associated with the measured sample $\data(t)$. 
 %
 We define a Riemannian metric between a pair of samples using the associated covariance matrices as
 \begin{equation}
@@ -208,7 +124,7 @@ We define a Riemannian metric between a pair of samples using the associated cov
 \end{equation}
 this is the Mahalanobis distance (and $^{\dagger}$ denotes a pseudoinverse, as discussed below).
 %
-As previously described, the covariance matrices convey the local variability of the measurements and are utilized to explore and learn the tangent planes of the observable manifold.
+The covariance matrices convey the local variability of the measurements and are utilized to explore and learn the tangent planes of the observable manifold.
 %
 This information is then utilized in \eqref{eq:mahalanobis1} to compare a pair of points according to the directions of their respective tangent planes.
 %
@@ -238,8 +154,83 @@ the covariance matrix is singular and non-invertible;
 %
 thus, we use the pseudo-inverse in \eqref{eq:mahalanobis1}.
 
+In practice, the covariance matrix can be estimated from a short trajectory of samples in time around the sample $\data(t)$ by
+\begin{equation} \label{eq:cov1}
+	\widehat{\mathbf{C}}(t) = \sum \limits _{\tau = t-L}^{t+L} (\data(\tau) - \widehat{\boldsymbol{\mu}}(t))(\data(\tau) - \widehat{\boldsymbol{\mu}}(t))^T,
+\end{equation}
+where $\widehat{\boldsymbol{\mu}}(t)$ is the empirical mean of the short trajectory of samples.
+%
+Alternatively, we can estimate the local covariance by using small bursts of simulation 
+\begin{multline} \label{eq:cov2}
+\hat{C}_{ij}(\data(t), \delta t)
+= \\
+\frac{1}{ \delta t} \left( \mathbb{E} \left[ y_i (t+\delta t) y_j (t+ \delta t) \mid \data(t) \right]
+- \mathbb{E} \left[ y_i (t+\delta t) \mid \data(t) \right] \mathbb{E} \left[ y_j (t+\delta t) \mid \data(t) \right] \right) ,
+\end{multline}
+%
+where $\delta t > 0$ is the length of the simulation burst.
+%
+Using the Mahalanobis distance to not only factor out an observation function, but also reduce the effects of fast variables, will be discussed in \chap~\ref{ch:multiscale}.
 
-\section{Angular synchronization }
+\begin{table}[tb]
+\caption{Nonlinear Intrinsic Variables Construction Algorithm}
+\hrule
+\begin{enumerate}
+
+\item
+Obtain a sequence of high-dimensional observation samples $\data(t)$.
+
+\item
+Compute the empirical covariance matrix $\widehat{\mathbf{C}}(t)$ of each sample $\data(t)$ {\em in a short window in time} according to \eqref{eq:cov1} or \eqref{eq:cov2}.
+
+\item
+Using the samples and their associated covariance matrices, compute the Mahalanobis distance between the observations \eqref{eq:mahalanobis1} .
+
+\item
+Build the pairwise affinity matrix $\mathbf{W}$ and the corresponding normalized kernel $\mathbf{W}^{(\alpha)}$ in \eqref{eq:kernel2}.
+
+\item
+Apply eigenvalue decomposition to the normalized kernel and view the values of its principal eigenvectors (modulo the possibility of
+ ``higher harmonics", see text) as the Nonlinear Intrinsic Variables (NIV) of the given observations.
+
+\end{enumerate}
+\hrule
+\label{algo}
+\end{table}
+
+
+
+
+\section{Angular synchronization } \label{sec:ang_synch}
+
+We demonstrate the algorithms for registration and temporal ordering using a synthetic data set.
+%
+The relatively simple dynamics of this data set allows us to easily visualize and illustrate the main features of the different algorithms.
+%
+Motivated by the geometry of our {\em Drosophila} embryo images, we construct a sequence of concentration profiles defined on a ring, and rotate each ring randomly around its center; an example is shown in \fig~\ref{fig:1d_demo}A.
+%
+Rotation of the ring corresponds to shifting (with periodic boundary conditions) the one-dimensional concentration profile shown at the bottom of \fig~\ref{fig:1d_demo}A (the symmetry group is $SO(2)$, the group of all two-dimensional proper rotations).
+%
+Each concentration profile is a noisy Gaussian (shown in \fig~\ref{fig:1d_demo}B), and the Gaussians increase in intensity as a function of ``time".
+%
+We discretize the profiles into $100$ points, so our numerical data will be $100$-dimensional vectors (the corresponding symmetry group for the discretized profiles is $\mathbb{Z}_{100}$, the group of integers modulo $100$).
+%
+\fig~\ref{fig:1d_demo}C shows the entire data set; the concentration profiles have been stacked in an array, so that each row corresponds to a single profile.
+%
+Because the profiles are unregistered and unordered, the underlying dynamics (a Gaussian whose amplitude grows in time) are not readily apparent.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{ch-drosophila/figures/figS2}
+\caption[Synthetic data set used to illustrate registration and ordering algorithms]{Synthetic data set used to illustrate the data processing algorithms. (A) One-dimensional concentration profile on a ring (top), and the corresponding profile on a line (bottom). (B) Intensity corresponding to the profile in A. (C) An ensemble of concentration profiles, each of the form described in A. Each row in the array corresponds to a single profile. {(D)} The profiles in {C}, now registered using angular synchronization. {(E)} The profiles in {D}, now temporally ordered using diffusion maps.  {(F)} The profiles in {C}, registered and temporally ordered in a single step using vector diffusion maps.}
+\label{fig:1d_demo}
+%\customlabel{subfig:1d_example}{\ref{fig:1d_demo}{\it A}}
+%\customlabel{subfig:1d_intensity}{\ref{fig:1d_demo}{\it B}}
+%\customlabel{subfig:1d_unaligned_unordered}{\ref{fig:1d_demo}{\it C}}
+%\customlabel{subfig:1d_aligned_unordered}{\ref{fig:1d_demo}{\it D}}
+%\customlabel{subfig:1d_aligned_ordered}{\ref{fig:1d_demo}{\it E}}
+%\customlabel{subfig:1d_aligned_ordered_vdm}{\ref{fig:1d_demo}{\it F}}
+\end{figure}
 
 The angular synchronization algorithm aligns pairs of data points with respect to a given symmetry group from pairs of alignment measurements \citep{singer2011angular}. 
 %
@@ -417,3 +408,18 @@ jd +1 \le k \le (j+1)d \\
 \end{matrix}}
  \sum_i \psi_{k,l} (i)^2. 
 \end{equation}
+
+\section{The eigenvalue spectrum}
+
+We can use the eigenvalues from (vector) diffusion maps to help deduce the dimensionality of the data.
+%
+In diffusion maps, the largest eigenvalue will always be 1 and correspond to the trivial (constant) eigenvector, and $|\lambda_k|$ gives a measure of the importance of coordinate $\phi_k$. 
+%
+We therefore expect to see a ``spectral gap'' in the eigenvalues which separates the meaningful coordinates from those corresponding to noise.
+%
+However, some embedding coordinates which appear meaningful according to the eigenvalues may be harmonics of previous coordinates \citep{ferguson2010systematic}, 
+and one must visually check for correlations among potential embedding coordinates before deducing the true dimensionality of the data. 
+
+In vector diffusion maps, the importance of each coordinate is measured by the product of the corresponding eigenvalues (i.e., the importance of $\psi_{k,l}$ is given by $| \lambda_k \lambda_l |$). 
+%
+We again expect to see a ``spectral gap'' in these eigenvalue products between those corresponding to meaningful coordinates (modulo higher harmonics) and those corresponding to noise. 

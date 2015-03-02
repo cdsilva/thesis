@@ -65,6 +65,11 @@
 \usepackage{graphicx}
 %\usepackage{subfig,rotate}
 \usepackage{subcaption}
+
+\DeclareCaptionSubType[Alph]{figure}
+\captionsetup[subfigure]{labelformat=simple, font=sf}
+
+
 \usepackage{epstopdf}
 
 %%% for comments
@@ -103,6 +108,8 @@
 \def \chap {Chapter}
 \def \fig {Figure}
 \def \sec {Section}
+\def \app {Appendix}
+\def \tab {Table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Printed vs. online formatting
@@ -189,20 +196,6 @@
   {\end{list}}
 
 
-%\renewcommand{\figurename}{Fig.}
-\newcommand{\SI}[0]{supplementary material}
-
-\usepackage[size=small]{caption}
-\usepackage{newfloat}
-\DeclareFloatingEnvironment[
-    fileext=loa,
-    listname=List of Algorithms,
-    name=ALGORITHM,
-    placement=tbhp,
-]{algorithm}
-
-\DeclareCaptionFormat{algorithms}{\vskip-15pt\hrulefill\par#1#2#3\vskip-6pt\hrulefill}
-\captionsetup[algorithm]{singlelinecheck=off,format=algorithms}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\
@@ -269,8 +262,8 @@
 \include{ch-multiscale/chapter-multiscale}
 \include{ch-merging/chapter-merging}
 \include{ch-harmonics/chapter-harmonics}
-\include{ch-glass/chapter-glass}
-\include{ch-trpcage/chapter-trpcage}
+%\include{ch-glass/chapter-glass}
+%\include{ch-trpcage/chapter-trpcage}
 \include{ch-drosophila/chapter-drosophila}
 \include{ch-conclusion/chapter-conclusion}
 \appendix % all chapters following will be labeled as appendices

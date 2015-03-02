@@ -1,0 +1,12310 @@
+%!PS-Adobe-2.0 EPSF-1.2
+%%Creator: MATLAB, The MathWorks, Inc. Version 7.14.0.739 (R2012a). Operating System: Microsoft Windows 7.
+%%Title: .\rxn_NLICA2.eps
+%%CreationDate: 06/18/2013  10:45:43
+%%DocumentNeededFonts: Helvetica
+%%DocumentProcessColors: Cyan Magenta Yellow Black
+%%Extensions: CMYK
+%%Pages: 1
+%%BoundingBox:     0    -1   204   139
+%%EndComments
+
+%%BeginProlog
+% MathWorks dictionary
+/MathWorks 160 dict begin
+% definition operators
+/bdef {bind def} bind def
+/ldef {load def} bind def
+/xdef {exch def} bdef
+/xstore {exch store} bdef
+% operator abbreviations
+/c  /clip ldef
+/cc /concat ldef
+/cp /closepath ldef
+/gr /grestore ldef
+/gs /gsave ldef
+/mt /moveto ldef
+/np /newpath ldef
+/cm /currentmatrix ldef
+/sm /setmatrix ldef
+/rm /rmoveto ldef
+/rl /rlineto ldef
+/s {show newpath} bdef
+/sc {setcmykcolor} bdef
+/sr /setrgbcolor ldef
+/sg /setgray ldef
+/w /setlinewidth ldef
+/j /setlinejoin ldef
+/cap /setlinecap ldef
+/rc {rectclip} bdef
+/rf {rectfill} bdef
+% page state control
+/pgsv () def
+/bpage {/pgsv save def} bdef
+/epage {pgsv restore} bdef
+/bplot /gsave ldef
+/eplot {stroke grestore} bdef
+% orientation switch
+/portraitMode 0 def /landscapeMode 1 def /rotateMode 2 def
+% coordinate system mappings
+/dpi2point 0 def
+% font control
+/FontSize 0 def
+/FMS {/FontSize xstore findfont [FontSize 0 0 FontSize neg 0 0]
+  makefont setfont} bdef
+/ISOLatin1Encoding where {pop /WindowsLatin1Encoding 256 array bdef
+ISOLatin1Encoding WindowsLatin1Encoding copy pop
+/.notdef/.notdef/quotesinglbase/florin/quotedblbase/ellipsis/dagger
+/daggerdbl/circumflex/perthousand/Scaron/guilsinglleft/OE/.notdef/.notdef
+/.notdef/.notdef/quoteleft/quoteright/quotedblleft/quotedblright/bullet
+/endash/emdash/tilde/trademark/scaron/guilsinglright/oe/.notdef/.notdef
+/Ydieresis WindowsLatin1Encoding 128 32 getinterval astore pop}
+{/WindowsLatin1Encoding StandardEncoding bdef} ifelse
+/reencode {exch dup where {pop load} {pop StandardEncoding} ifelse
+  exch dup 3 1 roll findfont dup length dict begin
+  { 1 index /FID ne {def}{pop pop} ifelse } forall
+  /Encoding exch def currentdict end definefont pop} bdef
+/isroman {findfont /CharStrings get /Agrave known} bdef
+/FMSR {3 1 roll 1 index dup isroman {reencode} {pop pop} ifelse
+  exch FMS} bdef
+/csm {1 dpi2point div -1 dpi2point div scale neg translate
+ dup landscapeMode eq {pop -90 rotate}
+  {rotateMode eq {90 rotate} if} ifelse} bdef
+% line types: solid, dotted, dashed, dotdash
+/SO { [] 0 setdash } bdef
+/DO { [.5 dpi2point mul 4 dpi2point mul] 0 setdash } bdef
+/DA { [6 dpi2point mul] 0 setdash } bdef
+/DD { [.5 dpi2point mul 4 dpi2point mul 6 dpi2point mul 4
+  dpi2point mul] 0 setdash } bdef
+% macros for lines and objects
+/L {lineto stroke} bdef
+/MP {3 1 roll moveto 1 sub {rlineto} repeat} bdef
+/AP {{rlineto} repeat} bdef
+/PDlw -1 def
+/W {/PDlw currentlinewidth def setlinewidth} def
+/PP {closepath eofill} bdef
+/DP {closepath stroke} bdef
+/MR {4 -2 roll moveto dup  0 exch rlineto exch 0 rlineto
+  neg 0 exch rlineto closepath} bdef
+/FR {MR stroke} bdef
+/PR {MR fill} bdef
+/L1i {{currentfile picstr readhexstring pop} image} bdef
+/tMatrix matrix def
+/MakeOval {newpath tMatrix currentmatrix pop translate scale
+0 0 1 0 360 arc tMatrix setmatrix} bdef
+/FO {MakeOval stroke} bdef
+/PO {MakeOval fill} bdef
+/PD {currentlinewidth 2 div 0 360 arc fill
+   PDlw -1 eq not {PDlw w /PDlw -1 def} if} def
+/FA {newpath tMatrix currentmatrix pop translate scale
+  0 0 1 5 -2 roll arc tMatrix setmatrix stroke} bdef
+/PA {newpath tMatrix currentmatrix pop	translate 0 0 moveto scale
+  0 0 1 5 -2 roll arc closepath tMatrix setmatrix fill} bdef
+/FAn {newpath tMatrix currentmatrix pop translate scale
+  0 0 1 5 -2 roll arcn tMatrix setmatrix stroke} bdef
+/PAn {newpath tMatrix currentmatrix pop translate 0 0 moveto scale
+  0 0 1 5 -2 roll arcn closepath tMatrix setmatrix fill} bdef
+/vradius 0 def /hradius 0 def /lry 0 def
+/lrx 0 def /uly 0 def /ulx 0 def /rad 0 def
+/MRR {/vradius xdef /hradius xdef /lry xdef /lrx xdef /uly xdef
+  /ulx xdef newpath tMatrix currentmatrix pop ulx hradius add uly
+  vradius add translate hradius vradius scale 0 0 1 180 270 arc 
+  tMatrix setmatrix lrx hradius sub uly vradius add translate
+  hradius vradius scale 0 0 1 270 360 arc tMatrix setmatrix
+  lrx hradius sub lry vradius sub translate hradius vradius scale
+  0 0 1 0 90 arc tMatrix setmatrix ulx hradius add lry vradius sub
+  translate hradius vradius scale 0 0 1 90 180 arc tMatrix setmatrix
+  closepath} bdef
+/FRR {MRR stroke } bdef
+/PRR {MRR fill } bdef
+/MlrRR {/lry xdef /lrx xdef /uly xdef /ulx xdef /rad lry uly sub 2 div def
+  newpath tMatrix currentmatrix pop ulx rad add uly rad add translate
+  rad rad scale 0 0 1 90 270 arc tMatrix setmatrix lrx rad sub lry rad
+  sub translate rad rad scale 0 0 1 270 90 arc tMatrix setmatrix
+  closepath} bdef
+/FlrRR {MlrRR stroke } bdef
+/PlrRR {MlrRR fill } bdef
+/MtbRR {/lry xdef /lrx xdef /uly xdef /ulx xdef /rad lrx ulx sub 2 div def
+  newpath tMatrix currentmatrix pop ulx rad add uly rad add translate
+  rad rad scale 0 0 1 180 360 arc tMatrix setmatrix lrx rad sub lry rad
+  sub translate rad rad scale 0 0 1 0 180 arc tMatrix setmatrix
+  closepath} bdef
+/FtbRR {MtbRR stroke } bdef
+/PtbRR {MtbRR fill } bdef
+/stri 6 array def /dtri 6 array def
+/smat 6 array def /dmat 6 array def
+/tmat1 6 array def /tmat2 6 array def /dif 3 array def
+/asub {/ind2 exch def /ind1 exch def dup dup
+  ind1 get exch ind2 get sub exch } bdef
+/tri_to_matrix {
+  2 0 asub 3 1 asub 4 0 asub 5 1 asub
+  dup 0 get exch 1 get 7 -1 roll astore } bdef
+/compute_transform {
+  dmat dtri tri_to_matrix tmat1 invertmatrix 
+  smat stri tri_to_matrix tmat2 concatmatrix } bdef
+/ds {stri astore pop} bdef
+/dt {dtri astore pop} bdef
+/db {2 copy /cols xdef /rows xdef mul dup 3 mul string
+  currentfile exch readhexstring pop
+  dup 0 3 index getinterval /rbmap xdef
+  dup 2 index dup getinterval /gbmap xdef
+  1 index dup 2 mul exch getinterval /bbmap xdef pop pop}bdef
+/it {gs np dtri aload pop moveto lineto lineto cp c
+  cols rows 8 compute_transform 
+  rbmap gbmap bbmap true 3 colorimage gr}bdef
+/il {newpath moveto lineto stroke}bdef
+currentdict end def
+%%EndProlog
+
+%%BeginSetup
+MathWorks begin
+
+0 cap
+
+end
+%%EndSetup
+
+%%Page: 1 1
+%%BeginPageSetup
+%%PageBoundingBox:     0    -1   204   139
+MathWorks begin
+bpage
+%%EndPageSetup
+
+%%BeginObject: obj1
+bplot
+
+/dpi2point 12 def
+portraitMode 0000 1716 csm
+
+    0    41  2454  1687 MR c np
+85 dict begin %Colortable dictionary
+/c0 { 0.000000 0.000000 0.000000 sr} bdef
+/c1 { 1.000000 1.000000 1.000000 sr} bdef
+/c2 { 0.900000 0.000000 0.000000 sr} bdef
+/c3 { 0.000000 0.820000 0.000000 sr} bdef
+/c4 { 0.000000 0.000000 0.800000 sr} bdef
+/c5 { 0.910000 0.820000 0.320000 sr} bdef
+/c6 { 1.000000 0.260000 0.820000 sr} bdef
+/c7 { 0.000000 0.820000 0.820000 sr} bdef
+c0
+1 j
+1 sg
+   0    0 2592 1729 PR
+6 w
+0 1341 1972 0 0 -1341 373 1471 4 MP
+PP
+-1972 0 0 1341 1972 0 0 -1341 373 1471 5 MP stroke
+4 w
+DO
+SO
+6 w
+0 sg
+ 373 1471 mt 2345 1471 L
+ 373 1471 mt  373  130 L
+ 373 1471 mt  373 1451 L
+%%IncludeResource: font Helvetica
+/Helvetica /WindowsLatin1Encoding 72 FMSR
+
+ 271 1572 mt 
+(-100) s
+ 654 1471 mt  654 1451 L
+ 572 1572 mt 
+(-50) s
+ 936 1471 mt  936 1451 L
+ 916 1572 mt 
+(0) s
+1218 1471 mt 1218 1451 L
+1178 1572 mt 
+(50) s
+1499 1471 mt 1499 1451 L
+1439 1572 mt 
+(100) s
+1781 1471 mt 1781 1451 L
+1721 1572 mt 
+(150) s
+2063 1471 mt 2063 1451 L
+2003 1572 mt 
+(200) s
+2345 1471 mt 2345 1451 L
+2285 1572 mt 
+(250) s
+ 373 1471 mt  392 1471 L
+ 176 1497 mt 
+(-100) s
+ 373 1279 mt  392 1279 L
+ 216 1305 mt 
+(-50) s
+ 373 1087 mt  392 1087 L
+ 298 1113 mt 
+(0) s
+ 373  896 mt  392  896 L
+ 258  922 mt 
+(50) s
+ 373  704 mt  392  704 L
+ 218  730 mt 
+(100) s
+ 373  513 mt  392  513 L
+ 218  539 mt 
+(150) s
+ 373  321 mt  392  321 L
+ 218  347 mt 
+(200) s
+ 373  130 mt  392  130 L
+ 218  156 mt 
+(250) s
+gs 373 130 1973 1342 MR c np
+0 j
+gr
+
+28 W
+/c8 { 1.000000 0.687500 0.000000 sr} bdef
+c8
+968 1128 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c9 { 1.000000 0.000000 0.000000 sr} bdef
+c9
+672 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c10 { 1.000000 0.812500 0.000000 sr} bdef
+c10
+964 1050 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c11 { 0.875000 0.000000 0.000000 sr} bdef
+c11
+605 949 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c12 { 0.125000 1.000000 0.875000 sr} bdef
+c12
+1134 625 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+696 1045 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c13 { 1.000000 0.750000 0.000000 sr} bdef
+c13
+970 1079 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c14 { 0.875000 1.000000 0.125000 sr} bdef
+c14
+1139 1174 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c15 { 1.000000 0.312500 0.000000 sr} bdef
+c15
+766 992 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c16 { 0.187500 1.000000 0.812500 sr} bdef
+c16
+1329 944 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+906 987 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c17 { 1.000000 0.125000 0.000000 sr} bdef
+c17
+764 1075 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c18 { 0.937500 1.000000 0.062500 sr} bdef
+c18
+995 924 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+928 1018 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+644 936 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c19 { 1.000000 0.562500 0.000000 sr} bdef
+c19
+957 1205 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c20 { 0.687500 1.000000 0.312500 sr} bdef
+c20
+1163 1039 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c21 { 0.000000 0.812500 1.000000 sr} bdef
+c21
+1341 725 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c22 { 1.000000 0.375000 0.000000 sr} bdef
+c22
+789 991 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c23 { 1.000000 1.000000 0.000000 sr} bdef
+c23
+1001 947 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+994 885 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c24 { 1.000000 0.875000 0.000000 sr} bdef
+c24
+1006 1086 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1220 769 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+930 687 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+821 789 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c25 { 1.000000 0.187500 0.000000 sr} bdef
+c25
+719 988 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c26 { 0.562500 1.000000 0.437500 sr} bdef
+c26
+1256 1152 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c27 { 1.000000 0.250000 0.000000 sr} bdef
+c27
+709 913 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c28 { 0.000000 1.000000 1.000000 sr} bdef
+c28
+1233 654 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+821 1131 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+980 1159 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+751 1037 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+833 1096 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+671 906 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+640 854 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+796 1121 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c29 { 0.000000 0.250000 1.000000 sr} bdef
+c29
+1729 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+809 1165 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+981 926 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+822 1066 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1286 1210 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+889 1206 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+785 1066 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c30 { 1.000000 0.500000 0.000000 sr} bdef
+c30
+848 1020 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c31 { 1.000000 0.062500 0.000000 sr} bdef
+c31
+743 1084 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c32 { 1.000000 0.437500 0.000000 sr} bdef
+c32
+813 983 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+789 868 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+698 1018 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+822 1107 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+738 994 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+881 906 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1080 1107 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+754 921 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c33 { 1.000000 0.625000 0.000000 sr} bdef
+c33
+913 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+886 1117 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+971 1173 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+839 802 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1161 682 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+687 993 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1026 740 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c34 { 0.937500 0.000000 0.000000 sr} bdef
+c34
+649 979 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+964 1043 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1146 639 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1317 951 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+942 1109 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+764 1143 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+783 947 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c35 { 0.000000 0.562500 1.000000 sr} bdef
+c35
+1625 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+868 1091 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+847 869 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+1005 1228 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c36 { 0.000000 0.750000 1.000000 sr} bdef
+c36
+1252 562 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1355 1008 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+905 966 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1132 1141 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c37 { 1.000000 0.937500 0.000000 sr} bdef
+c37
+864 792 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1007 1029 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1138 912 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+633 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+888 795 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+853 1073 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+717 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+706 978 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+909 1058 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+984 730 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c38 { 0.000000 0.500000 1.000000 sr} bdef
+c38
+1356 527 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+746 1068 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+817 1048 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+981 928 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+953 829 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+858 1133 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+975 863 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1006 918 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1250 1087 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c39 { 0.500000 1.000000 0.500000 sr} bdef
+c39
+1107 795 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+832 925 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c40 { 0.000000 0.875000 1.000000 sr} bdef
+c40
+1354 767 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+781 876 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+792 877 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1126 551 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c41 { 0.000000 0.937500 1.000000 sr} bdef
+c41
+1257 664 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+649 939 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c42 { 0.375000 1.000000 0.625000 sr} bdef
+c42
+1247 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+764 979 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+705 932 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+797 695 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c43 { 0.750000 0.000000 0.000000 sr} bdef
+c43
+594 972 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+870 888 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+766 1090 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1336 1142 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c44 { 0.000000 0.000000 0.875000 sr} bdef
+c44
+1808 971 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+871 1095 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+900 1151 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c45 { 0.312500 1.000000 0.687500 sr} bdef
+c45
+1368 1189 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+928 1092 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+902 1039 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+678 962 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+871 750 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1372 1144 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c46 { 0.812500 1.000000 0.187500 sr} bdef
+c46
+1176 1164 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1521 1130 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c47 { 0.812500 0.000000 0.000000 sr} bdef
+c47
+607 972 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+952 932 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+704 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+883 864 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+691 848 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1016 1008 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+846 755 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+897 1164 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+946 1029 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1362 1036 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+633 878 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+642 915 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+987 1037 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c48 { 0.625000 1.000000 0.375000 sr} bdef
+c48
+1127 917 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+623 967 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+805 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+889 1177 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1191 1042 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+804 913 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1107 1105 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1078 1182 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c49 { 0.062500 1.000000 0.937500 sr} bdef
+c49
+1325 877 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+864 903 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+904 860 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1111 1147 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+653 939 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1024 1064 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+603 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1288 1143 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+847 1042 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1032 816 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+896 891 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+707 1016 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+782 1053 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1365 1238 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+665 1030 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+750 875 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1529 1145 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+808 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+896 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1209 1033 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+687 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+695 968 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+672 1009 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+882 1028 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c50 { 0.250000 1.000000 0.750000 sr} bdef
+c50
+1186 738 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c51 { 0.437500 1.000000 0.562500 sr} bdef
+c51
+1089 727 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1084 1083 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+684 958 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+767 889 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+959 770 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+635 958 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+869 872 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+911 1152 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c52 { 0.000000 0.625000 1.000000 sr} bdef
+c52
+1328 583 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1075 1073 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+761 941 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+988 1013 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+812 1144 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1261 556 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1010 643 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+753 1096 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+789 1146 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c53 { 0.750000 1.000000 0.250000 sr} bdef
+c53
+1210 1206 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+809 1039 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+748 1077 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+829 1081 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+845 1076 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+849 1176 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+672 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+838 917 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+631 967 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+767 943 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+650 1014 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1223 1065 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+935 1160 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c54 { 0.000000 0.687500 1.000000 sr} bdef
+c54
+1442 800 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+826 1093 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1010 927 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+804 800 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1152 949 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1072 780 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+578 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1188 1140 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+719 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1207 1011 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1230 826 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+697 793 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+589 973 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1501 981 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1086 1066 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+996 792 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+776 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+872 898 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+769 1084 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+735 857 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+811 1120 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+784 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+816 1028 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+800 1128 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1174 532 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c55 { 0.000000 0.000000 0.750000 sr} bdef
+c55
+1917 1221 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+916 958 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+624 949 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+846 1127 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+712 969 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1255 708 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+793 939 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1063 1006 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1016 939 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1212 990 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+721 1028 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+589 911 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1102 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1189 626 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+581 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c38
+1622 1015 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1347 763 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+607 959 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+868 1022 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+641 988 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+596 960 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1349 988 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+950 843 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+921 1126 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+804 1137 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1065 757 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+899 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+735 1067 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+780 1115 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+828 1006 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+672 894 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1233 914 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1204 1089 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+753 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+740 965 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+953 1212 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+718 978 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+973 1117 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+788 940 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+636 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+713 921 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+801 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c35
+1396 645 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+608 948 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+996 1142 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+996 963 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1280 1041 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1359 1173 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1170 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1091 845 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+854 866 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+803 1113 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+846 1129 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+734 802 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+734 1038 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1023 1005 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+843 821 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1405 972 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+929 878 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+773 900 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1304 1068 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+860 883 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1346 1196 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1235 1178 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+772 1124 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+630 976 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1019 1157 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1190 1171 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+817 1170 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+803 858 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+899 1153 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+985 1155 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+907 1060 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+955 868 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+836 1100 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1188 651 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+632 1006 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1311 969 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+772 944 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1461 1158 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1419 1069 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1160 952 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1440 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+950 950 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+768 952 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+962 1144 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+965 830 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+780 931 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1189 1069 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1259 1174 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+740 1061 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+759 1093 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+652 840 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+729 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1056 656 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+974 1064 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1177 1082 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1127 1142 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1018 918 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+844 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+922 1110 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c54
+1604 1139 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1100 1246 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+891 933 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1008 750 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+802 1117 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1083 901 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+999 1178 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1051 1046 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+996 1075 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+684 896 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1032 914 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1141 899 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1195 698 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+737 940 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1245 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+821 1045 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+710 1039 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+893 1059 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1055 803 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1069 714 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+882 1183 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+834 1158 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+752 845 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+715 902 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1186 954 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c56 { 0.000000 0.000000 0.937500 sr} bdef
+c56
+1444 374 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+685 1028 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+674 987 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1311 1126 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+845 1191 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c38
+1317 497 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1272 753 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1271 996 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1033 976 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1508 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+936 1040 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1305 1133 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1025 1169 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+916 991 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+703 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1407 829 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+748 1015 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1097 1061 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+603 963 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1191 1051 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+907 1179 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+751 988 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+663 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+824 1045 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+795 1062 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1019 1171 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1184 1072 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+781 1016 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1296 835 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+706 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+842 785 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+780 959 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+729 909 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+845 1199 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+638 933 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+631 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+681 917 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1138 1073 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+656 932 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+750 1144 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+613 926 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1261 1183 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+940 1270 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+960 1241 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+948 1121 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+731 1052 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+726 1060 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+821 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+972 699 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+818 1126 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+736 1069 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+943 1115 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+886 1057 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c44
+1770 838 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+794 1153 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+838 948 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+583 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+793 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+853 855 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+833 1115 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+641 932 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+785 1006 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+860 965 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c57 { 0.500000 0.000000 0.000000 sr} bdef
+c57
+521 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1099 954 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c58 { 0.687500 0.000000 0.000000 sr} bdef
+c58
+572 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+692 1007 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+831 1077 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1374 877 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+788 1007 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1262 881 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+904 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c35
+1662 1194 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+656 969 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+655 927 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1183 522 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1067 721 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1035 1088 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1195 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+915 904 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1200 610 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+784 909 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1198 924 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+709 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+880 981 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+927 998 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+839 1172 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+955 879 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+902 900 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1017 1075 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c59 { 0.000000 0.000000 0.562500 sr} bdef
+c59
+1892 902 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c58
+582 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1152 1171 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1076 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+883 1194 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1172 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1024 767 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1070 910 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+764 994 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+816 1161 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1179 1030 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+868 924 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+813 1002 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+679 1019 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+736 1064 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+577 907 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1085 846 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1080 1173 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+827 1035 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1171 765 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+928 1183 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+740 929 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+831 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1430 1152 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+939 1032 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1492 987 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+840 1120 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+964 972 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+817 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+908 1057 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+745 1044 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1349 845 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+820 1091 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+936 978 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+811 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+902 1170 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1279 668 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+798 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+783 1056 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+597 973 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1086 709 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1189 873 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1601 1223 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+655 988 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+787 906 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+815 1141 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+722 941 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1052 848 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+844 1032 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+570 955 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1304 1147 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+972 998 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1068 1050 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+951 1057 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+837 979 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1295 951 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1050 1047 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1163 907 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+681 910 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+849 1022 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+758 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+676 899 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+913 1222 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+600 929 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+891 1104 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+917 1056 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+760 1046 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+921 1143 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c52
+1419 700 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+640 983 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+903 1027 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1239 1191 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+808 948 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+760 983 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+798 1001 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c38
+1540 813 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+716 1032 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1366 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+747 925 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1284 1117 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1487 958 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1506 981 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1534 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+647 973 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1029 1086 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1283 1145 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+883 825 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1031 1186 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+632 951 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+704 1032 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+831 1134 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1215 1063 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+966 1155 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1443 1009 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+903 1174 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+722 974 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1010 1146 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+989 911 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+694 936 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+716 882 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+925 1212 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+956 1103 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+978 1115 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+998 1045 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+732 1084 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+760 1024 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1387 1202 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+780 1140 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+958 835 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+956 1116 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1163 830 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+742 949 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1328 925 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1018 1053 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+761 916 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1076 946 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+832 973 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1204 1005 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+678 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1043 968 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+902 1119 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1458 1067 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1136 1148 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+693 915 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1150 1019 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+788 1072 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1419 1082 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1012 948 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+803 1129 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1180 933 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+870 1072 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+655 947 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+848 1135 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+619 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+890 886 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+889 823 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c60 { 0.000000 0.062500 1.000000 sr} bdef
+c60
+1660 735 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1135 813 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+855 1050 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+812 1027 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+849 631 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+640 963 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1175 1122 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1152 1240 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+865 1159 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+744 936 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+760 1024 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+748 981 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+985 760 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1556 1129 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+782 1098 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1208 733 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+617 934 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+753 838 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+954 649 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+944 808 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+910 703 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+1043 1250 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+954 1184 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+750 974 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1035 818 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+887 1049 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+823 805 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1385 1143 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+802 1082 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1166 820 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1411 1166 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+689 1018 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+633 985 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+770 824 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+871 767 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1116 1130 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c57
+535 989 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1017 1125 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+952 1186 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c35
+1568 944 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c29
+1417 476 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+863 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+743 924 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+830 1109 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c54
+1215 483 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+878 1214 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1235 1029 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1321 879 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+717 962 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+713 976 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+743 927 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+792 1039 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1011 852 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1035 1139 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+607 965 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+741 880 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+653 876 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1190 891 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+990 1196 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+803 1110 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+709 1060 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1396 1141 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+697 912 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+643 1001 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1107 1152 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+599 953 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+898 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1361 840 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1072 1213 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1330 779 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1268 1198 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+849 1112 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c29
+1759 1172 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+891 711 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+943 738 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+853 1064 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+720 984 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+719 1066 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1165 1014 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+940 1107 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+930 1019 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+844 1090 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+870 1133 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+645 1015 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+799 1026 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+700 1013 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+804 804 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1089 821 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+765 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+837 1049 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+965 726 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+938 735 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1212 1235 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+880 1111 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+761 1141 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1322 906 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1190 557 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+792 884 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1338 1103 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+812 833 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+690 926 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+742 1118 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+739 980 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+906 942 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1135 1209 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1112 1177 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+766 1131 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+713 1056 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1501 1003 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1055 831 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+638 1013 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1060 999 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+732 1096 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+819 863 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1483 1031 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1231 1199 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1002 1142 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+807 803 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1274 1103 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+632 957 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+936 950 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1241 713 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+653 969 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+971 1080 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+847 1121 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c61 { 0.000000 0.187500 1.000000 sr} bdef
+c61
+1475 533 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c62 { 0.000000 0.437500 1.000000 sr} bdef
+c62
+1690 1119 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+916 914 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+730 939 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c63 { 0.000000 0.000000 0.812500 sr} bdef
+c63
+1429 308 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+741 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+723 980 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+610 969 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+596 930 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+764 1037 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+877 948 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+994 1058 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1075 546 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1047 1126 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1355 1009 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1352 1145 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+867 844 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+906 1070 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+666 994 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1056 657 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+804 1065 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1012 1161 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+751 882 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+659 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+705 1079 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+711 912 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+644 955 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1144 723 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1516 1177 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+825 764 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+877 823 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+915 714 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+911 1218 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+875 1003 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1456 1046 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+710 992 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+753 992 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1338 1225 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+828 1112 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c54
+1580 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+895 1190 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+880 780 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+936 1141 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+787 968 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1110 891 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+900 761 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+880 1008 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+995 1149 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1000 949 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+719 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1028 759 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1077 1051 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+737 1048 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+814 1046 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+926 1172 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+858 1018 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1232 829 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1278 1051 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+743 889 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+687 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+871 1059 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+836 1014 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+754 1065 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1107 932 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1399 963 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1280 830 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+700 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1051 967 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+790 1028 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1046 1109 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+871 1014 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+881 1065 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1119 1077 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+880 684 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+780 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+571 960 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+821 787 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c64 { 0.000000 0.375000 1.000000 sr} bdef
+c64
+1377 498 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1073 1106 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+837 971 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1270 781 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1282 1234 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+753 907 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1427 992 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1509 1052 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+806 1009 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+688 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+885 775 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+684 951 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+993 1160 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+865 825 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+743 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+966 896 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+780 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+678 891 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+729 1087 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1169 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1010 832 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1114 1063 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+571 960 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+713 949 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1001 1001 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1343 807 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+900 1005 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1125 1179 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c44
+1894 1213 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+638 986 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+674 869 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+721 872 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1180 1195 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1227 1057 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+803 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+866 1074 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1130 1100 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1199 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+925 1176 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+869 937 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+761 800 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+770 951 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1351 1197 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+883 1138 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+661 947 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1048 1129 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1120 1018 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+989 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c52
+1548 980 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+620 907 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1186 1051 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+681 938 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+798 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+772 1076 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1017 989 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+937 1046 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+672 1001 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c65 { 0.000000 0.125000 1.000000 sr} bdef
+c65
+1746 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+909 998 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1475 1164 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+661 891 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+680 1042 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1129 899 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+745 903 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+859 766 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1217 1117 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+856 1138 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+921 1248 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1312 732 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+861 1190 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1152 1182 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+956 1062 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1068 934 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+733 1059 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+848 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+999 885 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+726 890 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+753 1057 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+993 918 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+847 856 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+966 1118 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+909 1128 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+876 953 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+576 940 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1178 1084 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1069 1024 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+807 987 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+757 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1301 896 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1439 1167 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1198 1009 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+828 1149 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+760 1074 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1320 993 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+990 667 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+848 906 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+757 907 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+841 917 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1419 993 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c52
+1332 579 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+783 972 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+797 893 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1019 1009 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c29
+1430 500 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+857 862 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c57
+518 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1253 751 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+856 1112 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+861 833 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1044 1197 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+950 1001 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+956 1126 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+859 995 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+871 1096 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+916 931 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+813 1006 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1043 1084 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1206 1072 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1108 1005 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1183 1022 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1077 1108 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+775 940 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+868 880 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+870 1206 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+593 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+969 1121 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1147 517 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+829 1093 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1244 1138 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+766 956 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1304 1056 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+792 939 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c29
+1739 1103 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+621 966 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1239 966 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1065 1088 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+783 844 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1282 1160 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1053 760 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+967 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1231 1175 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1276 839 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+876 911 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1419 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c35
+1648 1140 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+813 993 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1081 1105 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+849 1093 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+756 1078 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+782 764 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1187 1033 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+678 990 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+868 1171 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+727 962 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1086 1195 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+806 852 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c65
+1797 1150 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+859 1016 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1105 1073 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+619 1005 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c63
+1814 902 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+827 1013 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1021 1128 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+1027 1188 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1112 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+955 787 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c58
+567 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+949 1126 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1390 988 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+777 1056 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+677 890 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c29
+1611 794 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1061 1097 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+576 957 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1245 1167 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+849 1028 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+664 990 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+880 1027 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+708 995 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+924 978 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+885 1019 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+950 1026 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1101 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1153 1062 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+763 929 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+798 1077 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+761 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1021 835 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1280 585 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1128 918 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1297 1059 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+715 999 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1037 858 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+950 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+893 852 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1416 1084 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+734 900 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+855 1138 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+945 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+700 874 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+890 1027 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1411 995 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+980 938 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1101 584 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1460 987 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1110 1053 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+647 992 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+881 1013 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+663 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+735 966 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+694 985 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+693 903 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1427 1136 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+792 1166 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+972 980 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c54
+1633 1239 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+846 1146 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1308 906 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+953 1108 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1256 1105 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c63
+1685 621 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+654 983 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c64
+1707 1108 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+732 871 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1226 1068 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+979 1149 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+644 851 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+558 931 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+714 1047 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+674 944 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+725 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1001 1065 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+878 1165 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+630 899 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+682 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1076 1058 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1306 981 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1529 1001 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1462 1167 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+868 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+654 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+792 800 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1075 812 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+593 969 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+811 842 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+718 1045 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+757 1056 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1115 1083 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+912 1088 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1509 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1273 1175 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+957 1189 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+869 1058 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c62
+1389 549 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+795 1084 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1089 838 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+625 978 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+805 1068 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+981 1102 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+679 952 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1072 705 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+985 1074 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+930 972 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+685 846 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+868 1061 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+953 1095 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+609 987 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1162 884 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+732 1001 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1092 936 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c58
+593 1001 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1189 1081 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+892 800 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+948 1107 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1213 1175 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+706 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+746 935 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c54
+1557 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1181 1188 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+974 1107 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1260 831 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1419 1075 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1327 1179 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1427 1189 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1049 938 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1076 643 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+952 824 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1326 1188 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+809 1085 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1464 1140 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+669 1020 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+748 1115 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+923 842 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+901 1151 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1021 979 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1157 1178 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c52
+1431 746 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+734 1002 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+686 1008 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+914 877 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+942 862 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1203 1042 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+647 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+878 1127 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+908 1145 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+798 915 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+750 953 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1183 1098 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c66 { 0.625000 0.000000 0.000000 sr} bdef
+c66
+564 980 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+746 918 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1049 1075 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+798 760 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1525 1105 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1091 1002 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+701 1029 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c56
+1781 953 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+660 955 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1257 944 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1069 839 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+798 1024 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1113 1175 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+790 1020 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+743 778 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1331 1112 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+746 1018 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+940 1148 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+790 862 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1041 858 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+927 1222 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+963 1070 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+746 983 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1478 1009 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+801 1035 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c58
+581 990 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1020 1102 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1054 826 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1088 947 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+707 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1273 1114 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+648 954 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+707 948 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+746 813 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+658 909 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+608 980 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+868 1027 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+806 1126 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+817 854 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+722 1038 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+686 948 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+739 845 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1369 1149 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+770 1059 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1236 1043 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1421 785 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+593 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+997 979 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+862 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+856 911 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+715 1081 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1437 1199 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1105 882 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+748 933 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1312 799 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+575 951 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+901 1136 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+999 855 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1199 1156 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+740 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1205 733 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c64
+1541 734 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+732 965 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+779 1052 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+856 840 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+857 788 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+790 1080 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+823 1022 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1378 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1107 1022 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+678 889 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+815 871 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1263 1088 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+968 911 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+998 1081 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+724 1065 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+810 899 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+764 1031 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+912 839 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1126 1118 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+922 883 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1142 781 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+706 1007 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+943 727 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+804 1175 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1399 797 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c66
+561 984 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+826 851 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+843 1142 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1337 969 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+879 998 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+800 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+653 910 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c58
+554 952 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+691 1030 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+991 1043 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1243 1153 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1073 826 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c64
+1492 641 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+855 1107 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1294 973 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+674 869 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+652 993 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+925 1091 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+990 897 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+707 926 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+858 1093 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+940 950 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+899 907 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1067 1035 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1232 890 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+812 966 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+974 1132 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+966 1117 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1025 883 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+787 1064 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+986 1155 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1024 852 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+911 1112 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1084 492 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+932 1219 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+867 1180 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+642 994 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1004 963 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+799 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1282 870 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1077 721 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+858 1109 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+950 845 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+795 841 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+882 1177 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1291 920 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1235 593 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1033 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1115 863 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+940 945 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+750 921 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1416 1163 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+776 1121 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+696 1042 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+732 1004 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+923 1123 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+667 1044 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+794 790 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+777 1020 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+784 912 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+668 955 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1125 1144 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+648 969 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+751 1089 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+894 1134 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1177 464 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+744 963 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+905 1153 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+612 950 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1045 871 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+888 1007 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+890 940 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+609 930 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1122 1146 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1297 709 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+756 1076 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+740 987 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+794 1063 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+803 893 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+986 895 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1512 1145 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+921 1001 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+690 1069 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+797 948 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1250 1030 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1091 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1267 930 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1233 873 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+664 968 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+983 788 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+936 1067 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1308 1218 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1287 751 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+854 1034 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+861 1077 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+827 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1038 822 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1362 1032 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+800 1110 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+783 1122 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1415 926 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1197 706 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1075 998 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1321 1030 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1225 695 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+901 1034 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1077 1158 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1242 1114 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+849 1181 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1245 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1148 1190 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1292 676 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+976 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1015 967 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+843 1031 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+694 1027 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1051 954 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+903 1057 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1069 1174 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1459 1183 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+678 930 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+628 932 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+630 944 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+833 1117 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+838 1041 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+715 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+656 892 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1181 1058 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c65
+1718 924 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+688 978 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+905 1130 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+847 995 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1033 966 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+963 1101 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+644 883 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1045 1195 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+894 918 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+762 1056 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+683 1040 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c61
+1405 446 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1082 717 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c38
+1475 706 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1114 1085 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+987 1133 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+841 1103 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1063 1202 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+874 1164 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+770 888 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+770 854 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1188 1203 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+778 1086 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+743 1097 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1144 1061 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1353 921 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c52
+1593 1064 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1063 731 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+841 921 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+761 821 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+887 919 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+868 1093 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1441 1066 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1191 1027 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+831 1036 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+755 1063 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1317 1136 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1151 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1544 1186 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+816 951 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+837 1137 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1083 773 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+988 1147 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1403 1144 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+677 1056 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1095 1101 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+749 1081 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+929 1198 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c64
+1654 963 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+903 820 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1221 1032 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+966 1077 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+658 999 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+952 1195 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+612 985 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+871 886 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+970 1090 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+914 1105 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+991 1153 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+812 1073 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+916 1069 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c60
+1673 759 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+749 991 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1173 830 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1315 696 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+700 957 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1049 897 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+794 1053 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+905 776 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+709 959 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1376 1031 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+560 945 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+956 778 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1061 693 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1077 1081 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+847 933 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1321 1121 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1318 737 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+683 1010 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+735 1011 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1194 906 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+726 883 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1147 824 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+934 1167 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1168 1167 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1070 944 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1369 1083 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1154 780 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+685 866 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1519 1127 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+586 971 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+697 1055 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1192 1169 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1252 904 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1386 978 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+800 858 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1024 1120 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+807 966 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+681 971 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+739 1102 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+669 1026 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+852 1151 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+990 1103 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1153 1081 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1113 1213 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1305 1236 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1012 1108 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1452 1096 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1100 858 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1029 1055 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1159 1082 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+767 810 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1163 929 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c38
+1508 755 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1083 864 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+689 1008 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+616 917 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1202 973 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1174 651 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1341 1100 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1243 816 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+705 946 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+923 942 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+691 1040 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+886 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+885 1036 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+970 1134 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1120 987 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+926 893 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1068 1089 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+946 1020 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+850 1160 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+884 1153 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+755 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1126 848 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+787 967 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+886 1109 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+698 885 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+854 1030 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1340 681 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1019 1097 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+888 1057 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+851 1095 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1062 1113 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+746 1058 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1565 1240 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+810 1096 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+827 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1206 1057 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+980 1206 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+740 1096 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+808 815 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+989 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+748 1085 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c64
+1558 798 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1009 823 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+898 1028 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1098 890 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+818 875 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+889 972 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+896 1085 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+822 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+737 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+861 1078 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+795 792 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+865 1083 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+936 851 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1012 838 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1055 1107 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1348 1034 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1036 1118 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+749 898 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+723 1069 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+774 1028 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1097 1070 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1025 1144 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+950 1079 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+605 949 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+862 1055 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c54
+1601 1135 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+942 1135 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1026 826 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1107 1130 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+914 950 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1049 1153 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+752 1050 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+674 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+624 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1085 1160 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+733 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+914 1075 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+942 774 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c54
+1306 572 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1252 782 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+768 1065 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+964 1142 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1035 1065 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+838 1101 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+621 945 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+884 1093 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+595 931 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+640 957 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1253 1166 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+881 959 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+1003 1193 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+699 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+965 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1156 1027 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c35
+1646 1167 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1335 954 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1046 1149 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+808 946 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1388 1177 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+825 1097 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1232 1142 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1265 1212 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+887 1166 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+863 1147 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1104 815 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1071 839 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1022 1113 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1134 1155 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+909 938 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+761 926 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1264 994 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+874 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+939 1037 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+884 768 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1017 1143 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1186 1103 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+849 1130 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+564 955 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1297 841 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+766 965 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+752 948 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+591 965 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1205 1122 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c64
+1682 1076 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c54
+1323 597 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1241 866 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+760 937 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+958 1207 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+604 937 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+750 911 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+941 885 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+746 915 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+641 986 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+837 832 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+881 1173 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+843 1115 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+737 978 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+748 1086 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+958 771 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1034 1138 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+846 898 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+625 900 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+699 939 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+827 1085 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1125 1215 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c58
+587 984 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+681 883 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+833 1025 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+580 966 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1177 888 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+950 899 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1242 798 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+814 953 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+929 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+734 1035 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+970 1076 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+710 952 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+917 1044 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1158 742 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+616 893 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1062 1188 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+843 1109 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+846 1030 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1135 1148 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+929 994 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1256 650 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+722 1021 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+969 920 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+829 1122 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1085 1105 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+803 1107 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c65
+1804 1189 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+817 986 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+964 677 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+644 987 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1343 1153 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1351 1085 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1285 832 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+696 1026 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+894 1118 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+929 1154 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+764 1070 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+583 974 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+821 1075 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1532 1120 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1116 1066 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+658 1020 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1342 1073 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1018 1065 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+883 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c66
+577 989 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1055 1149 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+885 1126 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+876 855 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+977 1151 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+908 1044 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+796 754 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1237 830 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1156 695 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+686 875 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+745 1097 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+1025 1208 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+821 924 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1071 932 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1088 1102 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+828 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1010 947 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+987 923 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+762 944 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+843 929 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+893 1163 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1193 656 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+975 876 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+849 875 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c65
+1680 852 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+965 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+945 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1171 605 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+817 791 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1564 1168 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+745 921 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+801 936 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+802 956 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+698 871 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+974 855 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1355 934 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+735 912 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+888 961 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1276 1128 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+894 1129 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+892 737 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+989 840 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+810 1105 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+826 1134 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+1005 1196 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+739 1045 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+802 1080 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+747 771 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+751 1016 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1010 1066 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+856 991 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+946 1231 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+713 913 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c55
+1768 751 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+777 906 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+742 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1242 906 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+959 1152 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+732 1095 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+756 1129 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+789 1027 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+706 983 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+782 953 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1575 1227 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+749 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+627 954 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1096 1005 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+746 1044 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+681 940 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+840 1143 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+953 821 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1476 1102 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+820 1055 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1045 780 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+772 1090 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1122 798 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+653 967 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+763 1064 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+976 1158 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+787 951 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+898 990 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+965 1079 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1093 1093 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1347 1159 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+830 1144 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1382 1034 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+719 1052 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+801 1096 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+962 1091 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1332 937 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+788 1110 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1125 911 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c35
+1254 455 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1269 755 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+731 1039 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c67 { 0.000000 0.312500 1.000000 sr} bdef
+c67
+1686 1034 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+915 1150 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1023 1018 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+811 1153 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+798 855 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+848 1130 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1091 1161 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+946 1049 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+867 1031 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+770 964 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+678 993 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1235 1177 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+686 996 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+942 1102 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+843 1119 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+785 1031 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+775 818 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+910 1018 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+727 980 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+1010 1233 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1281 960 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1085 791 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1393 1179 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1042 1037 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+890 966 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+603 932 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+985 970 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1069 804 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+921 951 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+879 895 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1124 807 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+714 893 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+957 747 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1092 1170 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+801 844 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+650 871 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1226 843 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1046 1072 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1261 872 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+658 882 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+882 1003 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+736 1036 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+757 951 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+885 1137 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1174 1181 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+978 824 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+944 873 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+742 891 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1259 877 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1086 1176 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+719 956 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+691 1003 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+989 1238 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+851 950 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+872 1040 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1121 1150 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1017 715 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+658 986 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+976 910 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+781 1000 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+609 915 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+736 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1442 1254 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1048 734 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+877 1018 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1149 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+663 1019 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+748 1059 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1322 1095 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c29
+1577 701 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+685 976 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+689 895 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1244 1025 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+893 1125 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c62
+1646 1009 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+813 1176 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+907 949 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+874 1028 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+749 1081 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+617 942 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1482 982 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+806 1027 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+896 1013 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1048 1066 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+813 1149 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1038 1087 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c28
+1330 805 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+913 908 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+748 980 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1249 974 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+748 1049 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+734 822 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+989 888 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+719 1095 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1040 1033 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+670 997 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+857 1011 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+775 882 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1043 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1442 979 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+693 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+842 819 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1121 1057 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+924 1085 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+707 1056 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+823 1151 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+782 1138 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+987 1159 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c43
+598 988 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c62
+1678 1085 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1045 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+813 1168 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+735 878 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+867 1090 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+836 1072 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+791 1093 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+902 1166 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1300 1207 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+665 980 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+784 1052 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1070 1072 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+896 1055 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c63
+1632 521 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+669 962 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+767 1051 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1317 770 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+797 1047 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+786 793 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+625 932 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+860 788 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1060 1026 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+747 1006 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1475 1188 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1006 984 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+1072 1197 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+938 1136 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+913 1150 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+940 798 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+775 745 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1317 1136 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+893 1124 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+963 851 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+908 1162 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1223 1161 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+653 1012 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+847 1077 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+891 1119 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1018 968 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+803 1014 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1078 737 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1265 598 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1314 1046 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1389 989 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+932 909 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+668 985 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1064 696 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c16
+1393 1089 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1390 1225 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+775 1121 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+921 1121 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+858 974 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+728 981 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1069 1124 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+954 955 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+876 826 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+822 1094 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+821 931 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+791 793 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c58
+555 962 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c53
+1107 989 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+803 1055 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1183 1045 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1389 1048 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+672 1008 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1309 1179 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1383 780 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+600 948 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+1060 1115 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c35
+1580 963 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+645 921 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1198 784 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+789 981 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+908 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+742 975 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+664 1002 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1215 1099 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1220 1092 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c36
+1333 657 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c48
+1225 1133 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+565 936 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+928 1030 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+959 1152 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+840 1172 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1343 1093 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1109 1125 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+721 1051 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c40
+1425 910 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c50
+1165 708 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1035 963 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+696 983 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+805 1060 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+793 913 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c39
+1256 1087 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+708 1011 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+871 1130 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+832 882 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+/c68 { 0.000000 0.000000 1.000000 sr} bdef
+c68
+1549 518 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1130 1157 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1201 885 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c64
+1513 706 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+961 763 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+617 867 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+892 1058 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+888 924 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+829 1004 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+838 1095 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+1126 1225 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+821 962 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+870 1090 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+893 932 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+893 1017 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+824 953 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+758 835 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1282 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+690 955 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+687 1004 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+891 954 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c25
+796 1127 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c12
+1294 841 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+870 912 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+837 1120 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+760 959 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+860 899 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+861 940 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c41
+1245 652 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+832 1029 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+892 1150 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+948 794 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c42
+1169 839 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+990 1080 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+876 1102 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1042 977 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+796 1059 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1157 1167 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+746 1065 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+826 1094 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+959 1179 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+879 938 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+797 799 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+820 1141 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+876 889 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c51
+1088 728 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+802 1077 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+894 851 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+903 878 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+678 1009 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c21
+1199 534 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c34
+682 1040 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c27
+818 1129 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c46
+1116 1071 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1173 1074 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c47
+631 1001 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1213 1161 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1028 957 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+936 1152 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c20
+1182 1104 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+933 1189 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c68
+1776 956 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c37
+865 808 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c31
+752 1114 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1000 1102 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+775 871 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1092 1055 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c49
+1414 1045 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c24
+922 907 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c22
+734 900 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+848 827 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+717 857 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+696 1044 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c26
+1024 702 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+906 1076 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c30
+810 967 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1004 1100 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+960 1117 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c45
+1144 745 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c67
+1743 1142 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c23
+938 837 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+1103 1173 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c17
+740 1032 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c10
+1057 1242 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+909 1115 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c13
+898 958 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c11
+605 936 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+829 1048 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c33
+805 881 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+860 960 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c15
+774 1023 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1055 968 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c19
+755 835 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c32
+843 1040 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c18
+1142 1191 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c14
+1115 1078 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c9
+635 931 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+28 W
+c8
+788 823 PD
+gs 373 130 1973 1342 MR c np
+gr
+
+0 sg
+%%IncludeResource: font Symbol
+/Symbol /WindowsLatin1Encoding 72 FMSR
+
+1129 1680 mt 
+(y) s
+%%IncludeResource: font Helvetica
+/Helvetica /WindowsLatin1Encoding 48 FMSR
+
+1178 1716 mt 
+(1) s
+%%IncludeResource: font Helvetica
+/Helvetica /WindowsLatin1Encoding 72 FMSR
+
+1204 1680 mt 
+( \(data set 2\)) s
+%%IncludeResource: font Symbol
+/Symbol /WindowsLatin1Encoding 72 FMSR
+
+  75 1030 mt  -90 rotate
+(y) s
+90 rotate
+%%IncludeResource: font Helvetica
+/Helvetica /WindowsLatin1Encoding 48 FMSR
+
+ 111  981 mt  -90 rotate
+(3) s
+90 rotate
+%%IncludeResource: font Helvetica
+/Helvetica /WindowsLatin1Encoding 72 FMSR
+
+  75  955 mt  -90 rotate
+( \(data set 2\)) s
+90 rotate
+
+end %%Color Dict
+
+eplot
+%%EndObject
+
+epage
+end
+
+showpage
+
+%%Trailer
+%%EOF

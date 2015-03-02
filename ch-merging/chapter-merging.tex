@@ -84,16 +84,16 @@ This example will allow us to compare our approach to more common techniques,
 such as diffusion maps \cite{coifman2005geometric} for dimensionality reduction
 and nearest neighbor interpolation for observation reconstruction.
 %
-The remainder of the paper is structured as follows: in Section \ref{sec:NIV} we present the Nonlinear Intrinsic Variable formulation and
+The remainder of the paper is structured as follows: in \sec~\ref{sec:NIV} we present the Nonlinear Intrinsic Variable formulation and
 the associated inference method.
 %
-Section \ref{sec:LapPyr} contains our discussion of Laplacian Pyramids that
+\sec~\ref{sec:LapPyr} contains our discussion of Laplacian Pyramids that
 is used for the completion of partial observations.
 %
-In Section \ref{sec:examples}, the results
+In \sec~\ref{sec:examples}, the results
 of the application of the approach to simulation data from our two illustrative examples are presented and discussed.
 %
-We conclude with a summary and our perspective on open issues in Section \ref{sec:conclusions}.
+We conclude with a summary and our perspective on open issues in \sec~\ref{sec:conclusions}.
 
 \section{Nonlinear Intrinsic Variables formualtion} \label{sec:NIV}
 
@@ -103,7 +103,7 @@ We impose two critical assumptions. First, the measured process is assumed to be
 \begin{equation}
 	\data(t) = \measfn(\mathbf{x}(t)),
 \end{equation}
-where $\measfn:\mathbb{R}^\lowdim \rightarrow \mathcal{M}$ is an unknown (possibly nonlinear) function, $\mathcal{M} \subset \mathbb{R}^\highdim$ is a $\lowdim$-dimensional manifold,
+where $\measfn:\mathbb{R}^\lowdim \mapsto \manifold$ is an unknown (possibly nonlinear) function, $\manifold \subset \mathbb{R}^\highdim$ is a $\lowdim$-dimensional manifold,
 and $\mathbf{x}(t)$ is a diffusion process that consists of $d$ underlying variables (with $\lowdim \ll \highdim$).
 %
 Second, the dynamics of the diffusion process in each of its underlying variables are described by normalized stochastic differential equations as
@@ -124,7 +124,7 @@ The available samples $\data(t)$ may be the result of different measurement func
 or they may be partial measurements consisting of merely a subset of the coordinates of the observable domains.
 %
 The idea is to empirically construct a NIV coordinate system driven entirely by measurements that is invariant to the observation function $\measfn$
-(see Figure \ref{fig:IntrinsicIllustration} for a schematic illustration).
+(see \fig~\ref{fig:IntrinsicIllustration} for a schematic illustration).
 %
 We remark that the available data should be ``rich enough'', i.e., consist of a sufficient amount of historical data with adequate variability, in order to obtain the full empirical model;
 this is further discussed and demonstrated in the experimental study.
@@ -174,7 +174,7 @@ from geometry by normalizing the diffusion kernel with the sample density.
 %
 This has been explored for diffusion maps independently of NIV \cite{coifman2005geometric}.
 %
-When the $\alpha=1$ kernel normalization is used,
+When the $\alpha=1$ kernel normalization is used (see \sec~\ref{sec:diff_limit}),
 the limiting diffusion operator is the Laplace-Beltrami operator \cite{nadler2006diffusion}.
 %
 In other words, this diffusion captures only the geometry of the observations and is invariant to the potential (or, alternatively,
@@ -251,7 +251,7 @@ The representations $\measfn_0, \measfn_1, \dots, \measfn_l$ can be extended to 
 For example, $\measfn_0(\tilde{i}) = \sum_{i \in S} p_0(\tilde{i}, i)\measfn(i)$ and
 $\measfn_1(\tilde{i}) = \measfn_0(\tilde{i}) + \sum_{(i \in S)}p_1(\tilde{i}, i)\delta_1(i)$.
 
-Figure \ref{fig:LP_ex} displays an illustrative example of the algorithm, when applied to the function
+\fig~\ref{fig:LP_ex} displays an illustrative example of the algorithm, when applied to the function
  \begin{equation} \label{eq:LP_example}
 \measfn(x) = \left\{
 \begin{array}{l l}
@@ -271,7 +271,7 @@ a finer representation, and a larger number of scales  $l$, is required to captu
 In this work, LP is applied to extend a high-dimensional function $\measfn:\mathbb{R}^d \rightarrow \mathcal{M}$,
 which maps a set of points in the NIV space to their values $\data(i)$ in the observable space.
 %
-Let $\Psi(i) = \left(\psi_1(i),\psi_2(i),\ldots,\psi_d(i)\right)$ be the set of NIV that were constructed from the data samples $\data(i)$, as described in Algorithm \ref{algo}.
+Let $\Psi(i) = \left(\psi_1(i),\psi_2(i),\ldots,\psi_d(i)\right)$ be the set of NIV that were constructed from the data samples $\data(i)$, as described in \tab~\ref{algo}.
 %
 The values of function $\measfn:\mathbb{R}^d \rightarrow \mathcal{M}$ are known on the subset $S = \{\Psi(i)\}$, with $\measfn(\Psi(i)) = \data(i)$.
 
@@ -296,7 +296,7 @@ P_l \propto e^{-d^2(\Psi(i),\Psi(j)) / 2^{-l} \sigma_0},
 \end{equation}
 are constructed and later extended to create the multiscale approximations as defined in \eqref{eq:LP_multi_scale}.
 %
-The LP algorithm for the inverse mapping is summarized in Algorithm \ref{algo_LP}.
+The LP algorithm for the inverse mapping is summarized in \tab~\ref{algo_LP}.
 
 \begin{table}[tb]
 \caption{Laplacian Pyramids Algorithm for Inverse Mapping}
@@ -322,8 +322,28 @@ Use the extended smoothing operators to approximate the value of $Y(\tilde{i})$ 
 
 
 \begin{figure}[t]
-\includegraphics[width=6in]{fig2}
-\caption[Function approximation using Laplacian Pyramids at different scales]{Approximation of the function $\measfn(x)$ defined in \eqref{eq:LP_example} using Laplacian Pyramids for ``scales'' (a) 3, (b) 5, (c) 8, and (d) 11. The top shows the true function in blue and the LP approximation is shown in black, and the bottom shows the residual error in the LP approximation.}
+\centering
+\begin{subfigure}{0.22\textwidth}
+\includegraphics[width=\textwidth]{Scale3_S2}
+\caption{}
+\label{subfig:LP_ex1}
+\end{subfigure}
+\begin{subfigure}{0.22\textwidth}
+\includegraphics[width=\textwidth]{Scale5_S2}
+\caption{}
+\label{subfig:LP_ex2}
+\end{subfigure}
+\begin{subfigure}{0.22\textwidth}
+\includegraphics[width=\textwidth]{Scale8_S2}
+\caption{}
+\label{subfig:LP_ex3}
+\end{subfigure}
+\begin{subfigure}{0.22\textwidth}
+\includegraphics[width=\textwidth]{Scale11_S2}
+\caption{}
+\label{subfig:LP_ex4}
+\end{subfigure}
+\caption[Function approximation using Laplacian Pyramids at different scales]{Approximation of the function $\measfn(x)$ defined in \eqref{eq:LP_example} using Laplacian Pyramids for ``scales'' (\subref*{subfig:LP_ex1}) 3, (\subref*{subfig:LP_ex2}) 5, (\subref*{subfig:LP_ex3}) 8, and (\subref*{subfig:LP_ex4}) 11. The top shows the true function in blue and the LP approximation is shown in black, and the bottom shows the residual error in the LP approximation.}
 \label{fig:LP_ex}
 \end{figure}
 
@@ -351,7 +371,7 @@ However, one can write four conservation equations (since total $E$, $S$, $D$, a
 %
 We consider a parameter regime in which the ODE approximation of this scheme exhibits a separation of time scales, so that initial conditions quickly approach a two-dimensional manifold.
 %
-Details about the specific parameter values can be found in Appendix \ref{app:rxn}.
+Details about the specific parameter values can be found in \app~\ref{app:merging}.
 
 Although the dynamics of chemical reaction networks are typically described by a system of ODEs, the ODEs are only an approximation that holds
 in the limit of a large number of molecules.
@@ -372,7 +392,7 @@ according to the time scales calculated from the linearized ODEs, 10 time units 
 but not long enough for the points to converge to a one-dimensional curve or to the final steady state (see Appendix \ref{app:rxn} for more details).
 %
 In our stochastic simulations, the initial points appear to converge to an approximate two-dimensional manifold
-(in expected value, see Figure \ref{fig:rxn_manifolds}).
+(in expected value, see \fig~\ref{fig:rxn_manifolds}).
 %
 We consider $\mathcal{Y} = \{ \data(t): t=1, \dots, 3000 \}$ to be representative points ``on" this apparent two-dimensional manifold.
 %
@@ -381,8 +401,28 @@ From each manifold point $\data \in \mathcal{Y}$, we run 20 short simulation ``b
 We denote the endpoints from the short simulations as $\mathcal{Y}^{burst}(\data)$.
 
 \begin{figure}[t]
-  \includegraphics[width=6in]{fig3}
-    \caption[Projections of the data obtained from stochastic simulation of the chemical reaction network]{Projections of the data obtained from stochastic simulation of the chemical reaction network described in Section \ref{subsec:rxn_network}. The insets show rotations of the projections to illustrate the approximate two-dimensionality of the ``slow manifold''.}
+\centering
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[height=5cm]{rxn_manifold1}\llap{\raisebox{4cm}{\includegraphics[height=2.25cm]{rxn_manifold1_2}}}
+\caption{}
+\label{subfig:rxn_manifolds1}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[height=5cm]{rxn_manifold2}\llap{\raisebox{4cm}{\includegraphics[height=2.25cm]{rxn_manifold2_2}}} 
+\caption{}
+\label{subfig:rxn_manifolds2}
+\end{subfigure}\\
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[height=5cm]{rxn_manifold3}\llap{\raisebox{4cm}{\includegraphics[height=2.25cm]{rxn_manifold3_2}}} 
+\caption{}
+\label{subfig:rxn_manifolds3}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+\includegraphics[height=5cm]{rxn_manifold4}\llap{\raisebox{4cm}{\includegraphics[height=2.25cm]{rxn_manifold4_2}}}
+\caption{}
+\label{subfig:rxn_manifolds4}
+\end{subfigure}
+\caption[Projections of the data obtained from stochastic simulation of the chemical reaction network]{Projections of the data obtained from stochastic simulation of the chemical reaction network described in \sec~\ref{subsec:rxn_network}. The insets show rotations of the projections to illustrate the approximate two-dimensionality of the ``slow manifold''.}
     \label{fig:rxn_manifolds}
 \end{figure}
 
@@ -417,7 +457,7 @@ where $\hat{\mathbf{\mu}}_i(\data)$ is the empirical mean of $\mathcal{Y}^{burst
 
 We first demonstrate that NIV produces the same embeddings for $\mathcal{Y}_1$ and $\mathcal{Y}_2$, even though the two data sets contain information of different chemical species.
 %
-Figure \ref{fig:rxn_embedding} shows the two-dimensional NIV embeddings for the two different data sets; the embeddings appear visually consistent.
+\fig~\ref{fig:rxn_embedding} shows the two-dimensional NIV embeddings for the two different data sets; the embeddings appear visually consistent.
 %
 We also note that both $\mathcal{Y}_1$ and $\mathcal{Y}_2$ contain points that are projections of $\data(1500), \dots, \data(2000)$.
 %
@@ -430,15 +470,35 @@ We would like to note that both $\mathcal{Y}_1$ and $\mathcal{Y}_2$ are sufficie
 the common underlying two-dimensional manifold.
 %
 \begin{figure}[t]
-    \includegraphics[width=6in]{fig4}
-    \caption[Intrinsic variable embeddings for chemical reaction network data]{(a) NIV embedding obtained from $\mathcal{Y}_1$ (observations of components E, S, S:E, and F:E$^{*}$), colored by $S$. (b) NIV embedding obtained from $\mathcal{Y}_2$ (observations of components E, S, E:S, and D:S$^{*}$), colored by $S$. Visually, we can see that the embeddings obtained from $\mathcal{Y}_1$ and $\mathcal{Y}_2$ are consistent, even though the two data sets consist of observations of different chemical species. (c) Correlation of first NIV between two different embeddings (correlation=0.97). (d)  Correlation of second NIV between two different embeddings (correlation=0.95). We obtain a good quantitative agreement between the embedding coordinates for the two data sets.}
+\centering
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{rxn_NLICA1}
+\caption{}
+\label{subfig:rxn_embedding1}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{rxn_NLICA2}
+\caption{}
+\label{subfig:rxn_embedding2}
+\end{subfigure}\\
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{rxn_NLICA_corr1}
+\caption{}
+\label{subfig:rxn_corr1}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{rxn_NLICA_corr2}
+\caption{}
+\label{subfig:rxn_corr2}
+\end{subfigure}
+\caption[Intrinsic variable embeddings for chemical reaction network data]{(\subref*{subfig:rxn_embedding1}) NIV embedding obtained from $\mathcal{Y}_1$ (observations of components E, S, S:E, and F:E$^{*}$), colored by $S$. (\subref*{subfig:rxn_embedding2}) NIV embedding obtained from $\mathcal{Y}_2$ (observations of components E, S, E:S, and D:S$^{*}$), colored by $S$. Visually, we can see that the embeddings obtained from $\mathcal{Y}_1$ and $\mathcal{Y}_2$ are consistent, even though the two data sets consist of observations of different chemical species. (\subref*{subfig:rxn_corr1}) Correlation of first NIV between two different embeddings (correlation=0.97). (\subref*{subfig:rxn_corr2})  Correlation of second NIV between two different embeddings (correlation=0.95). We obtain a good quantitative agreement between the embedding coordinates for the two data sets.}
     \label{fig:rxn_embedding}
 \end{figure}
 
 To determine whether a sufficient amount of data is available to obtain an accurate embedding, we compute the NIV embeddings for different numbers of data points
 (arising from different numbers of trajectories initialized randomly in the full concentration space).
 %
-Figure \ref{fig:rxn_convergence} shows the two-dimensional NIV embeddings and corresponding eigenvalue spectra of the kernel for the Gillespie SSA example computed from 10, 100, 500, and 1500 data points.
+\fig~\ref{fig:rxn_convergence} shows the two-dimensional NIV embeddings and corresponding eigenvalue spectra of the kernel for the Gillespie SSA example computed from 10, 100, 500, and 1500 data points.
 %
 We observe that the eigenvalue spectra appear converged for 100 data points and above.
 %
@@ -448,13 +508,40 @@ However, we observe that 100 points are insufficient to construct a self-consist
 %
 In order to account for the different scaling of the NIV coordinate axes, we require at least 500 data points.
 %
-This last convergence is exemplified in Figure \ref{fig:rxn_convergence} (c) and (d).
+This last convergence is exemplified in \fig~\ref{fig:rxn_convergence}\subref*{subfig:rxn_convergence3}, \subref*{subfig:rxn_convergence4}.
 %
 The convergence of the spectrum of the kernel and the ultimate self-consistency of the NIV embedding is our empirical indicator that a sufficient amount of data is available.
 \begin{figure}[t]
-    \includegraphics[width=6in]{fig4b}
-    \caption[Convergence of intrinsic variable embeddings as a function of the number of data points]{Two-dimensional NIV embeddings (top) and corresponding eigenvalue spectra (bottom) calculated from subsets of $\mathcal{Y}_1$ containing (a) 10 data points, (b) 100 data points, (c) 500 data points, and (d) 1500 data points. One can see that the embedding and spectrum in (a) is inconsistent with the other embeddings, and that, although the spectrum in (b) appears converged, the embedding is not converged until (c). }
-    \label{fig:rxn_convergence}
+\centering
+\begin{subfigure}{0.22\textwidth}
+\includegraphics[width=\textwidth]{rxn_npoints_embed1}
+\includegraphics[width=\textwidth]{rxn_npoints_spectrum1}
+\caption{}
+\label{subfig:rxn_convergence1}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.22\textwidth}
+\includegraphics[width=\textwidth]{rxn_npoints_embed2}\\
+\includegraphics[width=\textwidth]{rxn_npoints_spectrum2}
+\caption{}
+\label{subfig:rxn_convergence2}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.22\textwidth}
+\includegraphics[width=\textwidth]{rxn_npoints_embed4}\\
+\includegraphics[width=\textwidth]{rxn_npoints_spectrum4}
+\caption{}
+\label{subfig:rxn_convergence3}
+\end{subfigure}
+\hfill
+\begin{subfigure}{0.22\textwidth}
+\includegraphics[width=\textwidth]{rxn_npoints_embed6}\\
+\includegraphics[width=\textwidth]{rxn_npoints_spectrum6}
+\caption{}
+\label{subfig:rxn_convergence4}
+\end{subfigure}    
+\caption[Convergence of intrinsic variable embeddings as a function of the number of data points]{Two-dimensional NIV embeddings (top) and corresponding eigenvalue spectra (bottom) calculated from subsets of $\mathcal{Y}_1$ containing (\subref*{subfig:rxn_convergence1}) 10 data points, (\subref*{subfig:rxn_convergence2}) 100 data points, (\subref*{subfig:rxn_convergence3}) 500 data points, and (\subref*{subfig:rxn_convergence4}) 1500 data points. One can see that the embedding and spectrum in \subref*{subfig:rxn_convergence1} is inconsistent with the other embeddings, and that, although the spectrum in \subref*{subfig:rxn_convergence2} appears converged, the embedding is not converged until \subref*{subfig:rxn_convergence3}. }
+\label{fig:rxn_convergence}
 \end{figure}
 
 We then use NIV together with Laplacian Pyramids to estimate the values of $S:E$ and $F:E^{*}$ for $\mathcal{Y}_2$.
@@ -469,7 +556,7 @@ We then use this function to predict the values  of $S:E$ and $F:E^{*}$ for $\ma
 %
 In this way, we are exploiting the fact that the NIV embedding is intrinsic and consistent between the two data sets, even though the two data sets contain measurements of different chemical species.
 
-The results of the LP prediction are shown in Figure \ref{fig:rxn_recon}.
+The results of the LP prediction are shown in \fig~\ref{fig:rxn_recon}.
 %
 The normalized mean-squared errors between the true and estimated values for $S:E$ and $F:E^{*}$, defined as $\frac{\langle (y_{true}-y_{pred})^2 \rangle}{\langle y_{true}^2 \rangle}$, are 0.0372 and 0.0287 , respectively.
 %
@@ -477,8 +564,18 @@ Therefore, we can effectively estimate the unobserved components in the reaction
 %
 
 \begin{figure}[t]
-    \includegraphics[width=6in]{fig5}
-    \caption[Laplacian Pyramids reconstructions for chemical reaction network data]{LP reconstructions of (a) $S:E$ and (b) $F:E^{*}$ for $\mathcal{Y}_2$, using $\mathcal{Y}_1$ as training data.}
+\centering
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{rxn_recon4}
+\caption{}
+\label{subfig:rxn_recon1}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{rxn_recon6}
+\caption{}
+\label{subfig:rxn_recon2}
+\end{subfigure}
+    \caption[Laplacian Pyramids reconstructions for chemical reaction network data]{LP reconstructions of (\subref*{subfig:rxn_recon1}) $S:E$ and (\subref*{subfig:rxn_recon2}) $F:E^{*}$ for $\mathcal{Y}_2$, using $\mathcal{Y}_1$ as training data.}
     \label{fig:rxn_recon}
 \end{figure}
 
@@ -499,21 +596,31 @@ The simulation is performed at constant volume and temperature (NVT ensemble), w
 %
 Hydrogen bond lengths are fixed using the SHAKE algorithm \cite{ryckaert1977numerical}.
 %
-The two dihedral angles $\phi$ and $\psi$ are known to parameterize the free energy surface, which contains three important minima (labeled A, B, and C, see Figure \ref{fig:ala_fes}).
+The two dihedral angles $\phi$ and $\psi$ are known to parameterize the free energy surface, which contains three important minima (labeled A, B, and C, see \fig~\ref{fig:ala_fes}\subref*{subfig:FES}).
 %
 Our simulations are concentrated around minimum B in the free energy surface, located at $\phi \approx -65^{\circ}$, $\psi \approx 150^{\circ}$.
 %
-We choose to sample only around minimum B, as each data set must sample the same region of the potential energy surface to obtain consistent NIV, as described in Section \ref{sec:diff_limit}.
+We choose to sample only around minimum B, as each data set must sample the same region of the potential energy surface to obtain consistent NIV, as described in \sec~\ref{sec:diff_limit}.
 %
 We start many simulations at $10^{\circ}$ away from the minimum, and allow the simulations to each run for 0.1~ps, while recording the configuration of Ala2 every 1~fs (therefore, each trajectory is 100 points long).
 %
 Configurations are recorded with all atoms except the hydrogens.
 
 \begin{figure}[t]
-    \includegraphics[width=6in]{fig6}
-    \caption[Alanine dipeptide free energy surface and representative molecular configuration]{(a) Free energy surface for Ala2. The relevant minima are labeled A, B, and C, and the corresponding molecular configurations are shown.
-    (b) Sample representative molecular structure of Ala2, excluding the hydrogens. The atoms are numbered and the two dihedral angles $\phi$ and $\psi$ are indicated.}
-    \label{fig:ala_fes}
+\centering
+\begin{subfigure}{0.6\textwidth}
+\includegraphics[width=\textwidth]{FES}
+\caption{}
+\label{subfig:FES}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{molecule_labeled2}
+\caption{}
+\label{subfig:ala_config}
+\end{subfigure}
+\caption[Alanine dipeptide free energy surface and representative molecular configuration]{(\subref*{subfig:FES}) Free energy surface for Ala2. The relevant minima are labeled A, B, and C, and the corresponding molecular configurations are shown.
+(\subref*{subfig:ala_config}) Sample representative molecular structure of Ala2, excluding the hydrogens. The atoms are numbered and the two dihedral angles $\phi$ and $\psi$ are indicated.}
+\label{fig:ala_fes}
 \end{figure}
 
 
@@ -524,20 +631,30 @@ We consider 10,000 data points from our simulation $\data(1), \dots, \data(10000
 We construct two data sets:
 %
 $\mathcal{Y}_{even} = \{\data(t) \text{ restricted to atoms 2, 4, 6, 8, and 10}: t=1, \dots, 10000 \}$,
-and $\mathcal{Y}_{odd} = \{\data(t) \text{ restricted to atoms 5, 7, and 9}: t=1, \dots, 10000 \}$ (see Figure \ref{fig:ala_fes} for the atom indexing).
+and $\mathcal{Y}_{odd} = \{\data(t) \text{ restricted to atoms 5, 7, and 9}: t=1, \dots, 10000 \}$ (see \fig~\ref{fig:ala_fes}\subref*{subfig:ala_config} for the atom indexing).
 %
 We then compute the NIV and diffusion maps embeddings for $\mathcal{Y}_{even}$ and $\mathcal{Y}_{odd}$;
-for NIV, we compute the covariances as in \eqref{eq:cov}, with $L=10$.
+for NIV, we compute the covariances as in \eqref{eq:cov1}, with $L=10$.
 
-The correlation between the NIV coordinates for the two data sets and the diffusion map (DM) coordinates for the two data sets are shown in Figure \ref{fig:ala_corr}.
+The correlation between the NIV coordinates for the two data sets and the diffusion map (DM) coordinates for the two data sets are shown in \fig~\ref{fig:ala_corr}.
 %
 The correlation between the two NIV embeddings is higher than the correlation between the two diffusion map embeddings.
 Therefore, it appears advantageous to use NIV over diffusion maps if one wishes to obtain a consistent embedding and merge data sets from different observation domains (as long as the two main assumptions underpinning the NIV algorithm hold).
 
 \begin{figure}[t]
-    \includegraphics[width=6in]{fig7}
-    \caption[Comparison of intrinsic variable and diffusion maps embeddings for alanine dipeptide data]{(a) Correlation between the second NIV computed using the atoms 2, 4, 6, 8, and 10 ($\psi_2^{even}$) and the second NIV computed using atoms 5, 7, and 9 ($\psi_2^{odd}$).
-    (b) Correlation between the second DM computed using the atoms 2, 4, 6, 8, and 10 ($DM_2^{even}$) and the second DM computed using atoms 5, 7, and 9 ($DM_2^{odd}$).
+\centering
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{NLICA_corr}
+\caption{}
+\label{subfig:ala_corr1}
+\end{subfigure}
+\begin{subfigure}{0.4\textwidth}
+\includegraphics[width=\textwidth]{DM_corr}
+\caption{}
+\label{subfig:ala_corr2}
+\end{subfigure}    
+\caption[Comparison of intrinsic variable and diffusion maps embeddings for alanine dipeptide data]{(\subref*{subfig:ala_corr1}) Correlation between the second NIV computed using the atoms 2, 4, 6, 8, and 10 ($\psi_2^{even}$) and the second NIV computed using atoms 5, 7, and 9 ($\psi_2^{odd}$).
+    (\subref*{subfig:ala_corr2}) Correlation between the second DM computed using the atoms 2, 4, 6, 8, and 10 ($DM_2^{even}$) and the second DM computed using atoms 5, 7, and 9 ($DM_2^{odd}$).
     The correlations for the first (not shown) and second NIV coordinates are found to be 0.62 and 0.84, respectively.
     The correlations for the first (not shown) and second DM coordinates are found to be 0.54 and 0.60, respectively. }
     \label{fig:ala_corr}
@@ -553,11 +670,11 @@ consists of the first 10000 data points ($\mathcal{Y}_{all} = \{\data(t): t=1, \
 Our second data set (which will serve as our test data), $\mathcal{Y}_{odd}$, consists of the last 12000 data points restricted to {\em only} the odd atoms
 ($\mathcal{Y}_{odd} = \{ \data(t) \text{ restricted to the odd atoms}: t = 8001, \dots, 20000\}$).
 %
-We compute the covariances as in \eqref{eq:cov} with $L=15$.
+We compute the covariances as in \eqref{eq:cov1} with $L=15$.
 %
 We compute the NIV embedding for the training data $\mathcal{Y}_{all}$ and the test data $\mathcal{Y}_{odd}$; we then use LP interpolation from the training data to predict the location of all the atoms for each point in the test data.
 
-The NIV embedding for the training data $\mathcal{Y}_{all}$ is shown in Figure \ref{fig:ala_embed}.
+The NIV embedding for the training data $\mathcal{Y}_{all}$ is shown in \fig~\ref{fig:ala_embed}.
 %
 The embedding is three-dimensional, and visual inspection reveals that each coordinate can be directly linked with one physical variable:
 the first coordinate describes the flipping of atoms 1 and 3, the second coordinate describes the dihedral angle $\phi$, and the third coordinate describes the dihedral angle $\psi$.
@@ -568,23 +685,38 @@ that come from the common simulation data points $\data(8001), \dots, \data(1000
 The embeddings for the two data sets are found to be fairly consistent, with correlations of 0.97, 0.72, 0.85 for the first, second, and third NIV, respectively.
 
 \begin{figure}[t]
-    \includegraphics[width=6in]{fig8}
-    \caption[Intrinsic variable embedding for alanine dipeptide data]{The 3-dimensional NIV embedding for Ala2 computed using $\mathcal{Y}_{all}$, colored by (a) the y-coordinate of the first atom, (b) the dihedral angle $\phi$, and (c) the dihedral angle $\psi$. Each embedding is rotated so that the correlation between the colors and the relevant NIV can easily be seen.}
+\centering
+\begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{ala2_embed1}
+    \caption{}
+    \label{subfig:ala_embed1}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{ala2_embed2}
+    \caption{}
+    \label{subfig:ala_embed2}
+\end{subfigure}
+\begin{subfigure}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{ala2_embed3}
+    \caption{}
+    \label{subfig:ala_embed3}
+\end{subfigure}
+    \caption[Intrinsic variable embedding for alanine dipeptide data]{The 3-dimensional NIV embedding for Ala2 computed using $\mathcal{Y}_{all}$, colored by (\subref*{subfig:ala_embed1}) the y-coordinate of the first atom, (\subref*{subfig:ala_embed2}) the dihedral angle $\phi$, and (\subref*{subfig:ala_embed3}) the dihedral angle $\psi$. Each embedding is rotated so that the correlation between the colors and the relevant NIV can easily be seen.}
     \label{fig:ala_embed}
 \end{figure}
 
 
-Figure \ref{fig:ala_recon} shows the reconstructed position from partial observation versus true position for certain selected atoms.
+\fig~\ref{fig:ala_recon} shows the reconstructed position from partial observation versus true position for certain selected atoms.
 %
 The strong correlation between the true and reconstructed positions is easier to appreciate for
 atoms that move substantially within the data set (such as atoms 1 and 3).
 %
-Figure \ref{fig:ala_molecules} shows molecular structures for the true and reconstructed configurations for selected data points;
+\fig~\ref{fig:ala_molecules} shows molecular structures for the true and reconstructed configurations for selected data points;
 there is qualitative agreement between the true and reconstructed configurations.
 %
-The discrepancies between the true and reconstructed positions of atoms 9 and 10 (see Figure \ref{fig:ala_fes} for atom indexing) for some of the molecular structures are not surprising.
+The discrepancies between the true and reconstructed positions of atoms 9 and 10 (see \fig~\ref{fig:ala_fes}\subref*{subfig:ala_config} for atom indexing) for some of the molecular structures are not surprising.
 %
-From Figure \ref{fig:ala_embed}, one can see that the first three NIV describe the flipping of atoms 1 and 3 and the dihedral angles $\phi$ and $\psi$.
+From \fig~\ref{fig:ala_embed}, one can see that the first three NIV describe the flipping of atoms 1 and 3 and the dihedral angles $\phi$ and $\psi$.
 %
 However, atoms 9 and 10 do not participate in any of these physical quantities, and so there is little information about their positions contained in the first three NIV.
 %
@@ -593,16 +725,16 @@ We suspect that using more NIV would result in a better description of atoms 9 a
 For a brief comparison of LP over other reconstruction techniques, we also reconstruct configurations from the
 NIV components using simple nearest-neighbor interpolation.
 %
-The average reconstruction error, scaled by the average bond length within the molecule, is shown in Figure \ref{fig:ala_mse};
+The average reconstruction error, scaled by the average bond length within the molecule, is shown in \fig~\ref{fig:ala_mse};
 LP arguably outperforms simple nearest neighbor search for all of the atoms.
 %
 To determine why LP outperforms nearest neighbor search, we examine the errors at different scales in the LP algorithm.
 %
-The example described in Figure \ref{fig:LP_ex} demonstrates the appropriateness of the LP algorithm to signals with an intrinsic multiscale structure.
+The example described in \fig~\ref{fig:LP_ex} demonstrates the appropriateness of the LP algorithm to signals with an intrinsic multiscale structure.
 %
 We perform a similar analysis using the data from the alanine dipeptide example, and show that the observed signal does exhibit a similar error structure,
 with large errors in some regions of NIV space and small errors in other regions;
-these results are shown in Figure \ref{fig:LapPyr_ala2_errors}.
+these results are shown in \fig~\ref{fig:LapPyr_ala2_errors}.
 %
 We therefore conclude that the alanine dipeptide data does contain a measure of multiscale behavior, and, therefore, that LP is an appropriate algorithm for reconstruction.
 
@@ -614,8 +746,29 @@ We therefore conclude that the alanine dipeptide data does contain a measure of 
 \end{figure}
 
 \begin{figure}[t]
-    \centering
-    \includegraphics[width=4in]{fig10}
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule300_balls}
+\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule300_wire}
+\caption{}
+\label{subfig:ala_molecules1}
+\end{subfigure}    
+
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule600_balls}
+\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule600_wire}
+\caption{}
+\label{subfig:ala_molecules2}
+\end{subfigure}    
+
+\begin{subfigure}{\textwidth}
+\centering
+\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule900_balls}
+\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule900_wire}
+\caption{}
+\label{subfig:ala_molecules3}
+\end{subfigure}    
     \caption[Sample reconstructed alanine dipeptide configurations]{True structure (black) and reconstructed structure (red) for three different data points. Each data point is shown in ``ball-and-stick'' representation (left) and ``wireframe'' representation (right) so that the discrepancies can easily be seen between the different configurations.}
     \label{fig:ala_molecules}
 \end{figure}
@@ -624,14 +777,14 @@ We therefore conclude that the alanine dipeptide data does contain a measure of 
 	\centering
     \includegraphics[width=3in]{fig11}
     \caption[Average error in reconstructed alanine dipeptide configurations]{Mean squared error of reconstructed position, normalized by the average bond length, for each atom in Ala2.
-    The positions were reconstructed using both LP and nearest neighbor (nn) interpolation .}
+    The positions were reconstructed using both LP and nearest neighbor (nn) interpolation.}
     \label{fig:ala_mse}
 \end{figure}
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=3in]{fig10b}
-    \caption[Error in reconstructed alanine dipeptide configurations]{The error in the reconstructed position of the z-coordinate of atom 10 as a function of $\psi_1$. One can see that the error is large when $\psi_1$ is large (similar to the error structure in Figure \ref{fig:LP_ex}), demonstrating that our data is indeed multiscale and that Laplacian Pyramids is an appropriate interpolation algorithm to use.}
+    \caption[Error in reconstructed alanine dipeptide configurations]{The error in the reconstructed position of the z-coordinate of atom 10 as a function of $\psi_1$. One can see that the error is large when $\psi_1$ is large (similar to the error structure in \fig~\ref{fig:LP_ex}), demonstrating that our data is indeed multiscale and that Laplacian Pyramids is an appropriate interpolation algorithm to use.}
     \label{fig:LapPyr_ala2_errors}
 \end{figure}
 
