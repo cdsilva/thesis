@@ -1,9 +1,70 @@
 
 \chapter{Introduction\label{ch:intro}}
 
-All the stuff for the introduction
+Over the past decade, the amount of available data has grown exponentially in many, if not all, scientific diciplines. 
+%
+Computational speed has increased (according to Moore's law), allowing for larger and longer simulations.
+%
+The cost of memory has decreased dramatically, such that data storage is no longer a bottleneck for most applications. 
+%
+The Internet has allowed for the rapid sharing and exporation of new data sets, such that data from many groups and collaborators can be combined without any face-to-face interaction. 
+%
+All of these advances have ushered us into the era of ``Big Data'', where the challenge is not obtaining the data, but rather, searching for the relevant trends and patterns within this seemingly endless sea of information -- a ``needle in a haystack'' if you will. 
+
+The prototypical examples of data science problems arise in consumer-driven applications. %
+Tasks such as filtering email spam, predicting what a specific customer would like to purchase online, and extracting trends from Twitter and Facebook data have all led to interesting and novel data analysis algorithms. 
+%
+However, the sciences (physics, chemistry, and biology) and engineering have also witnessed a dramatic growth in the amount of data available, and such algorithms have the potential to aid in the analysis of this data. 
+%
+The focus of this thesis is adapting and utilizing data-driven algorithms to address engineering problems. 
+%
+The core of each analysis will be the same data-driven nonlinear manifold learning algorithms (diffusion maps \citep{Coifman2006}). 
+%
+However, each problem will come with its own set of unique considerations and constraints, which must be addressed for accurate and informative analysis. 
+%
+Here, we will present the relevant algorithms.
+%
+The subsequent chapters will then discuss the different problems, ranging from the analysis of multiscale stochastic data to images from biological experiments. 
+
+\section{Background} \label{sec:background}
+
+For the past century, principal component analysis (PCA) \cite{shlens2005tutorial} has been the standard dimensionality reduction technique.
+%
+PCA projects (high-dimensional) data onto a lower-dimensional hyperplane, where the hyperplane is chosen to maximize the variance of the projected data. 
+%
+The vectors which define this hyperplane are the eigenvectors of a covariance matrix estimated from the data. 
+
+Although PCA has been extremely useful in a variety of contexts and applications \cite{...}, its functionality is limited because it is a linear technique. 
+%
+The past twenty years have seen increased interest in algorithms which can accommodate and uncover nonlinear structure in data.
+%
+Techniques such as multidimensional scaling \cite{joseph1978multidimensional} and kernel principal components analysis \cite{scholkopf1997kernel} extend traditional linear techniques to allow for the use of more complicated metrics which can capture nonlinearities. 
+%
+Local linear embedding \cite{roweis2000nonlinear} does PCA {\em locally} on patches of the data. 
+%
+Isomap \cite{tenenbaum2000global} first constructs a nearest-neighbor graph on the data, and then uses MDS to embed the data, where the distance between a pair of data points is given by the length of the shortest path between them in the graph. 
+
+Simultaneously, there was renewed interest in algorithms for analyzing and extracting structure in graphs, due to the prevalence of network, internet, and social media data. 
+%
+The graph Laplacian had been used to analyze many such data sets \cite{shi2000normalized, ng2002spectral}. 
+%
+It was noted approximately a decade ago that, given a network constructed on the data (similar to the first step in the Isomap algorithm), the graph Laplacian could be used to analyze this network. 
+%
+The eigenvectors of this Laplacian then yield coordinates which parameterize the data and therefore the underlying (perhaps nonlinear) manifold. 
+%
+This algorithm, called Laplacian Eigenmaps, has both practical advantages (it is both simple to implement and robust to noise) as well as elegant theoretical guarantees (the discrete operator approaches the Laplacian on the underlying manifold assuming the data are uniformly sampled) \cite{Belkin2003}. 
+
+Soon after Laplacian Eigenmaps, the {\em diffusion maps} algorithm was proposed as a generalization \cite{coifman2005geometric, coifman2006geometric}. 
+%
+This algorithm yields a family of embeddings, and provides theoretical understanding for the resulting embedding even when the data are nonuniformly sampled from the underlying manifold. 
 
 \section{Diffusion maps} \label{sec:dmaps}
+
+Diffusion maps is an unsupervised, nonlinear data mining algorithm. 
+%
+Given points which lie on a low-dimensional manifold in a high-dimensional space, diffusion maps uncovers a parameterization of the data which captures the notion of locality with respect to the manifold. 
+%
+Diffusion maps is the generalization of Laplacian Eigenmaps \cite{Belkin2003}, and is the culmination of advances in nonlinear data mining over the past twenty years \citep{Donoho2003,roweis2000nonlinear,tenenbaum2000global}.
 
 Given $\ndata$ data points $\data(1), \dots, \data(\ndata)$ (typically vectors in a high-dimensional vector space) which lie on a lower-dimensional manifold $\manifold$, we want to find a coordinate transformation $f(\data)$ that preserves local geometry: points that are ``close" in the original space should also be ``close" in the coordinates $f$.
 %
@@ -114,6 +175,14 @@ Therefore, choosing different values of $\alpha$ results in different kernel nor
 
 \section{Nonlinear Intrinsic Variables and the Mahalanobis Distance}
 \label{subsec:mahalanobis}
+
+The essential component of manifold learning algorithms (such as diffusion maps) is having an informative distance metric between data points, as one of the key assumptions is that points which are close on the manifold have a small distance. 
+%
+However, often the Euclidean distance is not informative, and we require a more sophisitcated metric. 
+%
+Here, we will discuss the Mahalanobis distance \cite{mahalanobis1936generalized}. 
+%
+This distance has some nice propoerties which will allow us to analyze multiscale stocastic systems in \chap~\ref{ch:multiscale} and data from chemical simulations in \chap~\ref{ch:merging}. 
 
 Let $\mathbf{C}(t)$ be the covariance matrix associated with the measured sample $\data(t)$. 
 %
