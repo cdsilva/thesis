@@ -624,22 +624,24 @@ This means that the apparent time scale separation is smaller, the collapse of t
 %
 The right column of \fig~\ref{fig:recover_fast} shows that, when the burst is now longer than the equilibration time, the fast variable appears earlier in the eigenvalue spectrum and is recovered as $\phi_6$.
 
-\begin{figure}[t]
-\includegraphics[width=0.3\textwidth]{data_linear_burst1}
-\includegraphics[width=0.3\textwidth]{data_linear_burst2}
-\includegraphics[width=0.3\textwidth]{data_linear_burst3}
+\begin{figure}[!t]
+\centering
+\def \figwidth {0.28\textwidth}
+\includegraphics[width=\figwidth]{data_linear_burst1}
+\includegraphics[width=\figwidth]{data_linear_burst2}
+\includegraphics[width=\figwidth]{data_linear_burst3}
 
-\includegraphics[width=0.3\textwidth]{data_linear_slow1}
-\includegraphics[width=0.3\textwidth]{data_linear_slow2}
-\includegraphics[width=0.3\textwidth]{data_linear_slow3}
+\includegraphics[width=\figwidth]{data_linear_slow1}
+\includegraphics[width=\figwidth]{data_linear_slow2}
+\includegraphics[width=\figwidth]{data_linear_slow3}
 
-\includegraphics[width=0.3\textwidth]{data_linear_fast1}
-\includegraphics[width=0.3\textwidth]{data_linear_fast2}
-\includegraphics[width=0.3\textwidth]{data_linear_fast3}
+\includegraphics[width=\figwidth]{data_linear_fast1}
+\includegraphics[width=\figwidth]{data_linear_fast2}
+\includegraphics[width=\figwidth]{data_linear_fast3}
 
-\includegraphics[width=0.3\textwidth]{data_linear_evals1}
-\includegraphics[width=0.3\textwidth]{data_linear_evals2}
-\includegraphics[width=0.3\textwidth]{data_linear_evals3}
+\includegraphics[width=\figwidth]{data_linear_evals1}
+\includegraphics[width=\figwidth]{data_linear_evals2}
+\includegraphics[width=\figwidth]{data_linear_evals3}
 
 \caption[Relationship between changing $\delta t$ and recovery of the variables in multiscale data mining]{Relationship between changing $\delta t$ and recovery of the variables. From left to right, the columns correspond to $\delta t = 10^{-6}, 10^{-5}, 10^{-3}$.  (Row~1) Data (gray) and representative burst (red) used to estimate the local covariance. (Row~2) Correlation between first diffusion maps coordinate and the slow variable $x_1$. (Row~3) Correlation between the relevant diffusion maps coordinate and the fast variable $x_2$. Note that for $\delta t = 10^{-6}$ and $\delta t = 10^{-5}$, $x_2$ is correlated with $\phi_{10}$. When $\delta t = 10^{-3}$, $x_2$ is correlated with $\phi_6$. (Row 4) Diffusion maps eigenvalue spectra. The eigenvalues corresponding to the coordinates for the slow and fast modes are indicated by red circles. Note that when $\delta t$ is too large, the apparent time scale separation decreases and the coordinate corresponding to the fast variable appears earlier in the spectrum. }
 \label{fig:recover_fast}
@@ -812,7 +814,7 @@ When $\delta t$ corresponds to a region where $\|\mathbf{E}_C \| \ll \| \mathbf{
 However, when $\delta t$ corresponds to a region where $\|\mathbf{E}_C \| \gg \| \mathbf{C} \|$, the slow variable is no longer recovered.
 
 
-\def \figheight {1.6in}
+\def \figheight {1.5in}
 
 \begin{figure}[t]
 

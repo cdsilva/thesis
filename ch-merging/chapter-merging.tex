@@ -5,32 +5,8 @@
 {\em This work was published in \citep{dsilva2013nonlinear}}
 
 \section{Introduction}
-The last decade has witnessed extensive advances in dimensionality reduction techniques:
-finding meaningful low-dimensional descriptions of high-dimensional data \cite{tenenbaum2000global,roweis2000nonlinear,Donoho2003,Belkin2003,Coifman2006}.
-%
-Often, high-dimensional data do not uniformly fill the entire ambient space, but rather lie on a lower-dimensional manifold.
-%
-Discovering a parameterization of the manifold therefore yields a compact representation of the data, and may lead to efficient analysis and processing schemes.
-%
-In particular, these developments have the potential to significantly enable the computational exploration
-of physicochemical problems.
-%
-Traditionally, state reduction in chemical reaction networks has been done using some {\em a priori} knowledge about separation of time scales,
-for example, using the quasi-steady state approximation to reduce a network of chemical reactions\cite{bowen1963singular}.
-%
-Alternatively, empirical knowledge about the system of interest has been used to develop coarse grained descriptions,
-such as grouping atoms of a macromolecule into larger ``beads'' to accelerate simulations\cite{monticelli2008martini, spiga2013electrostatic,izvekov2005systematic, saunders2013coarse}.
-%
-The use of manifold learning allows for the systematic discovery of data-driven, low-dimensional descriptions that circumvent the need for such {\em a priori} knowledge of the system.
-%
-If the (high-dimensional) data $\data(t)$ arise from, for example, a
-molecular dynamics simulation of a macromolecule in solution, or from the stochastic
-simulation of a complex chemical reaction scheme, the detection of a few good, coarse-grained
-``reduction coordinates" $\mathbf{x}(t)$ can be invaluable in understanding and predicting system behavior.
-%
-For example, such reduction coordinates may be the dihedral angles inferred from trajectories of the atoms of a macromolecule.
 
-While the benefits from such reduced descriptions are manifest, a crucial shortcoming of
+While the benefits from constructing reduced descriptions of data are clear, a crucial shortcoming of
  data-driven reduction coordinates is their dependence on the specific data set processed,
 and not only on the physical model in question.
 %
@@ -46,7 +22,7 @@ and when different data sets are obtained using different instrumental modalitie
 (such as when one wants to merge molecular dynamics data with, for example, spectral information).
 %
 
-In this paper, we propose a new method to embed data in a low-dimensional space.
+In this work, we propose a new method to embed data in a low-dimensional space.
 %
 This method is based on a kernel constructed from a Riemannian metric that is specially designed to exploit the noise/diffusion induced variability of the data in local neighborhoods.
 %
@@ -84,7 +60,7 @@ This example will allow us to compare our approach to more common techniques,
 such as diffusion maps \cite{coifman2005geometric} for dimensionality reduction
 and nearest neighbor interpolation for observation reconstruction.
 %
-The remainder of the paper is structured as follows: in \sec~\ref{sec:NIV} we present the Nonlinear Intrinsic Variable formulation and
+The remainder of the chapter is structured as follows: in \sec~\ref{sec:NIV} we present the Nonlinear Intrinsic Variable formulation and
 the associated inference method.
 %
 \sec~\ref{sec:LapPyr} contains our discussion of Laplacian Pyramids that
