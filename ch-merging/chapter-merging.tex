@@ -6,7 +6,7 @@
 
 \section{Introduction}
 
-While the benefits from constructing reduced descriptions of data are clear, a crucial shortcoming of
+From the discussions in \chap~\ref{ch:intro}~and~\ref{ch:multiscale}, the benefits from constructing reduced descriptions of data are clear; however, a crucial shortcoming of
  data-driven reduction coordinates is their dependence on the specific data set processed,
 and not only on the physical model in question.
 %
@@ -716,7 +716,7 @@ We therefore conclude that the alanine dipeptide data does contain a measure of 
 
 \begin{figure}[t]
   \centering
-        \includegraphics[width=4.5in]{fig9}
+        \includegraphics[width=4in]{fig9}
   \caption[Laplacian pyramids reconstruction for alanine dipeptide data]{The correlation between the true position and the reconstructed position (using LP) for the test data. The columns correspond the x-, y-, and z-coordinates, and the rows correspond to atoms 1, 2, 3, 6, and 8.}
   \label{fig:ala_recon}
 \end{figure}
@@ -796,8 +796,15 @@ It is clearly necessary to link this type of calculation with modern estimation 
 to test the appropriateness of the window sampling lengths selected; this will determine the accuracy of the noise covariance estimation by eliminating
 the bias due to drift variations.
 %
-We are confident that the exploration of these open questions will enable the use of our methodology in many  interesting applications,
-such as merging data from molecular simulations at different levels of granularity, or merging simulation data with experimental observations.
+We are confident that the exploration of these open questions will enable the use of our methodology in many interesting applications, such as merging data from molecular simulations at different levels of granularity, or merging simulation data with experimental observations.
+
+These two chapters have described using the Mahalanobis distance with diffusion maps to analyze two different types of data common in engineering. 
+%
+In the next chapter, we will address a third type of data (imaging data). 
+%
+In this example, we will not be interested in removing the effects of fast variables or measurement functions, but instead factoring out rotational symmetries which arise from the experimental imaging setup. 
+%
+We will present another extension of diffusion maps which allows us to simultaneously factor out symmetries and uncover structure in the imaging data. 
 
 
 

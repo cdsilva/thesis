@@ -3,18 +3,33 @@
 
 Over the past decade, the amount of available data has grown exponentially in many, if not all, scientific diciplines. 
 %
-Computational speed has increased (according to Moore's law), allowing for larger and longer simulations.
-%
-The cost of memory has decreased dramatically, such that data storage is no longer a bottleneck for most applications. 
+Computational speed has increased (according to Moore's law), allowing for larger and longer simulations, and
+the cost of memory has decreased dramatically, such that data storage is no longer a bottleneck for most applications. 
 %
 The Internet has allowed for the rapid sharing and exporation of new data sets, such that data from many groups and collaborators can be combined without any face-to-face interaction. 
 %
-All of these advances have ushered us into the era of ``Big Data'', where the challenge is not obtaining the data, but rather, searching for the relevant trends and patterns within this seemingly endless sea of information -- a ``needle in a haystack'' if you will. 
+All of these advances have ushered us into the era of ``Big Data'', where the challenge is not obtaining the data, but rather, searching for the relevant trends and patterns within this seemingly endless sea of information.
 
 The prototypical examples of data science problems arise in consumer-driven applications. %
 Tasks such as filtering email spam, predicting what a specific customer would like to purchase online, and extracting trends from Twitter and Facebook data have all led to interesting and novel data analysis algorithms. 
 %
-However, the sciences (physics, chemistry, and biology) and engineering have also witnessed a dramatic growth in the amount of data available, and such algorithms have the potential to aid in the analysis of this data. 
+However, the natural sciences and engineering have also witnessed a dramatic growth in the amount of available data, and data-driven algorithms have the potential to contribute to these fields as well.
+
+Machine learning tasks can be broadly divided into two categories: supervised and unsupervised. 
+%
+In supervised learning, data consists of inputs and outputs, where each training data point consists of an input vector and an output response. 
+%
+In contrast, unsupervised learning operates on unlabeled data, where the task is to uncover structure and patterns {\em within} the data set. 
+%
+We will focus on this second task of unsupervised learning. 
+%
+More specifically, we will focus on dimensionality reduction, where the goal is to reduce the dimensionality of the data while still retaining most of the relevant patterns and structure within the data set. 
+%
+Reducing the dimensionality of a data set to two or three dimensions allows for easy visualization of the data set. 
+%
+Furthermore, reducing the dimensionality makes computations, such as integrating a system of differential equations or fitting a model, easier and faster. 
+
+
 %
 %
 %TODO: this is from JCP intro....
@@ -30,37 +45,24 @@ However, the sciences (physics, chemistry, and biology) and engineering have als
 %of physicochemical problems.
 %
 TODO: change slightly from JCP....
-Traditionally, state reduction in engineering disciplines has been done using some {\em a priori} knowledge about separation of time scales,
-for example, using the quasi-steady state approximation to reduce a network of chemical reactions \cite{bowen1963singular}.
+Traditionally, model reduction in engineering disciplines has been done using some {\em a priori} knowledge about separation of time scales,
+such as using the quasi-steady state approximation to reduce a network of chemical reactions \cite{bowen1963singular}.
 %
 Alternatively, empirical knowledge about the system of interest has been used to develop coarse grained descriptions,
 such as grouping atoms of a macromolecule into larger ``beads'' to accelerate simulations\cite{monticelli2008martini, spiga2013electrostatic,izvekov2005systematic, saunders2013coarse}.
 %
-The use of manifold learning allows for the systematic discovery of data-driven, low-dimensional descriptions that circumvent the need for such {\em a priori} knowledge of the system.
+However, the use of manifold learning allows for the systematic discovery of data-driven, low-dimensional descriptions that circumvent the need for such {\em a priori} knowledge of the system.
 %
-If the (high-dimensional) data $\data(t)$ arise from, for example, a
-molecular dynamics simulation of a macromolecule in solution, or from the stochastic
+If the (high-dimensional) data arise from, for example, a
+molecular dynamics simulation of a macromolecule in solution or from the stochastic
 simulation of a complex chemical reaction scheme, the detection of a few good, coarse-grained
-``reduction coordinates" $\mathbf{x}(t)$ can be invaluable in understanding and predicting system behavior.
+``reduction coordinates" can be invaluable in understanding and predicting system behavior.
 %
 %For example, such reduction coordinates may be the dihedral angles inferred from trajectories of the atoms of a macromolecule.
 
 
 \section{Background on dimensionality reduction and manifold learning} \label{sec:background}
 
-Machine learning tasks can be broadly divided into two categories: supervised and unsupervised. 
-%
-In supervised learning, data consists of inputs and outputs, where each training data point consists of an input vector and an output response. 
-%
-In contrast, unsupervised learning operates on unlabeled data, where the task is to uncover structure and patterns {\em within} the data set. 
-%
-We will focus on this second task of unsupervised learning. 
-%
-More specifically, we will focus on dimensionality reduction, where the goal is to reduce the dimensionality of the data while still retaining most of the relevant patterns and structure within the data set. 
-%
-Reducing the dimensionality of a data set to two or three dimensions allows for easy visualization of the data set. 
-%
-Furthermore, reducing the dimensionality makes computations, such as integrating a system of differential equations or fitting a model, easier and faster. 
 
 For the past century, principal component analysis (PCA) \cite{shlens2005tutorial} has been the standard dimensionality reduction technique.
 %
