@@ -71,16 +71,17 @@ of the application of the approach to simulation data from our two illustrative 
 %
 We conclude with a summary and our perspective on open issues in \sec~\ref{sec:conclusions}.
 
-\section{Nonlinear Intrinsic Variables formualtion} \label{sec:NIV}
+\section{Nonlinear Intrinsic Variables} \label{sec:NIV}
 
+\subsection{Problem Formulation}
 Let $\data(t)$ be a high-dimensional measured process in $\mathbb{R}^\highdim$ consisting of $\highdim$ observable variables.
 %
 We impose two critical assumptions. First, the measured process is assumed to be a manifestation in an observable domain of a low-dimensional diffusion process. Thus, it can be expressed by
 \begin{equation}
 	\data(t) = \measfn(\mathbf{x}(t)),
 \end{equation}
-where $\measfn:\mathbb{R}^\lowdim \mapsto \manifold$ is an unknown (possibly nonlinear) function, $\manifold \subset \mathbb{R}^\highdim$ is a $\lowdim$-dimensional manifold,
-and $\mathbf{x}(t)$ is a diffusion process that consists of $d$ underlying variables (with $\lowdim \ll \highdim$).
+where $\measfn:\mathbb{R}^\lowdim \rightarrow \manifold$ is an unknown (possibly nonlinear) function, $\manifold \subset \mathbb{R}^\highdim$ is a $\lowdim$-dimensional manifold,
+and $\mathbf{x}(t)$ is a diffusion process that consists of $\lowdim$ underlying variables (with $\lowdim \ll \highdim$).
 %
 Second, the dynamics of the diffusion process in each of its underlying variables are described by normalized stochastic differential equations as
 \begin{equation}
@@ -91,7 +92,7 @@ where $a_i$ are unknown drift functions and $\dot{W}_i(t)$ are independent white
 %
 The independence is our second critical assumption.
 
-Given a sequence of samples $\data(t), \ t=1,\ldots,\ndata$, we present an empirical method to construct a unique and consistent reduction coordinate set, represented here by $\mathbf{x}(t)$ \cite{singer2008non}.
+Given a sequence of samples $\data(t), \ t=1,\ldots,T$, we present an empirical method to construct a unique and consistent reduction coordinate set, represented here by $\mathbf{x}(t)$ \cite{singer2008non}.
 %
 Because the empirical method we will describe is independent of the observation function $\measfn$,
 we refer to the coordinates of $\mathbf{x}(t)$ as Nonlinear Intrinsic Variables (NIV).
@@ -100,7 +101,7 @@ The available samples $\data(t)$ may be the result of different measurement func
 or they may be partial measurements consisting of merely a subset of the coordinates of the observable domains.
 %
 The idea is to empirically construct a NIV coordinate system driven entirely by measurements that is invariant to the observation function $\measfn$
-(see \fig~\ref{fig:IntrinsicIllustration} for a schematic illustration).
+(see Figure \ref{fig:IntrinsicIllustration} for a schematic illustration).
 %
 We remark that the available data should be ``rich enough'', i.e., consist of a sufficient amount of historical data with adequate variability, in order to obtain the full empirical model;
 this is further discussed and demonstrated in the experimental study.
@@ -119,21 +120,175 @@ to estimate the tangent planes of the observable manifolds {\em via the principa
 %
 (3) The NIV are constructed through the eigenvalue decomposition of a Laplace operator that is built upon a pairwise affinity between the samples, defined using this Riemannian metric.
 
-\begin{figure}[t]
-\centering
+\begin{figure*}[ht]
 \includegraphics[width=5in]{fig1}
-\caption[Illustration of the nonlinear embedding that yields an intrinsic representation independent of the measurement function]{Illustration of the nonlinear embedding that yields an intrinsic representation independent of the measurement function $\measfn$. (Bottom) The underlying variables in which the noises are independent with unit variance. The circle illustrates samples from, say, a short trajectory in time that sample a disc on the manifold. (Top Left) The first set of observed variables. The ellipse illustrates the mapping of the sphere of the underlying samples into the observable domain via the first observation function. In this sketch, we illustrate that the observations might be {\em partial}, i.e., might consist of merely a subset of the observed domain variables. (Top Right) Second set of observable variables. The ellipse illustrates the mapping of the sphere of the underlying samples into this (different) observable domain via a second observation function.
+\caption{Illustration of the nonlinear embedding that yields an intrinsic representation independent of the measurement function $\measfn$. (Bottom) The underlying variables in which the noises are independent with unit variance. The circle illustrates samples from, say, a short trajectory in time that sample a disc on the manifold. (Top Left) The first set of observed variables. The ellipse illustrates the mapping of the sphere of the underlying samples into the observable domain via the first observation function. In this sketch, we illustrate that the observations might be {\em partial}, i.e., might consist of merely a subset of the observed domain variables. (Top Right) Second set of observable variables. The ellipse illustrates the mapping of the sphere of the underlying samples into this (different) observable domain via a second observation function.
 \label{fig:IntrinsicIllustration}}
-\end{figure}
+\end{figure*}
 
+\subsection{Merging Data with Diffusion Maps and the Mahalanobis Distance}
+\label{subsec:mahalanobis}
 
-\section{Merging data}
+We use the Mahalanobis distance in \eqref{eq:mahalanobis1}, with the covariance estimation in \eqref{eq:cov1}, to compare pairs of data points. 
+%
+%Let $\mathbf{C}(t)$ be the covariance matrix associated with the measured sample $\mathbf{Y}(t)$. In practice, the covariance matrix can be estimated from a short trajectory of samples in time around the sample $\mathbf{Y}(t)$ by
+%\begin{equation}
+%	\widehat{\mathbf{C}}(t) = \sum \limits _{\tau = t-L}^{t+L} (\mathbf{Y}(\tau) - \widehat{\boldsymbol{\mu}}(t))(\mathbf{Y}(\tau) - \widehat{\boldsymbol{\mu}}(t))^T,
+%	\label{eq:cov}
+%\end{equation}
+%where $\widehat{\boldsymbol{\mu}}(t)$ is the empirical mean of the short trajectory of samples.
+%%
+%We define a Riemannian metric between a pair of samples using the associated covariance matrices as
+%\begin{equation}
+%	d^2(\mathbf{Y}(t), \mathbf{Y}(\tau)) = 2 (\mathbf{Y}(t) - \mathbf{Y}(\tau))^T(\widehat{\mathbf{C}}(t) + \widehat{\mathbf{C}}(\tau))^{\dagger}(\mathbf{Y}(t) - \mathbf{Y}(\tau));
+%	\label{eq:mahalanobis}
+%\end{equation}
+%this is the Mahalanobis distance (and $^{\dagger}$ denotes a pseudoinverse, as discussed below).
+%%
+%As previously described, the covariance matrices convey the local variability of the measurements and are utilized to explore and learn the tangent planes of the observable manifold.
+%%
+%This information is then utilized in \eqref{eq:mahalanobis} to compare a pair of points according to the directions of their respective tangent planes.
+%
+The Mahalanobis distance is invariant under affine transformations.
+%
+Thus, by assuming that the observation function $\measfn$ is bi-Lipschitz and smooth, and by using local linearization of the function, i.e., $\data(t) = \mathbf{J}(t) \mathbf{x}(t) + \boldsymbol{\epsilon}(t)$ where $\mathbf{J}(t)$ is the Jacobian of $\measfn(\mathbf{x}(t))$ and $\boldsymbol{\epsilon}(t)$ is the residual consisting of higher-order terms, it was shown by Singer and Coifman \cite{singer2008non} that $\mathbf{C}(t) = \mathbf{J}(t)\mathbf{J}^T(t)$ and that the Mahalanobis distance approximates the Euclidean distance between the corresponding samples of the underlying process to second order, i.e.,
+\begin{equation}
+	\| \mathbf{x}(t) - \mathbf{x}(\tau) \|^2 = d^2(\data(t), \data(\tau)) + \mathcal{O}(\| \data(t) - \data(\tau)\|^4).
+\end{equation}
+%
+This result implies that the Mahalanobis distance is invariant to the measurement function $\measfn$, and hence,
+it yields the same distances between samples obtained under different observation functions or even partial observations.
+%
+We would like to note that, in general, $\measfn$ being bi-Lipschitz implies that $\measfn$ is invertible (on the $\lowdim$-dimensional
+manifold $\manifold$).
+%
+However, in practice, determining whether $\measfn$ contains sufficient information and is ``rich enough'' to completely determine the underlying process is a non-trivial task.
+%
+In this work, we exploit the fact that $\mathbf{C}(t) = \mathbf{J}(t)\mathbf{J}^T(t)$, which implies that $\mathbf{C}(t)$ is an $\highdim \times \highdim$ positive semidefinite matrix of rank $\lowdim$, to empirically infer the dimension $\lowdim$.
+%
+According to the spectrum of the local covariance matrices and their corresponding spectral gaps, we approximate the rank of the matrices.
+%
+Consistent rank estimates among these local covariance matrices are taken to imply that the measurements are ``rich enough", and hence, may be good indicators for the dimension $\lowdim$.
+%
+Since the dimension $\lowdim$ of the underlying process is typically considerably smaller than the dimension of the measured process $\highdim$,
+the covariance matrix is singular and non-invertible;
+%
+thus, we use the pseudo-inverse in \eqref{eq:mahalanobis1}.
 
+%\subsection{Laplace Operator}
+
+The Mahalanobis distance described in \sec~\ref{subsec:mahalanobis} enables us to compare observations in terms of the intrinsic variables of the associated underlying diffusion process.
+%
+We then use diffusion maps, with the Mahalanobis distance in the kernel matrix in \eqref{eq:dmaps_kernel} and $\dmeps$ as the median of the pairwise distances, to obtain a parameterization our data with respect to the intrinsic variables $\mathbf{x}$. 
+%
+%In this section, we show how to recover the underlying process itself from the pairwise Euclidean distances through the eigenvectors of a Laplace operator.
+%
+%Let $\mathbf{W}$ be a pairwise affinity matrix (kernel) based on a Gaussian, whose $(t,\tau)$-th element is given by
+%\begin{equation}
+%	W_{t,\tau} = \exp \left\{ - \frac{ d^2(\mathbf{Y}(t), \mathbf{Y}(\tau) )} {\varepsilon}\right\},
+%	\label{eq:kernel}
+%\end{equation}
+%where $\varepsilon$ is the kernel scale, which can be set according to Hein and Audibert \cite{hein2005intrinsic} and Coifman {\em et al.} \cite{coifman2008graph}.
+%%
+%Based on the kernel, we form a weighted graph, where the measurements $\mathbf{Y}(t)$ are the graph nodes and the weight of the edge connecting node $\mathbf{Y}(t)$ to node $\mathbf{Y}(\tau)$ is $W_{t,\tau}$.
+%%
+%In particular, a Gaussian kernel exhibits a notion of locality by defining a neighborhood around each measurement $\mathbf{Y}(t)$ of radius $\varepsilon$,
+%i.e., measurements $\mathbf{Y}(\tau)$ such that $d^2(\mathbf{Y}(t), \mathbf{Y}(\tau) ) > \varepsilon$ are weakly connected to $\mathbf{Y}(t)$.
+%%
+%In practice, we set $\varepsilon$ to be the median of the pairwise distances.
+%%
+%According to the graph interpretation, this implies a well-connected graph because each measurement is effectively connected to half of the other measurements \cite{rohrdanz2011determination}.
+%
+%Let $\mathbf{D}$ be a diagonal matrix whose elements are the row sums of $\mathbf{W}$, and let 
+%\begin{equation}\label{eq:kernel}
+%\mathbf{W}^{\mathrm{norm}} = \mathbf{D}^{-1/2}\mathbf{W}\mathbf{D}^{-1/2}
+%\end{equation}
+%be a normalized kernel that shares its eigenvectors with the normalized graph-Laplacian $\mathbf{I}-\mathbf{W}^{\mathrm{norm}} \:$ \cite{chung1997spectral}.
+%%
+%The diagonal entries of $D$ serve as estimates for the density of data around each point.
+%%
+%The eigenvectors of $\mathbf{W}^{\mathrm{norm}}$, denoted $\psi_j$, reveal the underlying structure of the data \cite{coifman2005geometric}.
+%%
+%Specifically, the $i$-th coordinate of the $j$-th eigenvector can be associated with an intrinsic coordinate $j$ of the sample $\mathbf{x}(i)$ of the underlying process.
+%%
+%The eigenvectors are ordered such that $|\lambda_1| \ge |\lambda_2| \ge \dots \ge |\lambda_n|$, where $\lambda_j$ is the eigenvalue associated with eigenvector $\psi_j$.
+%%
+%Because $\mathbf{W}^{\mathrm{norm}} \sim \mathbf{D}^{-1}\mathbf{W} $, and $\mathbf{D}^{-1}\mathbf{W}$ is row-stochastic,
+%$\lambda_1 = 1$ and $\psi_1$ is the diagonal of $\mathbf{D}^{1/2}$.
+%%
+%The next few eigenvectors can be argued to describe the geometry of the underlying manifold \cite{coifman2005geometric}.
+%%
+%However, some eigenvectors can be higher harmonics of the same principal direction along the data manifold.
+%This is analogous to how the eigenfunctions $\cos x$ and $\cos 2x$ of the usual Laplacian in one spatial dimension
+%and with no flux boundary conditions are one-to-one with the values of $x$ for $0 \le x \le 1$;
+%one must check for correlations between the eigenvectors before selecting those that describe the underlying manifold geometry.
+%%
+%The above steps to construct the nonlinear intrinsic variables are summarized in Algorithm \ref{algo}.
+%
+%Ignoring the higher harmonics, each retained eigenvector then describes an intrinsic variable for the data set of interest.
+%%
+%%Because eigenvectors can be determined up to a scaling factor,
+%We must normalize the eigenvectors from different data sets so that the resulting embeddings are consistent.
+%%
+%We first scale the eigenvectors so that $\|\psi_i\| = T$, where $T$ is the number of data points,
+%to make the embedding coordinates invariant to the size of the data set.
+%%twice as many samples as another data set, but with the same underlying geometry, should have twice the norm.
+%%
+%Still, the computed embedding eigenvectors, even for two identical data sets, may differ by a sign.
+%%
+%Reconciling the signs for the embeddings of different data sets can be rationally done in several ways and is somewhat problem-specific.
+%%
+%For example, if the mean of the embedding is sufficiently far from 0, we can require $\langle \psi_i \rangle > 0$;
+%alternatively, if there is a common region sampled by both data sets, the sign of each eigenvector can be chosen to optimize the consistency of the embeddings of the common region data.
+%%
+%We will return to the issue of embedding consistency for different data sets in our concluding discussion; for the moment,
+%we will assume that our different sets sample the same region of data space in a representative enough way such that the
+%correspondence between the sequences of retained eigenvectors for different embeddings is obvious.
+%
+%\begin{table}[th!]
+%\caption{Nonlinear Intrinsic Variables Construction}
+%\begin{enumerate}
+%
+%\item
+%Obtain a sequence of high-dimensional observation samples $\mathbf{Y}(t)$.
+%
+%\item
+%Compute the empirical covariance matrix $\widehat{\mathbf{C}}(t)$ of each sample $\mathbf{Y}(t)$ {\em in a short window in time} according to \eqref{eq:cov}.
+%
+%\item
+%Using the samples and their associated covariance matrices, compute the Mahalanobis distance between the observations \eqref{eq:mahalanobis} .
+%
+%\item
+%Build the pairwise affinity matrix $\mathbf{W}$ and the corresponding normalized kernel $\mathbf{W}^{\mathrm{norm}}$ (\ref{eq:kernel}).
+%
+%\item
+%Apply eigenvalue decomposition to the normalized kernel and view the values of its principal eigenvectors (modulo the possibility of
+% ``higher harmonics", see text) as the Nonlinear Intrinsic Variables (NIV) of the given observations.
+%
+%\end{enumerate}
+%\hrule
+%\label{algo}
+%\end{table}
+%
+%\subsection{Limiting Diffusion Operator} \label{sec:diff_limit}
+%
+%Assume that the dynamics of the underlying variables in \eqref{eq:dynamics} can be rewritten as
+%\begin{equation} \label{eq:Langevin}
+%	d\mathbf{x}(t) = - \nabla U(\mathbf{x}(t)) dt + d \mathbf{w}(t),
+%\end{equation}
+%where the drift term is expressed as a gradient of a potential $U$ and $\dot{\mathbf{w}}(t) \in \mathbb{R}^d$ is a vector consisting of independent white noises.
+%%
+%Nadler {\em et al.} \cite{nadler2006diffusion} showed that in the limit $\varepsilon \rightarrow 0$ and $T \rightarrow \infty$ the kernel $\mathbf{W}^{\mathrm{norm}}$ converges to the continuous backward Fokker-Planck operator
+%\begin{equation}
+%	\mathcal{L} = \Delta - \nabla U \cdot \nabla.
+%	\label{eq:limiting_operator}
+%\end{equation}
+%%
 We remark that, while in diffusion maps \cite{coifman2005geometric}, the limiting operator is the Laplacian on the manifold on which the observations lie,
 here the Laplacian operator on the data that is based on the Mahalanobis distance converges to a limiting Laplacian operator on the
 manifold of the intrinsic variables $\mathbf{x}$.
-
-The convergence to the limiting operator implies that the eigenvectors of $\mathbf{A}^{(1/2)}$, which are used to represent the NIV, approximate the eigenfunctions of the limiting Fokker-Planck operator on the NIV manifold.
+%
+The convergence to the limiting operator implies that the eigenvectors of $\mathbf{W}^{\alpha}$, which are used to represent the NIV, approximate the eigenfunctions of the limiting Fokker-Planck operator on the NIV manifold.
 %
 As such, according to \eqref{eq:limiting_operator}, they depend on the potential.
 %
@@ -146,26 +301,30 @@ In order to merge observations from different regions,
 the fundamental question is, to what extent the respective sampling densities affect the coordinates we obtain.
 %
 In principle, we can decouple diffusion dynamics (and thus, equilibrium densities)
-from geometry by normalizing the diffusion kernel with the sample density.
+from geometry by normalizing the diffusion kernel with the sample density via the $\alpha=1$ normalization discussed in \sec~\ref{sec:diff_limit}.
 %
-This has been explored for diffusion maps independently of NIV \cite{coifman2005geometric}.
+%This has been explored for diffusion maps independently of NIV \cite{coifman2005geometric}.
 %
-When the $\alpha=1$ kernel normalization is used (see \sec~\ref{sec:diff_limit}),
-the limiting diffusion operator is the Laplace-Beltrami operator \cite{nadler2006diffusion}.
+%When the normalized kernel is defined as 
+%\begin{equation} \label{eq:norm_kernel}
+%\widetilde{\mathbf{W}}^{\mathrm{norm}} = \mathbf{D}^{-1}\mathbf{W}\mathbf{D}^{-1},
+%\end{equation}
+%the limiting diffusion operator is the Laplace-Beltrami operator \cite{nadler2006diffusion}, given by $\widetilde{\mathcal{L}} = \Delta$.
 %
-In other words, this diffusion captures only the geometry of the observations and is invariant to the potential (or, alternatively,
+%In other words, 
+This diffusion captures only the geometry of the observations and is invariant to the potential (or, alternatively,
 to the details of the sampling density).
-
-Since local coordinates are based on the local diffsuion, sets of measurements from different regions
-will essentially detect the same system of coordinates (the same variable ``axes");
+%This kernel is similar to the kernel in \eqref{eq:kernel}, but $D$ appears with coefficient -1 rather than $-1/2$.
+%
+Since local coordinates are based on the noise term in \eqref{eq:dynamics}, sets of measurements from different regions
+will essentially detect the same system of coordinates (the same variable ``axes"); 
 yet different sampling densities (arising, for example,
-from the drift term in the Fokker-Planck) will result in different {\em scalings} of these axes.
+from the drift term in \eqref{eq:dynamics}) will result in different {\em scalings} of these axes.
 %
 Applying the Laplace-Beltrami normalization in the NIV context will thus eliminate sampling density effects.
 %
 An alternative approach would find the scaling transformations that optimally ``register"
 data sampled from common regions (in the spirit of histogram reweighting \cite{ferrenberg1988new}).
-
 
 \section{Laplacian Pyramids for Data Extension} \label{sec:LapPyr}
 
