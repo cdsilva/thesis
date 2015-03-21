@@ -1,11 +1,13 @@
+% !TEX root = ../thesis.tex
+
 
 \chapter{Introduction\label{ch:intro}}
 
 Modeling dynamical systems is an essential component of most science and engineering disciplines. 
 %
-Substantial research efforts are dedicated to constructing models for complex phenomena, such as chemical reactions \cite{...}, fluid flow \cite{...}, and gene expression \cite{...}. 
+Substantial research efforts are dedicated to constructing models for complex phenomena, such as chemical reactions \cite{dong2007simplification, gillespie1977exact, gallagher1986combined}, fluid flow \cite{anderson1995computational}, and gene expression \cite{bar2004analyzing, storey2005significance}. 
 %
-These models both allow researchers to run very inexpensive {\em in silico} ``experiments'', and can also be incorporated into larger, system level models and optimization routines \cite{...}. 
+These models both allow researchers to run very inexpensive {\em in silico} ``experiments'', and can also be incorporated into larger, system level models and optimization routines \cite{daoutidis2013engineering, oluwole2006rigorous, rubert2014advanced}. 
 
 Often a lower-dimensional model which captures the general trends of the dynamical system is preferable to a higher-dimensional model which captures all the fine-scale details. 
 %
@@ -72,9 +74,9 @@ Alternatively, data can be collected from simulations of a detailed, high-dimens
 Traditionally, model reduction in engineering disciplines has been done using some {\em a priori} knowledge about separation of time scales,
 such as using the quasi-steady state approximation to reduce a network of chemical reactions \cite{bowen1963singular}.
 %
-Alternatively, empirical knowledge about the system of interest has been used to develop coarse grained descriptions, such as grouping atoms of a macromolecule into larger ``beads'' to accelerate simulations\cite{monticelli2008martini, spiga2013electrostatic,izvekov2005systematic, saunders2013coarse}.
+Alternatively, empirical knowledge about the system of interest has been used to develop coarse grained descriptions, such as grouping atoms of a macromolecule into larger ``beads'' to accelerate simulations \cite{izvekov2005systematic, monticelli2008martini, saunders2013coarse, spiga2013electrostatic}.
 %
-Progress variables and order parameters which effectively parameterize a system's dynamics, such as the radius of gyration in protein folding problems \cite{...} or a specific morphological feature which parameterizes an organism's developmental progress \cite{...}, are often posited after many empirical observations and not immediately obvious for new systems of interest. 
+Progress variables and order parameters which effectively parameterize a system's dynamics, such as the radius of gyration in protein folding problems \cite{lazaridis1997new, kim2015systematic} or a specific morphological feature which parameterizes an organism's developmental progress \cite{dubuis2013accurate, hamaratoglu2011dpp}, are often posited after many empirical observations and are not immediately obvious for new systems of interest. 
 %
 However, dimensionality reduction algorithms allow for the systematic discovery of data-driven, low-dimensional descriptions that circumvent the need for such {\em a priori} knowledge, and the automated detection of a few good, coarse-grained
 order parameters can be invaluable in understanding and predicting system behavior.
@@ -93,7 +95,7 @@ The vectors which define this hyperplane are the eigenvectors of a covariance ma
 %
 PCA is extraordinarily simple to implement, and fast and accurate algorithms already exist for eigenvalue decomposition of a matrix, the main computation in PCA.
 %
-PCA has therefore been used in a variety of disciplines, including signal processing \cite{...},  fluid dynamics \cite{...}, and genetics \cite{...}. 
+PCA has therefore been used in a variety of disciplines, including fluid dynamics \cite{rowley2004model, kunisch2002galerkin}, genetics \cite{alter2000singular, troyanskaya2001missing}, and signal processing \cite{vaseghi2008advanced}. 
 
 Although PCA has been extremely useful in a variety of contexts and applications, its functionality is limited because it is a linear technique. 
 %

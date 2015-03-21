@@ -1,4 +1,6 @@
-\chapter{Merging Data\label{ch:merging}}
+% !TEX root = ../thesis.tex
+
+\chapter{Merging Data \label{ch:merging}}
 
 \graphicspath{{ch-merging/figures/}}
 
@@ -881,26 +883,30 @@ We therefore conclude that the alanine dipeptide data does contain a measure of 
 \end{figure}
 
 \begin{figure}[t]
-\begin{subfigure}{\textwidth}
+\begin{subfigure}{0.3\textwidth}
 \centering
-\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule300_balls}
-\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule300_wire}
+\includegraphics[width=\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule300_balls}
+\includegraphics[width=\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule300_wire}
 \caption{}
 \label{subfig:ala_molecules1}
 \end{subfigure}    
-
-\begin{subfigure}{\textwidth}
+%
+\hfill
+%
+\begin{subfigure}{0.3\textwidth}
 \centering
-\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule600_balls}
-\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule600_wire}
+\includegraphics[width=\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule600_balls}
+\includegraphics[width=\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule600_wire}
 \caption{}
 \label{subfig:ala_molecules2}
 \end{subfigure}    
-
-\begin{subfigure}{\textwidth}
+%
+\hfill
+%
+\begin{subfigure}{0.3\textwidth}
 \centering
-\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule900_balls}
-\includegraphics[width=0.4\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule900_wire}
+\includegraphics[width=\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule900_balls}
+\includegraphics[width=\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule900_wire}
 \caption{}
 \label{subfig:ala_molecules3}
 \end{subfigure}    
@@ -957,13 +963,14 @@ the bias due to drift variations.
 %
 We are confident that the exploration of these open questions will enable the use of our methodology in many interesting applications, such as merging data from molecular simulations at different levels of granularity, or merging simulation data with experimental observations.
 
-These two chapters have described using the Mahalanobis distance with diffusion maps to analyze two different types of data common in engineering. 
+These two chapters have described using the Mahalanobis distance with diffusion maps to analyze two different types of data common in dynamical systems: data exhibiting dynamics on several disparate time scales, and data obtained via several different measurement/observation functions. 
 %
 In the next chapter, we will address a third type of data (imaging data). 
 %
 In this example, we will not be interested in removing the effects of fast variables or measurement functions, but instead factoring out rotational symmetries which arise from the experimental imaging setup. 
 %
 We will present another extension of diffusion maps which allows us to simultaneously factor out symmetries and uncover structure in the imaging data. 
-
+%
+For this particular example, recovering structure will correspond to ordering the images in order to recover the relevant developmental dynamics. 
 
 

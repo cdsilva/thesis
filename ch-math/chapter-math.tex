@@ -1,3 +1,5 @@
+% !TEX root = ../thesis.tex
+
 \chapter{Mathematical Methods}\label{ch:math}
 
 \section{Diffusion maps} \label{sec:dmaps}
@@ -12,12 +14,12 @@ Given $\ndata$ data points $\data(1), \dots, \data(\ndata)$ (typically vectors i
 %
 We first construct the kernel matrix $\mathbf{W} \in \mathbb{R}^{\ndata \times \ndata}$, where
 \begin{equation} \label{eq:dmaps_kernel}
-W_{ij} = \exp \left( -\frac{\|\data(i) - \data(j) \|^2}{\dmeps^2} \right).
+\mathbf{W}_{ij} = \exp \left( -\frac{\|\data(i) - \data(j) \|^2}{\dmeps^2} \right).
 \end{equation}
 Here, $\| \cdot \|$ denotes the appropriate norm, and $\dmeps$ is the kernel scale
 and denotes a characteristic distance within the data set.
 %
-Note that $\dmeps$ induces a notion of locality: if $\|\data(i) - \data(j) \| \gg \dmeps$, then $W_{ij}$ is negligible.
+Note that $\dmeps$ induces a notion of locality: if $\|\data(i) - \data(j) \| \gg \dmeps$, then $\mathbf{W}_{ij}$ is negligible.
 %
 Therefore, we only need our metric to be informative within a ball of radius $\dmeps$.
 %
@@ -29,14 +31,14 @@ we often use the median of the pairwise distances as $\dmeps$, as it empirically
 %We note that the eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ solve the following optimization problem \citep{Belkin2003}
 We then consider solving the following optimization problem \citep{Belkin2003}
 \begin{equation} \label{eq:dmaps_opt_problem}
-\argmin_{f} \sum_{ij} W_{ij} (f(\data(i)) - f(\data(j)))^2.
+\argmin_{f} \sum_{ij} \mathbf{W}_{ij} (f(\data(i)) - f(\data(j)))^2.
 \end{equation}
 %
 Because of our definition of the matrix $\mathbf{W}$, solving this optimization problem will preserve local geometry, such that $f(\data(i))$ and $f(\data(j))$ will be similar if $\data(i)$ and $\data(j)$ are close. 
 %
 To solve \eqref{eq:dmaps_opt_problem}, we construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{\ndata \times \ndata}$, with
 \begin{equation}
-D_{ii} = \sum_{j=1}^\ndata W_{ij}.
+\mathbf{D}_{ii} = \sum_{j=1}^\ndata W_{ij}.
 \end{equation}
 %
 We compute the eigenvalues $\lambda_0, \dots, \lambda_{\ndata-1}$ and eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ of the matrix $\mathbf{A} = \mathbf{D}^{-1}\mathbf{W}$, and order them such that $1 = \lambda_0 \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata-1}|$.
@@ -52,19 +54,19 @@ The mapping
 \begin{equation} \label{eq:dmaps_embed_full}
 \data(i) \mapsto 
 \begin{pmatrix}
-\lambda_1^t \phi_1(i) \\
-\lambda_2^t \phi_2(i) \\
+\lambda_1^\tau \phi_1(i) \\
+\lambda_2^\tau \phi_2(i) \\
 \vdots \\
-\lambda_{\ndata-1}^t  \phi_{\ndata-1}(i)
+\lambda_{\ndata-1}^\tau  \phi_{\ndata-1}(i)
 \end{pmatrix}
 \end{equation}
-is the diffusion maps embedding for the data, where $t > 0$ is a parameter.
+is the diffusion maps embedding for the data, where $\tau > 0$ is a parameter.
 %
-We typically take $t=0$ in our analysis, which corresponds to the Laplacian Eigenmaps embedding \cite{Belkin2003}.  
+We typically take $\tau=0$ in our analysis, which corresponds to the Laplacian Eigenmaps embedding \cite{Belkin2003}.  
 %
-We then define the diffusion distance $D_t (\data(i), \data(j))$ as 
+We then define the diffusion distance $D_\tau (\data(i), \data(j))$ as 
 \begin{equation}
-D_t^2 (\data(i), \data(j)) = \sum_{k=1}^{\ndata-1} \lambda_k^{2t} \left( \phi_k(i)- \phi_k(j) \right)^2.
+D_\tau^2 (\data(i), \data(j)) = \sum_{k=1}^{\ndata-1} \lambda_k^{2\tau} \left( \phi_k(i)- \phi_k(j) \right)^2.
 \end{equation}
 %
 The diffusion maps embedding therefore projects the data into a space where the Euclidean distance is equivalent to the diffusion distance. 
@@ -73,10 +75,10 @@ If the eigenvalues exhibit a spectral gap, where $|\lambda_1| \ge |\lambda_2| \g
 \begin{equation} \label{eq:dmaps_embed_reduced}
 \data(i) \mapsto 
 \begin{pmatrix}
-\lambda_1^t \phi_1(i) \\
-\lambda_2^t \phi_2(i) \\
+\lambda_1^\tau \phi_1(i) \\
+\lambda_2^\tau \phi_2(i) \\
 \vdots \\
-\lambda_{\lowdim}^t  \phi_{\lowdim}(i)
+\lambda_{\lowdim}^\tau  \phi_{\lowdim}(i)
 \end{pmatrix}
 \end{equation}
 %
@@ -117,7 +119,7 @@ Similarly, for the examples in \chap~\ref{ch:drosophila}, the sign of the eigenv
 
 \subsection{Family of operators} \label{sec:diff_limit}
 
-In the limit $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$, the matrix $\mathbf{I} - \mathbf{A}$ converges to the continuous backward Fokker-Planck operator \cite{nadler2006diffusion}
+In the limit $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$, the matrix $\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A} \right) $ converges to the continuous backward Fokker-Planck operator \cite{nadler2006diffusion}
 \begin{equation}
 	\mathcal{L} = \Delta - 2 \nabla U \cdot \nabla.
 	\label{eq:limiting_operator}
@@ -128,15 +130,15 @@ However, we can construct a family of diffusion operators
 \begin{equation} \label{eq:kernel2}
 \mathbf{A}^{(\alpha)} = {\mathbf{D}^{(\alpha)}}^{-1} \mathbf{W}^{(\alpha)}
 \end{equation}
-where $\mathbf{W}^{(\alpha)} = \mathbf{D}^{-\alpha} \mathbf{W} \mathbf{D}^{-\alpha}$ 
+for $0 \le \alpha \le 1$, where $\mathbf{W}^{(\alpha)} = \mathbf{D}^{-\alpha} \mathbf{W} \mathbf{D}^{-\alpha}$ 
 and $\mathbf{D}^{(\alpha)}$ is a diagonal matrix with $\mathbf{D}^{(\alpha)}_{ii} = \sum_{j=1}^\ndata \mathbf{W}^{(\alpha)}$.
 %
 We then have \cite{coifman2005geometric}
 \begin{equation}
 \begin{aligned}
-\mathbf{A}^{(0)} & \rightarrow \Delta - 2 \nabla U \cdot \nabla \\
-\mathbf{A}^{(1/2)} & \rightarrow \Delta - \nabla U \cdot \nabla \\
-\mathbf{A}^{(1)} & \rightarrow \Delta  
+\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A}^{(0)} \right) & \rightarrow \Delta - 2 \nabla U \cdot \nabla \\
+\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A}^{(1/2)} \right) & \rightarrow \Delta - \nabla U \cdot \nabla \\
+\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A}^{(1)} \right) & \rightarrow \Delta  
 \end{aligned}
 \end{equation}
 %
@@ -215,8 +217,8 @@ Alternatively, we can estimate the local covariance by using small bursts of sim
 \begin{multline} \label{eq:cov2}
 \hat{C}_{ij}(\data(t), \delta t)
 = \\
-\frac{1}{ \delta t} \left( \mathbb{E} \left[ y_i (t+\delta t) y_j (t+ \delta t) \mid \data(t) \right]
-- \mathbb{E} \left[ y_i (t+\delta t) \mid \data(t) \right] \mathbb{E} \left[ y_j (t+\delta t) \mid \data(t) \right] \right) ,
+\frac{1}{ \delta t} \left( \mathbb{E} \left[ \data_i (t+\delta t) \data_j (t+ \delta t) \mid \data(t) \right]
+- \mathbb{E} \left[ \data_i (t+\delta t) \mid \data(t) \right] \mathbb{E} \left[ \data_j (t+\delta t) \mid \data(t) \right] \right) ,
 \end{multline}
 %
 where $\delta t > 0$ is the length of the simulation burst.
@@ -303,7 +305,7 @@ First assume that each signal $\data_i$ is a {\it noisy} rotated copy of the und
 \begin{equation}
 \data_i = f(\data_{true}, \theta_i) + \mathbf{\xi}_i
 \end{equation}
-where the function $f(\data_{true}, \theta_i)$ rotates the signal $x_{true}$ by $\theta_i$ degrees, and $\mathbf{\xi}_i$ is a (typically Gaussian) noise term.
+where the function $f(\data_{true}, \theta_i)$ rotates the signal $\data_{true}$ by $\theta_i$ degrees, and $\mathbf{\xi}_i$ is a (typically Gaussian) noise term.
 %
 Our goal is to recover $\theta_1, \dots, \theta_\ndata$.
 %
@@ -331,71 +333,71 @@ can be used \citep{ahuja2007template}.
 
 Rather than work with the angles $\theta_{ij}$ directly, it is more convenient to consider the rotation matrices,
 \begin{equation} \label{eq:R_theta}
-R(\theta_{ij}) = \begin{bmatrix}
+\mathbf{R}(\theta_{ij}) = \begin{bmatrix}
 \cos(\theta_{ij}) & -\sin(\theta_{ij}) \\
 \sin(\theta_{ij}) & \cos(\theta_{ij})
 \end{bmatrix},
 \end{equation}
 which we can think of as operating on the points of the unit circle (on the plane) on which our signal is defined.
 %
-Successive rotations correspond to multiplication of the corresponding rotation matrices: $R(\alpha_1 + \alpha_2) = R(\alpha_1) R(\alpha_2)$.
+Successive rotations correspond to multiplication of the corresponding rotation matrices: $\mathbf{R}(\gamma_1 + \gamma_2) = \mathbf{R}(\gamma_1) \mathbf{R}(\gamma_2)$.
 %
-Due to the orthogonality of rotation matrices, $R(-\alpha) = R(\alpha)^T$.
+Due to the orthogonality of rotation matrices, $\mathbf{R}(-\gamma) = \mathbf{R}(\gamma)^T$.
 
-Let $d$ denote the dimension of the rotation matrices we are considering (for planar rotations, $R(\theta_{ij}) \in \mathbb{R}^{2 \times 2}$ and $d=2$).
+Let $\rotdim$ denote the dimension of the rotation matrices we are considering (for planar rotations, $\mathbf{R}(\theta_{ij}) \in \mathbb{R}^{2 \times 2}$ and $\rotdim=2$).
 %
-We construct the matrix $H \in \mathbb{R}^{\ndata d \times \ndata d}$, where $H$ is an $m \times m$ matrix of $d \times d$ blocks, with the $i,j^{th}$ block of $H$, $H_{ij}$, defined as
+We construct the matrix $\mathbf{H} \in \mathbb{R}^{\ndata \rotdim \times \ndata \rotdim}$, where $\mathbf{H}$ is an $m \times m$ matrix of $\rotdim \times \rotdim$ blocks, with the $i,j^{th}$ block of $\mathbf{H}$, $\mathbf{H}_{ij}$, defined as
 \begin{equation} \label{eq:H_to_R}
-H_{ij} = R(\theta_{ij}).
+\mathbf{H}_{ij} = \mathbf{R}(\theta_{ij}).
 \end{equation}
 %
 %
-Under our assumption that $\theta_{ij} \approx \theta_i - \theta_j$, $H_{ij} \approx R(\theta_i) R(\theta_j)^T$
+Under our assumption that $\theta_{ij} \approx \theta_i - \theta_j$, $\mathbf{H}_{ij} \approx \mathbf{R}(\theta_i) \mathbf{R}(\theta_j)^T$
 %\begin{equation}
 %H_{ij} = R(\theta_{ij}) \approx R(\theta_i - \theta_j) = R(\theta_i) R(-\theta_j) = R(\theta_i) R(\theta_j)^T,
 %\end{equation}
  and
 \begin{equation} \label{eq:H_low_rank}
-	H \approx
+	\mathbf{H} \approx
 	\begin{bmatrix}
-	R(\theta_1) \\
-	R(\theta_2) \\
+	\mathbf{R}(\theta_1) \\
+	\mathbf{R}(\theta_2) \\
 	\vdots \\
-	R(\theta_\ndata)
+	\mathbf{R}(\theta_\ndata)
 	\end{bmatrix}
 	\begin{bmatrix}
-	R(\theta_1)^T R(\theta_2)^T \dots R(\theta_\ndata)^T
+	\mathbf{R}(\theta_1)^T \mathbf{R}(\theta_2)^T \dots \mathbf{R}(\theta_\ndata)^T
 	\end{bmatrix}.
 \end{equation}
 %
-It follows directly from \eqref{eq:H_low_rank} that the top block eigenvector of $H$ contains our best estimates of $R(\theta_1), R(\theta_2), \dots, R(\theta_m)$.
+It follows directly from \eqref{eq:H_low_rank} that the top block eigenvector of $\mathbf{H}$ contains our best estimates of $\mathbf{R}(\theta_1), \mathbf{R}(\theta_2), \dots, \mathbf{R}(\theta_m)$.
 %
-Let $\phi_0, \phi_1, \dots, \phi_{\ndata d-1}$ denote the eigenvectors of $H$ ordered so that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata d -1}|$, where $\lambda_i$ is the eigenvalue corresponding to $\phi_i$.
+Let $\phi_0, \phi_1, \dots, \phi_{\ndata \rotdim-1}$ denote the eigenvectors of $\mathbf{H}$ ordered so that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata \rotdim -1}|$, where $\lambda_i$ is the eigenvalue corresponding to $\phi_i$.
 %
 Then,
 \begin{equation} \label{eq:R_hat}
-\hat{R} =
+\hat{\mathbf{R}} =
 \begin{bmatrix}
-\hat{R}_1 \\
-\hat{R}_2 \\
+\hat{\mathbf{R}}_1 \\
+\hat{\mathbf{R}}_2 \\
 \vdots \\
-\hat{R}_\ndata
+\hat{\mathbf{R}}_\ndata
 \end{bmatrix} =
 \begin{bmatrix}
 | & | & & | \\
-\phi_0 & \phi_1 & \dots & \phi_{d-1} \\
+\phi_0 & \phi_1 & \dots & \phi_{\rotdim-1} \\
 | & | & & |
 \end{bmatrix},
 \end{equation}
-where $\hat{R}_i \in \mathbb{R}^{d \times d}$ is (nearly) the estimate for $R(\theta_i)$.
+where $\hat{\mathbf{R}}_i \in \mathbb{R}^{\rotdim \times \rotdim}$ is (nearly) the estimate for $\mathbf{R}(\theta_i)$.
 %
-To obtain our estimate of $R(\theta_i$), denoted $R_{i, est}$, we project $\hat{R}_i$ onto the closest orthogonal matrix,
+To obtain our estimate of $\mathbf{R}(\theta_i$), denoted $\mathbf{R}_{i, est}$, we project $\hat{\mathbf{R}}_i$ onto the closest orthogonal matrix,
 \begin{equation} \label{eq:R_est}
-R_{i, est} = U_i V_i^T,
+\mathbf{R}_{i, est} = \mathbf{U}_i \mathbf{V}_i^T,
 \end{equation}
-where $U_i$ and $V_i$ are the left and right singular vectors, respectively, of $\hat{R}_i$.
+where $\mathbf{U}_i$ and $\mathbf{V}_i$ are the left and right singular vectors, respectively, of $\hat{\mathbf{R}}_i$.
 %
-We adjust the sign of $\phi_1$ so that $det(R_{i, est}) = +1$, ensuring proper rotations 
+We adjust the sign of $\phi_1$ so that $det(\mathbf{R}_{i, est}) = +1$, ensuring proper rotations 
 (note that systematically incorporating improper rotations is also possible \citep{goemans1995improved, bandeira2013cheeger}).
 %
 We estimate $\theta_{i}$ by inverting \eqref{eq:R_theta}, and register the signals by rotating signal $i$ by $-\theta_i$.
@@ -406,43 +408,43 @@ discrete shift.
 
 Importantly, this formulation also considers {\it higher-order} consistency information.
 %
-For example, given our pairwise estimates $R_{ij}$, we know that relationships of the form
+For example, given our pairwise estimates $\mathbf{R}_{ij}$, we know that relationships of the form
 \begin{equation} \label{eq:triplet_consistency}
-R(\theta_{ik}) R(\theta_{kj}) \approx R(\theta_i) R(\theta_k)^T R(\theta_k) R(\theta_j)^T = R(\theta_i) R(\theta_j)^T
+\mathbf{R}(\theta_{ik}) \mathbf{R}(\theta_{kj}) \approx \mathbf{R}(\theta_i) \mathbf{R}(\theta_k)^T \mathbf{R}(\theta_k) \mathbf{R}(\theta_j)^T = \mathbf{R}(\theta_i) \mathbf{R}(\theta_j)^T
 \end{equation}
 should also hold.
 %
 Note that
 \begin{equation}
-(H^2)_{ij} = \sum_k R(\theta_{ik}) R(\theta_{kj});
+(\mathbf{H}^2)_{ij} = \sum_k \mathbf{R}(\theta_{ik}) \mathbf{R}(\theta_{kj});
 \end{equation}
-therefore, {\it all} information of the form in \eqref{eq:triplet_consistency} is contained in the matrix $H^2$ (and higher order
+therefore, {\it all} information of the form in \eqref{eq:triplet_consistency} is contained in the matrix $\mathbf{H}^2$ (and higher order
 consistency information in its higher powers).
 %
-Because $H$ and $H^2$ have the same eigenvectors, our problem formulation accounts for not only pairwise alignment information, but also these higher-order considerations.
+Because $\mathbf{H}$ and $\mathbf{H}^2$ have the same eigenvectors, our problem formulation accounts for not only pairwise alignment information, but also these higher-order considerations.
 
 \section{Vector diffusion maps}
 
 Vector diffusion maps combines the algorithms of angular synchronization and diffusion maps into a single computation that both removes rotational symmetries and parameterizes the data {\em modulo} these symmetries \cite{singer2012vector}.
 %
-Given data points $\data_1, \dots, \data_\ndata$, one first constructs the matrix $S \in \mathbb{R}^{\ndata d \times \ndata d}$, with the $i,j^{th}$ block of $S$, $S_{ij}$, defined as
+Given data points $\data_1, \dots, \data_\ndata$, one first constructs the matrix $\mathbf{S} \in \mathbb{R}^{\ndata d \times \ndata d}$, with the $i,j^{th}$ block of $\mathbf{S}$, $\mathbf{S}_{ij}$, defined as
 \begin{equation} \label{eq:vdm_S}
-	S_{ij} = A_{ij} H_{ij}
+	\mathbf{S}_{ij} = \mathbf{A}_{ij} \mathbf{H}_{ij}
 \end{equation}
 %
-where $A_{ij} \in \mathbb{R}$ (defined in \sec~\ref{sec:dmaps}) pertains to the diffusion kernel between data points, and $H_{ij} \in \mathbb{R}^{d \times d}$ (defined in \eqref{eq:H_to_R}) pertains to the pairwise alignment between data points.
+where $\mathbf{A}_{ij} \in \mathbb{R}$ (defined in \sec~\ref{sec:dmaps}) pertains to the diffusion kernel between data points, and $\mathbf{H}_{ij} \in \mathbb{R}^{\rotdim \times \rotdim}$ (defined in \eqref{eq:H_to_R}) pertains to the pairwise alignment between data points.
 %
 It is important to note that distance $d(\data_i, \data_j)$ used in the diffusion kernel in \eqref{eq:dmaps_kernel} is the distance between data points {\it after} after pairwise alignment, i.e., the minimum distance between all possible shifts of the two data points.
 %
 In the language of symmetry groups, this distance is a metric between the orbits induced by the relevant symmetry group.
 
-One then computes the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata d-1}$ and eigenvectors $\phi_0, \phi_1, \dots, \phi_{\ndata d-1}$ of $S$, ordered such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata d-1}|$.
+One then computes the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata \rotdim-1}$ and eigenvectors $\phi_0, \phi_1, \dots, \phi_{\ndata \rotdim-1}$ of $\mathbf{S}$, ordered such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata \rotdim-1}|$.
 %
 These eigenvectors contain information about {\it both} the optimal rotations (the ``synchronization" component) and the
 variation of the data {\it after} the spatial symmetries have been removed.
 %
 Assuming that the data (after symmetries have been factored out) are relatively closely clustered, it is reasonable
-to expect, as in angular synchronization, that the top (block) eigenvector of $S$ contains approximations of the optimal rotations,
+to expect, as in angular synchronization, that the top (block) eigenvector of $\mathbf{S}$ contains approximations of the optimal rotations,
 which can be computed in the same way from \eqref{eq:R_est}.
 %
 We then expect subsequent eigenvectors to contain information about the main direction(s) of data variability modulo the geometric symmetries.
@@ -451,23 +453,23 @@ In general, the embedding coordinates are given by
 \begin{equation} \label{eq:vdm_coord}
 \psi_{k,l} (i) = \langle \phi_k(i), \phi_l(i) \rangle,
 \end{equation}
-where $\phi_k(i) \in \mathbb{R}^d$ denotes the $i^{th}$ block of $\phi_k$,
+where $\phi_k(i) \in \mathbb{R}^{\rotdim}$ denotes the $i^{th}$ block of $\phi_k$,
 %
-If we assume that the rotations and the dynamics are uncoupled and therefore separable, then the eigenvectors of $S$ have the following structure: each block eigenvector contains estimates of the optimal rotations (up to a constant rotation) multiplied by the corresponding embedding coordinate (a scalar)
+If we assume that the rotations and the dynamics are uncoupled and therefore separable, then the eigenvectors of $\mathbf{S}$ have the following structure: each block eigenvector contains estimates of the optimal rotations (up to a constant rotation) multiplied by the corresponding embedding coordinate (a scalar)
 %
 As the first diffusion maps coordinate is constant over the data, the first block eigenvector contains only the optimal rotations.
 %
-The second block eigenvector (eigenvectors $d$ through $2d-1$) contains the optimal rotations, each multiplied by their second diffusion maps coordinate.
+The second block eigenvector (eigenvectors $\rotdim$ through $2\rotdim-1$) contains the optimal rotations, each multiplied by their second diffusion maps coordinate.
 %
 We can therefore recover this diffusion maps coordinate by taking inner products of the columns of the second block eigenvector with columns of the first block eigenvector.
 %
-The $j^{th}$ embedding coordinate will be given by $\psi_{k,l}$, where $jd  < k \le (j+1)d-1$ and $0 \le l \le d-1$,
+The $j^{th}$ embedding coordinate will be given by $\psi_{k,l}$, where $j\rotdim  < k \le (j+1)\rotdim-1$ and $0 \le l \le \rotdim-1$,
 and we select $k, l$ such that the coordinate $\psi_{k, l}$ has the largest variability, i.e., the $j^{th}$ coordinate is $\psi_{k,l}$, where $k, l$ is the solution to
 \begin{equation} \label{eq:first_embed_vdm}
 \max_{
 \begin{matrix}
-jd  \le k \le (j+1)d-1 \\
-0 \le l \le d-1
+j\rotdim \le k \le (j+1)\rotdim-1 \\
+0 \le l \le \rotdim-1
 \end{matrix}}
  \sum_i \psi_{k,l} (i)^2. 
 \end{equation}

@@ -1,3 +1,4 @@
+% !TEX root = ../thesis.tex
 
 \chapter{Temporal Ordering of Images \label{ch:drosophila}}
 
@@ -14,7 +15,7 @@
 \label{fig:fish}
 \end{figure}
 
-In one of the common approaches to studies of developmental dynamics, a group of embryos is fixed and stained to visualize a particular biochemical or morphological process within a developing tissue.
+In one of the common approaches to studies of developmental dynamics in biology, a group of embryos is fixed and stained to visualize a particular biochemical or morphological process within a developing tissue.
 %
 The developmental dynamics must then be reconstructed from multiple embryos, each of which contributes only a snapshot of the relevant process along its developmental trajectory \citep{jaeger2004dynamic, peter2011gene, fowlkes2008quantitative}.
 %
@@ -82,6 +83,8 @@ and ``additional" directions of variability, such as temporal dynamics, which on
 %
 Vector diffusion maps combine two algorithms, {\em angular synchronization} \citep{singer2011angular} for image registration and {\em diffusion maps} \citep{coifman2005geometric} for extracting intrinsic low-dimensional structure in data, into a single computation.
 %
+A schematic illustration of the algorithms is shown in \fig~\ref{fig:schematics}, and the details of the algorithms are given in \chap~\ref{ch:math}.
+%
 We will use the algorithm to register images of developing tissues with respect to planar rotations, as well as uncover the main direction of variability {\it after} removing rotational symmetries.
 %
 Although in general, images may contain variations due to rotations, translations, and scaling, we will remove the relevant translations and/or scaling via relatively simple image preprocessing, and focus only on factoring out rotations using the vector diffusion maps algorithm.
@@ -95,49 +98,49 @@ As a consequence, uncovering this direction should reveal the underlying dynamic
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.8\textwidth]{fig2}
+\includegraphics[width=0.7\textwidth]{fig2}
 \caption[Schematic illustrating angular synchronization and diffusion maps]{Schematic illustrating angular synchronization and diffusion maps. (A) Set of vectors, each in a different orientation. The pairwise alignment angles are indicated. (B) The vectors from A, each rotated about their midpoint so that the set is globally aligned. Note that the chosen rotation angles are consistent with the pairwise alignments in A: the difference between a pair of angles in B is the same as the pairwise angle in A. (C) Data points (in black) which lie on a one-dimensional nonlinear curve in two dimensions. Each pair of points is connected by an edge, and the edge weight is related to the Euclidean distance between the points through a Gaussian kernel (see \eqref{eq:dmaps_kernel}), so that pairs of data point which are close are connected by darker (``stronger'') edges. (D) The data in C, colored by the first (non-trivial) eigenvector from the diffusion map computational procedure. The color intensity is monotonic with the perceived curve arclength, thus parametrizing the curve.}
 \label{fig:schematics}
 \end{figure}
 
-Angular synchronization uses pairwise alignment information to register a set of images in a globally consistent way.
+%Angular synchronization uses pairwise alignment information to register a set of images in a globally consistent way.
+%%
+%A schematic illustration of angular synchronization is shown in \fig~\ref{fig:schematics}A, where each image is represented as a vector, and the goal is to align the entire set of vectors given pairwise alignment measurements.
+%%
+%We first compute the angles needed to align pairs of vectors (or images), which in general requires no notion of a template function \citep{ahuja2007template, sonday2013noisy}.
+%%
+%In this work, we aligned pairs of images with respect to rotations by exhaustively searching over a discretized space of rotation angles to minimize the Euclidean distance between the pixels.
+%%
+%However, pairwise alignments can also be computed by aligning appropriate image landmarks or features \citep{ian1998statistical}.
+%%
+%When the data are noisy, these pairwise measurements may be inaccurate, and so we utilize {\em all} pairwise measurements to align the set of images robustly.
+%%
+%Using the alignment angles between all pairs of vectors, angular synchronization finds the set of rotation angles (one angle for each vector) that is most consistent with {\it all} pairwise measurements (see \sec~\ref{sec:ang_synch}); this is illustrated in \fig~\ref{fig:schematics}B.
+%%
+%In this schematic, registration via angular synchronization is trivial, as the pairwise measurements contain no noise.
+%%
+%However, the algorithm can register data sets even when many of the pairwise measurements are inaccurate \citep{singer2011angular}.
 %
-A schematic illustration of angular synchronization is shown in \fig~\ref{fig:schematics}A, where each image is represented as a vector, and the goal is to align the entire set of vectors given pairwise alignment measurements.
-%
-We first compute the angles needed to align pairs of vectors (or images), which in general requires no notion of a template function \citep{ahuja2007template, sonday2013noisy}.
-%
-In this work, we aligned pairs of images with respect to rotations by exhaustively searching over a discretized space of rotation angles to minimize the Euclidean distance between the pixels.
-%
-However, pairwise alignments can also be computed by aligning appropriate image landmarks or features \citep{ian1998statistical}.
-%
-When the data are noisy, these pairwise measurements may be inaccurate, and so we utilize {\em all} pairwise measurements to align the set of images robustly.
-%
-Using the alignment angles between all pairs of vectors, angular synchronization finds the set of rotation angles (one angle for each vector) that is most consistent with {\it all} pairwise measurements (see \sec~\ref{sec:ang_synch}); this is illustrated in \fig~\ref{fig:schematics}B.
-%
-In this schematic, registration via angular synchronization is trivial, as the pairwise measurements contain no noise.
-%
-However, the algorithm can register data sets even when many of the pairwise measurements are inaccurate \citep{singer2011angular}.
-
-After removing variability due to rotations, the developmental dynamics may be revealed by ordering the data along the one-dimensional curve that parameterizes most of the remaining variability in the data.
-%
-Such a curve can be discovered using diffusion maps \citep{coifman2005geometric}, a nonlinear dimensionality reduction technique that reveals a parametrization of data that lies on a low-dimensional manifold in high-dimensional space.
-%
-The idea is illustrated in \fig~\ref{fig:schematics}C, where the data are two-dimensional points which lie on a one-dimensional (nonlinear) curve.
-%
-We use {\it local} information about the data to find a parametrization which respects the underlying manifold geometry, so that points which are close in high-dimensional space (e.g., images which look similar) are close in our parametrization.
-%
-This idea of locality is denoted by the color of the edges in \fig~\ref{fig:schematics}C:
-data points which are close are connected by dark edges, and clearly, the dark edges are more ``informative" about the low-dimensional structure of the data.
-%
-The color in \fig~\ref{fig:schematics}D depicts the one-dimensional parametrization or ordering of the data that we can detect visually.
-%
-A detailed example of using vector diffusion maps to register and order synthetic data is given in \fig~\ref{fig:1d_demo}.
-%
-In our working examples, each data point will be of much higher dimension (e.g., a pixelated image or three-dimensional voxel data), and so we cannot extract this low-dimensional structure visually.
-%
-Instead, we will use diffusion maps which automatically uncovers a parametrization of our high-dimensional data from the eigenvectors of the appropriate matrix (see \sec~\ref{sec:dmaps}).
-%
-Furthermore, the corresponding eigenvalues will allow us to test our assumption that our data approximately lie on a one-dimensional manifold (see \fig~\ref{fig:eigenvalues_images}).
+%After removing variability due to rotations, the developmental dynamics may be revealed by ordering the data along the one-dimensional curve that parameterizes most of the remaining variability in the data.
+%%
+%Such a curve can be discovered using diffusion maps \citep{coifman2005geometric}, a nonlinear dimensionality reduction technique that reveals a parametrization of data that lies on a low-dimensional manifold in high-dimensional space.
+%%
+%The idea is illustrated in \fig~\ref{fig:schematics}C, where the data are two-dimensional points which lie on a one-dimensional (nonlinear) curve.
+%%
+%We use {\it local} information about the data to find a parametrization which respects the underlying manifold geometry, so that points which are close in high-dimensional space (e.g., images which look similar) are close in our parametrization.
+%%
+%This idea of locality is denoted by the color of the edges in \fig~\ref{fig:schematics}C:
+%data points which are close are connected by dark edges, and clearly, the dark edges are more ``informative" about the low-dimensional structure of the data.
+%%
+%The color in \fig~\ref{fig:schematics}D depicts the one-dimensional parametrization or ordering of the data that we can detect visually.
+%%
+%A detailed example of using vector diffusion maps to register and order synthetic data is given in \fig~\ref{fig:1d_demo}.
+%%
+%In our working examples, each data point will be of much higher dimension (e.g., a pixelated image or three-dimensional voxel data), and so we cannot extract this low-dimensional structure visually.
+%%
+%Instead, we will use diffusion maps which automatically uncovers a parametrization of our high-dimensional data from the eigenvectors of the appropriate matrix (see \sec~\ref{sec:dmaps}).
+%%
+%Furthermore, the corresponding eigenvalues will allow us to test our assumption that our data approximately lie on a one-dimensional manifold (see \fig~\ref{fig:eigenvalues_images}).
 
 
 In this work, we take $\dmeps$ to be $1/4$ of the median of the pairwise distances for the two-dimensional images, and $1/2$ of the median of the pairwise distances for the three-dimensional z-stacks.
@@ -155,19 +158,19 @@ Software, including documentation and tutorials, along with the full imaging dat
 \item Compute the alignments for each pair of images, as described in \sec~\ref{subsec:trans_rot_register}.
 Retain both the optimal pairwise rotations as well as the minimum distances obtained when pairs are optimally aligned.
 %
-\item Compute the corresponding rotation matrices $R(\theta_{ij})$ from \eqref{eq:R_theta}.
+\item Compute the corresponding rotation matrices $\mathbf{R}(\theta_{ij}) \in \mathbb{R}^{2 \times 2}$ from \eqref{eq:R_theta}.
 %
 \item Select $\dmeps$ for use in the diffusion maps kernel. 
 %
 Taking $\dmeps$ to be $25-50\%$ of the median of the pairwise distances often yields good results. 
-\item Compute the matrix $S$ in \eqref{eq:vdm_S}. 
-$A_{ij}$ is computed from \eqref{eq:dmaps_kernel}, using the pairwise distances from step 1, and $H_{ij} = R(\theta_{ij})$ are computed in step 2.
+\item Compute the matrix $\mathbf{S}$ in \eqref{eq:vdm_S}. 
+$\mathbf{A}_{ij}$ is computed from \eqref{eq:dmaps_kernel}, using the pairwise distances from step 1, and $\mathbf{H}_{ij} = \mathbf{R}(\theta_{ij})$ are computed in step 2.
 %
-\item Compute the eigenvalues  $\lambda_1, \lambda_2, \dots, \lambda_{2 \ndata}$ and eigenvectors $\phi_1, \phi_2, \dots, \phi_{2 \ndata}$ of $S$, ordered such that $|\lambda_1| \ge |\lambda_2| \ge \dots \ge |\lambda_{2 \ndata}|$.
+\item Compute the eigenvalues  $\lambda_0, \lambda_1, \dots, \lambda_{2 \ndata-1}$ and eigenvectors $\phi_0 , \phi_1, \dots, \phi_{2 \ndata-1}$ of $\mathbf{S}$, ordered such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{2 \ndata-1}|$.
 %
-\item Estimate the optimal three-dimensional rotation for each image: stack the first two eigenvectors $\phi_1, \phi_2$ into a $2 \ndata \times 2$ matrix, and then divide this matrix into $m$ $2 \times 2$ blocks, $\hat{R}_1, \dots, \hat{R}_\ndata$. Compute the estimated rotations for each of these $\ndata$ blocks as in \eqref{eq:R_est}. If most of the rotations are improper ($det(R) = -1$), flip the sign of one of the eigenvectors.
-\item Multiply each estimated rotation $R_{i, est}$ by $R_{1, est}^T$ (so that $R_{1, est}$ will become the identity matrix).
-\item For each image $i$, compute the optimal rotation to align the image by converting $R_{i, est}^T$ (note the transpose) to the corresponding angle using \eqref{eq:R_theta}. 
+\item Estimate the optimal two-dimensional rotation for each image: stack the first two eigenvectors $\phi_0, \phi_1$ into a $2 \ndata \times 2$ matrix, and then divide this matrix into $\ndata$ $2 \times 2$ blocks, $\hat{\mathbf{R}}_1, \dots, \hat{\mathbf{R}}_\ndata$. Compute the estimated rotations for each of these $\ndata$ blocks as in \eqref{eq:R_est}. If most of the rotations are improper ($det(\mathbf{R}) = -1$), flip the sign of one of the eigenvectors.
+\item Multiply each estimated rotation $\mathbf{R}_{i, est}$ by $\mathbf{R}_{1, est}^T$ (so that $\mathbf{R}_{1, est}$ will become the identity matrix).
+\item For each image $i$, compute the optimal rotation to align the image by converting $\mathbf{R}_{i, est}^T$ (note the transpose) to the corresponding angle using \eqref{eq:R_theta}. 
 \item Compute the first embedding coordinate $\psi_{k,1}(i)$ as described in \eqref{eq:vdm_coord} and \eqref{eq:first_embed_vdm}, where $3 \le k \le 4$.
 \item To order the images, sort them by the values of this embedding coordinate $\psi_{k,l}(i)$.
 \end{enumerate} 
@@ -743,10 +746,10 @@ It would also be interesting to explore the connections between our proposed app
 %
 Given the rapidly increasing volumes of imaging data from studies of multiple developmental systems, we expect that dimensionality reduction approaches discussed in this work will be increasingly useful for biologists and motivate future applications and algorithmic advances.
 
-In the previous chapters, we have discussed using diffusion maps to analyze different types of data which typically arise in engineering applications (multiscale time series data, data collected via different measurements of the same systems, and imaging data collected in different orientation).
+In the previous chapters, we have discussed using diffusion maps to analyze different types of data from dynamical systems (multiscale time series data, data collected via different measurements of the same systems, and imaging data collected in different orientation).
 %
 However, we have mostly ignored the issue of detecting the dimensionality of the underlying manifold.
 %
 Because of the issue of ``repeated eigendirections,'' where some diffusion maps coordinates are higher harmonics of previous coordinates and do not describe any new directions in the data, detecting how many and which coordinates one must retain is a difficult issue. 
 %
-In the next chapter, we will present a methodology to address this problem.
+In the next chapter, we will present a methodology to address this problem, which must be addressed for diffusion maps to be broadly applicable to the analysis of dynamical systems data. 
