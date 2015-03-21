@@ -46,80 +46,75 @@ The recent advances in observers and metrics, coupled with the proposed approach
 We will show that this pipeline allows us to detect changes in the regime/mode of the system, as well as changes in the underlying dimensionality of the macroscale dynamics.
 
 
-\section{Manifold Learning Based on Laplace Operators}
-%Although data from dynamical systems is often high-dimensional, since it is collected at the microscale, the macroscale dynamics often evolve to a low-dimensional description.
-%
-%In such cases, the high-dimensional microscale data is restricted to a low-dimensional manifold embedded in the high-dimensional space, and extracting a parametrization of this manifold corresponds to parametrizing the low-dimensional, macroscale dynamics.
-%
+\section{Repeated Eigendirections in Manifold Learning Based on Laplace Operators}
 
-Let $\data(1), \dots, \data(m) \in \mathbb{R}^\highdim$ denote $\ndata$ observations sampled from the dynamical system.
-%
-We assume the $\highdim$-dimensional observations $\data(i)$ lie on a $\lowdim$-dimensional manifold $\manifold$, where $\lowdim < \highdim$.
-%
-We therefore consider the problem of parametrizing the continuous $d$-dimensional manifold $\manifold$ embedded in $\mathbb{R}^\highdim$ from data.
-%
-For linear hyperplanes, the principal axes parametrize the manifold.
-%
-However, in the case when the manifold is nonlinear, the set of coordinates is not readily apparent.
-%
-By using a particular manifold learning technique based on the construction of a Laplace operator, namely, diffusion maps, we will show how to extract a $\lowdim$-dimensional parametrization of the observations which is consistent with the geometry of the manifold \cite{Belkin2003, coifman2005geometric, singer2008non}.
+%Let $\data(1), \dots, \data(m) \in \mathbb{R}^\highdim$ denote $\ndata$ observations sampled from the dynamical system.
+%%
+%We assume the $\highdim$-dimensional observations $\data(i)$ lie on a $\lowdim$-dimensional manifold $\manifold$, where $\lowdim < \highdim$.
+%%
+%We therefore consider the problem of parametrizing the continuous $d$-dimensional manifold $\manifold$ embedded in $\mathbb{R}^\highdim$ from data.
+%%
+%For linear hyperplanes, the principal axes parametrize the manifold.
+%%
+%However, in the case when the manifold is nonlinear, the set of coordinates is not readily apparent.
+%%
+%By using a particular manifold learning technique based on the construction of a Laplace operator, namely, diffusion maps, we will show how to extract a $\lowdim$-dimensional parametrization of the observations which is consistent with the geometry of the manifold \cite{Belkin2003, coifman2005geometric, singer2008non}.
 
-\subsection{Eigenfunctions of the Laplace-Beltrami operator}
+%\subsection{Eigenfunctions of the Laplace-Beltrami operator}
 
-\begin{figure}[t]
-\centering
-\begin{subfigure}{0.3\textwidth}
-\includegraphics[width=\textwidth]{strip_cnts1}
-\includegraphics[width=\textwidth]{strip_cnts2}
-\caption{}
-\label{subfig:strip_efuncs}
-\end{subfigure}
+To illustrate the issue of repeated eigendirections, we first return to the simple example of the two-dimensional strip presented in \chap~\ref{ch:math}.
 %
-\begin{subfigure}{0.3\textwidth}
-\includegraphics[width=\textwidth]{strip_discrete1}
-\includegraphics[width=\textwidth]{strip_discrete4}
-\caption{}
-\label{subfig:strip_evecs_uniform}
-\end{subfigure}
+%\begin{figure}[t]
+%\centering
+%\begin{subfigure}{0.3\textwidth}
+%\includegraphics[width=\textwidth]{strip_cnts1}
+%\includegraphics[width=\textwidth]{strip_cnts2}
+%\caption{}
+%\label{subfig:strip_efuncs}
+%\end{subfigure}
+%%
+%\begin{subfigure}{0.3\textwidth}
+%\includegraphics[width=\textwidth]{strip_discrete1}
+%\includegraphics[width=\textwidth]{strip_discrete4}
+%\caption{}
+%\label{subfig:strip_evecs_uniform}
+%\end{subfigure}
+%%
+%\begin{subfigure}{0.3\textwidth}
+%\includegraphics[width=\textwidth]{strip_nonuniform1}
+%\includegraphics[width=\textwidth]{strip_nonuniform2}
+%\caption{}
+%\label{subfig:strip_evecs_nonuniform}
+%\end{subfigure}
+%%
+%\caption[Eigenfunctions of the Laplace-Beltrami operator on a two-dimensional strip]{(a) Two-dimensional continuous strip colored by the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$, and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$. (b) Two-dimensional strip with uniform sampling colored by the first and fourth (non-trivial) eigenvectors of the discrete Laplacian. (c) Two-dimensional strip with data sampled from a Gaussian distribution in $z_1$ and sampled uniformly in $z_2$, colored by the first and third (non-trivial) eigenvectors of the discrete Laplacian. Note that in all cases we uncover parametrizations which are one-to-one with $z_1$ and $z_2$.}
+%\end{figure}
 %
-\begin{subfigure}{0.3\textwidth}
-\includegraphics[width=\textwidth]{strip_nonuniform1}
-\includegraphics[width=\textwidth]{strip_nonuniform2}
-\caption{}
-\label{subfig:strip_evecs_nonuniform}
-\end{subfigure}
+%In recent years, it has been noted that the eigenfunctions of the \emph{continuous} Laplace-Beltrami operator provide ``good" coordinates for the manifold \cite{jones2008}.
+%%
+%Thus, we start by considering a continuous setting where rigorous analysis is available for specific examples.
 %
-\caption[Eigenfunctions of the Laplace-Beltrami operator on a two-dimensional strip]{(a) Two-dimensional continuous strip colored by the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$, and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$. (b) Two-dimensional strip with uniform sampling colored by the first and fourth (non-trivial) eigenvectors of the discrete Laplacian. (c) Two-dimensional strip with data sampled from a Gaussian distribution in $z_1$ and sampled uniformly in $z_2$, colored by the first and third (non-trivial) eigenvectors of the discrete Laplacian. Note that in all cases we uncover parametrizations which are one-to-one with $z_1$ and $z_2$.}
-\end{figure}
-
-In recent years, it has been noted that the eigenfunctions of the \emph{continuous} Laplace-Beltrami operator provide ``good" coordinates for the manifold \cite{jones2008}.
 %
-Thus, we start by considering a continuous setting where rigorous analysis is available for specific examples.
-%
-Using such an example, we will show that the existence of repeated eigendirections is inherent to the manifold learning setup based on Laplace operators, and that the identification of the unique eigendirections is nontrivial.
-%
-The existence of these challenges in the continuous setting implies that, even in the limit of infinite data, such repeated eigendirections still pose a problem for analysis.
-
-To illustrate why these eigenfunctions provide appropriate coordinates, consider a two-dimensional strip with edge lengths $L_1$ and $L_2$.
-%
-The eigenvalues of the Laplace-Beltrami operator with Neumann boundary conditions are given by
-\begin{equation} \label{eq:evals}
-\tilde{\lambda}_{k_1, k_2} = \left( \frac{k_1 \pi}{L_1} \right)^2 + \left( \frac{k_2 \pi}{L_2} \right)^2
-\end{equation}
-for $k_1, k_2 = 0, 1, 2, \dots$,
-and the corresponding eigenfunctions are
-\begin{equation} \label{eq:efuncs}
-\tilde{\phi}_{k_1, k_2} = \cos \left( \frac{k_1 \pi z_1}{L_1} \right) \cos \left( \frac{k_2 \pi z_2}{L_2} \right)
-\end{equation}
-where $z_1$ and $z_2$ denote the two coordinates of the strip \cite{singer2008non}.
-%
-We note that the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$ and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$ are one-to-one with the $z_1$ and $z_2$ coordinates, respectively, and therefore yield a parametrization of the underlying manifold (see Figure~\ref{subfig:strip_efuncs}).
-%
-Furthermore, the corresponding eigenvalues $\tilde{\lambda}_{1,0}$ and $\tilde{\lambda}_{0,1}$ provide a measure of $L_1$ versus $L_2$: as the ratio between $L_1$ and $L_2$ increases, the gap between $\tilde{\lambda}_{1,0}$ and $\tilde{\lambda}_{0,1}$ also increases (this will be discussed further in Section~\ref{sec:relative_lengths}).
+%To illustrate why these eigenfunctions provide appropriate coordinates, consider a two-dimensional strip with edge lengths $L_1$ and $L_2$.
+%%
+%The eigenvalues of the Laplace-Beltrami operator with Neumann boundary conditions are given by
+%\begin{equation} \label{eq:evals}
+%\tilde{\lambda}_{k_1, k_2} = \left( \frac{k_1 \pi}{L_1} \right)^2 + \left( \frac{k_2 \pi}{L_2} \right)^2
+%\end{equation}
+%for $k_1, k_2 = 0, 1, 2, \dots$,
+%and the corresponding eigenfunctions are
+%\begin{equation} \label{eq:efuncs}
+%\tilde{\phi}_{k_1, k_2} = \cos \left( \frac{k_1 \pi z_1}{L_1} \right) \cos \left( \frac{k_2 \pi z_2}{L_2} \right)
+%\end{equation}
+%where $z_1$ and $z_2$ denote the two coordinates of the strip \cite{singer2008non}.
+%%
+%We note that the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$ and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$ are one-to-one with the $z_1$ and $z_2$ coordinates, respectively, and therefore yield a parametrization of the underlying manifold (see Figure~\ref{subfig:strip_efuncs}).
+%%
+%Furthermore, the corresponding eigenvalues $\tilde{\lambda}_{1,0}$ and $\tilde{\lambda}_{0,1}$ provide a measure of $L_1$ versus $L_2$: as the ratio between $L_1$ and $L_2$ increases, the gap between $\tilde{\lambda}_{1,0}$ and $\tilde{\lambda}_{0,1}$ also increases (this will be discussed further in Section~\ref{sec:relative_lengths}).
 %
 The analytic form of the eigenfunctions in \eqref{eq:efuncs} illustrates the two issues we address in this paper.
 %
-First, $z_1$ and $z_2$ are not necessarily decoupled in subsequent eigenfunctions, and a proper parameterization of the manifold is not necessarily given by the $d$ eigenfunctions associated with the smallest $d$ eigenvalues.
+First, $z_1$ and $z_2$ are not necessarily decoupled in subsequent eigenfunctions, and a proper parameterization of the manifold is not necessarily given by first two eigenfunctions, even though the manifold is two-dimensional.
 % TODO: address this in later section
 %
 Second, eigenfunctions with $k_1+k_2 \ge 2$ do not describe any additional directions along the strip; we will refer to these as ``repeated eigendirections,'' and we will refer to the eigenfunctions with $k_1+k_2 =1$ as ``unique eigendirections.'' 
@@ -127,15 +122,19 @@ Second, eigenfunctions with $k_1+k_2 \ge 2$ do not describe any additional direc
 We note that, although the eigenfunctions can only be written analytically for very special cases, it has been observed empirically that the eigenfunctions often provide appropriate coordinates to parametrize more complex, nonlinear manifolds.
 %
 In addition, this problem of repeated eigendirections arises for more complex manifolds with more than two variables.
-
-
-\subsection{Discrete approximation of the Laplace-Beltrami operator: diffusion maps}
-
-In most applications, we are not given a description of the continuous manifold.
 %
-Instead, we are given data {\em sampled} from the underlying manifold, and the parameterization of the manifold needs to be uncovered from the data.
+Therefore, the existence of repeated eigendirections is inherent to the manifold learning setup based on Laplace operators, and that the identification of the unique eigendirections is nontrivial.
 %
-As discussed in \chap~\ref{ch:math}, diffusion maps constructs a matrix which, in the limit of infinite data, approximates the Laplace-Beltrami or Fokker-Planck operator on the manifold.
+The existence of these challenges in the continuous setting implies that, even in the limit of infinite data, such repeated eigendirections still pose a problem for analysis.
+
+
+%\subsection{Discrete approximation of the Laplace-Beltrami operator: diffusion maps}
+
+%In most applications, we are not given a description of the continuous manifold.
+%%
+%Instead, we are given data {\em sampled} from the underlying manifold, and the parameterization of the manifold needs to be uncovered from the data.
+%%
+%As discussed in \chap~\ref{ch:math}, diffusion maps constructs a matrix which, in the limit of infinite data, approximates the Laplace-Beltrami or Fokker-Planck operator on the manifold.
 %
 %It was shown in \cite{coifman2006geometric} that, in the limit of infinite data, this discrete Laplacian matrix constructed from data converges pointwise to the continuous Laplace-Beltrami operator on the manifold.
 %%
@@ -165,11 +164,11 @@ As discussed in \chap~\ref{ch:math}, diffusion maps constructs a matrix which, i
 %%
 %In particular, by setting $\alpha=1$, one can factor out the density effects in the weight matrix, and the discrete Laplacian matrix approaches the Laplace-Beltrami operator on the manifold $\mathcal{M}_d$.
 %%
-The eigenvectors $\phi_0, \phi_1, \dots, \phi_{\ndata-1}$ of $\mathbf{A}$ approximate the eigenfunctions of the Laplace-Beltrami operator on $\manifold$,
-and the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata-1}$ of $\mathbf{A}$ are related to the eigenvalues of the continuous operator by
-\begin{equation} \label{eq:evals_relationship}
-\lambda_k = \exp \left( -\frac{\epsilon^2}{4} \tilde{\lambda}_{k_1, k_2}  \right).
-\end{equation}
+%The eigenvectors $\phi_0, \phi_1, \dots, \phi_{\ndata-1}$ of $\mathbf{A}$ approximate the eigenfunctions of the Laplace-Beltrami operator on $\manifold$,
+%and the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata-1}$ of $\mathbf{A}$ are related to the eigenvalues of the continuous operator by
+%\begin{equation} \label{eq:evals_relationship}
+%\lambda_k = \exp \left( -\frac{\epsilon^2}{4} \tilde{\lambda}_{k_1, k_2}  \right).
+%\end{equation}
 %
 %As discussed previously, the eigenfunctions provide a parametrization of the manifold, such that $\lambda_j^\tau \phi_{j}(i)$ yields the $j^{th}$ embedding coordinate for $z(i)$, where $\tau \ge 0$ is a parameter (in our examples, we will take $\tau=0$).
 %%
@@ -183,15 +182,17 @@ and the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata-1}$ of $\mathb
 %D^2_\tau(z(i), z(j)) = \sum_{k=1}^{m-1} \lambda_k^{2 \tau} \left( \phi_k(i) - \phi_k(j)  \right)^2.
 %\end{equation}
 %%
-Figures~\ref{subfig:strip_evecs_uniform}--\ref{subfig:strip_evecs_nonuniform} shows data sampled from a strip, colored by eigenvectors of $\mathbf{A}$.
-%
-In cases of both uniform and nonuniform sampling, the selected eigenvectors are one-to-one with $z_1$ and $z_2$, and thus parametrize the manifold.
-%
-TODO: maybe we can put here the new figures for the different values of $\alpha$ instead of these figures.
-%
-Although we have considered a very simple example for illustrative purposes, common practice is to use these tools for high-dimensional, nonlinear data sets.
+%Figures~\ref{subfig:strip_evecs_uniform}--\ref{subfig:strip_evecs_nonuniform} shows data sampled from a strip, colored by eigenvectors of $\mathbf{A}$.
+%%
+%In cases of both uniform and nonuniform sampling, the selected eigenvectors are one-to-one with $z_1$ and $z_2$, and thus parametrize the manifold.
+%%
+%TODO: maybe we can put here the new figures for the different values of $\alpha$ instead of these figures.
+%%
+%Although we have considered a very simple example for illustrative purposes, common practice is to use these tools for high-dimensional, nonlinear data sets.
 
-From the previous section, we know that the eigenfunctions with $(k_1, k_2) =(1, 0)$ and $(k_1, k_2) =(0, 1)$ provide embedding coordinates for the manifold; these two eigenfunctions are both uncoupled and not repeated.
+From the analytic solution, we know that the eigenfunctions with $(k_1, k_2) =(1, 0)$ and $(k_1, k_2) =(0, 1)$ provide embedding coordinates for the manifold; these two eigenfunctions are both uncoupled and not repeated.
+%
+However, identifying those selected eigenvectors in the discrete setting is nontrivial, as we do not have access to the ``indices'' for each eigenvalue/eigenvector. 
 %
 From \eqref{eq:evals}, we see that sorting the eigenvectors by the magnitude of the corresponding eigenvalues implies that these two eigenvectors are guaranteed to appear before any coupled or repeated eigendirections.
 %

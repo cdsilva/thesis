@@ -1,23 +1,110 @@
 % !TEX root = ../thesis.tex
 
+\graphicspath{{ch-math/figures/}}
+
 \chapter{Mathematical Methods}\label{ch:math}
 
-\section{Diffusion maps} \label{sec:dmaps}
 
-Diffusion maps is an unsupervised, nonlinear data mining algorithm. 
+\section{Manifold Learning Based on Laplace Operators}
+%Although data from dynamical systems is often high-dimensional, since it is collected at the microscale, the macroscale dynamics often evolve to a low-dimensional description.
 %
-Given $\ndata$ data points $\data(1), \dots, \data(\ndata)$ (typically vectors in a high-dimensional vector space) which lie on a lower-dimensional manifold $\manifold$, the aim of diffusion maps is to uncover a parameterization $f(\data)$ of the data which captures the notion of locality with respect to the manifold: points that are ``close" in the original space should also be ``close" in the coordinates $f$.
+%In such cases, the high-dimensional microscale data is restricted to a low-dimensional manifold embedded in the high-dimensional space, and extracting a parametrization of this manifold corresponds to parametrizing the low-dimensional, macroscale dynamics.
 %
-%From pairwise distances, we want to extract a {\em global} parametrization of the data that represents the slow variables.
+
+Let $\data(1), \dots, \data(m) \in \mathbb{R}^\highdim$ denote $\ndata$ observations sampled from the dynamical system.
 %
-%We will use diffusion maps \cite{Coifman2006, coifman2005geometric}, a kernel-based manifold learning technique, to extract a global parametrization using the local distances.
+We assume the $\highdim$-dimensional observations $\data(i)$ lie on a $\lowdim$-dimensional manifold $\manifold$, where $\lowdim < \highdim$.
 %
-We first construct the kernel matrix $\mathbf{W} \in \mathbb{R}^{\ndata \times \ndata}$, where
-\begin{equation} \label{eq:dmaps_kernel}
-\mathbf{W}_{ij} = \exp \left( -\frac{\|\data(i) - \data(j) \|^2}{\dmeps^2} \right).
+We therefore consider the problem of parametrizing the continuous $d$-dimensional manifold $\manifold$ embedded in $\mathbb{R}^\highdim$ from data.
+%
+For linear hyperplanes, the principal axes parametrize the manifold.
+%
+However, in the case when the manifold is nonlinear, the set of coordinates is not readily apparent.
+%
+By using a particular manifold learning technique based on the construction of a Laplace operator, namely, diffusion maps, we will show how to extract a $\lowdim$-dimensional parametrization of the observations which is consistent with the geometry of the manifold \cite{Belkin2003, coifman2005geometric, singer2008non}.
+
+\subsection{Eigenfunctions of the Laplace-Beltrami operator}
+
+\begin{figure}[t]
+\centering
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{strip_cnts1}
+\includegraphics[width=\textwidth]{strip_cnts2}
+\caption{}
+\label{subfig:strip_efuncs}
+\end{subfigure}
+%
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{strip_discrete1}
+\includegraphics[width=\textwidth]{strip_discrete4}
+\caption{}
+\label{subfig:strip_evecs_uniform}
+\end{subfigure}
+%
+\begin{subfigure}{0.3\textwidth}
+\includegraphics[width=\textwidth]{strip_nonuniform1}
+\includegraphics[width=\textwidth]{strip_nonuniform2}
+\caption{}
+\label{subfig:strip_evecs_nonuniform}
+\end{subfigure}
+%
+\caption[Eigenfunctions of the Laplace-Beltrami operator on a two-dimensional strip]{(a) Two-dimensional continuous strip colored by the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$, and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$. (b) Two-dimensional strip with uniform sampling colored by the first and fourth (non-trivial) eigenvectors of the discrete Laplacian. (c) Two-dimensional strip with data sampled from a Gaussian distribution in $z_1$ and sampled uniformly in $z_2$, colored by the first and third (non-trivial) eigenvectors of the discrete Laplacian. Note that in all cases we uncover parametrizations which are one-to-one with $z_1$ and $z_2$.}
+\end{figure}
+
+In recent years, it has been noted that the eigenfunctions of the \emph{continuous} Laplace-Beltrami operator provide ``good" coordinates for the manifold \cite{jones2008}.
+%
+Thus, we start by considering a continuous setting where rigorous analysis is available for specific examples.
+%
+%Using such an example, we will show that the existence of repeated eigendirections is inherent to the manifold learning setup based on Laplace operators, and that the identification of the unique eigendirections is nontrivial.
+%%
+%The existence of these challenges in the continuous setting implies that, even in the limit of infinite data, such repeated eigendirections still pose a problem for analysis.
+%
+To illustrate why these eigenfunctions provide appropriate coordinates, consider a two-dimensional strip with edge lengths $L_1$ and $L_2$.
+%
+The eigenvalues of the Laplace-Beltrami operator with Neumann boundary conditions are given by
+\begin{equation} \label{eq:evals}
+\tilde{\lambda}_{k_1, k_2} = \left( \frac{k_1 \pi}{L_1} \right)^2 + \left( \frac{k_2 \pi}{L_2} \right)^2
 \end{equation}
-Here, $\| \cdot \|$ denotes the appropriate norm, and $\dmeps$ is the kernel scale
-and denotes a characteristic distance within the data set.
+for $k_1, k_2 = 0, 1, 2, \dots$,
+and the corresponding eigenfunctions are
+\begin{equation} \label{eq:efuncs}
+\tilde{\phi}_{k_1, k_2} = \cos \left( \frac{k_1 \pi z_1}{L_1} \right) \cos \left( \frac{k_2 \pi z_2}{L_2} \right)
+\end{equation}
+where $z_1$ and $z_2$ denote the two coordinates of the strip \cite{singer2008non}.
+%
+We note that the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$ and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$ are one-to-one with the $z_1$ and $z_2$ coordinates, respectively, and therefore yield a parametrization of the underlying manifold (see Figure~\ref{subfig:strip_efuncs}).
+%
+Furthermore, the corresponding eigenvalues $\tilde{\lambda}_{1,0}$ and $\tilde{\lambda}_{0,1}$ provide a measure of $L_1$ versus $L_2$: as the ratio between $L_1$ and $L_2$ increases, the gap between $\tilde{\lambda}_{1,0}$ and $\tilde{\lambda}_{0,1}$ also increases (this will be discussed further in Section~\ref{sec:relative_lengths}).
+%
+%The analytic form of the eigenfunctions in \eqref{eq:efuncs} illustrates the two issues we address in this paper.
+%%
+%First, $z_1$ and $z_2$ are not necessarily decoupled in subsequent eigenfunctions, and a proper parameterization of the manifold is not necessarily given by the $d$ eigenfunctions associated with the smallest $d$ eigenvalues.
+%% TODO: address this in later section
+%%
+%Second, eigenfunctions with $k_1+k_2 \ge 2$ do not describe any additional directions along the strip; we will refer to these as ``repeated eigendirections,'' and we will refer to the eigenfunctions with $k_1+k_2 =1$ as ``unique eigendirections.'' 
+%%
+%We note that, although the eigenfunctions can only be written analytically for very special cases, it has been observed empirically that the eigenfunctions often provide appropriate coordinates to parametrize more complex, nonlinear manifolds.
+%%
+%In addition, this problem of repeated eigendirections arises for more complex manifolds with more than two variables.
+
+
+\subsection{Discrete approximation of the Laplace-Beltrami operator: diffusion maps}
+
+In most applications, we are not given a description of the continuous manifold.
+%
+Instead, we are given data {\em sampled} from the underlying manifold, and the parameterization of the manifold needs to be uncovered from the data.
+%
+As discussed in \chap~\ref{ch:math}, diffusion maps constructs a matrix which, in the limit of infinite data, approximates the Laplace-Beltrami or Fokker-Planck operator on the manifold.
+%
+It was shown in \cite{coifman2006geometric} that, in the limit of infinite data, this discrete Laplacian matrix constructed from data converges pointwise to the continuous Laplace-Beltrami operator on the manifold.
+%
+As a result, the eigenvectors of the discrete Laplacian approximate the eigenfunctions of this continuous operator.
+
+Given observations $\data(1), \dots, \data(m) \in \manifold$, we first construct the weight matrix $\mathbf{W} \in \mathbb{R}^{\ndata \times \ndata}$, with
+\begin{equation} \label{eq:W}
+\mathbf{W}_{ij} = \exp \left( -\frac{\|\data(i) - \data(j) \|^2}{\dmeps^2} \right), \ i,j=1,\ldots,\ndata,
+\end{equation}
+where $\| \cdot \|$ denotes the appropriate norm for the observations, and $\dmeps$ is a characteristic distance between the observations.
 %
 Note that $\dmeps$ induces a notion of locality: if $\|\data(i) - \data(j) \| \gg \dmeps$, then $\mathbf{W}_{ij}$ is negligible.
 %
@@ -25,32 +112,34 @@ Therefore, we only need our metric to be informative within a ball of radius $\d
 %
 Points less than $\dmeps$ apart are thus considered ``close'' and points farther than $\dmeps$ apart are considered ``far away''.
 %
-$\dmeps$ can be chosen using several techniques (see, for example \citep{coifman2008graph, rohrdanz2011determination}); 
-we often use the median of the pairwise distances as $\dmeps$, as it empirically often yields good results (since each data point is connected to approximately half of the other data points).
+The kernel's scale $\dmeps$ can be chosen using several heuristics \cite{rohrdanz2011determination, coifman2008graph}; we often take $\dmeps$ to be the median of the pairwise distances between the data points.
+%
+We then construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{\ndata \times \ndata}$, with $\mathbf{D}_{ii} = \sum_j \mathbf{W}_{ij}$, and form the matrix $\widetilde{\mathbf{W}} = \mathbf{D}^{-\alpha} \mathbf{W} \mathbf{D}^{-\alpha}$, where $0 < \alpha < 1$. 
+%
+Next, we construct the diagonal matrix $\widetilde{\mathbf{D}} \in \mathbb{R}^{m \times m}$, with $\widetilde{\mathbf{D}}_{ii} = \sum_j \widetilde{\mathbf{W}}_{ij}$, and the matrix $\mathbf{A}  = \widetilde{\mathbf{D}}^{-1} \widetilde{\mathbf{W}}.$
 
-%We note that the eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ solve the following optimization problem \citep{Belkin2003}
-We then consider solving the following optimization problem \citep{Belkin2003}
-\begin{equation} \label{eq:dmaps_opt_problem}
-\argmin_{f} \sum_{ij} \mathbf{W}_{ij} (f(\data(i)) - f(\data(j)))^2.
+If the data $\data(1), \dots, \data(m)$ are sampled from $\manifold$ with some density $q$, then, for $\dmeps \rightarrow 0, \ndata \rightarrow \infty$, the discrete matrix convergences to the following continuous limit operators with Neumann boundary conditions (as discussed in the previous section) \cite{coifman2006geometric}
+\begin{align}
+\frac{1}{\dmeps^2}(\mathbf{I}-\mathbf{A}) \phi &\rightarrow \nabla^2 \phi - 2\nabla U \cdot \nabla \phi, &&\alpha = 0 \\
+\frac{1}{\dmeps^2}(\mathbf{I}-\mathbf{A}) \phi &\rightarrow \nabla^2 \phi - \nabla U \cdot \nabla \phi, &&\alpha = 1/2 \\
+\frac{1}{\dmeps^2}(\mathbf{I}-\mathbf{A}) \phi &\rightarrow \nabla^2 \phi, &&\alpha = 1
+\end{align}
+where $U = - \log q$.
+%
+The different limit operators, depending on the choice of $\alpha$, imply that nonuniform sampling on the manifold may have different effects. 
+%
+In particular, by setting $\alpha=1$, one can factor out the density effects in the weight matrix, and the discrete Laplacian matrix approaches the Laplace-Beltrami operator on the manifold $\manifold$.
+%
+The eigenvectors $\phi_0, \phi_1, \dots, \phi_{\ndata-1}$ of $\mathbf{A}$ approximate the eigenfunctions of the Laplace-Beltrami operator on $\manifold$,
+and the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata-1}$ of $\mathbf{A}$ are related to the eigenvalues of the continuous operator by
+\begin{equation} \label{eq:evals_relationship}
+\lambda_k = \exp \left( -\frac{\epsilon^2}{4} \tilde{\lambda}_{k_1, k_2}  \right).
 \end{equation}
 %
-Because of our definition of the matrix $\mathbf{W}$, solving this optimization problem will preserve local geometry, such that $f(\data(i))$ and $f(\data(j))$ will be similar if $\data(i)$ and $\data(j)$ are close. 
+As discussed previously, the eigenfunctions provide a parametrization of the manifold, such that $\lambda_j^\tau \phi_{j}(i)$ yields the $j^{th}$ embedding coordinate for $\data(i)$, where $\tau \ge 0$ is a parameter (in our examples, we will take $\tau=0$).
 %
-To solve \eqref{eq:dmaps_opt_problem}, we construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{\ndata \times \ndata}$, with
-\begin{equation}
-\mathbf{D}_{ii} = \sum_{j=1}^\ndata W_{ij}.
-\end{equation}
+This is the standard diffusion maps embedding \cite{coifman2005geometric, coifman2006geometric},
 %
-We compute the eigenvalues $\lambda_0, \dots, \lambda_{\ndata-1}$ and eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ of the matrix $\mathbf{A} = \mathbf{D}^{-1}\mathbf{W}$, and order them such that $1 = \lambda_0 \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata-1}|$.
-%
-The eigenvectors are then solutions to \eqref{eq:dmaps_opt_problem}, such that each subsequent eigenvector is a solution which is orthogonal to the previous eigenvector solutions. 
-%
-Because the matrix $\mathbf{A}$ is row-stochastic, the first eigenvector will always be the trivial eigenvector $\phi_0 = \begin{bmatrix} 1 & 1 & \cdots & 1 \end{bmatrix}^T$ (which corresponds to a trivial solution to \eqref{eq:dmaps_opt_problem}).
-%
-The next few eigenvectors provide embedding coordinates for the data, so that $\phi_j(i)$, the $i^{th}$ entry of $\phi_j$, provides the $j^{th}$ embedding coordinate for $\data(i)$ (modulo higher harmonics which characterize
-the same direction in the data; see \cite{ferguson2010systematic} and \chap~\ref{ch:harmonics}).
-%
-The mapping
 \begin{equation} \label{eq:dmaps_embed_full}
 \data(i) \mapsto 
 \begin{pmatrix}
@@ -60,13 +149,15 @@ The mapping
 \lambda_{\ndata-1}^\tau  \phi_{\ndata-1}(i)
 \end{pmatrix}
 \end{equation}
-is the diffusion maps embedding for the data, where $\tau > 0$ is a parameter.
 %
-We typically take $\tau=0$ in our analysis, which corresponds to the Laplacian Eigenmaps embedding \cite{Belkin2003}.  
+where we order the eigenvectors such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{m-1}|$.
 %
-We then define the diffusion distance $D_\tau (\data(i), \data(j))$ as 
+Because the matrix $\mathbf{A}$ is row-stochastic ($\sum_j \mathbf{A}_{ij} = 1$),  $\lambda_0 = 1$ and $\phi_0$ is a trivial constant vector.
+%
+The distance induced by this mapping is called the standard diffusion distance,
+%
 \begin{equation}
-D_\tau^2 (\data(i), \data(j)) = \sum_{k=1}^{\ndata-1} \lambda_k^{2\tau} \left( \phi_k(i)- \phi_k(j) \right)^2.
+D^2_\tau(z(i), z(j)) = \sum_{k=1}^{m-1} \lambda_k^{2 \tau} \left( \phi_k(i) - \phi_k(j)  \right)^2.
 \end{equation}
 %
 The diffusion maps embedding therefore projects the data into a space where the Euclidean distance is equivalent to the diffusion distance. 
@@ -83,16 +174,117 @@ If the eigenvalues exhibit a spectral gap, where $|\lambda_1| \ge |\lambda_2| \g
 \end{equation}
 %
 while still approximately retaining the diffusion distance. 
+
+Figures~\ref{subfig:strip_evecs_uniform}--\ref{subfig:strip_evecs_nonuniform} shows data sampled from a strip, colored by eigenvectors of $\mathbf{A}$.
 %
-A more detailed discussion of the diffusion maps theory will be presented in \chap~\ref{ch:harmonics}. 
+In cases of both uniform and nonuniform sampling, the selected eigenvectors are one-to-one with $z_1$ and $z_2$, and thus parametrize the manifold.
+%
+%TODO: maybe we can put here the new figures for the different values of $\alpha$ instead of these figures.
+%
+Although we have considered a very simple example for illustrative purposes, common practice is to use these tools for high-dimensional, nonlinear data sets.
 
-%This is analogous to how the eigenfunctions $\cos x$ and $\cos 2x$ of the usual Laplacian in one spatial dimension and with no flux boundary conditions are one-to-one with the values of $x$ for $0 \le x \le 1$;
-%one must check for correlations between the eigenvectors before selecting those that describe the underlying manifold geometry.
+%From the previous section, we know that the eigenfunctions with $(k_1, k_2) =(1, 0)$ and $(k_1, k_2) =(0, 1)$ provide embedding coordinates for the manifold; these two eigenfunctions are both uncoupled and not repeated.
+%%
+%From \eqref{eq:evals}, we see that sorting the eigenvectors by the magnitude of the corresponding eigenvalues implies that these two eigenvectors are guaranteed to appear before any coupled or repeated eigendirections.
+%%
+%However, these eigenvectors are {\em not} guaranteed to appear as the first two (non-trivial) eigenvectors, as harmonics of the first eigendirection (i.e., $\cos \left( n \pi z_1 / L_1 \right)$ with $n > 1$) could appear before the second.
+%%
+%We note that, in contrast to our simple illustrative example, for most data sets of interest, the coordinates for the underlying manifold are unknown and cannot easily be obtained from the coordinates of the original data, and identifying which eigenvectors correspond to unique eigendirections is nontrivial.
 
 
 
 
-Ignoring the higher harmonics (see \chap~\ref{ch:harmonics}), each retained eigenvector then parameterizes a variable for the data set of interest.
+%\section{Diffusion maps} \label{sec:dmaps}
+%
+%Diffusion maps is an unsupervised, nonlinear data mining algorithm. 
+%%
+%Given $\ndata$ data points $\data(1), \dots, \data(\ndata)$ (typically vectors in a high-dimensional vector space) which lie on a lower-dimensional manifold $\manifold$, the aim of diffusion maps is to uncover a parameterization $f(\data)$ of the data which captures the notion of locality with respect to the manifold: points that are ``close" in the original space should also be ``close" in the coordinates $f$.
+%%
+%%From pairwise distances, we want to extract a {\em global} parametrization of the data that represents the slow variables.
+%%
+%%We will use diffusion maps \cite{Coifman2006, coifman2005geometric}, a kernel-based manifold learning technique, to extract a global parametrization using the local distances.
+%%
+%We first construct the kernel matrix $\mathbf{W} \in \mathbb{R}^{\ndata \times \ndata}$, where
+%\begin{equation} \label{eq:dmaps_kernel}
+%\mathbf{W}_{ij} = \exp \left( -\frac{\|\data(i) - \data(j) \|^2}{\dmeps^2} \right).
+%\end{equation}
+%Here, $\| \cdot \|$ denotes the appropriate norm, and $\dmeps$ is the kernel scale
+%and denotes a characteristic distance within the data set.
+%%
+%Note that $\dmeps$ induces a notion of locality: if $\|\data(i) - \data(j) \| \gg \dmeps$, then $\mathbf{W}_{ij}$ is negligible.
+%%
+%Therefore, we only need our metric to be informative within a ball of radius $\dmeps$.
+%%
+%Points less than $\dmeps$ apart are thus considered ``close'' and points farther than $\dmeps$ apart are considered ``far away''.
+%%
+%$\dmeps$ can be chosen using several techniques (see, for example \citep{coifman2008graph, rohrdanz2011determination}); 
+%we often use the median of the pairwise distances as $\dmeps$, as it empirically often yields good results (since each data point is connected to approximately half of the other data points).
+%
+%%We note that the eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ solve the following optimization problem \citep{Belkin2003}
+%We then consider solving the following optimization problem \citep{Belkin2003}
+%\begin{equation} \label{eq:dmaps_opt_problem}
+%\argmin_{f} \sum_{ij} \mathbf{W}_{ij} (f(\data(i)) - f(\data(j)))^2.
+%\end{equation}
+%%
+%Because of our definition of the matrix $\mathbf{W}$, solving this optimization problem will preserve local geometry, such that $f(\data(i))$ and $f(\data(j))$ will be similar if $\data(i)$ and $\data(j)$ are close. 
+%%
+%To solve \eqref{eq:dmaps_opt_problem}, we construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{\ndata \times \ndata}$, with
+%\begin{equation}
+%\mathbf{D}_{ii} = \sum_{j=1}^\ndata W_{ij}.
+%\end{equation}
+%%
+%We compute the eigenvalues $\lambda_0, \dots, \lambda_{\ndata-1}$ and eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ of the matrix $\mathbf{A} = \mathbf{D}^{-1}\mathbf{W}$, and order them such that $1 = \lambda_0 \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata-1}|$.
+%%
+%The eigenvectors are then solutions to \eqref{eq:dmaps_opt_problem}, such that each subsequent eigenvector is a solution which is orthogonal to the previous eigenvector solutions. 
+%%
+%Because the matrix $\mathbf{A}$ is row-stochastic, the first eigenvector will always be the trivial eigenvector $\phi_0 = \begin{bmatrix} 1 & 1 & \cdots & 1 \end{bmatrix}^T$ (which corresponds to a trivial solution to \eqref{eq:dmaps_opt_problem}).
+%%
+%The next few eigenvectors provide embedding coordinates for the data, so that $\phi_j(i)$, the $i^{th}$ entry of $\phi_j$, provides the $j^{th}$ embedding coordinate for $\data(i)$ (modulo higher harmonics which characterize
+%the same direction in the data; see \cite{ferguson2010systematic} and \chap~\ref{ch:harmonics}).
+%%
+%The mapping
+%\begin{equation} \label{eq:dmaps_embed_full}
+%\data(i) \mapsto 
+%\begin{pmatrix}
+%\lambda_1^\tau \phi_1(i) \\
+%\lambda_2^\tau \phi_2(i) \\
+%\vdots \\
+%\lambda_{\ndata-1}^\tau  \phi_{\ndata-1}(i)
+%\end{pmatrix}
+%\end{equation}
+%is the diffusion maps embedding for the data, where $\tau > 0$ is a parameter.
+%%
+%We typically take $\tau=0$ in our analysis, which corresponds to the Laplacian Eigenmaps embedding \cite{Belkin2003}.  
+%%
+%We then define the diffusion distance $D_\tau (\data(i), \data(j))$ as 
+%\begin{equation}
+%D_\tau^2 (\data(i), \data(j)) = \sum_{k=1}^{\ndata-1} \lambda_k^{2\tau} \left( \phi_k(i)- \phi_k(j) \right)^2.
+%\end{equation}
+%%
+%The diffusion maps embedding therefore projects the data into a space where the Euclidean distance is equivalent to the diffusion distance. 
+%%
+%If the eigenvalues exhibit a spectral gap, where $|\lambda_1| \ge |\lambda_2| \ge \dots \ge |\lambda_\lowdim | \gg |\lambda_{\lowdim+1} | \ge \dots \ge |\lambda_{\ndata-1}|$, then one can embed the data in the first $\lowdim$ eigenvectors, 
+%\begin{equation} \label{eq:dmaps_embed_reduced}
+%\data(i) \mapsto 
+%\begin{pmatrix}
+%\lambda_1^\tau \phi_1(i) \\
+%\lambda_2^\tau \phi_2(i) \\
+%\vdots \\
+%\lambda_{\lowdim}^\tau  \phi_{\lowdim}(i)
+%\end{pmatrix}
+%\end{equation}
+%%
+%while still approximately retaining the diffusion distance. 
+%%
+%A more detailed discussion of the diffusion maps theory will be presented in \chap~\ref{ch:harmonics}. 
+%
+%%This is analogous to how the eigenfunctions $\cos x$ and $\cos 2x$ of the usual Laplacian in one spatial dimension and with no flux boundary conditions are one-to-one with the values of $x$ for $0 \le x \le 1$;
+%%one must check for correlations between the eigenvectors before selecting those that describe the underlying manifold geometry.
+
+
+
+
+Modulo higher harmonics which characterize the same direction in the data (see \cite{ferguson2010systematic} and \chap~\ref{ch:harmonics}), each retained eigenvector then parameterizes a variable for the data set of interest.
 %
 We note that the eigenvectors can be determined up to a scaling factor.
 %
@@ -117,43 +309,43 @@ Similarly, for the examples in \chap~\ref{ch:drosophila}, the sign of the eigenv
 
 
 
-
-\subsection{Family of operators} \label{sec:diff_limit}
-
-In the limit $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$ (with the appropriate rates), the matrix $\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A} \right) $ converges to the continuous backward Fokker-Planck operator \cite{nadler2006diffusion}
-\begin{equation}
-	\mathcal{L} = \Delta - 2 \nabla U \cdot \nabla.
-	\label{eq:limiting_operator}
-\end{equation}
-where the data $\data_1, \dots , \data_\ndata$ are sampled from $\manifold$ with density proportional to $e^{-U}$. 
 %
-However, we can construct a family of diffusion operators 
-\begin{equation} \label{eq:kernel2}
-\mathbf{A}^{(\alpha)} = {\mathbf{D}^{(\alpha)}}^{-1} \mathbf{W}^{(\alpha)}
-\end{equation}
-for $0 \le \alpha \le 1$, where $\mathbf{W}^{(\alpha)} = \mathbf{D}^{-\alpha} \mathbf{W} \mathbf{D}^{-\alpha}$ 
-and $\mathbf{D}^{(\alpha)}$ is a diagonal matrix with $\mathbf{D}^{(\alpha)}_{ii} = \sum_{j=1}^\ndata \mathbf{W}^{(\alpha)}$.
+%\subsection{Family of operators} \label{sec:diff_limit}
 %
-We then have \cite{coifman2005geometric}
-\begin{equation}
-\begin{aligned}
-\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A}^{(0)} \right) & \rightarrow \Delta - 2 \nabla U \cdot \nabla \\
-\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A}^{(1/2)} \right) & \rightarrow \Delta - \nabla U \cdot \nabla \\
-\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A}^{(1)} \right) & \rightarrow \Delta  
-\end{aligned}
-\end{equation}
-%
-Therefore, choosing different values of $\alpha$ results in different kernel normalizations which can remove sampling density effects along the manifold. 
+%In the limit $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$ (with the appropriate rates), the matrix $\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A} \right) $ converges to the continuous backward Fokker-Planck operator \cite{nadler2006diffusion}
+%\begin{equation}
+%	\mathcal{L} = \Delta - 2 \nabla U \cdot \nabla.
+%	\label{eq:limiting_operator}
+%\end{equation}
+%where the data $\data_1, \dots , \data_\ndata$ are sampled from $\manifold$ with density proportional to $e^{-U}$. 
+%%
+%However, we can construct a family of diffusion operators 
+%\begin{equation} \label{eq:kernel2}
+%\mathbf{A}^{(\alpha)} = {\mathbf{D}^{(\alpha)}}^{-1} \mathbf{W}^{(\alpha)}
+%\end{equation}
+%for $0 \le \alpha \le 1$, where $\mathbf{W}^{(\alpha)} = \mathbf{D}^{-\alpha} \mathbf{W} \mathbf{D}^{-\alpha}$ 
+%and $\mathbf{D}^{(\alpha)}$ is a diagonal matrix with $\mathbf{D}^{(\alpha)}_{ii} = \sum_{j=1}^\ndata \mathbf{W}^{(\alpha)}$.
+%%
+%We then have \cite{coifman2005geometric}
+%\begin{equation}
+%\begin{aligned}
+%\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A}^{(0)} \right) & \rightarrow \Delta - 2 \nabla U \cdot \nabla \\
+%\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A}^{(1/2)} \right) & \rightarrow \Delta - \nabla U \cdot \nabla \\
+%\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A}^{(1)} \right) & \rightarrow \Delta  
+%\end{aligned}
+%\end{equation}
+%%
+%Therefore, choosing different values of $\alpha$ results in different kernel normalizations which can remove sampling density effects along the manifold. 
 
 
 \section{The Mahalanobis distance}
 \label{subsec:mahalanobis}
 
-The essential component of manifold learning algorithms (such as diffusion maps) is having an informative distance metric between data points, as one of the key assumptions is that points which are close on the manifold have a small distance. 
+The essential component of manifold learning algorithms (such as diffusion maps) is having an informative distance metric between data points, as one of the key assumptions is that points which have a small distance are close on the manifold. 
 %
-However, often the Euclidean distance is not meaningful or informative, and we require a more sophisitcated metric. 
+However, often the Euclidean distance is not meaningful or informative, and we require a more sophisticated metric. 
 %
-Here, we will discuss the Mahalanobis distance \cite{mahalanobis1936generalized}, a metric which has some nice propoerties which will allow us to analyze multiscale stocastic systems in \chap~\ref{ch:multiscale} and data from chemical simulations in \chap~\ref{ch:merging}. 
+Here, we will discuss the Mahalanobis distance \cite{mahalanobis1936generalized}, a metric which has some nice properties that will allow us to analyze data from multiscale stochastic systems in \chap~\ref{ch:multiscale} and data from chemical simulations in \chap~\ref{ch:merging}. 
 
 Let $\mathbf{C}(t)$ be the covariance matrix associated with the measured sample $\data(t)$ (the specifics will be discussed in subsequent chapters). 
 %
@@ -210,7 +402,7 @@ In practice, for a dynamical system, the covariance matrix can be estimated from
 \begin{equation} \label{eq:cov1}
 	\widehat{\mathbf{C}}(t) = \sum \limits _{\tau = t-L}^{t+L} (\data(\tau) - \widehat{\boldsymbol{\mu}}(t))(\data(\tau) - \widehat{\boldsymbol{\mu}}(t))^T,
 \end{equation}
-where $\widehat{\boldsymbol{\mu}}(t)$ is the empirical mean of the short trajectory of samples and $L$ is the number of samples.
+where $\widehat{\boldsymbol{\mu}}(t)$ is the empirical mean of the short trajectory around time $t$ of samples and $L$ is the size of the trajectory window.
 %
 Alternatively, we can estimate the local covariance by using small bursts of simulation 
 \begin{multline} \label{eq:cov2}
@@ -253,17 +445,17 @@ where $\delta t > 0$ is the length of the simulation burst.
 
 \section{Angular synchronization } \label{sec:ang_synch}
 
-As will be discussed in \chap~\ref{ch:multiscale}~and~\ref{ch:merging}, the Mahalanobis distance is useful for analyzing data which have been obscured by large noise and/or a measurement function. 
+As will be discussed in \chap~\ref{ch:multiscale} and \chap~\ref{ch:merging}, the Mahalanobis distance is useful for analyzing data which have been obscured by large noise and/or a measurement function. 
 %
 Another source of variability that one would often like to remove is due to symmetries, when data (such as images) are collected in many different orientations. 
 %
-These orientational differences are an artifact of the experimental or imaging setup and must be removed for informative analysis.
+When these orientational differences are an artifact of the experimental or imaging setup, they must be removed for informative analysis.
 %
 We will discuss two algorithms for registering images with respect to rotational symmetries. 
 %
 Angular synchronization \cite{singer2011angular} is an algorithm for registering a data set given pairwise alignment information. 
 %
-Vector diffusion maps \cite{singer2012vector} then combines angular synchronization and diffusion maps to both register and uncover structure in a data set in a single computation. 
+Vector diffusion maps \cite{singer2012vector} combines angular synchronization and diffusion maps to both register and uncover structure in a data set in a single computation. 
 %
 We demonstrate these two algorithms for registration and temporal ordering using a synthetic data set.
 %
