@@ -62,7 +62,7 @@ We will show that this pipeline allows us to detect changes in the regime/mode o
 
 %\subsection{Eigenfunctions of the Laplace-Beltrami operator}
 
-To illustrate the issue of repeated eigendirections, we first return to the simple example of the two-dimensional strip presented in \chap~\ref{ch:math}.
+To illustrate the issue of repeated eigendirections, we first return to the simple example of the two-dimensional strip presented in \sec~\ref{sec:manifold_learning}.
 %
 %\begin{figure}[t]
 %\centering
@@ -192,9 +192,9 @@ The existence of these challenges in the continuous setting implies that, even i
 
 From the analytic solution, we know that the eigenfunctions with $(k_1, k_2) =(1, 0)$ and $(k_1, k_2) =(0, 1)$ provide embedding coordinates for the manifold; these two eigenfunctions are both uncoupled and not repeated.
 %
-However, identifying those selected eigenvectors in the discrete setting is nontrivial, as we do not have access to the ``indices'' for each eigenvalue/eigenvector. 
+However, identifying those selected eigenvectors in the discrete setting is nontrivial, as we do not have access to the indices for each eigenvalue/eigenvector. 
 %
-From \eqref{eq:evals}, we see that sorting the eigenvectors by the magnitude of the corresponding eigenvalues implies that these two eigenvectors are guaranteed to appear before any coupled or repeated eigendirections.
+From \eqref{eq:evals}, we see that sorting the eigenvectors by the magnitude of the corresponding eigenvalues (as is traditionally done in diffusion maps) implies that these two eigenvectors are guaranteed to appear before any coupled or repeated eigendirections.
 %
 However, these eigenvectors are {\em not} guaranteed to appear as the first two (non-trivial) eigenvectors, as harmonics of the first eigendirection (i.e., $\cos \left( n \pi z_1 / L_1 \right)$ with $n > 1$) could appear before the second.
 %
