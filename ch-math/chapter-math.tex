@@ -6,7 +6,7 @@
 
 Diffusion maps is an unsupervised, nonlinear data mining algorithm. 
 %
-Given $\ndata$ data points $\data(1), \dots, \data(\ndata)$ (typically vectors in a high-dimensional vector space) which lie on a lower-dimensional manifold $\manifold$, diffusion maps uncovers a parameterization $f(\data)$ of the data which captures the notion of locality with respect to the manifold: points that are ``close" in the original space should also be ``close" in the coordinates $f$.
+Given $\ndata$ data points $\data(1), \dots, \data(\ndata)$ (typically vectors in a high-dimensional vector space) which lie on a lower-dimensional manifold $\manifold$, the aim of diffusion maps is to uncover a parameterization $f(\data)$ of the data which captures the notion of locality with respect to the manifold: points that are ``close" in the original space should also be ``close" in the coordinates $f$.
 %
 %From pairwise distances, we want to extract a {\em global} parametrization of the data that represents the slow variables.
 %
@@ -26,7 +26,7 @@ Therefore, we only need our metric to be informative within a ball of radius $\d
 Points less than $\dmeps$ apart are thus considered ``close'' and points farther than $\dmeps$ apart are considered ``far away''.
 %
 $\dmeps$ can be chosen using several techniques (see, for example \citep{coifman2008graph, rohrdanz2011determination}); 
-we often use the median of the pairwise distances as $\dmeps$, as it empirically often yields good results (since each data point is connected to approximately half of the other data points), and does not require any manual input. 
+we often use the median of the pairwise distances as $\dmeps$, as it empirically often yields good results (since each data point is connected to approximately half of the other data points).
 
 %We note that the eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ solve the following optimization problem \citep{Belkin2003}
 We then consider solving the following optimization problem \citep{Belkin2003}
@@ -43,7 +43,7 @@ To solve \eqref{eq:dmaps_opt_problem}, we construct the diagonal matrix $\mathbf
 %
 We compute the eigenvalues $\lambda_0, \dots, \lambda_{\ndata-1}$ and eigenvectors $\phi_0, \dots, \phi_{\ndata-1}$ of the matrix $\mathbf{A} = \mathbf{D}^{-1}\mathbf{W}$, and order them such that $1 = \lambda_0 \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata-1}|$.
 %
-The eigenvectors are then solutions to \eqref{eq:dmaps_opt_problem}, such that each each eigenvector is a solution which is orthogonal to the previous eigenvector solutions. 
+The eigenvectors are then solutions to \eqref{eq:dmaps_opt_problem}, such that each subsequent eigenvector is a solution which is orthogonal to the previous eigenvector solutions. 
 %
 Because the matrix $\mathbf{A}$ is row-stochastic, the first eigenvector will always be the trivial eigenvector $\phi_0 = \begin{bmatrix} 1 & 1 & \cdots & 1 \end{bmatrix}^T$ (which corresponds to a trivial solution to \eqref{eq:dmaps_opt_problem}).
 %
@@ -83,7 +83,8 @@ If the eigenvalues exhibit a spectral gap, where $|\lambda_1| \ge |\lambda_2| \g
 \end{equation}
 %
 while still approximately retaining the diffusion distance. 
-
+%
+A more detailed discussion of the diffusion maps theory will be presented in \chap~\ref{ch:harmonics}. 
 
 %This is analogous to how the eigenfunctions $\cos x$ and $\cos 2x$ of the usual Laplacian in one spatial dimension and with no flux boundary conditions are one-to-one with the values of $x$ for $0 \le x \le 1$;
 %one must check for correlations between the eigenvectors before selecting those that describe the underlying manifold geometry.
@@ -91,7 +92,7 @@ while still approximately retaining the diffusion distance.
 
 
 
-Ignoring the higher harmonics, each retained eigenvector then describes an intrinsic variable for the data set of interest.
+Ignoring the higher harmonics (see \chap~\ref{ch:harmonics}), each retained eigenvector then parameterizes a variable for the data set of interest.
 %
 We note that the eigenvectors can be determined up to a scaling factor.
 %
@@ -112,14 +113,14 @@ alternatively, if there is a common region sampled by both data sets, the sign o
 %
 %We will return to the issue of embedding consistency for different data sets in our concluding discussion; for the moment, we will assume that our different sets sample the same region of data space in a representative enough way such that the correspondence between the sequences of retained eigenvectors for different embeddings is obvious.
 %
-Similarly, for the examples in \chap~\ref{ch:drosophila}, the sign of the eigenvector is important, and are determined after analysis using {\em a priori} knowledge of the system. 
+Similarly, for the examples in \chap~\ref{ch:drosophila}, the sign of the eigenvector is important, and are determined after analysis using {\em a priori} knowledge of the system dynamics. 
 
 
 
 
 \subsection{Family of operators} \label{sec:diff_limit}
 
-In the limit $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$, the matrix $\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A} \right) $ converges to the continuous backward Fokker-Planck operator \cite{nadler2006diffusion}
+In the limit $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$ (with the appropriate rates), the matrix $\frac{1}{\dmeps^2} \left( \mathbf{I} - \mathbf{A} \right) $ converges to the continuous backward Fokker-Planck operator \cite{nadler2006diffusion}
 \begin{equation}
 	\mathcal{L} = \Delta - 2 \nabla U \cdot \nabla.
 	\label{eq:limiting_operator}
@@ -150,11 +151,9 @@ Therefore, choosing different values of $\alpha$ results in different kernel nor
 
 The essential component of manifold learning algorithms (such as diffusion maps) is having an informative distance metric between data points, as one of the key assumptions is that points which are close on the manifold have a small distance. 
 %
-However, often the Euclidean distance is not informative, and we require a more sophisitcated metric. 
+However, often the Euclidean distance is not meaningful or informative, and we require a more sophisitcated metric. 
 %
-Here, we will discuss the Mahalanobis distance \cite{mahalanobis1936generalized}. 
-%
-This distance has some nice propoerties which will allow us to analyze multiscale stocastic systems in \chap~\ref{ch:multiscale} and data from chemical simulations in \chap~\ref{ch:merging}. 
+Here, we will discuss the Mahalanobis distance \cite{mahalanobis1936generalized}, a metric which has some nice propoerties which will allow us to analyze multiscale stocastic systems in \chap~\ref{ch:multiscale} and data from chemical simulations in \chap~\ref{ch:merging}. 
 
 Let $\mathbf{C}(t)$ be the covariance matrix associated with the measured sample $\data(t)$ (the specifics will be discussed in subsequent chapters). 
 %
@@ -207,7 +206,7 @@ This information is then utilized in \eqref{eq:mahalanobis1} to compare a pair o
 %%
 %thus, we use the pseudo-inverse in \eqref{eq:mahalanobis1}.
 
-In practice, the covariance matrix can be estimated from a short trajectory of samples in time around the sample $\data(t)$ by
+In practice, for a dynamical system, the covariance matrix can be estimated from a short trajectory of samples in time around the sample $\data(t)$ by
 \begin{equation} \label{eq:cov1}
 	\widehat{\mathbf{C}}(t) = \sum \limits _{\tau = t-L}^{t+L} (\data(\tau) - \widehat{\boldsymbol{\mu}}(t))(\data(\tau) - \widehat{\boldsymbol{\mu}}(t))^T,
 \end{equation}
@@ -254,9 +253,9 @@ where $\delta t > 0$ is the length of the simulation burst.
 
 \section{Angular synchronization } \label{sec:ang_synch}
 
-The Mahalanobis distance is useful for analyzing data which have been obscured by large noise and/or a measurement function (this will be discussed in \chap~\ref{ch:multiscale}~and~\ref{ch:merging}). 
+As will be discussed in \chap~\ref{ch:multiscale}~and~\ref{ch:merging}, the Mahalanobis distance is useful for analyzing data which have been obscured by large noise and/or a measurement function. 
 %
-Another source of variability that one would often like to factor out is due to symmetries, when data (such as images) are collected in many different orientations. 
+Another source of variability that one would often like to remove is due to symmetries, when data (such as images) are collected in many different orientations. 
 %
 These orientational differences are an artifact of the experimental or imaging setup and must be removed for informative analysis.
 %
@@ -264,7 +263,7 @@ We will discuss two algorithms for registering images with respect to rotational
 %
 Angular synchronization \cite{singer2011angular} is an algorithm for registering a data set given pairwise alignment information. 
 %
-Vector diffusion maps \cite{singer2012vector} then combines angular synchronization and diffusion maps to both register and uncover structure in data in a single computation. 
+Vector diffusion maps \cite{singer2012vector} then combines angular synchronization and diffusion maps to both register and uncover structure in a data set in a single computation. 
 %
 We demonstrate these two algorithms for registration and temporal ordering using a synthetic data set.
 %
@@ -297,13 +296,13 @@ Because the profiles are unregistered and unordered, the underlying dynamics (a 
 
 The angular synchronization algorithm aligns pairs of data points with respect to a given symmetry group from pairs of alignment measurements \citep{singer2011angular}. 
 %
-Let $ \data_1, \dots, \data_\ndata$ denote the signals that we wish to align with respect to rotations;
+Let $ \data(1), \dots, \data(\ndata)$ denote the signals that we wish to align with respect to rotations;
 each signal is a function defined on the unit circle (on the plane).
 %
-First assume that each signal $\data_i$ is a {\it noisy} rotated copy of the underlying signal $\data_{true}$
+First assume that each signal $\data(i)$ is a {\it noisy} rotated copy of the underlying signal $\data_{true}$
 (which we are {\it not} given), such that
 \begin{equation}
-\data_i = f(\data_{true}, \theta_i) + \mathbf{\xi}_i
+\data(i) = f(\data_{true}, \theta_i) + \mathbf{\xi}(i)
 \end{equation}
 where the function $f(\data_{true}, \theta_i)$ rotates the signal $\data_{true}$ by $\theta_i$ degrees, and $\mathbf{\xi}_i$ is a (typically Gaussian) noise term.
 %
@@ -313,17 +312,17 @@ Up to noise,
 \begin{equation} \label{eq:pairwise_rot}
 \data_i \approx f(\data_j, \theta_i - \theta_j) ;
 \end{equation}
-note that \eqref{eq:pairwise_rot} does not require knowledge of $x_{true}$.
+note that \eqref{eq:pairwise_rot} does not require knowledge of $\data_{true}$.
 %
 We can obtain an {\it estimate} of $\theta_i - \theta_j$ by computing the rotation that optimally aligns $\data_j$ to $\data_i$,
 i.e., %$\theta_{ij} \approx \theta_i - \theta_j$, where
 %
 \begin{equation} \label{eq:opt_angle}
-\theta_i - \theta_j \approx \theta_{ij} = \argmin_{\theta} \|\data_i - f(\data_j, \theta)\|^2.
+\theta_i - \theta_j \approx \theta_{ij} = \argmin_{\theta} \|\data(i) - f(\data(j), \theta)\|^2.
 \end{equation}
 %
 Practically, the signals are discretized in a $\highdim$-long vector (the local intensity at $n$ equidistant points around the circle);
-rotating the function by an angle $\theta$ then corresponds to cyclically shifting the elements of $\data_i$
+rotating the function by an angle $\theta$ then corresponds to cyclically shifting the elements of $\data(i)$
 by $\frac{\theta_i}{2 \pi} \highdim$ (rounded to the nearest integer to obtain a valid shift).
 %
 For the one-dimensional discretized profiles shown in \fig~\ref{fig:1d_demo}, we exhaustively search over all $\highdim=100$ possible shifts of the signals to obtain the optimal angles in \eqref{eq:opt_angle}.
@@ -427,14 +426,14 @@ Because $\mathbf{H}$ and $\mathbf{H}^2$ have the same eigenvectors, our problem 
 
 Vector diffusion maps combines the algorithms of angular synchronization and diffusion maps into a single computation that both removes rotational symmetries and parameterizes the data {\em modulo} these symmetries \cite{singer2012vector}.
 %
-Given data points $\data_1, \dots, \data_\ndata$, one first constructs the matrix $\mathbf{S} \in \mathbb{R}^{\ndata d \times \ndata d}$, with the $i,j^{th}$ block of $\mathbf{S}$, $\mathbf{S}_{ij}$, defined as
+Given data points $\data(1), \dots, \data(\ndata)$, one first constructs the matrix $\mathbf{S} \in \mathbb{R}^{\ndata \rotdim \times \ndata \rotdim}$, with the $i,j^{th}$ block of $\mathbf{S}$, $\mathbf{S}_{ij}$, defined as
 \begin{equation} \label{eq:vdm_S}
 	\mathbf{S}_{ij} = \mathbf{A}_{ij} \mathbf{H}_{ij}
 \end{equation}
 %
 where $\mathbf{A}_{ij} \in \mathbb{R}$ (defined in \sec~\ref{sec:dmaps}) pertains to the diffusion kernel between data points, and $\mathbf{H}_{ij} \in \mathbb{R}^{\rotdim \times \rotdim}$ (defined in \eqref{eq:H_to_R}) pertains to the pairwise alignment between data points.
 %
-It is important to note that distance $d(\data_i, \data_j)$ used in the diffusion kernel in \eqref{eq:dmaps_kernel} is the distance between data points {\it after} after pairwise alignment, i.e., the minimum distance between all possible shifts of the two data points.
+It is important to note that distance $\| \data(i) - \data(j) \|$ used in the diffusion kernel in \eqref{eq:dmaps_kernel} is the distance between data points {\it after} after pairwise alignment, i.e., the minimum distance between all possible shifts of the two data points.
 %
 In the language of symmetry groups, this distance is a metric between the orbits induced by the relevant symmetry group.
 
@@ -474,9 +473,9 @@ j\rotdim \le k \le (j+1)\rotdim-1 \\
  \sum_i \psi_{k,l} (i)^2. 
 \end{equation}
 
-\section{The eigenvalue spectrum}
+%\section{The eigenvalue spectrum}
 
-We can use the eigenvalues from (vector) diffusion maps to help deduce the dimensionality of the data.
+We can use the eigenvalues from vector diffusion maps to help deduce the dimensionality of the data.
 %
 In diffusion maps, the largest eigenvalue will always be 1 and correspond to the trivial (constant) eigenvector, and $|\lambda_k|$ gives a measure of the importance of coordinate $\phi_k$. 
 %

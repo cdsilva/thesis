@@ -1,12 +1,10 @@
 % !TEX root = ../thesis.tex
 
-\chapter{Factoring Out Harmonics\label{ch:harmonics}}
+\chapter{Identifying Repeated Eigendirections in Manifold Learning \label{ch:harmonics}}
 
 \graphicspath{{ch-harmonics/figures/}}
 
 {\em This work is currently being prepared for publication.}
-
-TODO: change figures to match notation
 
 
 \section{Introduction}
@@ -91,7 +89,7 @@ By using a particular manifold learning technique based on the construction of a
 \label{subfig:strip_evecs_nonuniform}
 \end{subfigure}
 %
-\caption{(a) Two-dimensional continuous strip colored by the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$, and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$. (b) Two-dimensional strip with uniform sampling colored by the first and fourth (non-trivial) eigenvectors of the discrete Laplacian. (c) Two-dimensional strip with data sampled from a Gaussian distribution in $z_1$ and sampled uniformly in $z_2$, colored by the first and third (non-trivial) eigenvectors of the discrete Laplacian. Note that in all cases we uncover parametrizations which are one-to-one with $z_1$ and $z_2$.}
+\caption[Eigenfunctions of the Laplace-Beltrami operator on a two-dimensional strip]{(a) Two-dimensional continuous strip colored by the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$, and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$. (b) Two-dimensional strip with uniform sampling colored by the first and fourth (non-trivial) eigenvectors of the discrete Laplacian. (c) Two-dimensional strip with data sampled from a Gaussian distribution in $z_1$ and sampled uniformly in $z_2$, colored by the first and third (non-trivial) eigenvectors of the discrete Laplacian. Note that in all cases we uncover parametrizations which are one-to-one with $z_1$ and $z_2$.}
 \end{figure}
 
 In recent years, it has been noted that the eigenfunctions of the \emph{continuous} Laplace-Beltrami operator provide ``good" coordinates for the manifold \cite{jones2008}.
@@ -241,7 +239,7 @@ Furthermore, the corresponding eigenvalues provide us with a measure of the rela
 \begin{subfigure}{0.24\textwidth}
 \includegraphics[width=\textwidth]{strip_discrete4}
 \end{subfigure}
-\caption{ Two-dimensional strip with uniform sampling colored by the first four (non-trivial) eigenvectors from diffusion maps. Note that the first and fourth eigenvectors are one-to-one with $z_1$ and $z_2$, respectively. However, the second and third eigenvectors are higher harmonics of the first eigenvector and do not capture any additional structure within the data set. }
+\caption[Eigenvectors of the discrete Laplacian on a two-dimensional strip]{Two-dimensional strip with uniform sampling colored by the first four (non-trivial) eigenvectors from diffusion maps. Note that the first and fourth eigenvectors are one-to-one with $z_1$ and $z_2$, respectively. However, the second and third eigenvectors are higher harmonics of the first eigenvector and do not capture any additional structure within the data set. }
 \label{fig:strip_harmonics}
 \end{figure}
 
@@ -412,7 +410,7 @@ The second and third data sets are nonlinear manifolds which demonstrate the fle
 \caption{}
 \end{subfigure}
 %
-\caption{Data sets (top) and eigenvalue spectra from diffusion maps analysis (bottom) for strips with (a) $L_1 = 2$, $L_2 = 1$, (b) $L_1 = 4$, $L_2 = 1$, (c) $L_1 = 8$, $L_2 = 1$. The empirical eigenvalues are plotted in blue, and the analytical eigenvalues are plotted in red. From the eigenvalues which are identified as parametrizing unique eigendirections (indicated by the darker blue bars), the estimated length ratio from \eqref{eq:est_lengths} is (a) 2.2, (b) 4.1, (c) 8.7.}
+\caption[Eigenvalues and eigenvectors of diffusion maps on a two-dimensional strip]{Data sets (top) and eigenvalue spectra from diffusion maps analysis (bottom) for strips with (a) $L_1 = 2$, $L_2 = 1$, (b) $L_1 = 4$, $L_2 = 1$, (c) $L_1 = 8$, $L_2 = 1$. The empirical eigenvalues are plotted in blue, and the analytical eigenvalues are plotted in red. From the eigenvalues which are identified as parametrizing unique eigendirections (indicated by the darker blue bars), the estimated length ratio from \eqref{eq:est_lengths} is (a) 2.2, (b) 4.1, (c) 8.7.}
 \label{fig:strip_compare_analytic}
 \end{figure}
 
@@ -494,7 +492,7 @@ Using \eqref{eq:est_lengths}, we can accurately estimate the relative lengths of
 \label{subfig:swissroll2_color2}
 \end{subfigure}
 %
-\caption{Swiss roll example. (a) Data set 1; $h= 40$. (b) Eigenvalue spectrum from the diffusion maps analysis of data set 1. (c) Data set 1, colored by the first diffusion maps eigenvector. (d) Data set 1, colored by the second diffusion maps eigenvector. (e) Data set 2; $h = 20$. (f) Eigenvalue spectrum from the diffusion maps analysis of data set 2. (g) Data set 2, colored by the first diffusion maps eigenvector. (h) Data set 2, colored by the fifth diffusion maps eigenvector. }
+\caption[Eigenvalues and eigenvectors of diffusion maps on a swiss roll]{Swiss roll example. (a) Data set 1; $h= 40$. (b) Eigenvalue spectrum from the diffusion maps analysis of data set 1. (c) Data set 1, colored by the first diffusion maps eigenvector. (d) Data set 1, colored by the second diffusion maps eigenvector. (e) Data set 2; $h = 20$. (f) Eigenvalue spectrum from the diffusion maps analysis of data set 2. (g) Data set 2, colored by the first diffusion maps eigenvector. (h) Data set 2, colored by the fifth diffusion maps eigenvector. }
 \label{fig:swiss_rolls}	
 \end{figure}
 
@@ -560,7 +558,7 @@ As expected, these eigenvectors are one-to-one with the arc length along the spi
 %
 \hfill
 %
-\caption{Torii data sets (top, see \eqref{eq:torus}) and corresponding diffusion maps eigenvalues (bottom) for (a) $r_1 = 3$, $r_2 = 1$. (b) $r_1 = 5$, $r_2 = 1$. (c) $r_1 = 10$, $r_2 = 1$. In all three data sets, the first two eigenvalues/eigenvectors correspond to $\sin \theta_1$ and $\cos \theta_1$. The second pair of unique eigendirections (corresponding to $\sin \theta_2$ and $\cos \theta_2$) are captured by components 7 and 8, 11 and 12, and 15 and 16, respectively.}
+\caption[Eigenvalues and eigenvectors of diffusion maps on a torus]{Torii data sets (top, see \eqref{eq:torus}) and corresponding diffusion maps eigenvalues (bottom) for (a) $r_1 = 3$, $r_2 = 1$. (b) $r_1 = 5$, $r_2 = 1$. (c) $r_1 = 10$, $r_2 = 1$. In all three data sets, the first two eigenvalues/eigenvectors correspond to $\sin \theta_1$ and $\cos \theta_1$. The second pair of unique eigendirections (corresponding to $\sin \theta_2$ and $\cos \theta_2$) are captured by components 7 and 8, 11 and 12, and 15 and 16, respectively.}
 %
 \label{fig:torus}
 %
@@ -681,7 +679,7 @@ We allow each simulation to evolve for $t_{max}$ time units with a fixed time st
 \caption{}
 \label{subfig:large_lambda_rho}
 \end{subfigure}
-\caption{Embeddings using the first two diffusion maps eigenvectors computed from simulation data of the velocity jump process with (a--c) $\lambda_{switch}=1$, $s=1$, and (d--f) $\lambda_{switch}=400$, $s=20$.  We set $t_{max} = 10$ and $dt=1$. The distances used in the diffusion maps kernel are the earth mover's distances between the histograms of cell positions. The data are colored by (a, d) $p$, the initial probability of a cell moving to the right, (b, e) $t$, time, and (c, f) $E \rho^+ - E \rho^-$, the difference between the average position of the left- and right-moving cells. Representative histograms of the cell positions are shown for selected data points. }
+\caption[Diffusion maps embeddings of chemotaxis simulation data]{Embeddings using the first two diffusion maps eigenvectors computed from simulation data of the velocity jump process with (a--c) $\lambda_{switch}=1$, $s=1$, and (d--f) $\lambda_{switch}=400$, $s=20$.  We set $t_{max} = 10$ and $dt=1$. The distances used in the diffusion maps kernel are the earth mover's distances between the histograms of cell positions. The data are colored by (a, d) $p$, the initial probability of a cell moving to the right, (b, e) $t$, time, and (c, f) $E \rho^+ - E \rho^-$, the difference between the average position of the left- and right-moving cells. Representative histograms of the cell positions are shown for selected data points. }
 \label{fig:dmaps_embed_emd}
 \end{figure}
 
@@ -751,7 +749,7 @@ We note that although histograms are not essential to the theory of EMD, they ma
 \caption{}
 \end{subfigure}
 %
-\caption{Analysis of three different chemotaxis simulation data sets. (a) $\lambda_{switch} = 100$, $s = 10$. (b) $\lambda_{switch} = 1600$, $s = 40$. (c) $\lambda_{switch} = 6400$, $s = 80$. We set $t_{max} = 10$ and $dt=1$, and the distances used in the diffusion maps kernel are the earth mover's distances between the histograms of cell positions. For each data set, the eigenvalue spectrum, colored by the cross-validation error, is shown in the top row. From the spectra, we can see that the first two components are informative for (a), components 1 and 3 are informative for (b), and components 1 and 4 are informative for (c). The corresponding reduced diffusion maps embeddings are shown in the middle row. For comparison, the standard diffusion maps embeddings using the first two components are also shown in the bottom row in (b) and (c).}
+\caption[Changes in diffusion maps eigenspectra for chemotaxis simulation data]{Analysis of three different chemotaxis simulation data sets. (a) $\lambda_{switch} = 100$, $s = 10$. (b) $\lambda_{switch} = 1600$, $s = 40$. (c) $\lambda_{switch} = 6400$, $s = 80$. We set $t_{max} = 10$ and $dt=1$, and the distances used in the diffusion maps kernel are the earth mover's distances between the histograms of cell positions. For each data set, the eigenvalue spectrum, colored by the cross-validation error, is shown in the top row. From the spectra, we can see that the first two components are informative for (a), components 1 and 3 are informative for (b), and components 1 and 4 are informative for (c). The corresponding reduced diffusion maps embeddings are shown in the middle row. For comparison, the standard diffusion maps embeddings using the first two components are also shown in the bottom row in (b) and (c).}
 %
 \label{fig:chemotaxis_simulations_harmonics}
 \end{figure}
@@ -873,7 +871,7 @@ We empirically found that there is no appreciable correlation between the embedd
 \centering
 \includegraphics[width=0.5\textwidth]{tmax_lambda_transition}
 %
-\caption{Detecting the change in dimensionality. The appropriate ratio the two eigenvalues (see \eqref{eq:chemotaxis_eval_ratio}) which correspond to unique eigendirections is plotted as a function of $t_{max}$ and $\lambda_{switch}$. Each data point is the average eigenvalue ratio over three replicate data sets, and in each simulation, $dt=t_{max}/10$. The distances used in the diffusion maps kernel are the earth mover's distances between the histograms of cell positions. The curve $1/\lambda_{switch} = t_{max}/N$ is shown in white. }
+\caption[Detecting changes in dimensionality of chemotaxis simulation data]{Detecting the change in dimensionality. The appropriate ratio the two eigenvalues (see \eqref{eq:chemotaxis_eval_ratio}) which correspond to unique eigendirections is plotted as a function of $t_{max}$ and $\lambda_{switch}$. Each data point is the average eigenvalue ratio over three replicate data sets, and in each simulation, $dt=t_{max}/10$. The distances used in the diffusion maps kernel are the earth mover's distances between the histograms of cell positions. The curve $1/\lambda_{switch} = t_{max}/N$ is shown in white. }
 %
 \label{fig:chemotaxis_compare_timescales_evals}
 %

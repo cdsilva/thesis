@@ -1,5 +1,6 @@
+% !TEX root = ../thesis.tex
 
-\chapter{Parameterizing the Slow Modes in Multiscale Data\label{ch:multiscale}}
+\chapter{Reduction of Data from Multiscale Dynamical Systems \label{ch:multiscale}}
 
 \graphicspath{{ch-multiscale/figures/}}
 
@@ -232,7 +233,7 @@ In \sec~\ref{sec:analysis}, we will show how we can approximate this distance di
 \begin{figure}[t]
 \centering
 \includegraphics[width=\textwidth]{schematic}
-\caption[Schematic of analysis parameters for multiscale data]{Illustration of how to choose $\delta t$ and $\dmeps$ appropriately. 	Curvature effects and other nonlinearities should be negligible within a time window $\delta t$ and within a ball of radius $\dmeps$.}
+\caption[Schematic of relevant parameters for analysis of multiscale data]{Illustration of how to choose $\delta t$ and $\dmeps$ appropriately. 	Curvature effects and other nonlinearities should be negligible within a time window $\delta t$ and within a ball of radius $\dmeps$.}
 \label{fig:schematic}
 \end{figure}
 
@@ -475,7 +476,7 @@ We would like to recover a parametrization of this data which is one-to-one with
 \centering
 \includegraphics[width=0.5\textwidth]{data_init}
 %
-\caption[Multiscale data]{Data, simulated from \eqref{eq:specific_SDE} with $a=3$ and $\epsilon = 10^{-3}$, for $3000$ time steps with $dt = 10^{-4}$. The data are colored by time.}
+\caption[Linear multiscale data]{Data, simulated from \eqref{eq:specific_SDE} with $a=3$ and $\epsilon = 10^{-3}$, for $3000$ time steps with $dt = 10^{-4}$. The data are colored by time.}
 \label{fig:initial_data}
 \end{figure}
 
@@ -526,7 +527,7 @@ In contrast, the slow variable is recovered when using the Mahalanobis distance,
 \label{subfig:NIV_versus_DMAPS2}
 \end{subfigure}
 %
-\caption[Comparison of using the Euclidean distance and the Mahalanobis distance in multiscale data mining]{Comparison of using the Euclidean distance and the Mahalanobis distance in multiscale data mining. (\subref*{subfig:NIV_versus_DMAPS1}) The data from \fig~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Euclidean distance in the kernel in \eqref{eq:dmaps_kernel}. Note that we do {\em not} recover the slow variable. (\subref*{subfig:NIV_versus_DMAPS2}) The data from \fig~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Mahalanobis distance in the kernel in \eqref{eq:dmaps_kernel}. The good correspondence between this coordinate and the slow variable is visually obvious.}
+\caption[Comparison of using the Euclidean distance and the Mahalanobis distance in analysis of multiscale data]{Comparison of using the Euclidean distance and the Mahalanobis distance in multiscale data mining. (\subref*{subfig:NIV_versus_DMAPS1}) The data from \fig~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Euclidean distance in the kernel in \eqref{eq:dmaps_kernel}. Note that we do {\em not} recover the slow variable. (\subref*{subfig:NIV_versus_DMAPS2}) The data from \fig~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Mahalanobis distance in the kernel in \eqref{eq:dmaps_kernel}. The good correspondence between this coordinate and the slow variable is visually obvious.}
 \label{fig:NIV_versus_DMAPS}
 \end{figure}
 
@@ -643,7 +644,7 @@ The right column of \fig~\ref{fig:recover_fast} shows that, when the burst is no
 \includegraphics[width=\figwidth]{data_linear_evals2}
 \includegraphics[width=\figwidth]{data_linear_evals3}
 
-\caption[Relationship between changing $\delta t$ and recovery of the variables in multiscale data mining]{Relationship between changing $\delta t$ and recovery of the variables. From left to right, the columns correspond to $\delta t = 10^{-6}, 10^{-5}, 10^{-3}$.  (Row~1) Data (gray) and representative burst (red) used to estimate the local covariance. (Row~2) Correlation between first diffusion maps coordinate and the slow variable $x_1$. (Row~3) Correlation between the relevant diffusion maps coordinate and the fast variable $x_2$. Note that for $\delta t = 10^{-6}$ and $\delta t = 10^{-5}$, $x_2$ is correlated with $\phi_{10}$. When $\delta t = 10^{-3}$, $x_2$ is correlated with $\phi_6$. (Row 4) Diffusion maps eigenvalue spectra. The eigenvalues corresponding to the coordinates for the slow and fast modes are indicated by red circles. Note that when $\delta t$ is too large, the apparent time scale separation decreases and the coordinate corresponding to the fast variable appears earlier in the spectrum. }
+\caption[Relationship between changing $\delta t$ and recovery of the variables in analysis of multiscale data]{Relationship between changing $\delta t$ and recovery of the variables. From left to right, the columns correspond to $\delta t = 10^{-6}, 10^{-5}, 10^{-3}$.  (Row~1) Data (gray) and representative burst (red) used to estimate the local covariance. (Row~2) Correlation between first diffusion maps coordinate and the slow variable $x_1$. (Row~3) Correlation between the relevant diffusion maps coordinate and the fast variable $x_2$. Note that for $\delta t = 10^{-6}$ and $\delta t = 10^{-5}$, $x_2$ is correlated with $\phi_{10}$. When $\delta t = 10^{-3}$, $x_2$ is correlated with $\phi_6$. (Row 4) Diffusion maps eigenvalue spectra. The eigenvalues corresponding to the coordinates for the slow and fast modes are indicated by red circles. Note that when $\delta t$ is too large, the apparent time scale separation decreases and the coordinate corresponding to the fast variable appears earlier in the spectrum. }
 \label{fig:recover_fast}
 \end{figure}
 
@@ -764,7 +765,7 @@ However, when $\dmeps^2$ corresponds to a region where $|E_M | \gg \|\data(t_2) 
 \label{subfig:cov_error_nonlinear2}
 \end{subfigure}
 %
-\caption[Errors in the Mahalanobis distance and the covariance estimation for the nonlinear data]{Errors in the Mahalanobis distance and the covariance estimation for the nonlinear example in \eqref{eq:nonlinear_function}. (\subref*{subfig:dist_error_nonlinear1}) The analytical expressions for the contributions to the distance approximation as a function of $\| \data_2 - \data_1\|_2$. (\subref*{subfig:dist_error_nonlinear2}) The average estimated Mahalanobis distance $\| \data_2 - \data_1\|^2_M$ as a function of the distance $\| \data_2 - \data_1\|_2$. The line $\| \data_2 - \data_1\|^2_M = \| \data_2 - \data_1\|_2$ is shown for reference. The yellow region indicates the range in which $\sigma_{kernel}$ should be chosen. (\subref*{subfig:cov_error_nonlinear2}) The analytical expressions for the contributions to the covariance as a function of $\delta t$. (\subref*{subfig:cov_error_nonlinear2}) The average estimated covariance $\| \hat{\mathbf{C}} \|$ as a function of $\delta t$. The yellow region indicates the range of $\delta t$ over which the errors in the estimated covariance are small relative to the norm of the covariance. }
+\caption[Errors in the Mahalanobis distance and the covariance estimation for nonlinear multi scale data]{Errors in the Mahalanobis distance and the covariance estimation for the nonlinear example in \eqref{eq:nonlinear_function}. (\subref*{subfig:dist_error_nonlinear1}) The analytical expressions for the contributions to the distance approximation as a function of $\| \data_2 - \data_1\|_2$. (\subref*{subfig:dist_error_nonlinear2}) The average estimated Mahalanobis distance $\| \data_2 - \data_1\|^2_M$ as a function of the distance $\| \data_2 - \data_1\|_2$. The line $\| \data_2 - \data_1\|^2_M = \| \data_2 - \data_1\|_2$ is shown for reference. The yellow region indicates the range in which $\sigma_{kernel}$ should be chosen. (\subref*{subfig:cov_error_nonlinear2}) The analytical expressions for the contributions to the covariance as a function of $\delta t$. (\subref*{subfig:cov_error_nonlinear2}) The average estimated covariance $\| \hat{\mathbf{C}} \|$ as a function of $\delta t$. The yellow region indicates the range of $\delta t$ over which the errors in the estimated covariance are small relative to the norm of the covariance. }
 \label{fig:cov_error_nonlinear}
 \end{figure}
 
@@ -842,7 +843,7 @@ However, when $\delta t$ corresponds to a region where $\|\mathbf{E}_C \| \gg \|
 \includegraphics[height=\figheight]{dist_dy_nonlinear_dt2_kernel1}
 \end{subfigure}
 
-\caption[Comparison of results for different parameter settings]{Data from \fig~\ref{fig:initial_data_nonlinear}, colored by the first diffusion maps variable $\phi_1$ using the Mahalanobis distance for three different parameter settings. The relevant values of $\delta t$ and $\sigma_{kernel}$ are indicated by the red dashed lines on the corresponding plots.  (Row~1) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{-2}$. Note that the parametrization is one-to-one with the slow variable.  (Row~2) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{1}$. We do not recover the slow variable because $\sigma_{kernel}$ is too large. (Row~3)  $\delta t = 10^{-3}$ and $\sigma_{kernel}^2 = 10^{-2}$. We do not recover the slow variable because $\delta t$ is too large.  }
+\caption[Analysis of nonlinear multiscale data for different parameter settings]{Data from \fig~\ref{fig:initial_data_nonlinear}, colored by the first diffusion maps variable $\phi_1$ using the Mahalanobis distance for three different parameter settings. The relevant values of $\delta t$ and $\sigma_{kernel}$ are indicated by the red dashed lines on the corresponding plots.  (Row~1) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{-2}$. Note that the parametrization is one-to-one with the slow variable.  (Row~2) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{1}$. We do not recover the slow variable because $\sigma_{kernel}$ is too large. (Row~3)  $\delta t = 10^{-3}$ and $\sigma_{kernel}^2 = 10^{-2}$. We do not recover the slow variable because $\delta t$ is too large.  }
 \label{fig:colored_data_nonlinear_cases}
 \end{figure}
 

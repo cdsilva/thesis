@@ -1,6 +1,6 @@
 % !TEX root = ../thesis.tex
 
-\chapter{Temporal Ordering of Images \label{ch:drosophila}}
+\chapter{Reconstructing Dynamics from Fixed Images \label{ch:drosophila}}
 
 \graphicspath{{ch-drosophila/figures/}}
 
@@ -150,7 +150,7 @@ All algorithms and analysis were implemented in MATLAB\textsuperscript{\textregi
 Software, including documentation and tutorials, along with the full imaging data sets used in this paper are available at \texttt{genomics.princeton.edu/stas/publications.html} under ``Codes and Data''.
 
 \begin{table}[t]
-\caption{Outline of algorithm used to temporally order images}
+\caption{Outline of algorithm for registration and temporal ordering of images}
 \hrule
 \begin{enumerate}
 \item Preprocess images, as described in \sec~\ref{sec:image_preprocessing}.
@@ -177,7 +177,7 @@ $\mathbf{A}_{ij}$ is computed from \eqref{eq:dmaps_kernel}, using the pairwise d
 \hrule
 \end{table}
 
-\subsection{Registering images} \label{subsec:trans_rot_register}
+\subsection{Registering pairs of images} \label{subsec:trans_rot_register}
 
 To register sets of images, 
 the first step is to compute the optimal alignments between pairs of images.
@@ -673,7 +673,7 @@ We also provide some guidance on selecting these parameters, and found that the 
 %
 Overall, the tasks of image preprocessing and parameter selection are relatively simple compared to manual registration and ordering of images, and so this methodology is promising for much larger imaging data sets which are impractical to evaluate manually.
 
-\section{Discussion}
+\section{Conclusions}
 
 \begin{table}
 \caption[PCA and vector diffusion maps comparison]{Comparison between rank correlation coefficients when ordering using the first vector diffusion maps (VDM) embedding coordinate, and rank correlation coefficients when ordering by the first principal component analysis (PCA) \citep{shlens2005tutorial} projection coefficient. For ordering using PCA, we computed the first principal component of the registered images, and then ordered the images by the projection coefficients onto this first mode. The PCA ordering is always less accurate than the vector diffusion maps ordering. In the zebrafish data set, the ordering is much less accurate using PCA, as the dynamics of the morphing and spreading of the cell mass are highly nonlinear. The PCA and VDM orderings are comparable for the wing disc data; this is to be expected, as the tissue simply grows in time.  }\textsf{

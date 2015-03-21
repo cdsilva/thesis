@@ -7,9 +7,9 @@ Modeling dynamical systems is an essential component of most science and enginee
 %
 Substantial research efforts are dedicated to constructing models for complex phenomena, such as chemical reactions \cite{dong2007simplification, gillespie1977exact, gallagher1986combined}, fluid flow \cite{anderson1995computational}, and gene expression \cite{bar2004analyzing, storey2005significance}. 
 %
-These models both allow researchers to run very inexpensive {\em in silico} ``experiments'', and can also be incorporated into larger, system level models and optimization routines \cite{daoutidis2013engineering, oluwole2006rigorous, rubert2014advanced}. 
+These models both allow researchers to run very inexpensive {\em in silico} ``experiments'', and can also be incorporated into systems-level models and optimization routines \cite{daoutidis2013engineering, oluwole2006rigorous, rubert2014advanced}. 
 
-Often a lower-dimensional model which captures the general trends of the dynamical system is preferable to a higher-dimensional model which captures all the fine-scale details. 
+Often a lower-dimensional model which captures the general trends of the dynamical system is preferable to a higher-dimensional model which captures the fine-scale details. 
 %
 Lower-dimensional models are simple and often easy to interpret.
 %
@@ -76,7 +76,7 @@ such as using the quasi-steady state approximation to reduce a network of chemic
 %
 Alternatively, empirical knowledge about the system of interest has been used to develop coarse grained descriptions, such as grouping atoms of a macromolecule into larger ``beads'' to accelerate simulations \cite{izvekov2005systematic, monticelli2008martini, saunders2013coarse, spiga2013electrostatic}.
 %
-Progress variables and order parameters which effectively parameterize a system's dynamics, such as the radius of gyration in protein folding problems \cite{lazaridis1997new, kim2015systematic} or a specific morphological feature which parameterizes an organism's developmental progress \cite{dubuis2013accurate, hamaratoglu2011dpp}, are often posited after many empirical observations and are not immediately obvious for new systems of interest. 
+Progress variables and order parameters which effectively parameterize a system's dynamics, such as the radius of gyration in protein folding problems \cite{lazaridis1997new, kim2015systematic} or a  morphological feature which parameterizes an organism's developmental progress \cite{dubuis2013accurate, hamaratoglu2011dpp}, are often posited after many empirical observations and are not immediately obvious for new systems of interest. 
 %
 However, dimensionality reduction algorithms allow for the systematic discovery of data-driven, low-dimensional descriptions that circumvent the need for such {\em a priori} knowledge, and the automated detection of a few good, coarse-grained
 order parameters can be invaluable in understanding and predicting system behavior.
@@ -84,7 +84,7 @@ order parameters can be invaluable in understanding and predicting system behavi
 %For example, such reduction coordinates may be the dihedral angles inferred from trajectories of the atoms of a macromolecule.
 
 
-\section{Background on dimensionality reduction and manifold learning} \label{sec:background}
+\section{Background on Dimensionality Reduction} \label{sec:background}
 
 
 For the past century, principal component analysis (PCA) \cite{shlens2005tutorial} has been the standard dimensionality reduction technique.
@@ -124,7 +124,7 @@ Soon after Laplacian Eigenmaps, the {\em diffusion maps} algorithm was proposed 
 This algorithm yields a family of embeddings, and provides theoretical understanding for the resulting embedding even when the data are nonuniformly sampled from the underlying manifold. 
 
 
-\section{Outline of this dissertation}
+\section{Outline of Dissertation}
 
 The focus of this thesis is using data mining algorithms to extract reduced parameterizations of data from dynamical systems.
 %
@@ -154,4 +154,4 @@ Here, we use vector diffusion maps (an extension of diffusion maps) to both regi
 %
 We present an algorithm, based on local linear regression, for automatically detecting these repeated eigendirections which allows us to uncover the true dimensionality of the underlying manifold and the most parsimonious representation of the data, an essential task when constructing a reduced model.
 %
-All of these examples address key issues in using and adapting manifold learning techniques to analyze dynamical systems.
+All of these examples address key issues in using and adapting manifold learning techniques to analyze data from dynamical systems.

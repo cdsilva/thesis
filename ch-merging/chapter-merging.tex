@@ -1,6 +1,6 @@
 % !TEX root = ../thesis.tex
 
-\chapter{Merging Data \label{ch:merging}}
+\chapter{Merging Data from Dynamical Systems \label{ch:merging}}
 
 \graphicspath{{ch-merging/figures/}}
 
@@ -75,7 +75,7 @@ We conclude with a summary and our perspective on open issues in \sec~\ref{sec:c
 
 \section{Nonlinear Intrinsic Variables} \label{sec:NIV}
 
-\subsection{Problem Formulation}
+\subsection{Problem formulation}
 Let $\data(t)$ be a high-dimensional measured process in $\mathbb{R}^\highdim$ consisting of $\highdim$ observable variables.
 %
 We impose two critical assumptions. First, the measured process is assumed to be a manifestation in an observable domain of a low-dimensional diffusion process. Thus, it can be expressed by
@@ -124,11 +124,11 @@ to estimate the tangent planes of the observable manifolds {\em via the principa
 
 \begin{figure*}[ht]
 \includegraphics[width=5in]{fig1}
-\caption{Illustration of the nonlinear embedding that yields an intrinsic representation independent of the measurement function $\measfn$. (Bottom) The underlying variables in which the noises are independent with unit variance. The circle illustrates samples from, say, a short trajectory in time that sample a disc on the manifold. (Top Left) The first set of observed variables. The ellipse illustrates the mapping of the sphere of the underlying samples into the observable domain via the first observation function. In this sketch, we illustrate that the observations might be {\em partial}, i.e., might consist of merely a subset of the observed domain variables. (Top Right) Second set of observable variables. The ellipse illustrates the mapping of the sphere of the underlying samples into this (different) observable domain via a second observation function.
+\caption[Illustration of the underlying theory in nonlinear intrinsic variables]{Illustration of the nonlinear embedding that yields an intrinsic representation independent of the measurement function $\measfn$. (Bottom) The underlying variables in which the noises are independent with unit variance. The circle illustrates samples from, say, a short trajectory in time that sample a disc on the manifold. (Top Left) The first set of observed variables. The ellipse illustrates the mapping of the sphere of the underlying samples into the observable domain via the first observation function. In this sketch, we illustrate that the observations might be {\em partial}, i.e., might consist of merely a subset of the observed domain variables. (Top Right) Second set of observable variables. The ellipse illustrates the mapping of the sphere of the underlying samples into this (different) observable domain via a second observation function.
 \label{fig:IntrinsicIllustration}}
 \end{figure*}
 
-\subsection{Merging Data with Diffusion Maps and the Mahalanobis Distance}
+\subsection{Diffusion maps and the Mahalanobis distance}
 \label{subsec:mahalanobis}
 
 We use the Mahalanobis distance in \eqref{eq:mahalanobis1}, with the covariance estimation in \eqref{eq:cov1}, to compare pairs of data points. 
@@ -436,7 +436,7 @@ are constructed and later extended to create the multiscale approximations as de
 The LP algorithm for the inverse mapping is summarized in \tab~\ref{algo_LP}.
 
 \begin{table}[tb]
-\caption{Laplacian Pyramids Algorithm for Inverse Mapping}
+\caption{Laplacian Pyramids algorithm for inverse mapping}
 \hrule
 \begin{enumerate}
 
@@ -480,13 +480,13 @@ Use the extended smoothing operators to approximate the value of $Y(\tilde{i})$ 
 \caption{}
 \label{subfig:LP_ex4}
 \end{subfigure}
-\caption[Function approximation using Laplacian Pyramids at different scales]{Approximation of the function $\measfn(x)$ defined in \eqref{eq:LP_example} using Laplacian Pyramids for ``scales'' (\subref*{subfig:LP_ex1}) 3, (\subref*{subfig:LP_ex2}) 5, (\subref*{subfig:LP_ex3}) 8, and (\subref*{subfig:LP_ex4}) 11. The top shows the true function in blue and the LP approximation is shown in black, and the bottom shows the residual error in the LP approximation.}
+\caption[Illustration of function approximation using Laplacian Pyramids at different scales]{Approximation of the function $\measfn(x)$ defined in \eqref{eq:LP_example} using Laplacian Pyramids for ``scales'' (\subref*{subfig:LP_ex1}) 3, (\subref*{subfig:LP_ex2}) 5, (\subref*{subfig:LP_ex3}) 8, and (\subref*{subfig:LP_ex4}) 11. The top shows the true function in blue and the LP approximation is shown in black, and the bottom shows the residual error in the LP approximation.}
 \label{fig:LP_ex}
 \end{figure}
 
 \section{Models and Results} \label{sec:examples}
 
-\subsection{A Chemical Reaction Network}\label{subsec:rxn_network}
+\subsection{A chemical reaction network}\label{subsec:rxn_network}
 
 We first consider a chemical reaction network involving  multiple enzyme-substrate interactions \cite{zagaris2012stability}.
 %
@@ -559,7 +559,7 @@ We denote the endpoints from the short simulations as $\mathcal{Y}^{burst}(\data
 \caption{}
 \label{subfig:rxn_manifolds4}
 \end{subfigure}
-\caption[Projections of the data obtained from stochastic simulation of the chemical reaction network]{Projections of the data obtained from stochastic simulation of the chemical reaction network described in \sec~\ref{subsec:rxn_network}. The insets show rotations of the projections to illustrate the approximate two-dimensionality of the ``slow manifold''.}
+\caption[Projections of chemical reaction network data]{Projections of the data obtained from stochastic simulation of the chemical reaction network described in \sec~\ref{subsec:rxn_network}. The insets show rotations of the projections to illustrate the approximate two-dimensionality of the ``slow manifold''.}
     \label{fig:rxn_manifolds}
 \end{figure}
 
@@ -716,7 +716,7 @@ Therefore, we can effectively estimate the unobserved components in the reaction
     \label{fig:rxn_recon}
 \end{figure}
 
-\subsection{Alanine Dipeptide}
+\subsection{Alanine dipeptide}
 
 Our second example comes from the molecular dynamics simulation of a small peptide fragment.
 %
@@ -838,7 +838,7 @@ The embeddings for the two data sets are found to be fairly consistent, with cor
     \caption{}
     \label{subfig:ala_embed3}
 \end{subfigure}
-    \caption[Intrinsic variable embedding for alanine dipeptide data]{The 3-dimensional NIV embedding for Ala2 computed using $\mathcal{Y}_{all}$, colored by (\subref*{subfig:ala_embed1}) the y-coordinate of the first atom, (\subref*{subfig:ala_embed2}) the dihedral angle $\phi$, and (\subref*{subfig:ala_embed3}) the dihedral angle $\psi$. Each embedding is rotated so that the correlation between the colors and the relevant NIV can easily be seen.}
+    \caption[Intrinsic variable embeddings for alanine dipeptide data]{The 3-dimensional NIV embedding for Ala2 computed using $\mathcal{Y}_{all}$, colored by (\subref*{subfig:ala_embed1}) the y-coordinate of the first atom, (\subref*{subfig:ala_embed2}) the dihedral angle $\phi$, and (\subref*{subfig:ala_embed3}) the dihedral angle $\psi$. Each embedding is rotated so that the correlation between the colors and the relevant NIV can easily be seen.}
     \label{fig:ala_embed}
 \end{figure}
 
@@ -878,7 +878,7 @@ We therefore conclude that the alanine dipeptide data does contain a measure of 
 \begin{figure}[t]
   \centering
         \includegraphics[width=4in]{fig9}
-  \caption[Laplacian pyramids reconstruction for alanine dipeptide data]{The correlation between the true position and the reconstructed position (using LP) for the test data. The columns correspond the x-, y-, and z-coordinates, and the rows correspond to atoms 1, 2, 3, 6, and 8.}
+  \caption[Laplacian Pyramids reconstruction for alanine dipeptide data]{The correlation between the true position and the reconstructed position (using LP) for the test data. The columns correspond the x-, y-, and z-coordinates, and the rows correspond to atoms 1, 2, 3, 6, and 8.}
   \label{fig:ala_recon}
 \end{figure}
 
@@ -910,7 +910,7 @@ We therefore conclude that the alanine dipeptide data does contain a measure of 
 \caption{}
 \label{subfig:ala_molecules3}
 \end{subfigure}    
-    \caption[Sample reconstructed alanine dipeptide configurations]{True structure (black) and reconstructed structure (red) for three different data points. Each data point is shown in ``ball-and-stick'' representation (left) and ``wireframe'' representation (right) so that the discrepancies can easily be seen between the different configurations.}
+    \caption[Example reconstructed alanine dipeptide configurations]{True structure (black) and reconstructed structure (red) for three different data points. Each data point is shown in ``ball-and-stick'' representation (left) and ``wireframe'' representation (right) so that the discrepancies can easily be seen between the different configurations.}
     \label{fig:ala_molecules}
 \end{figure}
 
@@ -925,7 +925,7 @@ We therefore conclude that the alanine dipeptide data does contain a measure of 
 \begin{figure}[t]
     \centering
     \includegraphics[width=3in]{fig10b}
-    \caption[Error in reconstructed alanine dipeptide configurations]{The error in the reconstructed position of the z-coordinate of atom 10 as a function of $\psi_1$. One can see that the error is large when $\psi_1$ is large (similar to the error structure in \fig~\ref{fig:LP_ex}), demonstrating that our data is indeed multiscale and that Laplacian Pyramids is an appropriate interpolation algorithm to use.}
+    \caption[Error in selected coordinate of reconstructed alanine dipeptide configurations]{The error in the reconstructed position of the z-coordinate of atom 10 as a function of $\psi_1$. One can see that the error is large when $\psi_1$ is large (similar to the error structure in \fig~\ref{fig:LP_ex}), demonstrating that our data is indeed multiscale and that Laplacian Pyramids is an appropriate interpolation algorithm to use.}
     \label{fig:LapPyr_ala2_errors}
 \end{figure}
 
