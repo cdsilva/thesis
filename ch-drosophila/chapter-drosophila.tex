@@ -99,7 +99,7 @@ As a consequence, uncovering this direction should reveal the underlying dynamic
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.7\textwidth]{fig2}
-\caption[Schematic illustrating angular synchronization and diffusion maps]{Schematic illustrating angular synchronization and diffusion maps. (A) Set of vectors, each in a different orientation. The pairwise alignment angles are indicated. (B) The vectors from A, each rotated about their midpoint so that the set is globally aligned. Note that the chosen rotation angles are consistent with the pairwise alignments in A: the difference between a pair of angles in B is the same as the pairwise angle in A. (C) Data points (in black) which lie on a one-dimensional nonlinear curve in two dimensions. Each pair of points is connected by an edge, and the edge weight is related to the Euclidean distance between the points through a Gaussian kernel (see \eqref{eq:dmaps_kernel}), so that pairs of data point which are close are connected by darker (``stronger'') edges. (D) The data in C, colored by the first (non-trivial) eigenvector from the diffusion map computational procedure. The color intensity is monotonic with the perceived curve arclength, thus parametrizing the curve.}
+\caption[Schematic illustrating angular synchronization and diffusion maps]{Schematic illustrating angular synchronization and diffusion maps. (A) Set of vectors, each in a different orientation. The pairwise alignment angles are indicated. (B) The vectors from A, each rotated about their midpoint so that the set is globally aligned. Note that the chosen rotation angles are consistent with the pairwise alignments in A: the difference between a pair of angles in B is the same as the pairwise angle in A. (C) Data points (in black) which lie on a one-dimensional nonlinear curve in two dimensions. Each pair of points is connected by an edge, and the edge weight is related to the Euclidean distance between the points through a Gaussian kernel (see \eqref{eq:W}), so that pairs of data point which are close are connected by darker (``stronger'') edges. (D) The data in C, colored by the first (non-trivial) eigenvector from the diffusion map computational procedure. The color intensity is monotonic with the perceived curve arclength, thus parametrizing the curve.}
 \label{fig:schematics}
 \end{figure}
 
@@ -164,15 +164,15 @@ Retain both the optimal pairwise rotations as well as the minimum distances obta
 %
 Taking $\dmeps$ to be $25-50\%$ of the median of the pairwise distances often yields good results. 
 \item Compute the matrix $\mathbf{S}$ in \eqref{eq:vdm_S}. 
-$\mathbf{A}_{ij}$ is computed from \eqref{eq:dmaps_kernel}, using the pairwise distances from step 1, and $\mathbf{H}_{ij} = \mathbf{R}(\theta_{ij})$ are computed in step 2.
+$\mathbf{A}_{ij}$ is computed from \eqref{eq:W}, using the pairwise distances from step 1, and $\mathbf{H}_{ij} = \mathbf{R}(\theta_{ij})$ are computed in step 2.
 %
 \item Compute the eigenvalues  $\lambda_0, \lambda_1, \dots, \lambda_{2 \ndata-1}$ and eigenvectors $\phi_0 , \phi_1, \dots, \phi_{2 \ndata-1}$ of $\mathbf{S}$, ordered such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{2 \ndata-1}|$.
 %
 \item Estimate the optimal two-dimensional rotation for each image: stack the first two eigenvectors $\phi_0, \phi_1$ into a $2 \ndata \times 2$ matrix, and then divide this matrix into $\ndata$ $2 \times 2$ blocks, $\hat{\mathbf{R}}_1, \dots, \hat{\mathbf{R}}_\ndata$. Compute the estimated rotations for each of these $\ndata$ blocks as in \eqref{eq:R_est}. If most of the rotations are improper ($det(\mathbf{R}) = -1$), flip the sign of one of the eigenvectors.
 \item Multiply each estimated rotation $\mathbf{R}_{i, est}$ by $\mathbf{R}_{1, est}^T$ (so that $\mathbf{R}_{1, est}$ will become the identity matrix).
 \item For each image $i$, compute the optimal rotation to align the image by converting $\mathbf{R}_{i, est}^T$ (note the transpose) to the corresponding angle using \eqref{eq:R_theta}. 
-\item Compute the first embedding coordinate $\psi_{k,1}(i)$ as described in \eqref{eq:vdm_coord} and \eqref{eq:first_embed_vdm}, where $3 \le k \le 4$.
-\item To order the images, sort them by the values of this embedding coordinate $\psi_{k,l}(i)$.
+\item Compute the first embedding coordinate $\psi_{k,0}(i)$ as described in \eqref{eq:vdm_coord} and \eqref{eq:first_embed_vdm}, where $2 \le k \le 3$.
+\item To order the images, sort them by the values of the first embedding coordinate $\psi_{k,0}(i)$.
 \end{enumerate} 
 \hrule
 \end{table}
@@ -338,36 +338,36 @@ See \citep{kemelmacher2011exploring} for a more detailed discussion.
 \end{figure}
 
 
-\subsection{{\em Drosophila} embryo experiments}
+%\subsection{{\em Drosophila} embryo experiments}
+%%
+%Oregon-R was used as wild type {\em Drosophila} strains.
+%%
+%Embryos were collected and fixed at 22$^\circ$C.
+%%
+%Monoclonal rabbit anti-dpERK (1:100, Cell signaling) and rat anti-Twist (1:500, a gift from Eric Wieschaus) were used to stain proteins of interest.
+%%
+%DAPI (1:10,000, Vector Laboratories) was used to visualize nuclei, and Alexa Fluors (1:500, Invitrogen) were used as secondary antibodies.
+%%
+%Histone-RFP strain was used to obtain time-lapse movie of gastrulating embryos at 22$^\circ$C.
+%%
+%Live embryos were loaded to the microfluidic device with PBST to keep them oxidized, and fixed embryos were loaded with 90\% glycerol.
 %
-Oregon-R was used as wild type {\em Drosophila} strains.
+%%\subsection{{\em Drosophila} embryo microscopy}
+%%
+%Nikon A1-RS scanning confocal microscope, and the Nikon 60x Plan-Apo oil objective was used to image {\em Drosophila} embryos.
+%%
+%Embryos were collected, stained, and imaged together under the same microscope setting.
+%%
+%End-on imaging was performed by using the microfluidics device described previously \citep{chung2010microfluidic}.
+%%
+%Images were collected at the focal plane $\sim$90~$\mathrm{\mu m}$ from the posterior pole of an embryo (see \fig~\ref{fig:DV_view}).
 %
-Embryos were collected and fixed at 22$^\circ$C.
-%
-Monoclonal rabbit anti-dpERK (1:100, Cell signaling) and rat anti-Twist (1:500, a gift from Eric Wieschaus) were used to stain proteins of interest.
-%
-DAPI (1:10,000, Vector Laboratories) was used to visualize nuclei, and Alexa Fluors (1:500, Invitrogen) were used as secondary antibodies.
-%
-Histone-RFP strain was used to obtain time-lapse movie of gastrulating embryos at 22$^\circ$C.
-%
-Live embryos were loaded to the microfluidic device with PBST to keep them oxidized, and fixed embryos were loaded with 90\% glycerol.
-
-%\subsection{{\em Drosophila} embryo microscopy}
-%
-Nikon A1-RS scanning confocal microscope, and the Nikon 60x Plan-Apo oil objective was used to image {\em Drosophila} embryos.
-%
-Embryos were collected, stained, and imaged together under the same microscope setting.
-%
-End-on imaging was performed by using the microfluidics device described previously \citep{chung2010microfluidic}.
-%
-Images were collected at the focal plane $\sim$90~$\mathrm{\mu m}$ from the posterior pole of an embryo (see \fig~\ref{fig:DV_view}).
-
-\begin{figure}
-\centering
-\includegraphics{figS1}
-\caption[Lateral and cross-sectional views of {\em Drosophila} embryo]{(Left) A lateral view of a {\it Drosophila} embryo stained with DAPI (gray), dpERK (red), and Twi (green). The embryo is presented so that the anterior (A) side is to the left and the posterior (P) side is to the right. The arrow indicates the position where the cross-section of an embryo is imaged. (Right) A dorsoventral view of the cross-section of the {\it Drosophila} embryo. The dorsal (D) side is up and the ventral (V) side is down. Images were collected at the focal plane $\sim 18\%$ from the posterior pole of an embryo (arrow in the left image). }
-\label{fig:DV_view}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics{figS1}
+%\caption[Lateral and cross-sectional views of {\em Drosophila} embryo]{(Left) A lateral view of a {\it Drosophila} embryo stained with DAPI (gray), dpERK (red), and Twi (green). The embryo is presented so that the anterior (A) side is to the left and the posterior (P) side is to the right. The arrow indicates the position where the cross-section of an embryo is imaged. (Right) A dorsoventral view of the cross-section of the {\it Drosophila} embryo. The dorsal (D) side is up and the ventral (V) side is down. Images were collected at the focal plane $\sim 18\%$ from the posterior pole of an embryo (arrow in the left image). }
+%\label{fig:DV_view}
+%\end{figure}
 
 
 
@@ -389,7 +389,7 @@ Images were collected at the focal plane $\sim$90~$\mathrm{\mu m}$ from the post
 
 To validate the proposed approach, we first applied our algorithm to a data set where the true temporal order and rotational orientation of the images were known {\em a priori}.
 %
-This data set was obtained through live imaging near the posterior pole of a vertically oriented {\it Drosophila} embryo during the twenty minutes spanning the late stages of cellularization through early gastrulation.
+This data set was obtained through live imaging near the posterior pole of a vertically oriented {\it Drosophila} embryo during the twenty minutes spanning the late stages of cellularization through early gastrulation (see \cite{dsilva2015temporal} for experimental details).
 %
 During this time window, the ventral furrow is formed, where the ventral side buckles towards the center of the embryo, internalizing the future muscle cells and forming a characteristic ``omega'' shape.
 %
@@ -510,7 +510,7 @@ We then applied our approach to a data set where the true rotational orientation
 %
 \fig~\ref{fig:drosophila_fixed_images}A shows selected images from a set of $120$ images of developing {\em Drosophila} embryos which cover a thirty minute time interval spanning late cellularization through gastrulation.
 %
-This data set is more complex than the live imaging data sets in that it contains significantly more images, each of which provides information about tissue morphology and the spatial distribution of two regulatory proteins.
+This data set is more complex than the live imaging data sets in that it contains significantly more images, each of which provides information about tissue morphology and the spatial distribution of two regulatory proteins  (see \cite{dsilva2015temporal} for experimental details).
 %
 Each image shows an optical cross-section of the posterior view of a {\em different} embryo at a different rotational orientation and fixed at a different (and unknown) developmental time.
 %
@@ -746,10 +746,10 @@ It would also be interesting to explore the connections between our proposed app
 %
 Given the rapidly increasing volumes of imaging data from studies of multiple developmental systems, we expect that dimensionality reduction approaches discussed in this work will be increasingly useful for biologists and motivate future applications and algorithmic advances.
 
-In the previous chapters, we have discussed using diffusion maps to analyze different types of data from dynamical systems (multiscale time series data, data collected via different measurements of the same systems, and imaging data collected in different orientation).
+In the previous chapters, we have discussed using diffusion maps to analyze different types of data from dynamical systems (multiscale time series data, data collected via different measurements of the same systems, and imaging data collected in different orientations).
 %
 However, we have mostly ignored the issue of detecting the dimensionality of the underlying manifold.
 %
-Because of the issue of ``repeated eigendirections,'' where some diffusion maps coordinates are higher harmonics of previous coordinates and do not describe any new directions in the data, detecting how many and which coordinates one must retain is a difficult issue. 
+Because of the issue of ``repeated eigendirections,'' where some diffusion maps coordinates are higher harmonics of previous coordinates and do not describe any new directions in the data, detecting how many and which coordinates one must retain to obtain an accurate parameterization of the data is a difficult issue. 
 %
-In the next chapter, we will present a methodology to address this problem, which must be addressed for diffusion maps to be broadly applicable to the analysis of dynamical systems data. 
+In the next chapter, we will present a methodology to address this problem, an issue which must be reconciled for diffusion maps to be broadly applicable to the analysis of dynamical systems data. 

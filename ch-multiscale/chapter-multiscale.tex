@@ -367,7 +367,7 @@ We would like to note that this error does not depend on the dynamics of the und
 %
 The parameter $\dmeps$ in the diffusion maps calculation determines how much $E_M$ contributes to the overall analysis.
 %
-From \eqref{eq:dmaps_kernel}, distances which are much greater than $\sigma_{kernel}$ are negligible in the diffusion maps computation because of the exponential kernel.
+From \eqref{eq:W}, distances which are much greater than $\sigma_{kernel}$ are negligible in the diffusion maps computation because of the exponential kernel.
 %
 Therefore, we want to choose $\dmeps^2$ on the order of $\|\data(t_2) - \data(t_1)\|^2_M$ in a regime where $| E_M(\data(t_1), \data(t_2))|  \ll \|\data(t_2) - \data(t_1)\|^2_M$.
 %
@@ -504,7 +504,7 @@ In this case, there is no error incurred due to the measurement function $\measf
 We want to demonstrate the utility of using the Mahalanobis distance compared to the typical Euclidean distance.
 %
 We compute the diffusion map embedding for the data in \fig~\ref{fig:initial_data},
-using both the standard Euclidean distance and the Mahalanobis distance for the computation of the kernel in \eqref{eq:dmaps_kernel}.
+using both the standard Euclidean distance and the Mahalanobis distance for the computation of the kernel in \eqref{eq:W}.
 %
 The data, colored by $\phi_1$ using the two different metrics, are shown in \fig~\ref{fig:NIV_versus_DMAPS}.
 %
@@ -527,7 +527,7 @@ In contrast, the slow variable is recovered when using the Mahalanobis distance,
 \label{subfig:NIV_versus_DMAPS2}
 \end{subfigure}
 %
-\caption[Comparison of using the Euclidean distance and the Mahalanobis distance in analysis of multiscale data]{Comparison of using the Euclidean distance and the Mahalanobis distance in multiscale data mining. (\subref*{subfig:NIV_versus_DMAPS1}) The data from \fig~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Euclidean distance in the kernel in \eqref{eq:dmaps_kernel}. Note that we do {\em not} recover the slow variable. (\subref*{subfig:NIV_versus_DMAPS2}) The data from \fig~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Mahalanobis distance in the kernel in \eqref{eq:dmaps_kernel}. The good correspondence between this coordinate and the slow variable is visually obvious.}
+\caption[Comparison of using the Euclidean distance and the Mahalanobis distance in analysis of multiscale data]{Comparison of using the Euclidean distance and the Mahalanobis distance in multiscale data mining. (\subref*{subfig:NIV_versus_DMAPS1}) The data from \fig~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Euclidean distance in the kernel in \eqref{eq:W}. Note that we do {\em not} recover the slow variable. (\subref*{subfig:NIV_versus_DMAPS2}) The data from \fig~\ref{fig:initial_data}, colored by the first diffusion map coordinate when using the Mahalanobis distance in the kernel in \eqref{eq:W}. The good correspondence between this coordinate and the slow variable is visually obvious.}
 \label{fig:NIV_versus_DMAPS}
 \end{figure}
 

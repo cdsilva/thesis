@@ -25,7 +25,7 @@ As discussed in previous chapters, in recent years, manifold learning algorithms
 %%
 %Our hope is that these coordinates, obtained in a data-driven manner, will describe the variables which govern the macroscale dynamical behavior of the system and enable us to introduce a reduced macroscale {\em ab initio} model.
 %
-These manifold learning algorithms were first applied to synthetic data sets to illustrate their geometric properties and flexibility \cite{coifman2005geometric, nadler2006diffusion}.
+These data-driven algorithms were first applied to synthetic data sets to illustrate their geometric properties and flexibility \cite{coifman2005geometric, nadler2006diffusion}.
 %
 Only recently have they been applied to experimental and simulation data, which was possible due to advances in data representation (observers) and metrics \cite{rubner2000earth,mallat2012group,talmon2013empirical,zhao2014rotationally, rohrdanz2011determination}.
 %
@@ -112,7 +112,7 @@ To illustrate the issue of repeated eigendirections, we first return to the simp
 %%
 %Furthermore, the corresponding eigenvalues $\tilde{\lambda}_{1,0}$ and $\tilde{\lambda}_{0,1}$ provide a measure of $L_1$ versus $L_2$: as the ratio between $L_1$ and $L_2$ increases, the gap between $\tilde{\lambda}_{1,0}$ and $\tilde{\lambda}_{0,1}$ also increases (this will be discussed further in Section~\ref{sec:relative_lengths}).
 %
-The analytic form of the eigenfunctions in \eqref{eq:efuncs} illustrates the two issues we address in this paper.
+The analytic form of the eigenfunctions in \eqref{eq:efuncs} illustrates the two issues we address in this chapter.
 %
 First, $z_1$ and $z_2$ are not necessarily decoupled in subsequent eigenfunctions, and a proper parameterization of the manifold is not necessarily given by first two eigenfunctions, even though the manifold is two-dimensional.
 % TODO: address this in later section
@@ -858,7 +858,7 @@ However, for large $\lambda_{switch}$, the two densities rapidly equilibrate, an
 
 This analytic macroscopic description also allows us to emphasize the importance of using an appropriate distance metric.
 %
-We analyzed the two sets of simulation data from Figure~\ref{fig:dmaps_embed_emd} using the standard Euclidean distance between the histograms to compute the distances in \eqref{eq:dmaps_kernel}.
+We analyzed the two sets of simulation data from Figure~\ref{fig:dmaps_embed_emd} using the standard Euclidean distance between the histograms to compute the distances in \eqref{eq:W}.
 %
 We empirically found that there is no appreciable correlation between the embedding coordinates and the macroscopic variables $p$ and $t$ (the correlations between the embedding coordinates and the governing macroscopic variables are all less than 60\%, with the correlations for the small $\lambda_{switch}$ case being less than 20\%)
 %

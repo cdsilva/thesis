@@ -6,6 +6,8 @@
 
 
 \section{Manifold Learning Based on Laplace Operators} \label{sec:manifold_learning}
+
+{\em This section is currently being prepared for publication along with \chap~\ref{ch:harmonics}}
 %Although data from dynamical systems is often high-dimensional, since it is collected at the microscale, the macroscale dynamics often evolve to a low-dimensional description.
 %
 %In such cases, the high-dimensional microscale data is restricted to a low-dimensional manifold embedded in the high-dimensional space, and extracting a parametrization of this manifold corresponds to parametrizing the low-dimensional, macroscale dynamics.
@@ -88,20 +90,18 @@ Furthermore, the corresponding eigenvalues $\tilde{\lambda}_{1,0}$ and $\tilde{\
 %In addition, this problem of repeated eigendirections arises for more complex manifolds with more than two variables.
 
 
-\subsection{Discrete approximation of the Laplace-Beltrami operator: diffusion maps}
+\subsection{Discrete approximation of the Laplace-Beltrami operator: diffusion maps} \label{sec:damps}
 
 In most applications, we are not given a description of the continuous manifold.
 %
 Instead, we are given data {\em sampled} from the underlying manifold, and the parameterization of the manifold needs to be uncovered from the data.
-%
-As discussed in \chap~\ref{ch:math}, diffusion maps constructs a matrix which, in the limit of infinite data, approximates the Laplace-Beltrami or Fokker-Planck operator on the manifold.
 %
 It was shown in \cite{coifman2006geometric} that, in the limit of infinite data, this discrete Laplacian matrix constructed from data converges pointwise to the continuous Laplace-Beltrami operator on the manifold.
 %
 As a result, the eigenvectors of the discrete Laplacian approximate the eigenfunctions of this continuous operator.
 
 Given observations $\data(1), \dots, \data(m) \in \manifold$, we first construct the weight matrix $\mathbf{W} \in \mathbb{R}^{\ndata \times \ndata}$, with
-\begin{equation} \label{eq:W}
+\begin{equation} \label{eq:W} 
 \mathbf{W}_{ij} = \exp \left( -\frac{\|\data(i) - \data(j) \|^2}{\dmeps^2} \right), \ i,j=1,\ldots,\ndata,
 \end{equation}
 where $\| \cdot \|$ denotes the appropriate norm for the observations, and $\dmeps$ is a characteristic distance between the observations.
@@ -118,17 +118,21 @@ We then construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{\ndata \times 
 %
 Next, we construct the diagonal matrix $\widetilde{\mathbf{D}} \in \mathbb{R}^{m \times m}$, with $\widetilde{\mathbf{D}}_{ii} = \sum_j \widetilde{\mathbf{W}}_{ij}$, and the matrix $\mathbf{A}  = \widetilde{\mathbf{D}}^{-1} \widetilde{\mathbf{W}}.$
 
-If the data $\data(1), \dots, \data(m)$ are sampled from $\manifold$ with some density $q$, then, for $\dmeps \rightarrow 0 and \ndata \rightarrow \infty$ (with the appropriate rates), the discrete matrix convergences to the following continuous limit operators with Neumann boundary conditions (as discussed in the previous section) \cite{coifman2006geometric}
-\begin{align}
+If the data $\data(1), \dots, \data(m)$ are sampled from $\manifold$ with some density $q$, then, for $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$ (with the appropriate rates), the discrete matrix convergences to the following continuous limit operators with Neumann boundary conditions (as discussed in the previous section) \cite{coifman2006geometric}
+\begin{equation} \label{eq:limiting_operator}
+\begin{aligned}
 \frac{1}{\dmeps^2}(\mathbf{I}-\mathbf{A}) \phi &\rightarrow \nabla^2 \phi - 2\nabla U \cdot \nabla \phi, &&\alpha = 0 \\
 \frac{1}{\dmeps^2}(\mathbf{I}-\mathbf{A}) \phi &\rightarrow \nabla^2 \phi - \nabla U \cdot \nabla \phi, &&\alpha = 1/2 \\
 \frac{1}{\dmeps^2}(\mathbf{I}-\mathbf{A}) \phi &\rightarrow \nabla^2 \phi, &&\alpha = 1
-\end{align}
+\end{aligned}
+\end{equation}
 where $U = - \log q$.
 %
 The different limit operators, depending on the choice of $\alpha$, imply that nonuniform sampling on the manifold may have different effects. 
 %
 In particular, by setting $\alpha=1$, one can factor out the density effects in the weight matrix, and the discrete Laplacian matrix approaches the Laplace-Beltrami operator on the manifold $\manifold$.
+%
+In subsequent chapters, we will use the $\alpha=0$ embedding unless otherwise noted. 
 %
 The eigenvectors $\phi_0, \phi_1, \dots, \phi_{\ndata-1}$ of $\mathbf{A}$ approximate the eigenfunctions of the Laplace-Beltrami operator on $\manifold$,
 and the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata-1}$ of $\mathbf{A}$ are related to the eigenvalues of the continuous operator by
@@ -179,9 +183,13 @@ Figures~\ref{subfig:strip_evecs_uniform}--\ref{subfig:strip_evecs_nonuniform} sh
 %
 In cases of both uniform and nonuniform sampling, the selected eigenvectors are one-to-one with $z_1$ and $z_2$, and thus parametrize the manifold.
 %
+However, we briefly note that the two diffusion maps coordinates which parameterize the manifold are not guaranteed to be the first two eigenvectors.
+%
+This is the issue of ``repeated eigendirections,'' where some eigenvectors are higher harmonics of previous eigenvectors and do not capture any new directions in the data, and we will discuss this issue in more detail in \chap~\ref{ch:harmonics}. 
+%
 %TODO: maybe we can put here the new figures for the different values of $\alpha$ instead of these figures.
 %
-Although we have considered a very simple example for illustrative purposes, common practice is to use these tools for high-dimensional, nonlinear data sets.
+Although we have considered a very simple example of a two-dimensional strip for illustrative purposes, common practice is to use these tools for high-dimensional, nonlinear data sets.
 
 %From the previous section, we know that the eigenfunctions with $(k_1, k_2) =(1, 0)$ and $(k_1, k_2) =(0, 1)$ provide embedding coordinates for the manifold; these two eigenfunctions are both uncoupled and not repeated.
 %%
@@ -445,6 +453,8 @@ where $\delta t > 0$ is the length of the simulation burst.
 
 \section{Angular synchronization } \label{sec:ang_synch}
 
+{\em This section is published in the supplemental information of \cite{dsilva2015temporal}}
+
 As will be discussed in \chap~\ref{ch:multiscale} and \chap~\ref{ch:merging}, the Mahalanobis distance is useful for analyzing data which have been obscured by large noise and/or a measurement function. 
 %
 Another source of variability that one would often like to remove is due to symmetries, when data (such as images) are collected in many different orientations. 
@@ -475,7 +485,7 @@ Because the profiles are unregistered and unordered, the underlying dynamics (a 
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{ch-drosophila/figures/figS2}
+\includegraphics[width=0.7\textwidth]{ch-drosophila/figures/figS2}
 \caption[Synthetic data set used to illustrate registration and ordering algorithms]{Synthetic data set used to illustrate the data processing algorithms. (A) One-dimensional concentration profile on a ring (top), and the corresponding profile on a line (bottom). (B) Intensity corresponding to the profile in A. (C) An ensemble of concentration profiles, each of the form described in A. Each row in the array corresponds to a single profile. {(D)} The profiles in {C}, now registered using angular synchronization. {(E)} The profiles in {D}, now temporally ordered using diffusion maps.  {(F)} The profiles in {C}, registered and temporally ordered in a single step using vector diffusion maps.}
 \label{fig:1d_demo}
 %\customlabel{subfig:1d_example}{\ref{fig:1d_demo}{\it A}}
@@ -625,11 +635,11 @@ Given data points $\data(1), \dots, \data(\ndata)$, one first constructs the mat
 %
 where $\mathbf{A}_{ij} \in \mathbb{R}$ (defined in \sec~\ref{sec:dmaps}) pertains to the diffusion kernel between data points, and $\mathbf{H}_{ij} \in \mathbb{R}^{\rotdim \times \rotdim}$ (defined in \eqref{eq:H_to_R}) pertains to the pairwise alignment between data points.
 %
-It is important to note that distance $\| \data(i) - \data(j) \|$ used in the diffusion kernel in \eqref{eq:dmaps_kernel} is the distance between data points {\it after} after pairwise alignment, i.e., the minimum distance between all possible shifts of the two data points.
+It is important to note that distance $\| \data(i) - \data(j) \|$ used in the diffusion kernel in \eqref{eq:W} is the distance between data points {\it after} after pairwise alignment, i.e., the minimum distance between all possible shifts of the two data points.
 %
 In the language of symmetry groups, this distance is a metric between the orbits induced by the relevant symmetry group.
 
-One then computes the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata \rotdim-1}$ and eigenvectors $\phi_0, \phi_1, \dots, \phi_{\ndata \rotdim-1}$ of $\mathbf{S}$, ordered such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata \rotdim-1}|$.
+One then computes the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata \rotdim-1}$ and eigenvectors $\phi_0, \allowbreak \phi_1, \dots, \allowbreak \phi_{\ndata \rotdim-1}$ of $\mathbf{S}$, ordered such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{\ndata \rotdim-1}|$.
 %
 These eigenvectors contain information about {\it both} the optimal rotations (the ``synchronization" component) and the
 variation of the data {\it after} the spatial symmetries have been removed.

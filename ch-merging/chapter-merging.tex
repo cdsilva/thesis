@@ -181,7 +181,7 @@ thus, we use the pseudo-inverse in \eqref{eq:mahalanobis1}.
 
 The Mahalanobis distance described in \sec~\ref{subsec:mahalanobis} enables us to compare observations in terms of the intrinsic variables of the associated underlying diffusion process.
 %
-We then use diffusion maps, with the Mahalanobis distance in the kernel matrix in \eqref{eq:dmaps_kernel} and $\dmeps$ as the median of the pairwise distances, to obtain a parameterization our data with respect to the intrinsic variables $\mathbf{x}$. 
+We then use diffusion maps, with the Mahalanobis distance in the kernel matrix in \eqref{eq:W} and $\dmeps$ as the median of the pairwise distances, to obtain a parameterization our data with respect to the intrinsic variables $\mathbf{x}$. 
 %
 %In this section, we show how to recover the underlying process itself from the pairwise Euclidean distances through the eigenvectors of a Laplace operator.
 %
@@ -303,7 +303,7 @@ In order to merge observations from different regions,
 the fundamental question is, to what extent the respective sampling densities affect the coordinates we obtain.
 %
 In principle, we can decouple diffusion dynamics (and thus, equilibrium densities)
-from geometry by normalizing the diffusion kernel with the sample density via the $\alpha=1$ normalization discussed in \sec~\ref{sec:diff_limit}.
+from geometry by normalizing the diffusion kernel with the sample density via the $\alpha=1$ normalization discussed in \sec~\ref{sec:manifold_learning}.
 %
 %This has been explored for diffusion maps independently of NIV \cite{coifman2005geometric}.
 %
@@ -408,7 +408,7 @@ a finer representation, and a larger number of scales  $l$, is required to captu
 In this work, LP is applied to extend a high-dimensional function $\measfn:\mathbb{R}^d \rightarrow \mathcal{M}$,
 which maps a set of points in the NIV space to their values $\data(i)$ in the observable space.
 %
-Let $\Psi(i) = \left(\psi_1(i),\psi_2(i),\ldots,\psi_d(i)\right)$ be the set of NIV that were constructed from the data samples $\data(i)$, as described in \tab~\ref{algo}.
+Let $\Psi(i) = \left(\psi_1(i),\psi_2(i),\ldots,\psi_d(i)\right)$ be the set of NIV that were constructed from the data samples $\data(i)$.
 %
 The values of function $\measfn:\mathbb{R}^d \rightarrow \mathcal{M}$ are known on the subset $S = \{\Psi(i)\}$, with $\measfn(\Psi(i)) = \data(i)$.
 
@@ -526,7 +526,7 @@ region of state space where all concentrations (respecting conservation laws) ar
 %
 We evolve each point $\data_0(t)$ forward for 10 time units using the SSA to obtain a point $\data(t) \in \mathbb{R}^6$;
 according to the time scales calculated from the linearized ODEs, 10 time units is sufficiently long for the initial points in the ODE system to converge to the two-dimensional manifold,
-but not long enough for the points to converge to a one-dimensional curve or to the final steady state (see Appendix \ref{app:rxn} for more details).
+but not long enough for the points to converge to a one-dimensional curve or to the final steady state (see \app~\ref{app:merging} for more details).
 %
 In our stochastic simulations, the initial points appear to converge to an approximate two-dimensional manifold
 (in expected value, see \fig~\ref{fig:rxn_manifolds}).
@@ -737,7 +737,7 @@ The two dihedral angles $\phi$ and $\psi$ are known to parameterize the free ene
 %
 Our simulations are concentrated around minimum B in the free energy surface, located at $\phi \approx -65^{\circ}$, $\psi \approx 150^{\circ}$.
 %
-We choose to sample only around minimum B, as each data set must sample the same region of the potential energy surface to obtain consistent NIV, as described in \sec~\ref{sec:diff_limit}.
+We choose to sample only around minimum B, as each data set must sample the same region of the potential energy surface to obtain consistent NIV, as described in \sec~\ref{subsec:mahalanobis}.
 %
 We start many simulations at $10^{\circ}$ away from the minimum, and allow the simulations to each run for 0.1~ps, while recording the configuration of Ala2 every 1~fs (therefore, each trajectory is 100 points long).
 %
@@ -963,7 +963,7 @@ the bias due to drift variations.
 %
 We are confident that the exploration of these open questions will enable the use of our methodology in many interesting applications, such as merging data from molecular simulations at different levels of granularity, or merging simulation data with experimental observations.
 
-These two chapters have described using the Mahalanobis distance with diffusion maps to analyze two different types of data common in dynamical systems: data exhibiting dynamics on several disparate time scales, and data obtained via several different measurement/observation functions. 
+These two chapters have described using the Mahalanobis distance with diffusion maps to analyze two different types of data common in dynamical systems: data exhibiting dynamics on multiple time scales, and data obtained via several measurement/observation functions. 
 %
 In the next chapter, we will address a third type of data (imaging data). 
 %
@@ -971,6 +971,6 @@ In this example, we will not be interested in removing the effects of fast varia
 %
 We will present another extension of diffusion maps which allows us to simultaneously factor out symmetries and uncover structure in the imaging data. 
 %
-For this particular example, recovering structure will correspond to ordering the images in order to recover the relevant developmental dynamics. 
+For this particular example, recovering structure in the data set will correspond to ordering the images in order to recover the relevant developmental dynamics. 
 
 
