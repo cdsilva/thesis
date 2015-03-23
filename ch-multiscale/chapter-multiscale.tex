@@ -57,7 +57,7 @@ usually through a distance metric \cite{Belkin2003, Coifman2006, coifman2005geom
 %
 The distances are then integrated into a global parametrization of the data, typically through the solution of an eigenproblem.
 %
-In this paper, we will analyze multiple time scale stochastic dynamical systems using data-driven methods.
+In this chapter, we will analyze multiple time scale stochastic dynamical systems using data-driven methods.
 %
 Standard ``off-the-shelf'' manifold learning techniques which utilize the Euclidean distance are not appropriate
 for analyzing data from such multiscale systems, since this metric does not account for the disparate time scales.
@@ -216,7 +216,7 @@ The Mahalanobis distance incorporates information about the dynamics and relevan
 %
 It is important to note that, in practice, we {\em never construct} $\mathbf{z}(t)$ {\em explicitly}.
 %
-As discussed in \sec~\ref{subsec:mahalanobis} and \cite{singer2008non}, assuming $\mathbf{f}$ is bilipschitz, the Mahalanobis distance can be extended to approximate (to fourth order) the Euclidean distance between the rescaled samples $\mathbf{z}(t)$ from accessible $\data(t) = \mathbf{f} (\mathbf{x}(t))$,
+As discussed in \cite{singer2008non}, assuming $\mathbf{f}$ is bilipschitz, the Mahalanobis distance can be extended to approximate (to fourth order) the Euclidean distance between the rescaled samples $\mathbf{z}(t)$ from accessible $\data(t) = \mathbf{f} (\mathbf{x}(t))$,
 %
 \begin{equation} \label{eq:mahalanobis2}
 \| \data(t_2) - \data(t_1) \|^2_M = \| \mathbf{z}(t_2) - \mathbf{z}(t_1) \|^2_2 + \mathcal{O}(\| \data(t_2) - \data(t_1) \|^4_2).
@@ -328,20 +328,20 @@ By Taylor expansion of $\mathbf{g}(y) = \measfn^{-1}(y)$ around $\data(t_1)$ and
 & \begin{aligned}[t]
  \frac{1}{2} \sum_{i=1}^\lowdim \sum_{jkl=1}^{\highdim} &
 \left( g_{i, (j)} (\data(t_1)) g_{i, (k,l)} (\data(t_1)) -  g_{i, (j)} (\data(t_2)) g_{i, (k,l)} (\data(t_2)) \right) \times \\
-& ({y}_j(t_2) - {y}_j(t_1)) ({y}_k(t_2) - {y}_k(t_1))({y}_l(t_2) - {y}_l(t_1))
+& (\dataone_j(t_2) - \dataone_j(t_1)) (\dataone_k(t_2) - \dataone_k(t_1))(\dataone_l(t_2) - \dataone_l(t_1))
 \end{aligned} \\
 +&
 \begin{aligned}[t]
 \frac{1}{8} \sum_{i=1}^\lowdim \sum_{jklm=1}^\highdim  &
 \left( g_{i, (j,k)} (\data(t_1)) g_{i, (l,m)} (\data(t_1)) +  g_{i, (j,k)} (\data(t_2)) g_{i, (l,m)} (\data(t_2)) \right) \times
  \\
-&({y}_j(t_2) - {y}_j(t_1))  ({y}_k(t_2) - {y}_k(t_1))({y}_l(t_2) - {y}_l(t_1)) ({y}_m(t_2) - {y}_m(t_1))
+&(\dataone_j(t_2) - \dataone_j(t_1))  (\dataone_k(t_2) - \dataone_k(t_1))(\dataone_l(t_2) - \dataone_l(t_1)) (\dataone_m(t_2) - \dataone_m(t_1))
 \end{aligned} \\
 +&
 \begin{aligned} [t]
 \frac{1}{6} \sum_{i=1}^\lowdim \sum_{jklm=1}^\highdim &
 \left( g_{i, (j)} (\data(t_1)) g_{i, (k,l,m)} (\data(t_1)) +  g_{i, (j)} (\data(t_2)) g_{i, (k,l,m)} (\data(t_2)) \right) \times \\
-& ({y}_j(t_2) - {y}_j(t_1))  ({y}_k(t_2) - {y}_k(t_1))({y}_l(t_2) - {y}_l(t_1))({y}_m(t_2) - {y}_m(t_1))
+& (\dataone_j(t_2) - \dataone_j(t_1))  (\dataone_k(t_2) - \dataone_k(t_1))(\dataone_l(t_2) - \dataone_l(t_1))(\dataone_m(t_2) - \dataone_m(t_1))
 \end{aligned} \\
 +& \mathcal{O} \left(\| \data(t_2) - \data(t_1) \|^6_2 \right) ,
 \end{aligned}
@@ -351,11 +351,11 @@ where
 %
 \begin{equation}
 \begin{aligned}
-g_{i,(j)} &= \sqrt{e_i} \frac{\partial g_i}{\partial y_j}
+g_{i,(j)} &= \sqrt{e_i} \frac{\partial g_i}{\partial \dataone_j}
 \\
-g_{i,(j,k)} &= \sqrt{e_i}  \frac{\partial^2 g_i}{\partial y_j \partial y_k}
+g_{i,(j,k)} &= \sqrt{e_i}  \frac{\partial^2 g_i}{\partial \dataone_j \partial \dataone_k}
 \\
-g_{i,(j,k,l)} &= \sqrt{e_i}  \frac{\partial^3 g_i}{\partial y_j \partial y_k \partial y_l} .
+g_{i,(j,k,l)} &= \sqrt{e_i}  \frac{\partial^3 g_i}{\partial \dataone_j \partial \dataone_k \partial \dataone_l} .
 \end{aligned}
 \end{equation}
 %
@@ -390,10 +390,10 @@ We will use simulation bursts to locally explore the dynamics on the manifold of
 We write the elements of the estimated covariance $\hat{\mathbf{C}}(\data(t), \delta t)$ as
 %\begin{equation}
 \begin{multline}\label{eq:estimated_cov_expected_value}
-\hat{C}_{ij}(\data(t), \delta t)
+\hat{\mathbf{C}}_{ij}(\data(t), \delta t)
 = \\
-\frac{1}{\delta t} \left( \mathbb{E} \left[ y_i (t+\delta t) y_j (t+ \delta t) \mid \data(t) \right]
-- \mathbb{E} \left[ y_i (t+\delta t) \mid \data(t) \right] \mathbb{E} \left[ y_j (t+\delta t) \mid \data(t) \right] \right) ,
+\frac{1}{\delta t} \left( \mathbb{E} \left[ \dataone_i (t+\delta t) \dataone_j (t+ \delta t) \mid \data(t) \right]
+- \mathbb{E} \left[ \dataone_i (t+\delta t) \mid \data(t) \right] \mathbb{E} \left[ \dataone_j (t+\delta t) \mid \data(t) \right] \right) ,
 \end{multline}
 %\end{equation}
 %
@@ -848,7 +848,7 @@ However, when $\delta t$ corresponds to a region where $\|\mathbf{E}_C \| \gg \|
 \end{figure}
 
 
-\section{Conclusions}
+\section{Discussion}
 
 We have presented a methodology to compute a parametrization of a data set which respects the slow variables in the underlying dynamical system.
 %

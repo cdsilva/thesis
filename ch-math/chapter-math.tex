@@ -7,7 +7,7 @@
 
 \section{Manifold Learning Based on Laplace Operators} \label{sec:manifold_learning}
 
-{\em This section is currently being prepared for publication along with \chap~\ref{ch:harmonics}}
+{\em This section is currently being prepared for publication along with \chap~\ref{ch:harmonics}}.
 %Although data from dynamical systems is often high-dimensional, since it is collected at the microscale, the macroscale dynamics often evolve to a low-dimensional description.
 %
 %In such cases, the high-dimensional microscale data is restricted to a low-dimensional manifold embedded in the high-dimensional space, and extracting a parametrization of this manifold corresponds to parametrizing the low-dimensional, macroscale dynamics.
@@ -30,22 +30,22 @@ By using a particular manifold learning technique based on the construction of a
 \begin{figure}[t]
 \centering
 \begin{subfigure}{0.3\textwidth}
-\includegraphics[width=\textwidth]{strip_cnts1}
-\includegraphics[width=\textwidth]{strip_cnts2}
+\includegraphics[width=\textwidth]{ch-harmonics/figures/strip_cnts1}
+\includegraphics[width=\textwidth]{ch-harmonics/figures/strip_cnts2}
 \caption{}
 \label{subfig:strip_efuncs}
 \end{subfigure}
 %
 \begin{subfigure}{0.3\textwidth}
-\includegraphics[width=\textwidth]{strip_discrete1}
-\includegraphics[width=\textwidth]{strip_discrete4}
+\includegraphics[width=\textwidth]{ch-harmonics/figures/strip_discrete1}
+\includegraphics[width=\textwidth]{ch-harmonics/figures/strip_discrete4}
 \caption{}
 \label{subfig:strip_evecs_uniform}
 \end{subfigure}
 %
 \begin{subfigure}{0.3\textwidth}
-\includegraphics[width=\textwidth]{strip_nonuniform1}
-\includegraphics[width=\textwidth]{strip_nonuniform2}
+\includegraphics[width=\textwidth]{ch-harmonics/figures/strip_nonuniform1}
+\includegraphics[width=\textwidth]{ch-harmonics/figures/strip_nonuniform2}
 \caption{}
 \label{subfig:strip_evecs_nonuniform}
 \end{subfigure}
@@ -53,7 +53,7 @@ By using a particular manifold learning technique based on the construction of a
 \caption[Eigenfunctions of the Laplace-Beltrami operator on a two-dimensional strip]{(a) Two-dimensional continuous strip colored by the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$, and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$. (b) Two-dimensional strip with uniform sampling colored by the first and fourth (non-trivial) eigenvectors of the discrete Laplacian. (c) Two-dimensional strip with data sampled from a Gaussian distribution in $z_1$ and sampled uniformly in $z_2$, colored by the first and third (non-trivial) eigenvectors of the discrete Laplacian. Note that in all cases we uncover parametrizations which are one-to-one with $z_1$ and $z_2$.}
 \end{figure}
 
-In recent years, it has been noted that the eigenfunctions of the \emph{continuous} Laplace-Beltrami operator provide ``good" coordinates for the manifold \cite{jones2008}.
+In recent years, it has been noted that the eigenfunctions of the \emph{continuous} Laplace-Beltrami operator provide ``good" coordinates for a manifold \cite{jones2008}.
 %
 Thus, we start by considering a continuous setting where rigorous analysis is available for specific examples.
 %
@@ -90,7 +90,7 @@ Furthermore, the corresponding eigenvalues $\tilde{\lambda}_{1,0}$ and $\tilde{\
 %In addition, this problem of repeated eigendirections arises for more complex manifolds with more than two variables.
 
 
-\subsection{Discrete approximation of the Laplace-Beltrami operator: diffusion maps} \label{sec:damps}
+\subsection{Discrete approximation of the Laplace-Beltrami operator: diffusion maps} \label{sec:dmaps}
 
 In most applications, we are not given a description of the continuous manifold.
 %
@@ -118,7 +118,7 @@ We then construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{\ndata \times 
 %
 Next, we construct the diagonal matrix $\widetilde{\mathbf{D}} \in \mathbb{R}^{m \times m}$, with $\widetilde{\mathbf{D}}_{ii} = \sum_j \widetilde{\mathbf{W}}_{ij}$, and the matrix $\mathbf{A}  = \widetilde{\mathbf{D}}^{-1} \widetilde{\mathbf{W}}.$
 
-If the data $\data(1), \dots, \data(m)$ are sampled from $\manifold$ with some density $q$, then, for $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$ (with the appropriate rates), the discrete matrix convergences to the following continuous limit operators with Neumann boundary conditions (as discussed in the previous section) \cite{coifman2006geometric}
+If the data $\data(1), \dots, \data(m)$ are sampled from $\manifold$ with some density $q$, then, for $\dmeps \rightarrow 0$ and $\ndata \rightarrow \infty$ (with the appropriate rates), the discrete matrix convergences to the following continuous limit operators with Neumann boundary conditions \cite{coifman2006geometric}
 \begin{equation} \label{eq:limiting_operator}
 \begin{aligned}
 \frac{1}{\dmeps^2}(\mathbf{I}-\mathbf{A}) \phi &\rightarrow \nabla^2 \phi - 2\nabla U \cdot \nabla \phi, &&\alpha = 0 \\
@@ -130,9 +130,9 @@ where $U = - \log q$.
 %
 The different limit operators, depending on the choice of $\alpha$, imply that nonuniform sampling on the manifold may have different effects. 
 %
-In particular, by setting $\alpha=1$, one can factor out the density effects in the weight matrix, and the discrete Laplacian matrix approaches the Laplace-Beltrami operator on the manifold $\manifold$.
-%
 In subsequent chapters, we will use the $\alpha=0$ embedding unless otherwise noted. 
+%
+Note that by setting $\alpha=1$, one can factor out the density effects in the weight matrix, and the discrete Laplacian matrix approaches the Laplace-Beltrami operator on the manifold $\manifold$.
 %
 The eigenvectors $\phi_0, \phi_1, \dots, \phi_{\ndata-1}$ of $\mathbf{A}$ approximate the eigenfunctions of the Laplace-Beltrami operator on $\manifold$,
 and the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata-1}$ of $\mathbf{A}$ are related to the eigenvalues of the continuous operator by
@@ -140,9 +140,9 @@ and the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata-1}$ of $\mathb
 \lambda_k = \exp \left( -\frac{\epsilon^2}{4} \tilde{\lambda}_{k_1, k_2}  \right).
 \end{equation}
 %
-As discussed previously, the eigenfunctions provide a parametrization of the manifold, such that $\lambda_j^\tau \phi_{j}(i)$ yields the $j^{th}$ embedding coordinate for $\data(i)$, where $\tau \ge 0$ is a parameter (in our examples, we will take $\tau=0$, which corresponds to the Laplacian Eigenmaps formulation).
+As discussed previously, the eigenfunctions provide a parametrization of the manifold, such that $\phi_{j}(i)$ yields the $j^{th}$ embedding coordinate for $\data(i)$.
 %
-This is the standard diffusion maps embedding \cite{coifman2005geometric, coifman2006geometric},
+The standard diffusion maps embedding incorporates eigenvalue weights \cite{coifman2005geometric, coifman2006geometric},
 %
 \begin{equation} \label{eq:dmaps_embed_full}
 \data(i) \mapsto 
@@ -154,11 +154,11 @@ This is the standard diffusion maps embedding \cite{coifman2005geometric, coifma
 \end{pmatrix}
 \end{equation}
 %
-where we order the eigenvectors such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{m-1}|$.
+where we order the eigenvectors such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{m-1}|$, and $\tau \ge 0$ is a parameter (in our examples, we will take $\tau=0$, which corresponds to the Laplacian Eigenmaps formulation).
 %
 Because the matrix $\mathbf{A}$ is row-stochastic ($\sum_j \mathbf{A}_{ij} = 1$),  $\lambda_0 = 1$ and $\phi_0$ is a trivial constant vector.
 %
-The distance induced by this mapping is called the standard diffusion distance,
+The distance induced by this embedding is called the standard diffusion distance,
 %
 \begin{equation}
 D^2_\tau(z(i), z(j)) = \sum_{k=1}^{m-1} \lambda_k^{2 \tau} \left( \phi_k(i) - \phi_k(j)  \right)^2.
@@ -185,7 +185,7 @@ In cases of both uniform and nonuniform sampling, the selected eigenvectors are 
 %
 However, we briefly note that the two diffusion maps coordinates which parameterize the manifold are not guaranteed to be the first two eigenvectors.
 %
-This is the issue of ``repeated eigendirections,'' where some eigenvectors are higher harmonics of previous eigenvectors and do not capture any new directions in the data, and we will discuss this issue in more detail in \chap~\ref{ch:harmonics}. 
+This is the issue of ``repeated eigendirections,'' where some eigenvectors are higher harmonics of previous eigenvectors and do not capture any new directions in the data; we will discuss this issue in more detail in \chap~\ref{ch:harmonics}. 
 %
 %TODO: maybe we can put here the new figures for the different values of $\alpha$ instead of these figures.
 %
@@ -292,7 +292,9 @@ Although we have considered a very simple example of a two-dimensional strip for
 
 
 
-Modulo higher harmonics which characterize the same direction in the data (see \cite{ferguson2010systematic} and \chap~\ref{ch:harmonics}), each retained eigenvector then parameterizes a variable for the data set of interest.
+Modulo higher harmonics which characterize the same direction in the data 
+%(see \cite{ferguson2010systematic} and \chap~\ref{ch:harmonics})
+, each retained eigenvector then parameterizes a variable for the data set of interest.
 %
 We note that the eigenvectors can be determined up to a scaling factor.
 %
@@ -300,7 +302,7 @@ For some applications, the magnitude and/or sign of the eigenvectors are importa
 %
 For the work presented in \chap~\ref{ch:merging}, we must normalize the eigenvectors from different data sets so that the resulting embeddings are consistent.
 %
-We first scale the eigenvectors so that $\|\phi_i\| = \ndata$, where $\ndata$ is the number of data points,
+We first scale the eigenvectors so that $\|\phi_i\| = \ndata$ (where $\ndata$ is the number of data points)
 to make the embedding coordinates invariant to the size of the data set.
 %twice as many samples as another data set, but with the same underlying geometry, should have twice the norm.
 %
@@ -309,11 +311,11 @@ Still, the computed embedding eigenvectors, even for two identical data sets, ma
 Reconciling the signs for the embeddings of different data sets can be rationally done in several ways and is somewhat problem-specific.
 %
 For example, if the mean of the embedding is sufficiently far from 0, we can require $\langle \phi_i \rangle > 0$;
-alternatively, if there is a common region sampled by both data sets, the sign of each eigenvector can be chosen to optimize the consistency of the embeddings of the common region data.
+alternatively, if there is a common region sampled by two data sets obtained from the same system, the sign of each eigenvector can be chosen to optimize the consistency of the embeddings of the common region data.
 %
 %We will return to the issue of embedding consistency for different data sets in our concluding discussion; for the moment, we will assume that our different sets sample the same region of data space in a representative enough way such that the correspondence between the sequences of retained eigenvectors for different embeddings is obvious.
 %
-Similarly, for the examples in \chap~\ref{ch:drosophila}, the sign of the eigenvector is important, and are determined after analysis using {\em a priori} knowledge of the system dynamics. 
+Similarly, for the examples in \chap~\ref{ch:drosophila}, the sign of the eigenvector is important and is determined after analysis using {\em a priori} knowledge of the system dynamics. 
 
 
 
@@ -346,8 +348,8 @@ Similarly, for the examples in \chap~\ref{ch:drosophila}, the sign of the eigenv
 %Therefore, choosing different values of $\alpha$ results in different kernel normalizations which can remove sampling density effects along the manifold. 
 
 
-\section{The Mahalanobis distance}
-\label{subsec:mahalanobis}
+\section{The Mahalanobis Distance}
+\label{sec:mahalanobis}
 
 The essential component of manifold learning algorithms (such as diffusion maps) is having an informative distance metric between data points, as one of the key assumptions is that points which have a small distance are close on the manifold. 
 %
@@ -410,14 +412,14 @@ In practice, for a dynamical system, the covariance matrix can be estimated from
 \begin{equation} \label{eq:cov1}
 	\widehat{\mathbf{C}}(t) = \sum \limits _{\tau = t-L}^{t+L} (\data(\tau) - \widehat{\boldsymbol{\mu}}(t))(\data(\tau) - \widehat{\boldsymbol{\mu}}(t))^T,
 \end{equation}
-where $\widehat{\boldsymbol{\mu}}(t)$ is the empirical mean of the short trajectory around time $t$ of samples and $L$ is the size of the trajectory window.
+where $\widehat{\boldsymbol{\mu}}(t)$ is the empirical mean of the short trajectory of samples around time $t$ and $L$ is the size of the trajectory window.
 %
 Alternatively, we can estimate the local covariance by using small bursts of simulation 
 \begin{multline} \label{eq:cov2}
-\hat{C}_{ij}(\data(t), \delta t)
+\hat{\mathbf{C}}_{ij}(\data(t), \delta t)
 = \\
-\frac{1}{ \delta t} \left( \mathbb{E} \left[ \data_i (t+\delta t) \data_j (t+ \delta t) \mid \data(t) \right]
-- \mathbb{E} \left[ \data_i (t+\delta t) \mid \data(t) \right] \mathbb{E} \left[ \data_j (t+\delta t) \mid \data(t) \right] \right) ,
+\frac{1}{ \delta t} \left( \mathbb{E} \left[ \dataone_i (t+\delta t) \dataone_j (t+ \delta t) \mid \data(t) \right]
+- \mathbb{E} \left[ \dataone_i (t+\delta t) \mid \data(t) \right] \mathbb{E} \left[ \dataone_j (t+\delta t) \mid \data(t) \right] \right) ,
 \end{multline}
 %
 where $\delta t > 0$ is the length of the simulation burst.
@@ -451,7 +453,7 @@ where $\delta t > 0$ is the length of the simulation burst.
 %\end{table}
 
 
-\section{Angular synchronization } \label{sec:ang_synch}
+\section{Angular Synchronization } \label{sec:ang_synch}
 
 {\em This section is published in the supplemental information of \cite{dsilva2015temporal}}
 
@@ -459,7 +461,7 @@ As will be discussed in \chap~\ref{ch:multiscale} and \chap~\ref{ch:merging}, th
 %
 Another source of variability that one would often like to remove is due to symmetries, when data (such as images) are collected in many different orientations. 
 %
-When these orientational differences are an artifact of the experimental or imaging setup, they must be removed for informative analysis.
+When these orientational differences are a result of the experimental or imaging setup, they must be removed for informative analysis.
 %
 We will discuss two algorithms for registering images with respect to rotational symmetries. 
 %
@@ -467,11 +469,9 @@ Angular synchronization \cite{singer2011angular} is an algorithm for registering
 %
 Vector diffusion maps \cite{singer2012vector} combines angular synchronization and diffusion maps to both register and uncover structure in a data set in a single computation. 
 %
-We demonstrate these two algorithms for registration and temporal ordering using a synthetic data set.
+We demonstrate these two algorithms using a synthetic data set whose relatively simple dynamics allow us to easily visualize and illustrate the main features of the different algorithms.
 %
-The relatively simple dynamics of this data set allows us to easily visualize and illustrate the main features of the different algorithms.
-%
-Motivated by the geometry of our {\em Drosophila} embryo images in \chap~\ref{ch:drosophila}, we construct a sequence of concentration profiles defined on a ring, and rotate each ring randomly around its center; an example is shown in \fig~\ref{fig:1d_demo}A.
+Motivated by the geometry of the {\em Drosophila} embryo images in \chap~\ref{ch:drosophila}, we construct a sequence of concentration profiles defined on a ring, and rotate each ring randomly around its center; an example is shown in \fig~\ref{fig:1d_demo}A.
 %
 Rotation of the ring corresponds to shifting (with periodic boundary conditions) the one-dimensional concentration profile shown at the bottom of \fig~\ref{fig:1d_demo}A (the symmetry group is $SO(2)$, the group of all two-dimensional proper rotations).
 %
@@ -512,11 +512,11 @@ Our goal is to recover $\theta_1, \dots, \theta_\ndata$.
 %
 Up to noise,
 \begin{equation} \label{eq:pairwise_rot}
-\data_i \approx f(\data_j, \theta_i - \theta_j) ;
+\data(i) \approx f(\data(j), \theta_i - \theta_j) ;
 \end{equation}
 note that \eqref{eq:pairwise_rot} does not require knowledge of $\data_{true}$.
 %
-We can obtain an {\it estimate} of $\theta_i - \theta_j$ by computing the rotation that optimally aligns $\data_j$ to $\data_i$,
+We can obtain an {\it estimate} of $\theta_i - \theta_j$ by computing the rotation that optimally aligns $\data(j)$ to $\data(i)$,
 i.e., %$\theta_{ij} \approx \theta_i - \theta_j$, where
 %
 \begin{equation} \label{eq:opt_angle}
@@ -624,7 +624,7 @@ consistency information in its higher powers).
 %
 Because $\mathbf{H}$ and $\mathbf{H}^2$ have the same eigenvectors, our problem formulation accounts for not only pairwise alignment information, but also these higher-order considerations.
 
-\section{Vector diffusion maps}
+\section{Vector Diffusion Maps}
 
 Vector diffusion maps combines the algorithms of angular synchronization and diffusion maps into a single computation that both removes rotational symmetries and parameterizes the data {\em modulo} these symmetries \cite{singer2012vector}.
 %

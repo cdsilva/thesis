@@ -5,11 +5,11 @@
 
 Modeling dynamical systems is an essential component of most science and engineering disciplines. 
 %
-Substantial research efforts are dedicated to constructing models for complex phenomena, such as chemical reactions \cite{dong2007simplification, gillespie1977exact, gallagher1986combined}, fluid flow \cite{anderson1995computational}, and gene expression \cite{bar2004analyzing, storey2005significance}. 
+Substantial research efforts are dedicated to constructing models for complex phenomena, such as chemical reactions \cite{dong2007simplification, gillespie1977exact, gallagher1986combined}, fluid flows \cite{anderson1995computational}, and gene expressions \cite{bar2004analyzing, storey2005significance}. 
 %
-These models both allow researchers to run very inexpensive {\em in silico} ``experiments'', and can also be incorporated into systems-level models and optimization routines \cite{daoutidis2013engineering, oluwole2006rigorous, rubert2014advanced}. 
+These models allow researchers to run very inexpensive {\em in silico} ``experiments'', and can also be incorporated into larger systems-level models and optimization routines \cite{daoutidis2013engineering, oluwole2006rigorous, rubert2014advanced}. 
 
-Often a lower-dimensional model which captures the general trends of the dynamical system is preferable to a higher-dimensional model which captures the fine-scale details. 
+Often a lower-dimensional model which captures the general trends and macroscale behavior of a dynamical system is preferable to a higher-dimensional model which captures the fine-scale details. 
 %
 Lower-dimensional models are simple and often easy to interpret.
 %
@@ -65,12 +65,7 @@ However, deciding on how many and what variables are required to (approximately)
 %of physicochemical problems.
 %
 
-Data from dynamical systems often comes in one of two forms. 
-%
-Data can be collected directly from experiments for which no model exists. 
-%
-Alternatively, data can be collected from simulations of a detailed, high-dimensional model at the microscopic level; in this case, the task is finding a lower-dimensional model which captures the macroscopic dynamics. 
-%
+
 Traditionally, model reduction in engineering disciplines has been done using some {\em a priori} knowledge about separation of time scales,
 such as using the quasi-steady state approximation to reduce a network of chemical reactions \cite{bowen1963singular}.
 %
@@ -82,12 +77,19 @@ However, dimensionality reduction algorithms allow for the systematic discovery 
 order parameters can be invaluable in understanding and predicting system behavior.
 %
 %For example, such reduction coordinates may be the dihedral angles inferred from trajectories of the atoms of a macromolecule.
-
+%
+Data from dynamical systems often comes in one of two forms. 
+%
+Data can be collected directly from experiments for which no model exists. 
+%
+Alternatively, data can be collected from simulations of a detailed, high-dimensional model at the microscopic level; in this case, the task is finding a lower-dimensional model which captures the macroscopic dynamics. 
+%
+We will discuss both types of data in this dissertation.
 
 \section{Background on Dimensionality Reduction} \label{sec:background}
 
 
-For the past century, principal component analysis (PCA) \cite{shlens2005tutorial} has been the standard dimensionality reduction technique.
+For the past century, principal component analysis (PCA) \cite{shlens2005tutorial} has been the standard data-driven dimensionality reduction technique.
 %
 PCA projects (high-dimensional) data onto a lower-dimensional hyperplane, where the hyperplane is chosen to maximize the variance of the projected data. 
 %
@@ -103,11 +105,13 @@ The past twenty years have witnessed increased interest in algorithms which can 
 %
 Kernel principal components analysis \cite{scholkopf1997kernel} uses the ``kernel trick'' to perform PCA in a higher-dimensional, more complex basis which can capture nonlinearities. 
 %
-Local linear embedding \cite{roweis2000nonlinear} does PCA {\em locally} on patches of the data, and then merges these linear patches together to obtain a global parameterization which can capture nonlinearities in the data. 
+Local linear embedding \cite{roweis2000nonlinear} does PCA {\em locally} on patches of the data, and then merges these linear patches together to obtain a global parameterization which can reveal nonlinear structure in the data. 
 %
 Isomap \cite{tenenbaum2000global} first constructs a weighted graph on the data in which nearby data points are connected by stronger edges.
 %
 The algorithm then uses multidimensional scaling \cite{joseph1978multidimensional} to embed the data, where the distance between a pair of data points is given by the length of the shortest path between the pair in the graph. 
+%
+This graph-based distance attempts to approximate the geodesic distance along the manifold. 
 
 Simultaneously, there was renewed interest in algorithms for analyzing and extracting structure in graphs, due to the prevalence of network, internet, and social media data. 
 %
@@ -119,7 +123,7 @@ The eigenvectors of this Laplacian then yield coordinates which parameterize the
 %
 This algorithm, called Laplacian Eigenmaps, has both practical advantages (it is both simple to implement and robust to noise) as well as elegant theoretical guarantees (the discrete operator approaches the Laplacian on the underlying manifold assuming the data are uniformly sampled) \cite{Belkin2003}. 
 %
-Soon after Laplacian Eigenmaps, the {\em diffusion maps} algorithm was proposed as a generalization \cite{coifman2005geometric, coifman2006geometric}. 
+Soon after Laplacian Eigenmaps, the diffusion maps algorithm was proposed as a generalization \cite{coifman2005geometric, coifman2006geometric}. 
 %
 This algorithm yields a family of embeddings, and provides theoretical understanding for the resulting embedding even when the data are nonuniformly sampled from the underlying manifold. 
 
@@ -136,7 +140,7 @@ In \chap~\ref{ch:math}, we outline the mathematical techniques common throughout
 %
 \chap~\ref{ch:multiscale} discusses using data-driven techniques for the analysis of multiscale stochastic data. 
 %
-By introducing a more sophisticated metric, we can uncover a parameterization of data which respects the underlying slow dynamical modes and is invariant to fast stochastic fluctuations, even when these fluctuations are large. 
+By introducing a more sophisticated metric, we uncover a parameterization of data which respects the underlying slow dynamical modes and is invariant to fast stochastic fluctuations, even when these fluctuations are large. 
 %
 We present both theoretical analysis for our proposed approach, as well as demonstrate the approach on synthetic data sets. 
 %
@@ -150,7 +154,7 @@ We demonstrate this approach on two simulation data sets: (1) a simulation of a 
 %
 Here, we use vector diffusion maps (an extension of diffusion maps) to both register and temporally order experimental imaging data sets in developmental biology. 
 %
-\chap~\ref{ch:harmonics} discusses the key issue in manifold learning of ``repeated eigendirections'', where subsequent modes can be higher harmonics of previous modes and parmaeterize the same direction in the data set. 
+\chap~\ref{ch:harmonics} discusses the key issue in manifold learning of ``repeated eigendirections'', where subsequent modes can be higher harmonics of previous modes and parameterize the same direction in the data set. 
 %
 We present an algorithm, based on local linear regression, for automatically detecting these repeated eigendirections which allows us to uncover the true dimensionality of the underlying manifold and the most parsimonious representation of the data, an essential task when constructing a reduced model.
 %
