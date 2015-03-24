@@ -15,19 +15,44 @@ The focus of this dissertation is using data-driven techniques to analyze data f
 We use diffusion maps, a nonlinear manifold learning technique, to analyze data.
 %
 We adapt the diffusion maps algorithms to analyze several different types of data common in the study of dynamical systems. 
-%
-We discuss multiscale data, merging several data sets, imaging data, and detecting the underlying dimensionality of the data. 
 
-For the multiscale data applications, there are both theoretical and experimental avenues to persue. 
+In the first example, we study multiscale data, and use diffusion maps with the Mahalanobis distance to extract a parameterization of the data which respects the {\em slow} variables in the underlying dynamical system. 
 %
-As was acknowledged previously, the errors in the estimation due to finite sampling are ignored in our analysis, and should be incorporated into future work to yield a complete understanding of the methodology. 
+In this work, there are both theoretical and experimental future research directions to persue. 
+%
+As was previously acknowledged, the errors in the estimation due to finite sampling are ignored in our analysis, and should be addressed into future work to yield a complete understanding of the methodology. 
 %
 Furthermore, the analysis presented was only for covariance estimation using ``bursts.''
 %
-It is important to also analyze the case of estimating the covariance from a signle trajectory.
+It is important to also analyze the case of estimating the covariance from a single continuous trajectory.
+%
+Lastly, the proposed methodology was only applied to synthetic data from a (relatively simple) stochastic system. 
+%
+One should consider applying these ideas to more complex experimental and/or simulation data sets. 
+
+The second example discussed merging data from different observation/measurement functions into a single consistent framework, using diffusion maps with the Mahalanobis distance. 
+%
+Here, an interesting direction would be to use this framework to compare proposed models. 
+%
+For example, in molecular simulations, coarse models are often constructed by first, positing a mapping from the fine to coarse scale (e.g., each amino acid in a protein maps to a single ``bead''), and then fitting a dynamic model for the coarse scale which (approximately) replicates the fine scale dynamics. 
+%
+However, the issue is how to compare the dynamics of the fine- and coarse-scale models. 
+%
+Often, one compares statistics of the two models; however, it would be interesting to compare the NIV embeddings of the fine- and coarse-scale models. 
+%
+If the two embeddings are consistent, it would imply that the two models capture (approximately) the same dynamics. 
 
 
-Many of these ideas can be extended and utilized for a variety of applications. 
+The next problem we discussed was reconstructing dynamics from snapshots in developmental biology. 
 %
-The diffusion maps variables can be used as the ``correct'' macroscopic variables in the equation-free framework. 
+There are a couple interesting research directions for this work. 
 %
+The first is using vector diffusion maps to compare the developmental trajectories of several mutants. 
+%
+By embedding images from several different mutants in the first few vector diffusion maps coordinates, one can not only uncover the developmental dynamics, but also compare the different developmental trajectories. 
+%
+Another direction for future work is merging live and fixed imaging data to estimate the real time of fixed images via the Nystr\"{o}m extension. 
+
+The final contribution is an algorithm for automatically detecting ``repeated eigendirections'' in diffusion maps emebddings. 
+%
+
