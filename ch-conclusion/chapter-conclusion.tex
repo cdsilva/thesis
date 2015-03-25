@@ -4,27 +4,25 @@
 
 Modeling and analysis of dynamical systems is essential for a wide range of disciplines and applications. 
 %
-However, constructing an informative and simple model from {\em a priori} knowledge is often difficult, especially for new systems which have not yet been well-studied. 
+However, constructing an informative and simple model from {\em a priori} knowledge is often difficult, especially for new systems which are not well-studied. 
 %
 In these instances, it is often advantageous to utilize data-driven techniques to construct models.
 %
 Often the first step is to determine the appropriate variables in which to write the models. 
-
+%
 The focus of this dissertation is using data-driven techniques to analyze data from dynamical systems, in order to gain insight into the appropriate variables for writing descriptive models. 
 %
-We use diffusion maps, a nonlinear manifold learning technique, to analyze data.
-%
-We adapt the diffusion maps algorithms to analyze several different types of data common in the study of dynamical systems. 
+We use diffusion maps, a nonlinear manifold learning technique, to analyze data and adapt the diffusion maps algorithm to analyze several different types of data common in the study of dynamical systems. 
 
 In the first example, we study multiscale data, and use diffusion maps with the Mahalanobis distance to extract a parameterization of the data which respects the {\em slow} variables in the underlying dynamical system. 
 %
-In this work, there are both theoretical and experimental future research directions to persue. 
+In this work, there are both theoretical and experimental future research directions to pursue. 
 %
 As was previously acknowledged, the errors in the estimation due to finite sampling are ignored in our analysis, and should be addressed into future work to yield a complete understanding of the methodology. 
 %
 Furthermore, the analysis presented was only for covariance estimation using ``bursts.''
 %
-It is important to also analyze the case of estimating the covariance from a single continuous trajectory.
+It is important to also analyze the case of estimating the covariance from a single continuous trajectory; this analysis is more complex, as successive samples are now correlated, but the setting is more practical as it can be applied to a single data trajectory.
 %
 Lastly, the proposed methodology was only applied to synthetic data from a (relatively simple) stochastic system. 
 %
@@ -34,7 +32,7 @@ The second example discussed merging data from different observation/measurement
 %
 Here, an interesting direction would be to use this framework to compare proposed models. 
 %
-For example, in molecular simulations, coarse models are often constructed by first, positing a mapping from the fine to coarse scale (e.g., each amino acid in a protein maps to a single ``bead''), and then fitting a dynamic model for the coarse scale which (approximately) replicates the fine scale dynamics. 
+For example, in molecular simulations, coarse models are often constructed by first positing a mapping from the fine to coarse scale (e.g., each amino acid in a protein maps to a single ``bead''), and then fitting a dynamic model for the coarse scale which (approximately) replicates the fine scale dynamics. 
 %
 However, the issue is how to compare the dynamics of the fine- and coarse-scale models. 
 %
