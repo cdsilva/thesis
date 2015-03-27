@@ -131,7 +131,7 @@ to estimate the tangent planes of the observable manifolds {\em via the principa
 \subsection{Diffusion maps and the Mahalanobis distance}
 \label{subsec:mahalanobis}
 
-We use the Mahalanobis distance in \eqref{eq:mahalanobis1}, with the covariance estimation in \eqref{eq:cov1}, to compare pairs of data points. 
+We use the Mahalanobis distance in \eqref{eq:mahalanobis1}, with the covariance estimation in \eqref{eq:cov1}, to compare pairs of data points.
 %
 %Let $\mathbf{C}(t)$ be the covariance matrix associated with the measured sample $\mathbf{Y}(t)$. In practice, the covariance matrix can be estimated from a short trajectory of samples in time around the sample $\mathbf{Y}(t)$ by
 %\begin{equation}
@@ -181,7 +181,7 @@ thus, we use the pseudo-inverse in \eqref{eq:mahalanobis1}.
 
 The Mahalanobis distance described in \sec~\ref{sec:mahalanobis} enables us to compare observations in terms of the intrinsic variables of the associated underlying diffusion process.
 %
-We then use diffusion maps, with the Mahalanobis distance in the kernel matrix in \eqref{eq:W} and $\dmeps$ as the median of the pairwise distances, to obtain a parameterization our data with respect to the intrinsic variables $\mathbf{x}$. 
+We then use diffusion maps, with the Mahalanobis distance in the kernel matrix in \eqref{eq:W} and $\dmeps$ as the median of the pairwise distances, to obtain a parameterization our data with respect to the intrinsic variables $\mathbf{x}$.
 %
 %In this section, we show how to recover the underlying process itself from the pairwise Euclidean distances through the eigenvectors of a Laplace operator.
 %
@@ -201,7 +201,7 @@ We then use diffusion maps, with the Mahalanobis distance in the kernel matrix i
 %%
 %According to the graph interpretation, this implies a well-connected graph because each measurement is effectively connected to half of the other measurements \cite{rohrdanz2011determination}.
 %
-%Let $\mathbf{D}$ be a diagonal matrix whose elements are the row sums of $\mathbf{W}$, and let 
+%Let $\mathbf{D}$ be a diagonal matrix whose elements are the row sums of $\mathbf{W}$, and let
 %\begin{equation}\label{eq:kernel}
 %\mathbf{W}^{\mathrm{norm}} = \mathbf{D}^{-1/2}\mathbf{W}\mathbf{D}^{-1/2}
 %\end{equation}
@@ -307,19 +307,19 @@ from geometry by normalizing the diffusion kernel with the sample density via th
 %
 %This has been explored for diffusion maps independently of NIV \cite{coifman2005geometric}.
 %
-%When the normalized kernel is defined as 
+%When the normalized kernel is defined as
 %\begin{equation} \label{eq:norm_kernel}
 %\widetilde{\mathbf{W}}^{\mathrm{norm}} = \mathbf{D}^{-1}\mathbf{W}\mathbf{D}^{-1},
 %\end{equation}
 %the limiting diffusion operator is the Laplace-Beltrami operator \cite{nadler2006diffusion}, given by $\widetilde{\mathcal{L}} = \Delta$.
 %
-%In other words, 
+%In other words,
 This diffusion captures only the geometry of the observations and is invariant to the potential (or, alternatively,
 to the details of the sampling density).
 %This kernel is similar to the kernel in \eqref{eq:kernel}, but $D$ appears with coefficient -1 rather than $-1/2$.
 %
 Since local coordinates are based on the noise term in \eqref{eq:dynamics}, sets of measurements from different regions
-will essentially detect the same system of coordinates (the same variable ``axes"); 
+will essentially detect the same system of coordinates (the same variable ``axes");
 yet different sampling densities (arising, for example,
 from the drift term in \eqref{eq:dynamics}) will result in different {\em scalings} of these axes.
 %
@@ -337,7 +337,7 @@ More specifically, viewing the ambient space coordinates $\data$ as functions on
 we want to estimate $\data$ for new points $\mathbf{x}$.
 %
 Laplacian Pyramids (LP) is a multiscale algorithm for extending an empirical function $\measfn$ defined on a set of points
-to new points not in the dataset.
+to new points not in the data set.
 %
 The algorithm uses Laplacian kernels of decreasing widths to create multiscale representations of $\measfn$;
 these representations can be easily extended to new data points.
@@ -545,12 +545,12 @@ We denote the endpoints from the short simulations as $\mathcal{Y}^{burst}(\data
 \label{subfig:rxn_manifolds1}
 \end{subfigure}
 \begin{subfigure}{0.45\textwidth}
-\includegraphics[height=5cm]{rxn_manifold2}\llap{\raisebox{4cm}{\includegraphics[height=2.25cm]{rxn_manifold2_2}}} 
+\includegraphics[height=5cm]{rxn_manifold2}\llap{\raisebox{4cm}{\includegraphics[height=2.25cm]{rxn_manifold2_2}}}
 \caption{}
 \label{subfig:rxn_manifolds2}
 \end{subfigure}\\
 \begin{subfigure}{0.45\textwidth}
-\includegraphics[height=5cm]{rxn_manifold3}\llap{\raisebox{4cm}{\includegraphics[height=2.25cm]{rxn_manifold3_2}}} 
+\includegraphics[height=5cm]{rxn_manifold3}\llap{\raisebox{4cm}{\includegraphics[height=2.25cm]{rxn_manifold3_2}}}
 \caption{}
 \label{subfig:rxn_manifolds3}
 \end{subfigure}
@@ -676,7 +676,7 @@ The convergence of the spectrum of the kernel and the ultimate self-consistency 
 \includegraphics[width=\textwidth]{rxn_npoints_spectrum6}
 \caption{}
 \label{subfig:rxn_convergence4}
-\end{subfigure}    
+\end{subfigure}
 \caption[Convergence of intrinsic variable embeddings as a function of the number of data points]{Two-dimensional NIV embeddings (top) and corresponding eigenvalue spectra (bottom) calculated from subsets of $\mathcal{Y}_1$ containing (\subref*{subfig:rxn_convergence1}) 10 data points, (\subref*{subfig:rxn_convergence2}) 100 data points, (\subref*{subfig:rxn_convergence3}) 500 data points, and (\subref*{subfig:rxn_convergence4}) 1500 data points. One can see that the embedding and spectrum in \subref*{subfig:rxn_convergence1} is inconsistent with the other embeddings, and that, although the spectrum in \subref*{subfig:rxn_convergence2} appears converged, the embedding is not converged until \subref*{subfig:rxn_convergence3}. }
 \label{fig:rxn_convergence}
 \end{figure}
@@ -789,7 +789,7 @@ Therefore, it appears advantageous to use NIV over diffusion maps if one wishes 
 \includegraphics[width=\textwidth]{DM_corr}
 \caption{}
 \label{subfig:ala_corr2}
-\end{subfigure}    
+\end{subfigure}
 \caption[Comparison of intrinsic variable and diffusion maps embeddings for alanine dipeptide data]{(\subref*{subfig:ala_corr1}) Correlation between the second NIV computed using the atoms 2, 4, 6, 8, and 10 ($\psi_2^{even}$) and the second NIV computed using atoms 5, 7, and 9 ($\psi_2^{odd}$).
     (\subref*{subfig:ala_corr2}) Correlation between the second DM computed using the atoms 2, 4, 6, 8, and 10 ($DM_2^{even}$) and the second DM computed using atoms 5, 7, and 9 ($DM_2^{odd}$).
     The correlations for the first (not shown) and second NIV coordinates are found to be 0.62 and 0.84, respectively.
@@ -889,7 +889,7 @@ We therefore conclude that the alanine dipeptide data does contain a measure of 
 \includegraphics[width=\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule300_wire}
 \caption{}
 \label{subfig:ala_molecules1}
-\end{subfigure}    
+\end{subfigure}
 %
 \hfill
 %
@@ -899,7 +899,7 @@ We therefore conclude that the alanine dipeptide data does contain a measure of 
 \includegraphics[width=\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule600_wire}
 \caption{}
 \label{subfig:ala_molecules2}
-\end{subfigure}    
+\end{subfigure}
 %
 \hfill
 %
@@ -909,7 +909,7 @@ We therefore conclude that the alanine dipeptide data does contain a measure of 
 \includegraphics[width=\textwidth,trim=0in 0.7in 0in 0in, clip]{molecule900_wire}
 \caption{}
 \label{subfig:ala_molecules3}
-\end{subfigure}    
+\end{subfigure}
     \caption[Example reconstructed alanine dipeptide configurations]{True structure (black) and reconstructed structure (red) for three different data points. Each data point is shown in ``ball-and-stick'' representation (left) and ``wireframe'' representation (right) so that the discrepancies can easily be seen between the different configurations.}
     \label{fig:ala_molecules}
 \end{figure}
@@ -963,14 +963,14 @@ the bias due to drift variations.
 %
 We are confident that the exploration of these open questions will enable the use of our methodology in many interesting applications, such as merging data from molecular simulations at different levels of granularity, or merging simulation data with experimental observations.
 
-These two chapters have described using the Mahalanobis distance with diffusion maps to analyze two different types of data common in dynamical systems: data exhibiting dynamics on multiple time scales, and data obtained via several measurement/observation functions. 
+These two chapters have described using the Mahalanobis distance with diffusion maps to analyze two different types of data common in dynamical systems: data exhibiting dynamics on multiple time scales, and data obtained via several measurement/observation functions.
 %
-In the next chapter, we will address a third type of data (imaging data). 
+In the next chapter, we will address a third type of data (imaging data).
 %
-In this example, we will not be interested in removing the effects of fast variables or measurement functions, but instead factoring out rotational symmetries which arise from the experimental imaging setup. 
+In this example, we will not be interested in removing the effects of fast variables or measurement functions, but instead factoring out rotational symmetries which arise from the experimental imaging setup.
 %
-We will present another extension of diffusion maps which allows us to simultaneously factor out symmetries and uncover structure in the imaging data. 
+We will present another extension of diffusion maps which allows us to simultaneously factor out symmetries and uncover structure in the imaging data.
 %
-For this particular example, recovering structure in the data set will correspond to ordering the images in order to recover the relevant developmental dynamics. 
+For this particular example, recovering structure in the data set will correspond to ordering the images in order to recover the relevant developmental dynamics.
 
 

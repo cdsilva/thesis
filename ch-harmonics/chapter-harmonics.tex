@@ -19,7 +19,7 @@ As discussed in previous chapters, in recent years, manifold learning algorithms
 %
 %Due to the complexity and range of microscale behaviors possible in dynamical systems, we use manifold learning, a class of nonlinear data-driven techniques, to analyze data.
 %%
-%Most manifold learning algorithms construct parametrizations of the data through the spectral analysis of a Laplace operator \cite{Belkin2003,coifman2005geometric,coifman2006geometric,singer2008non}.
+%Most manifold learning algorithms construct parameterizations of the data through the spectral analysis of a Laplace operator \cite{Belkin2003,coifman2005geometric,coifman2006geometric,singer2008non}.
 %%
 %The data is then embedded in a new, low-dimensional coordinate system given by the eigenvectors of this operator.
 %%
@@ -29,7 +29,7 @@ These data-driven algorithms were first applied to synthetic data sets to illust
 %
 Only recently have they been applied to experimental and simulation data, which was possible due to advances in data representation (observers) and metrics \cite{rubner2000earth,mallat2012group,talmon2013empirical,zhao2014rotationally, rohrdanz2011determination}.
 %
-A critical shortcoming of these methods is that from a geometric perspective, not all eigenvectors are guaranteed to parametrize unique directions within the data; some eigenvectors are ``repeated eigendirections'' which describe the same mode.
+A critical shortcoming of these methods is that from a geometric perspective, not all eigenvectors are guaranteed to parameterize unique directions within the data; some eigenvectors are ``repeated eigendirections'' which describe the same mode.
 %
 Identifying those eigenvectors is critical for obtaining a parametrization of the system which captures the true dimensionality of the macroscale dynamics.
 %
@@ -52,9 +52,9 @@ We will show that this pipeline allows us to detect changes in the regime/mode o
 %%
 %We assume the $\highdim$-dimensional observations $\data(i)$ lie on a $\lowdim$-dimensional manifold $\manifold$, where $\lowdim < \highdim$.
 %%
-%We therefore consider the problem of parametrizing the continuous $d$-dimensional manifold $\manifold$ embedded in $\mathbb{R}^\highdim$ from data.
+%We therefore consider the problem of parameterizing the continuous $d$-dimensional manifold $\manifold$ embedded in $\mathbb{R}^\highdim$ from data.
 %%
-%For linear hyperplanes, the principal axes parametrize the manifold.
+%For linear hyperplanes, the principal axes parameterize the manifold.
 %%
 %However, in the case when the manifold is nonlinear, the set of coordinates is not readily apparent.
 %%
@@ -87,7 +87,7 @@ To illustrate the issue of repeated eigendirections, we first return to the simp
 %\label{subfig:strip_evecs_nonuniform}
 %\end{subfigure}
 %%
-%\caption[Eigenfunctions of the Laplace-Beltrami operator on a two-dimensional strip]{(a) Two-dimensional continuous strip colored by the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$, and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$. (b) Two-dimensional strip with uniform sampling colored by the first and fourth (non-trivial) eigenvectors of the discrete Laplacian. (c) Two-dimensional strip with data sampled from a Gaussian distribution in $z_1$ and sampled uniformly in $z_2$, colored by the first and third (non-trivial) eigenvectors of the discrete Laplacian. Note that in all cases we uncover parametrizations which are one-to-one with $z_1$ and $z_2$.}
+%\caption[Eigenfunctions of the Laplace-Beltrami operator on a two-dimensional strip]{(a) Two-dimensional continuous strip colored by the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$, and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$. (b) Two-dimensional strip with uniform sampling colored by the first and fourth (non-trivial) eigenvectors of the discrete Laplacian. (c) Two-dimensional strip with data sampled from a Gaussian distribution in $z_1$ and sampled uniformly in $z_2$, colored by the first and third (non-trivial) eigenvectors of the discrete Laplacian. Note that in all cases we uncover parameterizations which are one-to-one with $z_1$ and $z_2$.}
 %\end{figure}
 %
 %In recent years, it has been noted that the eigenfunctions of the \emph{continuous} Laplace-Beltrami operator provide ``good" coordinates for the manifold \cite{jones2008}.
@@ -114,12 +114,12 @@ To illustrate the issue of repeated eigendirections, we first return to the simp
 %
 The analytic form of the eigenfunctions in \eqref{eq:efuncs} illustrates the two issues we address in this chapter.
 %
-First, $z_1$ and $z_2$ are not necessarily decoupled in subsequent eigenfunctions, and a proper parameterization of the manifold is not necessarily given by first two eigenfunctions, even though the manifold is two-dimensional.
+First, $z_1$ and $z_2$ are not necessarily decoupled in subsequent eigenfunctions, and a proper parametrization of the manifold is not necessarily given by first two eigenfunctions, even though the manifold is two-dimensional.
 % TODO: address this in later section
 %
-Second, eigenfunctions with $k_1+k_2 \ge 2$ do not describe any additional directions along the strip; we will refer to these as ``repeated eigendirections,'' and we will refer to the eigenfunctions with $k_1+k_2 =1$ as ``unique eigendirections.'' 
+Second, eigenfunctions with $k_1+k_2 \ge 2$ do not describe any additional directions along the strip; we will refer to these as ``repeated eigendirections,'' and we will refer to the eigenfunctions with $k_1+k_2 =1$ as ``unique eigendirections.''
 %
-We note that, although the eigenfunctions can only be written analytically for very special cases, it has been observed empirically that the eigenfunctions often provide appropriate coordinates to parametrize more complex, nonlinear manifolds.
+We note that, although the eigenfunctions can only be written analytically for very special cases, it has been observed empirically that the eigenfunctions often provide appropriate coordinates to parameterize more complex, nonlinear manifolds.
 %
 In addition, this problem of repeated eigendirections arises for more complex manifolds with more than two variables.
 %
@@ -132,7 +132,7 @@ The existence of these challenges in the continuous setting implies that, even i
 
 %In most applications, we are not given a description of the continuous manifold.
 %%
-%Instead, we are given data {\em sampled} from the underlying manifold, and the parameterization of the manifold needs to be uncovered from the data.
+%Instead, we are given data {\em sampled} from the underlying manifold, and the parametrization of the manifold needs to be uncovered from the data.
 %%
 %As discussed in \chap~\ref{ch:math}, diffusion maps constructs a matrix which, in the limit of infinite data, approximates the Laplace-Beltrami or Fokker-Planck operator on the manifold.
 %
@@ -148,11 +148,11 @@ The existence of these challenges in the continuous setting implies that, even i
 %%
 %The kernel's scale $\epsilon$ can be chosen using several heuristics \cite{rohrdanz2011determination, coifman2008graph}; we often take $\epsilon$ to be the median of the pairwise distances between the data points.
 %%
-%We then construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{m \times m}$, with $\mathbf{D}_{ii} = \sum_j \mathbf{W}_{ij}$, and form the matrix $\widetilde{\mathbf{W}} = \mathbf{D}^{-\alpha} \mathbf{W} \mathbf{D}^{-\alpha}$, where $0 < \alpha < 1$. 
+%We then construct the diagonal matrix $\mathbf{D} \in \mathbb{R}^{m \times m}$, with $\mathbf{D}_{ii} = \sum_j \mathbf{W}_{ij}$, and form the matrix $\widetilde{\mathbf{W}} = \mathbf{D}^{-\alpha} \mathbf{W} \mathbf{D}^{-\alpha}$, where $0 < \alpha < 1$.
 %%
 %Next, we construct the diagonal matrix $\widetilde{\mathbf{D}} \in \mathbb{R}^{m \times m}$, with $\widetilde{\mathbf{D}}_{ii} = \sum_j \widetilde{\mathbf{W}}_{ij}$, and the matrix $\mathbf{A}  = \widetilde{\mathbf{D}}^{-1} \widetilde{\mathbf{W}}.$
 %
-%If the data $z(1), \dots, z(m)$ are sampled from $\mathcal{M}_d$ with some density $q$, then, for $\epsilon \rightarrow 0, m \rightarrow \infty$, the discrete matrix convergences to the following continuous limit operators with Neumann boundary conditions (as discussed in the previous section) \cite{coifman2006geometric}
+%If the data $z(1), \dots, z(m)$ are sampled from $\mathcal{M}_d$ with some density $q$, then, for $\epsilon \rightarrow 0, m \rightarrow \infty$, the discrete matrix convergence to the following continuous limit operators with Neumann boundary conditions (as discussed in the previous section) \cite{coifman2006geometric}
 %\begin{align}
 %\frac{1}{\epsilon^2}(\mathbf{I}-\mathbf{A}) \phi &\rightarrow \nabla^2 \phi - 2\nabla U \cdot \nabla \phi, &&\alpha = 0 \\
 %\frac{1}{\epsilon^2}(\mathbf{I}-\mathbf{A}) \phi &\rightarrow \nabla^2 \phi - \nabla U \cdot \nabla \phi, &&\alpha = 1/2 \\
@@ -160,7 +160,7 @@ The existence of these challenges in the continuous setting implies that, even i
 %\end{align}
 %where $U = - \log q$.
 %%
-%The different limit operators, depending on the choice of $\alpha$, imply that nonuniform sampling on the manifold may have different effects. 
+%The different limit operators, depending on the choice of $\alpha$, imply that nonuniform sampling on the manifold may have different effects.
 %%
 %In particular, by setting $\alpha=1$, one can factor out the density effects in the weight matrix, and the discrete Laplacian matrix approaches the Laplace-Beltrami operator on the manifold $\mathcal{M}_d$.
 %%
@@ -184,7 +184,7 @@ The existence of these challenges in the continuous setting implies that, even i
 %%
 %Figures~\ref{subfig:strip_evecs_uniform}--\ref{subfig:strip_evecs_nonuniform} shows data sampled from a strip, colored by eigenvectors of $\mathbf{A}$.
 %%
-%In cases of both uniform and nonuniform sampling, the selected eigenvectors are one-to-one with $z_1$ and $z_2$, and thus parametrize the manifold.
+%In cases of both uniform and nonuniform sampling, the selected eigenvectors are one-to-one with $z_1$ and $z_2$, and thus parameterize the manifold.
 %%
 %TODO: maybe we can put here the new figures for the different values of $\alpha$ instead of these figures.
 %%
@@ -192,7 +192,7 @@ The existence of these challenges in the continuous setting implies that, even i
 
 From the analytic solution, we know that the eigenfunctions with $(k_1, k_2) =(1, 0)$ and $(k_1, k_2) =(0, 1)$ provide embedding coordinates for the manifold; these two eigenfunctions are both uncoupled and not repeated.
 %
-However, identifying those selected eigenvectors in the discrete setting is nontrivial, as we do not have access to the indices for each eigenvalue/eigenvector. 
+However, identifying those selected eigenvectors in the discrete setting is nontrivial, as we do not have access to the indices for each eigenvalue/eigenvector.
 %
 From \eqref{eq:evals}, we see that sorting the eigenvectors by the magnitude of the corresponding eigenvalues (as is traditionally done in diffusion maps) implies that these two eigenvectors are guaranteed to appear before any coupled or repeated eigendirections.
 %
@@ -210,7 +210,7 @@ For the case where $\manifold$ is a $2$-dimensional strip with edge lengths $L_1
 %
 However, these two eigenvectors $\tilde{\phi}_{1, 0}$ and $\tilde{\phi}_{0, 1}$ are not guaranteed to correspond to the two smallest (non-trivial) eigenvalues (the smallest eigenvalue will always be $\tilde{\lambda}_{0,0} = 0$ and correspond to a constant eigenfunction; these eigenvalues are related to the eigenvalues $\lambda_k$ of the discrete operator via \eqref{eq:evals_relationship}).
 %
-In fact, if $L_1 > 2 L_2$, then $\tilde{\lambda}_{2, 0} < \tilde{\lambda}_{0, 1}$, and so the second (non-trivial) eigenvector (when the eigenvectors are ordered by their corresponding eigenvalues) will be a repeated eigendirection of the first and still parametrize $z_1$ (see Figure~\ref{fig:strip_harmonics}).
+In fact, if $L_1 > 2 L_2$, then $\tilde{\lambda}_{2, 0} < \tilde{\lambda}_{0, 1}$, and so the second (non-trivial) eigenvector (when the eigenvectors are ordered by their corresponding eigenvalues) will be a repeated eigendirection of the first and still parameterize $z_1$ (see Figure~\ref{fig:strip_harmonics}).
 %
 We therefore require a methodology to automatically detect which eigenvectors are harmonics of each other.
 %
@@ -296,7 +296,7 @@ r_{k} = \sqrt{ \frac{\sum_{i=1}^n \left( \phi_{k} (i) - (\hat{\alpha}_k(i) + \ha
 %
 Note that a small value of $r_k$ implies that $\phi_{k}$ can be accurately approximated from $\phi_1, \dots, \phi_{k-1}$.
 %
-We assume small value of $r_k$ implies that $\phi_k$ is a harmonic of previous modes, i.e., a repeated eigendirection, and conversely, a large value of $r_{k}$ indicates that $\phi_{k}$ parametrizes a unique eigendirection in the data.
+We assume small value of $r_k$ implies that $\phi_k$ is a harmonic of previous modes, i.e., a repeated eigendirection, and conversely, a large value of $r_{k}$ indicates that $\phi_{k}$ parameterizes a unique eigendirection in the data.
 %
 We choose to set $r_1 = 1$.
 %
@@ -350,7 +350,7 @@ Under the assumption that $\phi_j = f \left( \phi_{i_1}, \dots, \phi_{i_d} \righ
 \frac{1}{1+K^2 \sum_{k \not\in I} \lambda_k^{2\tau}} D^2_\tau(z(i), z(j)) \le \sum_{k \in I} \lambda_k^{2 \tau} \left( \phi_k(i) - \phi_k(j)  \right)^2 \le D^2_\tau(z(i), z(j)).
 \end{equation}
 %
-Therefore (for finite data, or provided the eigenvalues $\lambda_k$ decay sufficiently fast in the limit of infinite data), the distance induced by the $d$ eigenvectors $\phi_{i_1}, \dots, \phi_{i_d}$ identified as parametrizing unique eigendirections is equivalent to the standard diffusion distance.
+Therefore (for finite data, or provided the eigenvalues $\lambda_k$ decay sufficiently fast in the limit of infinite data), the distance induced by the $d$ eigenvectors $\phi_{i_1}, \dots, \phi_{i_d}$ identified as parameterizing unique eigendirections is equivalent to the standard diffusion distance.
 %
 We will refer to this distance
 \begin{equation}
@@ -362,11 +362,11 @@ as the {\em reduced} diffusion distance, and the embedding obtained from the cor
 
 \subsection{Calculating the relative lengths of the manifold} \label{sec:relative_lengths}
 
-For a two-dimensional strip, once the eigenvectors which parametrize unique eigendirections have been determined, the corresponding eigenvalues can be used to calculate the relative lengths along these directions.
+For a two-dimensional strip, once the eigenvectors which parameterize unique eigendirections have been determined, the corresponding eigenvalues can be used to calculate the relative lengths along these directions.
 %
 For more general manifolds, we postulate that the eigenvalues can still provide a measure of the relative significance of the unique eigendirections.
 %
-Let $\lambda_{i_1}, \lambda_{i_2}, \dots$ denote the eigenvalues corresponding to eigenvectors which parametrize unique eigendirections (i.e., those eigenvectors where $r_{i_j}$ is large).
+Let $\lambda_{i_1}, \lambda_{i_2}, \dots$ denote the eigenvalues corresponding to eigenvectors which parameterize unique eigendirections (i.e., those eigenvectors where $r_{i_j}$ is large).
 %
 For the strip example, from \eqref{eq:evals} and \eqref{eq:evals_relationship}, we propose to approximate the relative lengths $L_j$  along the manifold by
 \begin{equation} \label{eq:est_lengths}
@@ -411,7 +411,7 @@ The second and third data sets are nonlinear manifolds which demonstrate the fle
 \caption{}
 \end{subfigure}
 %
-\caption[Eigenvalues and eigenvectors of diffusion maps on a two-dimensional strip]{Data sets (top) and eigenvalue spectra from diffusion maps analysis (bottom) for strips with (a) $L_1 = 2$, $L_2 = 1$, (b) $L_1 = 4$, $L_2 = 1$, (c) $L_1 = 8$, $L_2 = 1$. The empirical eigenvalues are plotted in blue, and the analytical eigenvalues are plotted in red. From the eigenvalues which are identified as parametrizing unique eigendirections (indicated by the darker blue bars), the estimated length ratio from \eqref{eq:est_lengths} is (a) 2.2, (b) 4.1, (c) 8.7.}
+\caption[Eigenvalues and eigenvectors of diffusion maps on a two-dimensional strip]{Data sets (top) and eigenvalue spectra from diffusion maps analysis (bottom) for strips with (a) $L_1 = 2$, $L_2 = 1$, (b) $L_1 = 4$, $L_2 = 1$, (c) $L_1 = 8$, $L_2 = 1$. The empirical eigenvalues are plotted in blue, and the analytical eigenvalues are plotted in red. From the eigenvalues which are identified as parameterizing unique eigendirections (indicated by the darker blue bars), the estimated length ratio from \eqref{eq:est_lengths} is (a) 2.2, (b) 4.1, (c) 8.7.}
 \label{fig:strip_compare_analytic}
 \end{figure}
 
@@ -493,7 +493,7 @@ Using \eqref{eq:est_lengths}, we can accurately estimate the relative lengths of
 \label{subfig:swissroll2_color2}
 \end{subfigure}
 %
-\caption[Eigenvalues and eigenvectors of diffusion maps on a swiss roll]{Swiss roll example. (a) Data set 1; $h= 40$. (b) Eigenvalue spectrum from the diffusion maps analysis of data set 1. (c) Data set 1, colored by the first diffusion maps eigenvector. (d) Data set 1, colored by the second diffusion maps eigenvector. (e) Data set 2; $h = 20$. (f) Eigenvalue spectrum from the diffusion maps analysis of data set 2. (g) Data set 2, colored by the first diffusion maps eigenvector. (h) Data set 2, colored by the fifth diffusion maps eigenvector. }
+\caption[Eigenvalues and eigenvectors of diffusion maps on a Swiss roll]{Swiss roll example. (a) Data set 1; $h= 40$. (b) Eigenvalue spectrum from the diffusion maps analysis of data set 1. (c) Data set 1, colored by the first diffusion maps eigenvector. (d) Data set 1, colored by the second diffusion maps eigenvector. (e) Data set 2; $h = 20$. (f) Eigenvalue spectrum from the diffusion maps analysis of data set 2. (g) Data set 2, colored by the first diffusion maps eigenvector. (h) Data set 2, colored by the fifth diffusion maps eigenvector. }
 \label{fig:swiss_rolls}	
 \end{figure}
 
@@ -510,21 +510,21 @@ z_3 =& h t
 %
 where $\theta$ is sampled such that $z_1, z_2$ are uniformly sampled along the arclength of the spiral, and $t \sim Unif(0,1)$.
 %
-Note that, in this example, $z_1, z_2, z_3$ are the original data coordinates; however, the data lie on a two-dimensional manifold parametrized by the $\theta$ and $t$.
+Note that, in this example, $z_1, z_2, z_3$ are the original data coordinates; however, the data lie on a two-dimensional manifold parameterized by the $\theta$ and $t$.
 %
 The height of the first Swiss roll is $h = 40$, while the height of the second is $h = 20$.
 %
 Each data set consists of $\ndata=1500$ points, shown in Figures~\ref{subfig:swissroll1}~and~\ref{subfig:swissroll2}.
 %
-%We expect to recover the eigenvector which parametrizes the height farther down in the spectrum for the second data set relative to the first, as this second data set is shorter.
+%We expect to recover the eigenvector which parameterizes the height farther down in the spectrum for the second data set relative to the first, as this second data set is shorter.
 
 Figures~\ref{subfig:swissroll1_evals}~and~\ref{subfig:swissroll2_evals} shows the eigenvalue spectra from the analysis of the two data sets.
 %
 Similar to Figure~\ref{fig:strip_compare_analytic}, the bars are colored by the leave-one-out cross-validation error, where a small value of $r_k$ indicates that the corresponding eigenvector is a repeated eigendirection.
 %
-From these plots, one can conclude that the first two eigenvectors $\phi_1$ and $\phi_2$ parametrize the first data set, while $\phi_1$ and $\phi_5$ parametrize the second.
+From these plots, one can conclude that the first two eigenvectors $\phi_1$ and $\phi_2$ parameterize the first data set, while $\phi_1$ and $\phi_5$ parameterize the second.
 %
-Figures~\ref{subfig:swissroll1_color1},\ref{subfig:swissroll1_color2},\ref{subfig:swissroll2_color1},~and~\ref{subfig:swissroll2_color2} shows the two data sets, colored by the two eigenvectors identified as parametrizing the unique eigendirections.
+Figures~\ref{subfig:swissroll1_color1},\ref{subfig:swissroll1_color2},\ref{subfig:swissroll2_color1},~and~\ref{subfig:swissroll2_color2} shows the two data sets, colored by the two eigenvectors identified as parameterizing the unique eigendirections.
 %
 As expected, these eigenvectors are one-to-one with the arc length along the spiral, and the height of the Swiss roll.
 
@@ -578,9 +578,9 @@ z_3 =& r_2 \sin \theta_2
 %
 where $r_1 > r_2$ are the outer and inner radii, respectively, and $\theta_1, \theta_2 \sim Unif(0, 2 \pi)$.
 %
-In this example, $z_1, z_2, z_3$ are the coordinates of the data; however, we expect to obtain from our analysis two eigenfunctions ($\sin \theta_1$ and $\cos \theta_1$) which parametrize the outer circle, and two eigenfunctions ($\sin \theta_2$ and $\cos \theta_2$) which parametrize the inner circle.
+In this example, $z_1, z_2, z_3$ are the coordinates of the data; however, we expect to obtain from our analysis two eigenfunctions ($\sin \theta_1$ and $\cos \theta_1$) which parameterize the outer circle, and two eigenfunctions ($\sin \theta_2$ and $\cos \theta_2$) which parameterize the inner circle.
 %
-Intuitively, increasing $r_1$ can be viewed as analogous to increasing the ratio of $L_1$ to $L_2$ in the strip example and makes the eigendirections which parametrize the outer circle ($\cos \theta_1$ and $\sin \theta_1$) more dominant compared to the eigendirections with parametrize the inner circle.
+Intuitively, increasing $r_1$ can be viewed as analogous to increasing the ratio of $L_1$ to $L_2$ in the strip example and makes the eigendirections which parameterize the outer circle ($\cos \theta_1$ and $\sin \theta_1$) more dominant compared to the eigendirections with parameterize the inner circle.
 %
 Figure~\ref{fig:torus} shows the eigenspectra from the analysis of three different torii, colored by the leave-one-out cross-validation error.
 %
@@ -773,9 +773,9 @@ Figure~\ref{fig:chemotaxis_simulations_harmonics} shows the results of analyzing
 %
 We see from the eigenspectra and the cross-validation errors $r_k$ that the second unique eigendirection moves down in the spectrum as $\lambda_{switch}$ increases.
 %
-The two-dimensional reduced diffusion maps embeddings obtained from eigenvectors which parametrize unique eigendirections capture the macroscopic variables $p$ and $t$ (we only show the correspondence of the two identified unique eigendirections with $p$ in the middle row of Figure~\ref{fig:chemotaxis_simulations_harmonics}; the correspondence between these eigendirections and $t$ is similarly consistent).
+The two-dimensional reduced diffusion maps embeddings obtained from eigenvectors which parameterize unique eigendirections capture the macroscopic variables $p$ and $t$ (we only show the correspondence of the two identified unique eigendirections with $p$ in the middle row of Figure~\ref{fig:chemotaxis_simulations_harmonics}; the correspondence between these eigendirections and $t$ is similarly consistent).
 %
-In contrast, the standard diffusion maps embeddings using the two leading eigenvectors $\phi_1$ and $\phi_2$ produce uninformative embeddings for large values of $\lambda_{switch}$, as $\phi_2$ is a repeated eigendirection which does not parametrize any new directions in the data.
+In contrast, the standard diffusion maps embeddings using the two leading eigenvectors $\phi_1$ and $\phi_2$ produce uninformative embeddings for large values of $\lambda_{switch}$, as $\phi_2$ is a repeated eigendirection which does not parameterize any new directions in the data.
 %
 Furthermore, although the eigenvalue spectra do not exhibit any large spectral gaps, the gap between the eigenvalues which correspond to new directions in the data (colored in blue) increases with $\lambda_{switch}$, indicating that the underlying manifold becomes more narrow/one-dimensional, and the corresponding eigenvectors provide us with an informative two-dimensional parametrization of the data. %which is consistent with the expected macroscopic dynamics.
 %
@@ -802,9 +802,9 @@ Alternatively, \eqref{eqn:coupled_pdes} can be rewritten as one, second--order P
 \frac{\partial^2 \rho}{\partial t^2} + 2 \lambda_{switch} \frac{\partial \rho}{\partial t} = s^2 \frac{\partial ^2 \rho}{\partial x^2}
 \end{equation}
 %
-From \eqref{eq:second_order_pde}, we see that, for fixed values of $\lambda_{switch}$ and $s$, the macroscopic state of the system (the probability density of the cells) is indeed a function of the initial condition (parametrized by $p$) and the time $t$.
+From \eqref{eq:second_order_pde}, we see that, for fixed values of $\lambda_{switch}$ and $s$, the macroscopic state of the system (the probability density of the cells) is indeed a function of the initial condition (parameterized by $p$) and the time $t$.
 %
-This implies that for fixed $\lambda_{switch}$ and $s$, the {\em microscopic} data in a high-dimensional ambient space (e.g., the positions of all $N$ cells) should lie on a two-dimensional manifold parametrized by $p$ (which controls the initial ratio of $\rho^+$ and $\rho^-$) and $t$ (which describes the evolution),
+This implies that for fixed $\lambda_{switch}$ and $s$, the {\em microscopic} data in a high-dimensional ambient space (e.g., the positions of all $N$ cells) should lie on a two-dimensional manifold parameterized by $p$ (which controls the initial ratio of $\rho^+$ and $\rho^-$) and $t$ (which describes the evolution),
 and uncovering the low-dimensional structure of the microscopic data reveals this manifold.
 %
 This is consistent with the results presented in Figures~\ref{fig:dmaps_embed_emd}~and~\ref{fig:chemotaxis_simulations_harmonics}, where the two-dimensional embeddings obtained from microscopic simulation data are one-to-one with $p$ and $t$.
@@ -894,7 +894,7 @@ From this eigenvalue ratio, we detect changes in the estimated dimensionality as
 %
 For small $\lambda_{switch}$ and/or short $t_{max}$, the data are effectively two-dimensional, as both $p$ and $t$ are important to the observed dynamics.
 %
-However, when $\lambda_{switch}$ and/or $t_{max}$ is large, the system rapidly equilibrates and the data are effectively one-dimensional, parametrized by $t$.
+However, when $\lambda_{switch}$ and/or $t_{max}$ is large, the system rapidly equilibrates and the data are effectively one-dimensional, parameterized by $t$.
 %
 For this specific example, these changes are consistent with the analytically-predicted shift in the dynamical behavior at
 \begin{equation}
@@ -913,4 +913,4 @@ From this detection, we can then obtain a reduced diffusion maps embedding which
 %
 We then showed that these algorithms can allow us to analyze data from a complex dynamical system, enabling the extraction of good reduced coordinates and also the detection of changes in the dimensionality of the macroscopic dynamics.
 %
-In the future, we are confident that our proposed methodology will aid in the analysis of more complex data sets for which the dimensionality of the underlying manifold is unknown.
+In the future, we are confident that our proposed methodology will aid in the analysis of more complex data sets for which the dimensionality of the underlying manifold is unknown. 

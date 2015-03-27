@@ -3,51 +3,51 @@
 
 \chapter{Introduction\label{ch:intro}}
 
-Modeling dynamical systems is an essential component of most science and engineering disciplines. 
+Modeling dynamical systems is an essential component of most science and engineering disciplines.
 %
-Substantial research efforts are dedicated to constructing models for complex phenomena, such as chemical reactions \cite{dong2007simplification, gillespie1977exact, gallagher1986combined}, fluid flows \cite{anderson1995computational}, and gene expressions \cite{bar2004analyzing, storey2005significance}. 
+Substantial research efforts are dedicated to constructing models for complex phenomena, such as chemical reactions \cite{dong2007simplification, gillespie1977exact, gallagher1986combined}, fluid flows \cite{anderson1995computational}, and gene expressions \cite{bar2004analyzing, storey2005significance}.
 %
-These models allow researchers to run very inexpensive {\em in silico} ``experiments'', and can also be incorporated into larger systems-level models and optimization routines \cite{daoutidis2013engineering, oluwole2006rigorous, rubert2014advanced}. 
+These models allow researchers to run very inexpensive {\em in silico} ``experiments'', and can also be incorporated into larger systems-level models and optimization routines \cite{daoutidis2013engineering, oluwole2006rigorous, rubert2014advanced}.
 
-Often a lower-dimensional model which captures the general trends and macroscale behavior of a dynamical system is preferable to a higher-dimensional model which captures the fine-scale details. 
+Often a lower-dimensional model which captures the general trends and macroscale behavior of a dynamical system is preferable to a higher-dimensional model which captures the fine-scale details.
 %
 Lower-dimensional models are simple and often easy to interpret.
 %
-Furthermore, lower-dimensional models are computationally less expensive and can more easily be incorporated into larger modeling frameworks. 
+Furthermore, lower-dimensional models are computationally less expensive and can more easily be incorporated into larger modeling frameworks.
 %
-However, deciding on how many and what variables are required to (approximately) describe the system dynamics is a difficult task with no clear solution. 
+However, deciding on how many and what variables are required to (approximately) describe the system dynamics is a difficult task with no clear solution.
 
 
 
 
 
-%Over the past decade, the amount of available data has grown exponentially in many, if not all, scientific diciplines. 
+%Over the past decade, the amount of available data has grown exponentially in many, if not all, scientific disciplines.
 %%
 %Computational speed has increased (according to Moore's law), allowing for larger and longer simulations, and
-%the cost of memory has decreased dramatically, such that data storage is no longer a bottleneck for most applications. 
+%the cost of memory has decreased dramatically, such that data storage is no longer a bottleneck for most applications.
 %%
-%The Internet has allowed for the rapid sharing and exporation of new data sets, such that data from many groups and collaborators can be combined without any face-to-face interaction. 
+%The Internet has allowed for the rapid sharing and exploration of new data sets, such that data from many groups and collaborators can be combined without any face-to-face interaction.
 %%
 %All of these advances have ushered us into the era of ``Big Data'', where the challenge is not obtaining the data, but rather, searching for the relevant trends and patterns within this seemingly endless sea of information.
 %
 %The prototypical examples of data science problems arise in consumer-driven applications. %
-%Tasks such as filtering email spam, predicting what a specific customer would like to purchase online, and extracting trends from Twitter and Facebook data have all led to interesting and novel data analysis algorithms. 
+%Tasks such as filtering email spam, predicting what a specific customer would like to purchase online, and extracting trends from Twitter and Facebook data have all led to interesting and novel data analysis algorithms.
 %%
 %However, the natural sciences and engineering have also witnessed a dramatic growth in the amount of available data, and data-driven algorithms have the potential to contribute to these fields as well.
 %
-%Machine learning tasks can be broadly divided into two categories: supervised and unsupervised. 
+%Machine learning tasks can be broadly divided into two categories: supervised and unsupervised.
 %%
-%In supervised learning, data consists of inputs and outputs, where each training data point consists of an input vector and an output response. 
+%In supervised learning, data consists of inputs and outputs, where each training data point consists of an input vector and an output response.
 %%
-%In contrast, unsupervised learning operates on unlabeled data, where the task is to uncover structure and patterns {\em within} the data set. 
+%In contrast, unsupervised learning operates on unlabeled data, where the task is to uncover structure and patterns {\em within} the data set.
 %%
-%We will focus on this second task of unsupervised learning. 
+%We will focus on this second task of unsupervised learning.
 %%
-%More specifically, we will focus on dimensionality reduction, where the goal is to reduce the dimensionality of the data while still retaining most of the relevant patterns and structure within the data set. 
+%More specifically, we will focus on dimensionality reduction, where the goal is to reduce the dimensionality of the data while still retaining most of the relevant patterns and structure within the data set.
 %%
-%Reducing the dimensionality of a data set to two or three dimensions allows for easy visualization of the data set. 
+%Reducing the dimensionality of a data set to two or three dimensions allows for easy visualization of the data set.
 %%
-%Furthermore, reducing the dimensionality makes computations, such as integrating a system of differential equations or fitting a model, easier and faster. 
+%Furthermore, reducing the dimensionality makes computations, such as integrating a system of differential equations or fitting a model, easier and faster.
 
 
 %
@@ -59,7 +59,7 @@ However, deciding on how many and what variables are required to (approximately)
 %
 %Often, high-dimensional data do not uniformly fill the entire ambient space, but rather lie on a lower-dimensional manifold.
 %
-%Discovering a parameterization of the manifold therefore yields a compact representation of the data, and may lead to efficient analysis and processing schemes.
+%Discovering a parametrization of the manifold therefore yields a compact representation of the data, and may lead to efficient analysis and processing schemes.
 %
 %In particular, these developments have the potential to significantly enable the computational exploration
 %of physicochemical problems.
@@ -71,18 +71,18 @@ such as using the quasi-steady state approximation to reduce a network of chemic
 %
 Alternatively, empirical knowledge about the system of interest has been used to develop coarse grained descriptions, such as grouping atoms of a macromolecule into larger ``beads'' to accelerate simulations \cite{izvekov2005systematic, monticelli2008martini, saunders2013coarse, spiga2013electrostatic}.
 %
-Progress variables and order parameters which effectively parameterize a system's dynamics, such as the radius of gyration in protein folding problems \cite{lazaridis1997new, kim2015systematic} or a  morphological feature which parameterizes an organism's developmental progress \cite{dubuis2013accurate, hamaratoglu2011dpp}, are often posited after many empirical observations and are not immediately obvious for new systems of interest. 
+Progress variables and order parameters which effectively parameterize a system's dynamics, such as the radius of gyration in protein folding problems \cite{lazaridis1997new, kim2015systematic} or a  morphological feature which parameterizes an organism's developmental progress \cite{dubuis2013accurate, hamaratoglu2011dpp}, are often posited after many empirical observations and are not immediately obvious for new systems of interest.
 %
 However, dimensionality reduction algorithms allow for the systematic discovery of data-driven, low-dimensional descriptions that circumvent the need for such {\em a priori} knowledge, and the automated detection of a few good, coarse-grained
 order parameters can be invaluable in understanding and predicting system behavior.
 %
 %For example, such reduction coordinates may be the dihedral angles inferred from trajectories of the atoms of a macromolecule.
 %
-Data from dynamical systems often comes in one of two forms. 
+Data from dynamical systems often comes in one of two forms.
 %
-Data can be collected directly from experiments for which no model exists. 
+Data can be collected directly from experiments for which no model exists.
 %
-Alternatively, data can be collected from simulations of a detailed, high-dimensional model at the microscopic level; in this case, the task is finding a lower-dimensional model which captures the macroscopic dynamics. 
+Alternatively, data can be collected from simulations of a detailed, high-dimensional model at the microscopic level; in this case, the task is finding a lower-dimensional model which captures the macroscopic dynamics.
 %
 We will discuss both types of data in this dissertation.
 
@@ -91,71 +91,73 @@ We will discuss both types of data in this dissertation.
 
 For the past century, principal component analysis (PCA) \cite{shlens2005tutorial} has been the standard data-driven dimensionality reduction technique.
 %
-PCA projects (high-dimensional) data onto a lower-dimensional hyperplane, where the hyperplane is chosen to maximize the variance of the projected data. 
+PCA projects (high-dimensional) data onto a lower-dimensional hyperplane, where the hyperplane is chosen to maximize the variance of the projected data.
 %
-The vectors which define this hyperplane are the eigenvectors of a covariance matrix estimated from the data. 
+The vectors which define this hyperplane are the eigenvectors of a covariance matrix estimated from the data.
 %
 PCA is extraordinarily simple to implement, and fast and accurate algorithms already exist for eigenvalue decomposition of a matrix, the main computation in PCA.
 %
-PCA has therefore been used in a variety of disciplines, including fluid dynamics \cite{rowley2004model, kunisch2002galerkin}, genetics \cite{alter2000singular, troyanskaya2001missing}, and signal processing \cite{vaseghi2008advanced}. 
+PCA has therefore been used in a variety of disciplines, including fluid dynamics \cite{rowley2004model, kunisch2002galerkin}, genetics \cite{alter2000singular, troyanskaya2001missing}, and signal processing \cite{vaseghi2008advanced}.
 
-Although PCA has been extremely useful in a variety of contexts and applications, its functionality is limited because it is a linear technique. 
+Although PCA has been extremely useful in a variety of contexts and applications, its functionality is limited because it is a linear technique.
 %
 The past twenty years have witnessed increased interest in algorithms which can accommodate and uncover nonlinear structure in data.
 %
-Kernel principal components analysis \cite{scholkopf1997kernel} uses the ``kernel trick'' to perform PCA in a higher-dimensional, more complex basis which can capture nonlinearities. 
+Kernel principal components analysis \cite{scholkopf1997kernel} uses the ``kernel trick'' to perform PCA in a higher-dimensional, more complex basis which can capture nonlinearities.
 %
-Local linear embedding \cite{roweis2000nonlinear} does PCA {\em locally} on patches of the data, and then merges these linear patches together to obtain a global parameterization which can reveal nonlinear structure in the data. 
+Local linear embedding \cite{roweis2000nonlinear} does PCA {\em locally} on patches of the data, and then merges these linear patches together to obtain a global parametrization which can reveal nonlinear structure in the data.
 %
 Isomap \cite{tenenbaum2000global} first constructs a weighted graph on the data in which nearby data points are connected by stronger edges.
 %
-The algorithm then uses multidimensional scaling \cite{joseph1978multidimensional} to embed the data, where the distance between a pair of data points is given by the length of the shortest path between the pair in the graph. 
+The algorithm then uses multidimensional scaling \cite{joseph1978multidimensional} to embed the data, where the distance between a pair of data points is given by the length of the shortest path between the pair in the graph.
 %
-This graph-based distance attempts to approximate the geodesic distance along the manifold. 
+This graph-based distance attempts to approximate the geodesic distance along the manifold.
 
-Simultaneously, there was renewed interest in algorithms for analyzing and extracting structure in graphs, due to the prevalence of network, internet, and social media data. 
+Simultaneously, there was renewed interest in algorithms for analyzing and extracting structure in graphs, due to the prevalence of network, internet, and social media data.
 %
-The graph Laplacian had been used to analyze many such data sets \cite{shi2000normalized, ng2002spectral}. 
+The graph Laplacian had been used to analyze many such data sets \cite{shi2000normalized, ng2002spectral}.
 %
-It was noted approximately a decade ago that, given a network constructed on the data (similar to the first step in the Isomap algorithm), the graph Laplacian could be used to analyze this network. 
+It was noted approximately a decade ago that, given a network constructed on the data (similar to the first step in the Isomap algorithm), the graph Laplacian could be used to analyze this network.
 %
-The eigenvectors of this Laplacian then yield coordinates which parameterize the nodes of the network (the data points). 
+The eigenvectors of this Laplacian then yield coordinates which parameterize the nodes of the network (the data points).
 %
-This algorithm, called Laplacian Eigenmaps, has both practical advantages (it is both simple to implement and robust to noise) as well as elegant theoretical guarantees (the discrete operator approaches the Laplacian on the underlying manifold assuming the data are uniformly sampled) \cite{Belkin2003}. 
+This algorithm, called Laplacian Eigenmaps, has both practical advantages (it is both simple to implement and robust to noise) as well as elegant theoretical guarantees (the discrete operator approaches the Laplacian on the underlying manifold assuming the data are uniformly sampled) \cite{Belkin2003}.
 %
-Soon after Laplacian Eigenmaps, the diffusion maps algorithm was proposed as a generalization \cite{coifman2005geometric, coifman2006geometric}. 
+Soon after Laplacian Eigenmaps, the diffusion maps algorithm was proposed as a generalization \cite{coifman2005geometric, coifman2006geometric}.
 %
-This algorithm yields a family of embeddings, and provides theoretical understanding for the resulting embedding even when the data are nonuniformly sampled from the underlying manifold. 
+This algorithm yields a family of embeddings, and provides theoretical understanding for the resulting embedding even when the data are nonuniformly sampled from the underlying manifold.
 
 
 \section{Outline of Dissertation}
 
 The focus of this thesis is using data mining algorithms to extract reduced parameterizations of data from dynamical systems.
 %
-The core of each analysis will be diffusion maps \citep{Coifman2006}, a data-driven nonlinear manifold learning algorithm. 
+The core of each analysis will be diffusion maps \citep{Coifman2006}, a data-driven nonlinear manifold learning algorithm.
 %
-However, each problem will come with its own set of unique considerations and constraints which must be addressed for accurate and informative analysis. 
+However, each problem will come with its own set of unique considerations and constraints which must be addressed for accurate and informative analysis.
 
-In \chap~\ref{ch:math}, we outline the mathematical techniques common throughout this thesis work and introduce some notation. 
+In \chap~\ref{ch:math}, we outline the mathematical techniques common throughout this thesis work and introduce some notation.
 %
-\chap~\ref{ch:multiscale} discusses using data-driven techniques for the analysis of multiscale stochastic data. 
+\chap~\ref{ch:multiscale} discusses using data-driven techniques for the analysis of multiscale stochastic data.
 %
-By introducing a more sophisticated metric, we uncover a parameterization of data which respects the underlying slow dynamical modes and is invariant to fast stochastic fluctuations, even when these fluctuations are large. 
+By introducing a more sophisticated metric, we uncover a parametrization of data which respects the underlying slow dynamical modes and is invariant to fast stochastic fluctuations, even when these fluctuations are large.
 %
-We present both theoretical analysis for our proposed approach, as well as demonstrate the approach on synthetic data sets. 
+We present both theoretical analysis for our proposed approach, as well as demonstrate the approach on synthetic data sets.
 %
-\chap~\ref{ch:merging} then discusses extracting a parameterization which is invariant to measurement/observation functions. 
+\chap~\ref{ch:merging} then discusses extracting a parametrization which is invariant to measurement/observation functions.
 %
-In this case, we again use a more sophisticated metric which removes the effect of nonlinear observation/measurement functions, so that different observations of the same underlying dynamical system can be merged into a common framework. 
+In this case, we again use a more sophisticated metric which removes the effect of nonlinear observation/measurement functions, so that different observations of the same underlying dynamical system can be merged into a common framework.
 %
 We demonstrate this approach on two simulation data sets: (1) a simulation of a chemical reaction network, and (2) a molecular dynamics simulation of a small peptide fragment.
 %
-\chap~\ref{ch:drosophila} then discusses using manifold learning to extract the developmental dynamics from a set of fixed images. 
+\chap~\ref{ch:drosophila} then discusses using manifold learning to extract the developmental dynamics from a set of fixed images.
 %
-Here, we use vector diffusion maps (an extension of diffusion maps) to both register and temporally order experimental imaging data sets in developmental biology. 
+Here, we use vector diffusion maps (an extension of diffusion maps) to both register and temporally order experimental imaging data sets in developmental biology.
 %
-\chap~\ref{ch:harmonics} discusses the key issue in manifold learning of ``repeated eigendirections'', where subsequent modes can be higher harmonics of previous modes and parameterize the same direction in the data set. 
+\chap~\ref{ch:harmonics} discusses the key issue in manifold learning of ``repeated eigendirections'', where subsequent modes can be higher harmonics of previous modes and parameterize the same direction in the data set.
 %
 We present an algorithm, based on local linear regression, for automatically detecting these repeated eigendirections which allows us to uncover the true dimensionality of the underlying manifold and the most parsimonious representation of the data, an essential task when constructing a reduced model.
 %
-All of these examples address key issues in using and adapting manifold learning techniques to analyze data from dynamical systems.
+\chap~\ref{ch:conclusion} then summarizes this work and offers some future potential research directions.
+%
+All of these examples address key issues in using and adapting manifold learning techniques to analyze data from dynamical systems. 

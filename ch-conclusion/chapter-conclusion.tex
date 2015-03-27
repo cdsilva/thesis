@@ -2,60 +2,59 @@
 
 \chapter{Conclusions \label{ch:conclusion}}
 
-Modeling and analysis of dynamical systems is essential for a wide range of disciplines and applications. 
-%
-However, constructing an informative and simple model from {\em a priori} knowledge is often difficult, especially for new systems which are not well-studied. 
-%
-In these instances, it is often advantageous to utilize data-driven techniques to construct models.
-%
-Often the first step is to determine the appropriate variables in which to write the models. 
-%
-The focus of this dissertation is using data-driven techniques to analyze data from dynamical systems, in order to gain insight into the appropriate variables for writing descriptive models. 
-%
-We adapt the diffusion maps algorithm, a nonlinear manifold learning technique,  to analyze several different types of data common in the study of dynamical systems. 
 
-In the first example, we study multiscale data, and use diffusion maps with the Mahalanobis distance to extract a parameterization of the data which respects the {\em slow} variables in the underlying dynamical system. 
+The focus of this dissertation was using nonlinear dimensionality reduction to analyze data from dynamical systems, in order to gain insight into the appropriate variables for writing coarse-scale models.
 %
-In this work, there are both theoretical and experimental future research directions to pursue. 
+We adapted the diffusion maps algorithm, a manifold learning technique, to analyze several different types of data common in the study of dynamical systems.
 %
-As was previously acknowledged, the errors in the estimation due to finite sampling are ignored in our analysis, and should be addressed into future work to yield a complete understanding of the methodology. 
+Diffusion maps yields a parametrization of data which captures the macroscopic dynamics; subsequently,  these diffusion maps variables can serve as the appropriate variables with which to write an accurate coarse-scale model.
 %
-Furthermore, the analysis presented was only for the case of ``bursts,'' where the covariance is estimated from the ensemble average of many short trajectories each initiated form the point of interest. 
-%
-It is important to also analyze the case of estimating the covariance from a single continuous trajectory; this analysis is more complex, as successive samples are now correlated, but the setting is more practical as it can be applied to a single data trajectory.
-%
-Lastly, the proposed methodology was only applied to synthetic data from a (relatively simple) stochastic system, and one should consider applying these ideas to more complex experimental and/or simulation data sets. 
+Such data-driven methodologies are essential for constructing informative and simple models for new systems which are not well-studied and/or for which few hypotheses exist about the appropriate macroscopic variables and dynamics.
 
-The second example discussed merging data from different observation/measurement functions into a single consistent framework, using diffusion maps with the Mahalanobis distance. 
+In \chap~\ref{ch:multiscale}, we studied data which exhibited dynamics on multiple time scales, and used diffusion maps with the Mahalanobis distance to extract a parametrization of the data which respects the {\em slow} variables in the underlying dynamical system.
 %
-Here, an interesting direction would be to use this framework to compare different proposed models of the same system. 
+There are both theoretical and experimental future research directions to pursue in this work.
 %
-For example, in molecular simulations, fine-scale, all-atom models often exist; although these models are very accurate and describe all the relevant dynamics, they are often computational intensive and are impractical for large simulations. 
+As was previously acknowledged, the errors in the estimation due to finite sampling are ignored in our analysis and should be addressed in future work to yield a complete understanding of the methodology.
 %
-Coarse models are therefore constructed, often by first positing a mapping from the fine to coarse scale (e.g., each amino acid in a protein maps to a single ``bead''), and then fitting a dynamic model for the coarse scale which (approximately) replicates the fine-scale dynamics. 
+Furthermore, analysis was only presented for the case of ``bursts,'' where the covariance of the stochastic process is estimated from the ensemble average of many short trajectories each initiated from the point of interest.
 %
-However, it is not immediately obvious how to compare the dynamics of the fine- and coarse-scale models. 
+It is important also to analyze the case of estimating the covariance from a single continuous trajectory (as was done in \chap~\ref{ch:merging}); the error analysis for this case will be more complex, as successive samples are now correlated, but the setting is more practical as it can be applied to a single data trajectory.
+%
+Lastly, the proposed methodology was only applied to synthetic data from a (relatively simple) stochastic system; in the future, one should consider applying these ideas to more complex experimental and/or simulation data sets which are known or thought to exhibit dynamics on multiple time scales.
+
+\chap~\ref{ch:merging} discussed using diffusion maps with the Mahalanobis distance to merge multiple observations/measurements of the same dynamical system into a single consistent framework, which we termed Nonlinear Intrinsic Variables (NIV).
+%
+Here, an interesting direction would be to use this methodology to compare several proposed models of the same system.
+%
+For example, in molecular simulations, there are often well-established fine-scale, all-atom models; although these models are very accurate and describe all the relevant dynamics, they can be computationally intensive and impractical for large simulations.
+%
+To reduce computational costs, coarse models are constructed, often by first positing a mapping from the fine to coarse scale (e.g., each amino acid in a protein maps to a single ``bead''), and then fitting a dynamic model for the coarse scale which (approximately) replicates the fine-scale dynamics \cite{saunders2013coarse, izvekov2005systematic, chaimovich2011coarse}.
+%
+However, it is not immediately obvious how to compare the dynamics of the fine- and coarse-scale models.
 %
 Often, one compares the statistics of the two models, in the hopes that the appropriate statistics capture all the relevant dynamics within the system.
 %
-However, it would be interesting to compare the NIV embeddings of the fine- and coarse-scale models; consistent embeddings would imply that the two models capture (approximately) the same dynamics. 
+However, it would be interesting to compare the NIV embeddings of the fine- and coarse-scale models; consistent embeddings would imply that the two models capture (approximately) the same dynamics.
 
-The next problem we discussed was reconstructing dynamics from snapshots in developmental biology. 
+In \chap~\ref{ch:drosophila}, we discussed reconstructing dynamics from snapshots in developmental biology.
 %
-There are a couple interesting research directions for this work. 
+In the future, it would be interesting to use vector diffusion maps to compare the developmental dynamics of several mutants.
 %
-The first is using vector diffusion maps to compare the developmental trajectories of several mutants. 
+By embedding images from several different mutants in the first {\em few} vector diffusion maps coordinates, one can not only uncover the developmental dynamics, but also compare the different developmental trajectories.
 %
-By embedding images from several different mutants in the first {\em few} vector diffusion maps coordinates, one can not only uncover the developmental dynamics, but also compare the different developmental trajectories. 
+This would provide a measure of similarity based not on genetic backgrounds or phenotypic markers, but based on the developmental dynamics of the different organisms.
 %
-This would provide a measure of similarity based not on genetic backgrounds or phenotypic markers, but rather based on the developmental dynamics of the different organisms. 
-%
-Another direction for future work is merging live and fixed imaging data in order to estimate the real time of fixed images. 
+Another direction for future work is merging live and fixed imaging data in order to estimate the real time of fixed images.
 
-The final contribution is an algorithm for automatically detecting ``repeated eigendirections'' in diffusion maps embeddings. 
+Our final contribution, discussed in \chap~\ref{ch:harmonics}, was an algorithm for automatically detecting ``repeated eigendirections'' in diffusion maps embeddings.
 %
-This algorithm will be an extraordinarily useful tool for future diffusion maps analysis, both from the visualization and modeling perspectives. 
+The issue of repeated eigendirections is a crucial shortcoming of standard manifold learning techniques, as these eigendirections provide additional, uninformative embedding coordinates which obscure the true dimensionality of the underlying manifold.
 %
-When using diffusion maps to visualize and interpret high-dimensional data, obtaining the {\em most} parsimonious representation of the data is essential for constructing the most informative two- or three-dimensional embedding, and checking for correlations among diffusion maps eigenvectors by hand can be tedious and unreliable. 
+Until now, detecting repeated eigendirections has mostly been done manually, a tedious task which is impractical when considering using diffusion maps in a larger modeling framework.
 %
-When using diffusion maps as a tool for reducing modeling, determining the number of variables required for a model is a an essential task which our methodology can address in a systematic way.
+Therefore, this algorithm will be an extraordinarily useful tool for future diffusion maps analysis, both for constructing the most parsimonious and informative embedding for visualization purposes, as well as determining the number of variables required to write reduced models.
+
+Clearly, there are many interesting research directions stemming from this work.
+%
+We are confident that these methods will find many applications in the analysis of dynamical systems.

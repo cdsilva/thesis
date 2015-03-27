@@ -99,7 +99,7 @@ As a consequence, uncovering this direction should reveal the underlying dynamic
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.7\textwidth]{fig2}
-\caption[Schematic illustrating angular synchronization and diffusion maps]{Schematic illustrating angular synchronization and diffusion maps. (A) Set of vectors, each in a different orientation. The pairwise alignment angles are indicated. (B) The vectors from A, each rotated about their midpoint so that the set is globally aligned. Note that the chosen rotation angles are consistent with the pairwise alignments in A: the difference between a pair of angles in B is the same as the pairwise angle in A. (C) Data points (in black) which lie on a one-dimensional nonlinear curve in two dimensions. Each pair of points is connected by an edge, and the edge weight is related to the Euclidean distance between the points through a Gaussian kernel (see \eqref{eq:W}), so that pairs of data point which are close are connected by darker (``stronger'') edges. (D) The data in C, colored by the first (non-trivial) eigenvector from the diffusion map computational procedure. The color intensity is monotonic with the perceived curve arclength, thus parametrizing the curve.}
+\caption[Schematic illustrating angular synchronization and diffusion maps]{Schematic illustrating angular synchronization and diffusion maps. (A) Set of vectors, each in a different orientation. The pairwise alignment angles are indicated. (B) The vectors from A, each rotated about their midpoint so that the set is globally aligned. Note that the chosen rotation angles are consistent with the pairwise alignments in A: the difference between a pair of angles in B is the same as the pairwise angle in A. (C) Data points (in black) which lie on a one-dimensional nonlinear curve in two dimensions. Each pair of points is connected by an edge, and the edge weight is related to the Euclidean distance between the points through a Gaussian kernel (see \eqref{eq:W}), so that pairs of data point which are close are connected by darker (``stronger'') edges. (D) The data in C, colored by the first (non-trivial) eigenvector from the diffusion map computational procedure. The color intensity is monotonic with the perceived curve arclength, thus parameterizing the curve.}
 \label{fig:schematics}
 \end{figure}
 
@@ -160,26 +160,26 @@ Retain both the optimal pairwise rotations as well as the minimum distances obta
 %
 \item Compute the corresponding rotation matrices $\mathbf{R}(\theta_{ij}) \in \mathbb{R}^{2 \times 2}$ from \eqref{eq:R_theta}.
 %
-\item Select $\dmeps$ for use in the diffusion maps kernel. 
+\item Select $\dmeps$ for use in the diffusion maps kernel.
 %
-Taking $\dmeps$ to be $25-50\%$ of the median of the pairwise distances often yields good results. 
-\item Compute the matrix $\mathbf{S}$ in \eqref{eq:vdm_S}. 
+Taking $\dmeps$ to be $25-50\%$ of the median of the pairwise distances often yields good results.
+\item Compute the matrix $\mathbf{S}$ in \eqref{eq:vdm_S}.
 $\mathbf{A}_{ij}$ is computed from \eqref{eq:W}, using the pairwise distances from step 1, and $\mathbf{H}_{ij} = \mathbf{R}(\theta_{ij})$ are computed in step 2.
 %
 \item Compute the eigenvalues  $\lambda_0, \lambda_1, \dots, \lambda_{2 \ndata-1}$ and eigenvectors $\phi_0 , \phi_1, \dots, \phi_{2 \ndata-1}$ of $\mathbf{S}$, ordered such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{2 \ndata-1}|$.
 %
 \item Estimate the optimal two-dimensional rotation for each image: stack the first two eigenvectors $\phi_0, \phi_1$ into a $2 \ndata \times 2$ matrix, and then divide this matrix into $\ndata$ $2 \times 2$ blocks, $\hat{\mathbf{R}}_1, \dots, \hat{\mathbf{R}}_\ndata$. Compute the estimated rotations for each of these $\ndata$ blocks as in \eqref{eq:R_est}. If most of the rotations are improper ($det(\mathbf{R}) = -1$), flip the sign of one of the eigenvectors.
 \item Multiply each estimated rotation $\mathbf{R}_{i, est}$ by $\mathbf{R}_{1, est}^T$ (so that $\mathbf{R}_{1, est}$ will become the identity matrix).
-\item For each image $i$, compute the optimal rotation to align the image by converting $\mathbf{R}_{i, est}^T$ (note the transpose) to the corresponding angle using \eqref{eq:R_theta}. 
+\item For each image $i$, compute the optimal rotation to align the image by converting $\mathbf{R}_{i, est}^T$ (note the transpose) to the corresponding angle using \eqref{eq:R_theta}.
 \item Compute the first embedding coordinate $\psi_{k,0}(i)$ as described in \eqref{eq:vdm_coord} and \eqref{eq:first_embed_vdm}, where $2 \le k \le 3$.
 \item To order the images, sort them by the values of the first embedding coordinate $\psi_{k,0}(i)$.
-\end{enumerate} 
+\end{enumerate}
 \hrule
 \end{table}
 
 \subsection{Registering pairs of images} \label{subsec:trans_rot_register}
 
-To register sets of images, 
+To register sets of images,
 the first step is to compute the optimal alignments between pairs of images.
 %
 Practically, we have square images discretized as pixels (rather than continuous functions on the plane).
@@ -202,7 +202,7 @@ The missing pixels in the corners of the rotated image are taken to have zero in
 %
 The solution to \eqref{eq:opt_pairwise} is not easily computed, as the objective function will most likely be nonconvex.
 %
-Therefore, instead of using an optimization procedure, we discretize the search space and exhaustively search to find the solution (for the results presened, we use $10^\circ$ discretization steps).
+Therefore, instead of using an optimization procedure, we discretize the search space and exhaustively search to find the solution (for the results presented, we use $10^\circ$ discretization steps).
 %
 Although computationally demanding, this ``embarrassingly parallelizable" direct enumeration approach is not prohibitive here.
 %
@@ -214,24 +214,24 @@ The rotation matrices returned from vector diffusion maps can be used to calcula
 
 \subsection{Image preprocessing} \label{sec:image_preprocessing}
 
-Before applying vector diffusion maps, images must be preprocessed so that the Euclidean distance between the image pixels is informative: we need images who are developmentally similar to have relatively small Euclidean distances, and images who are at disparate developmental time points to have relatively large distances. 
+Before applying vector diffusion maps, images must be preprocessed so that the Euclidean distance between the image pixels is informative: we need images who are developmentally similar to have relatively small Euclidean distances, and images who are at disparate developmental time points to have relatively large distances.
 %
-We must preprocess images to remove any experimental and imaging artifacts, so that most of the variation is relevant to the developmental dynamics. 
+We must preprocess images to remove any experimental and imaging artifacts, so that most of the variation is relevant to the developmental dynamics.
 
-The relevant image operations are listed below for our general purposes, along with the relevant MATLAB functions. 
+The relevant image operations are listed below for our general purposes, along with the relevant MATLAB functions.
 \begin{description}
 
 \item[Intensity normalization] Contrast-limited adaptive histogram equalization (using the \texttt{adapthisteq} function with an $8 \times 8$ tile grid, and a uniform distribution for the intensities with a clip limit of 0.01) is used to normalize the intensities of signals whose absolute intensity is not meaningful/informative.
 %
-\item[Blur] The \texttt{imfilter} function with a disc filter is used to blur signals whose small-scale structure is not informative. 
+\item[Blur] The \texttt{imfilter} function with a disc filter is used to blur signals whose small-scale structure is not informative.
 %
-\item[Intensity scaling (multichannel images only)] The \texttt{immultiply} function is used to scale signal intensities. This is important for multichannel images, as it determines the (relative) contributions of the various signals.  
+\item[Intensity scaling (multichannel images only)] The \texttt{immultiply} function is used to scale signal intensities. This is important for multichannel images, as it determines the (relative) contributions of the various signals.
 %
-\item[Mean-centering]  The Canny method \citep{canny1986computational} is used to detect the edges of the object in each image (using the \texttt{edge} function). The image is then translated so that the object (as determined by extremeties of the detected edges) is centered.
+\item[Mean-centering]  The Canny method \citep{canny1986computational} is used to detect the edges of the object in each image (using the \texttt{edge} function). The image is then translated so that the object (as determined by extremities of the detected edges) is centered.
 %
-\item[Size scaling] For images whose relative size is unimportant to the developmental dynamics, the images are rescaled/dialated so that the object size (as determined by extremeties of the detected edges) is constant (we set this to be 80\% of the total image).
+\item[Size scaling] For images whose relative size is unimportant to the developmental dynamics, the images are rescaled/dialated so that the object size (as determined by extremities of the detected edges) is constant (we set this to be 80\% of the total image).
 %
-\item[Removing corners] The image is cropped/filtered using a disc centered in the middle of the image and whose diameter is equal to the number of pixels; any pixels outside of this disc are set to 0 (no intensity). This removes any corner effects under rotations. 
+\item[Removing corners] The image is cropped/filtered using a disc centered in the middle of the image and whose diameter is equal to the number of pixels; any pixels outside of this disc are set to 0 (no intensity). This removes any corner effects under rotations.
 \end{description}
 
 
@@ -241,9 +241,9 @@ The relevant image operations are listed below for our general purposes, along w
 %%
 %The original image resolution is $512 \times 512$ for the live {\em Drosophila} embryo images.
 %%
-%All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set. 
+%All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set.
 %%
-%Images were normalized, and then blurred with a filter of radius 5\% of the total image (5 pixels). 
+%Images were normalized, and then blurred with a filter of radius 5\% of the total image (5 pixels).
 %%
 %Images were not mean-centered or rescaled, as the entire live imaging data set was approximately centered already.
 %
@@ -251,23 +251,23 @@ The relevant image operations are listed below for our general purposes, along w
 %
 %The original image resolution was $320 \times 288$ for the zebrafish images.
 %%
-%A $16$-pixel border was removed from the left and right sides to make the images square, and all images were then subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set. 
+%A $16$-pixel border was removed from the left and right sides to make the images square, and all images were then subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set.
 %%
 %Images were not normalized or blurred.
 %%
-%Images were mean-centered so that the embryo in each frame was (approximately) centered. 
+%Images were mean-centered so that the embryo in each frame was (approximately) centered.
 %%
-%Images were not rescaled for size, as changes in overall size are important. 
+%Images were not rescaled for size, as changes in overall size are important.
 %
 %\subsubsection{{\em Drosophila} gastrulation (fixed)}
 %
 %The original image resolution was $1024 \times 1024$ for the fixed {\em Drosophila} images.
 %%
-%All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set. 
+%All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set.
 %%
-%The nuclei channel was normalized, and all channels were blurred with a filter of radius 5\% of the total image (5 pixels) to remove the effects of individual nuclei. 
+%The nuclei channel was normalized, and all channels were blurred with a filter of radius 5\% of the total image (5 pixels) to remove the effects of individual nuclei.
 %%
-%The nuclei channel was scaled by half; because this signal occupies a larger fraction of the image relative to the other signals, its overall contribution is large, and so we downscaled it so that each signal would have more comparable weight in the algorithm. 
+%The nuclei channel was scaled by half; because this signal occupies a larger fraction of the image relative to the other signals, its overall contribution is large, and so we downscaled it so that each signal would have more comparable weight in the algorithm.
 %%
 %The images were mean-centered and scaled to have a constant size using the nuclei signal to detect the edges of the embryo within the frame.
 %
@@ -277,17 +277,17 @@ The relevant image operations are listed below for our general purposes, along w
 %
 %The original image resolution was $1024 \times 1024$ for the wing disc z-stacks.
 %%
-%Each of the original wing disc z-stacks contains 30--40 images. 
+%Each of the original wing disc z-stacks contains 30--40 images.
 %%
-%All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set. 
+%All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set.
 %%
 %Each wing disc z-stack was reduced to a 21-image stack, consisting of the brightest image and the 10 images above and below.
 %%
-%No channels were normalized or blurred in the images, and the channel intensities were kept at their imaging values. 
+%No channels were normalized or blurred in the images, and the channel intensities were kept at their imaging values.
 %%
-%Images were mean-centered using the Wingless/Patched signal to detect the edges of the sample. 
+%Images were mean-centered using the Wingless/Patched signal to detect the edges of the sample.
 %%
-%Images were not rescaled for size, as changes in overall size are important. 
+%Images were not rescaled for size, as changes in overall size are important.
 %
 
 
@@ -405,9 +405,9 @@ Each frame was arbitrarily rotated, and the order of the frames was scrambled.
 %
 The original image resolution is $512 \times 512$.
 %
-All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set. 
+All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set.
 %
-Images were normalized, and then blurred with a filter of radius 5\% of the total image (5 pixels). 
+Images were normalized, and then blurred with a filter of radius 5\% of the total image (5 pixels).
 %
 Images were not mean-centered or rescaled, as the entire live imaging data set was approximately centered already.
 %
@@ -423,7 +423,7 @@ With a small number of exceptions, the recovered ordering is consistent with the
 %
 Both the angles and the ranks are recovered with a high degree of accuracy.
 %
-We note that determining which end of the trajectory corresponds to early in the developmental progression is a post-processing task that requires some {\em a priori} information. 
+We note that determining which end of the trajectory corresponds to early in the developmental progression is a post-processing task that requires some {\em a priori} information.
 
 To assess the robustness of the proposed methodology, we repeated this procedure with four additional data sets extracted from independent live imaging studies spanning the same developmental time period.
 %
@@ -450,13 +450,13 @@ We selected $120$ consecutive frames from this movie which capture 5.5~hours of 
 %
 The original image resolution was $320 \times 288$.
 %
-A $16$-pixel border was removed from the left and right sides to make the images square, and all images were then subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set. 
+A $16$-pixel border was removed from the left and right sides to make the images square, and all images were then subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set.
 %
 Images were not normalized or blurred.
 %
-Images were mean-centered so that the embryo in each frame was (approximately) centered. 
+Images were mean-centered so that the embryo in each frame was (approximately) centered.
 %
-Images were not rescaled for size, as changes in overall size are important. 
+Images were not rescaled for size, as changes in overall size are important.
 
 In this experiment, embryos were immobilized for imaging so that the position and orientation remained fixed \citep{kane1996zebrafish}.
 %
@@ -522,17 +522,17 @@ Another signal is provided by the phosphorylated form of the extracellular signa
 
 The original image resolution was $1024 \times 1024$.
 %
-All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set. 
+All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set.
 %
-The nuclei channel was normalized, and all channels were blurred with a filter of radius 5\% of the total image (5 pixels) to remove the effects of individual nuclei. 
+The nuclei channel was normalized, and all channels were blurred with a filter of radius 5\% of the total image (5 pixels) to remove the effects of individual nuclei.
 %
-The nuclei channel was scaled by half; because this signal occupies a larger fraction of the image relative to the other signals, its overall contribution is large, and so we downscaled it so that each signal would have more comparable weight in the algorithm. 
+The nuclei channel was scaled by half; because this signal occupies a larger fraction of the image relative to the other signals, its overall contribution is large, and so we downscaled it so that each signal would have more comparable weight in the algorithm.
 %
 The images were mean-centered and scaled to have a constant size using the nuclei signal to detect the edges of the embryo within the frame.
 %
 \fig~\ref{fig:drosophila_fixed_images}B shows the selected images in \fig~\ref{fig:drosophila_fixed_images}A, now registered and ordered using vector diffusion maps.
 %
-Registered and ordered images of individual embryos can then be used to construct a representative average trajectory. 
+Registered and ordered images of individual embryos can then be used to construct a representative average trajectory.
 %
 Each snapshot in the average trajectory is the (weighted) average of a group of successive images from the registered and ordered data set (see \sec~\ref{sec:smooth_traj}).
 %
@@ -579,13 +579,13 @@ The ranks from the ordering provided by the embryologist, which we will refer to
 \label{fig:wing_disc}
 \end{figure}
 
-In this section we show that the approach can readily be applied to three-dimensional data. 
+In this section we show that the approach can readily be applied to three-dimensional data.
 %
-We restrict ourselves to the case where an obvious fixed axis exists, so that only rotations of the three-dimensional data around this axis need be taken into account.  
+We restrict ourselves to the case where an obvious fixed axis exists, so that only rotations of the three-dimensional data around this axis need be taken into account.
 %
-This does not constitute an inherent limitation for vector diffusion maps. 
+This does not constitute an inherent limitation for vector diffusion maps.
 %
-While for simplicity here we will not discuss the general  case, incorporating general 3D symmetries is possible \citep{arie2012global, wang2013exact, cucuringu2012eigenvector}. 
+While for simplicity here we will not discuss the general  case, incorporating general 3D symmetries is possible \citep{arie2012global, wang2013exact, cucuringu2012eigenvector}.
 
 To demonstrate this approach, we used an existing three-dimensional data set of fixed {\em Drosophila} wing imaginal discs \citep{hamaratoglu2011dpp}.
 %
@@ -597,21 +597,21 @@ The data set is composed of 46 fixed wing discs whose developmental times range 
 %
 The original image resolution was $1024 \times 1024$.
 %
-Each of the original wing disc z-stacks contains 30--40 images taken at 1~$\mu$m intervals. 
+Each of the original wing disc z-stacks contains 30--40 images taken at 1~$\mu$m intervals.
 %
-All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set. 
+All images were subsampled to $100 \times 100$ pixels for analysis, as this was found to be a sufficient resolution to retain all of the major developmental features within the data set.
 %
 Each wing disc z-stack was reduced to a 21-image stack, consisting of the brightest image and the 10 images above and below.
 %
-No channels were normalized or blurred in the images, and the channel intensities were kept at their imaging values. 
+No channels were normalized or blurred in the images, and the channel intensities were kept at their imaging values.
 %
-Images were mean-centered using the Wingless/Patched signal to detect the edges of the sample. 
+Images were mean-centered using the Wingless/Patched signal to detect the edges of the sample.
 %
-Images were not rescaled for size, as changes in overall size are important. 
+Images were not rescaled for size, as changes in overall size are important.
 
 The discs were dissected from larvae expressing the Dad-GFP reporter construct (green) and stained with antibodies that recognize Spalt (red), Wingless (gray), and Patched (gray), the factors that play important roles in disc patterning and growth (\fig~\ref{fig:wing_disc}A).
 
-In the wing disc, the anterior-posterior and dorsal-ventral axes are significantly larger than the third principal axis (see \fig~\ref{fig:wing_disc}A). 
+In the wing disc, the anterior-posterior and dorsal-ventral axes are significantly larger than the third principal axis (see \fig~\ref{fig:wing_disc}A).
 %
 Therefore, we need not consider registration in all three dimensions, and can instead focus on registering the wing discs with respect to rotations only in the x-y plane.
 %
@@ -750,6 +750,6 @@ In the previous chapters, we have discussed using diffusion maps to analyze diff
 %
 However, we have mostly ignored the issue of detecting the dimensionality of the underlying manifold.
 %
-Because of the issue of ``repeated eigendirections,'' where some diffusion maps coordinates are higher harmonics of previous coordinates and do not describe any new directions in the data, detecting how many and which coordinates one must retain to obtain an accurate parameterization of the data is a difficult issue. 
+Because of the issue of ``repeated eigendirections,'' where some diffusion maps coordinates are higher harmonics of previous coordinates and do not describe any new directions in the data, detecting how many and which coordinates one must retain to obtain an accurate parametrization of the data is a difficult issue.
 %
-In the next chapter, we will present a methodology to address this problem, an issue which must be reconciled for diffusion maps to be broadly applicable to the analysis of dynamical systems data. 
+In the next chapter, we will present a methodology to address this problem, an issue which must be reconciled for diffusion maps to be broadly applicable to the analysis of dynamical systems data.

@@ -184,8 +184,8 @@ Gaussian distribution with covariance $\mathbf{C}_x$, the Mahalanobis distance b
 \begin{equation}
 	\| \mathbf{x}(t_1) - \mathbf{x}(t_2) \| _M = \sqrt{ (\mathbf{x}(t_1) - \mathbf{x}(t_2))^T \mathbf{C}_x^{-1} (\mathbf{x}(t_1) - \mathbf{x}(t_2) )  }.
 \end{equation}
-In particular, 
-%%%YGK+CDS if $\mathbf{x}(t_1)$ and $\mathbf{x}(t_2)$ are samples 
+In particular,
+%%%YGK+CDS if $\mathbf{x}(t_1)$ and $\mathbf{x}(t_2)$ are samples
 for \eqref{eq:general_SDE}, whose covariance does not depend on $\mathbf{x}$,  $\mathbf{C}_x^{-1} = \mathrm{diag}(e_1, \ldots, e_\lowdim)$ is a constant matrix where
 \begin{equation} \label{eq:e_def}
 \begin{aligned}
@@ -452,7 +452,7 @@ We therefore incur additional error due to finite sampling; this error is ignore
 Our analysis reveals that the errors decrease with decreasing $\delta t$; at first inspection, one would want to set $\delta t$ arbitrarily small to obtain the highest accuracy possible.
 %
 However, often in practice, one cannot obtain an arbitrarily refined sampling rate, such that a smaller $\delta t$ results in fewer samples with which to approximate the local covariance.%
-When also accounting for these finite sampling errors, and one should take $\delta t$ as long as possible while still maintaining negligable errors from the observation function $\measfn$ and the drift $\mathbf{a}$.
+When also accounting for these finite sampling errors, and one should take $\delta t$ as long as possible while still maintaining negligible errors from the observation function $\measfn$ and the drift $\mathbf{a}$.
 
 \section{Illustrative Examples}
 
@@ -896,4 +896,4 @@ With this interface established, one can now consider using such data-driven met
 %
 Such reduced models hold the promise of accelerated analysis and reduced simulation of dynamical systems whose effective dynamics are obscure upon simple inspection.
 %
-In the following chapter, we will exploit another feature of the Mahalanobis distance (its invariance to measurement/observation functions) to analyze and merge multiple data sets. 
+In the following chapter, we will exploit another feature of the Mahalanobis distance (its invariance to measurement/observation functions) to analyze and merge multiple data sets.
