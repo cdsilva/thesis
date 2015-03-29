@@ -9,7 +9,7 @@
 
 \section{Introduction}
 
-As discussed in previous chapters, in recent years, manifold learning algorithms have proven useful for many disciplines and applications \cite{gepshtein2013image, fernandez2014diffusion, singer2011viewing, yuan2014automated, zhao2003face, trapnell2014dynamics, kemelmacher2011exploring, sifre2013rotation}, especially when no simple analytical model exists to describe the underlying dynamics.
+As discussed in previous chapters, manifold learning algorithms have proven useful in recent years for many disciplines and applications \cite{gepshtein2013image, fernandez2014diffusion, singer2011viewing, yuan2014automated, zhao2003face, trapnell2014dynamics, kemelmacher2011exploring, sifre2013rotation}, especially when no simple analytical model exists to describe the underlying dynamics.
 %
 %In particular, for dynamical systems, data-driven methodologies are essential when a simple macroscopic model cannot be written analytically due to the complexity of the system \cite{talmon2014intrinsic,berry2013time,singer2009detecting,ferguson2010systematic}.
 %%
@@ -190,7 +190,7 @@ The existence of these challenges in the continuous setting implies that, even i
 %%
 %Although we have considered a very simple example for illustrative purposes, common practice is to use these tools for high-dimensional, nonlinear data sets.
 
-From the analytic solution, we know that the eigenfunctions with $(k_1, k_2) =(1, 0)$ and $(k_1, k_2) =(0, 1)$ provide embedding coordinates for the manifold; these two eigenfunctions are both uncoupled and not repeated.
+From the analytic solution for the eigenfunctions on the strip, we can see that the eigenfunctions with $(k_1, k_2) =(1, 0)$ and $(k_1, k_2) =(0, 1)$ provide embedding coordinates for the manifold; these two eigenfunctions are both uncoupled and not repeated.
 %
 However, identifying those selected eigenvectors in the discrete setting is nontrivial, as we do not have access to the indices for each eigenvalue/eigenvector.
 %
@@ -291,7 +291,7 @@ We typically take $\epsilon_{reg} = M / 3$, where $M$ is the median of the pairw
 %
 We then define the normalized leave-one-out cross-validation error for this local linear fit as
 \begin{equation} \label{eq:cv_error}
-r_{k} = \sqrt{ \frac{\sum_{i=1}^n \left( \phi_{k} (i) - (\hat{\alpha}_k(i) + \hat{\beta}_k(i)^T \Phi_{k-1}(i))  \right)^2} {\sum_{i=1}^n  \left( \phi_{k} (i) \right)^2 }}.
+r_{k} = \sqrt{ \frac{\sum_{i=1}^\ndata \left( \phi_{k} (i) - (\hat{\alpha}_k(i) + \hat{\beta}_k(i)^T \Phi_{k-1}(i))  \right)^2} {\sum_{i=1}^\ndata  \left( \phi_{k} (i) \right)^2 }}.
 \end{equation}
 %
 Note that a small value of $r_k$ implies that $\phi_{k}$ can be accurately approximated from $\phi_1, \dots, \phi_{k-1}$.
@@ -300,44 +300,45 @@ We assume small value of $r_k$ implies that $\phi_k$ is a harmonic of previous m
 %
 We choose to set $r_1 = 1$.
 %
-The error in \eqref{eq:cv_error} can easily be computed (see Section~5.4 of \cite{wasserman2006all}; code is also available at ...).
+%The error in \eqref{eq:cv_error} can easily be computed (see Section~5.4 of \cite{wasserman2006all}; code is also available at ...).
 
-%The error in \eqref{eq:cv_error} can easily be computed \cite{wasserman2006all}.
-%%
-%We begin by constructing the matrix
-%\begin{equation}
-%X_{k-1}(i) = \begin{bmatrix}
-%1 & \phi_1(1) - \phi_1(i) & \dots & \phi_{k-1}(1)- \phi_{k-1}(i) \\
-%1 & \phi_1(2) - \phi_1(i) & \dots & \phi_{k-1}(2)- \phi_{k-1}(i) \\
-%\vdots & \vdots & \ddots & \vdots \\
-%1 & \phi_1(m) - \phi_1(i) & \dots & \phi_{k-1}(m)- \phi_{k-1}(i)
-%\end{bmatrix}
-%\end{equation}
-%%
-%and the matrix
-%\begin{equation}
-%W_{k-1}(i) = diag \left( K(\Phi_{k-1}(i), \Phi_{k-1}(1)), \dots, K(\Phi_{k-1}(i), \Phi_{k-1}(m)) \right).
-%\end{equation}
-%%
-%We then calculate the smoothing matrix $S_{k-1} \in \mathbb{R}^{m \times m}$, where
-%\begin{equation}
-%S_{k-1} =
-%\begin{bmatrix}
-%e_1^T \left( X_{k-1}^T(1) W_{k-1}(1) X_{k-1}(1) \right) ^{-1} X_{k-1}^T(1) W_{k-1}(1) \\
-%e_1^T \left( X_{k-1}^T(2) W_{k-1}(2) X_{k-1}(2) \right) ^{-1} X_{k-1}^T(2) W_{k-1}(2) \\
-%\vdots \\
-%e_1^T \left( X_{k-1}^T(m) W_{k-1}(m) X_{k-1}(m) \right) ^{-1} X_{k-1}^T(m) W_{k-1}(m) \\
-%\end{bmatrix},
-%\end{equation}
-%%
-%where $e_1^T = (1, 0, \dots, 0)$.
-%%
-%We can then write
-%%
-%\begin{equation}
-%r_{k} = \sqrt{ \frac{\sum_{i=1}^n \left( \frac{ \phi_{k} (i) - \sum_{j=1}^m S_{k-1}(i,j) \phi_{k}(j) }{1-S_{k-1}(i,i)} \right)^2} {\sum_{i=1}^n  \left( \phi_{k} (i) \right)^2 }} .
-%\end{equation}
-
+The error in \eqref{eq:cv_error} can easily be computed \cite{wasserman2006all}.
+%
+We begin by constructing the matrix
+\begin{equation}
+\mathbf{X}_{k-1}(i) = \begin{bmatrix}
+1 & \phi_1(1) - \phi_1(i) & \dots & \phi_{k-1}(1)- \phi_{k-1}(i) \\
+1 & \phi_1(2) - \phi_1(i) & \dots & \phi_{k-1}(2)- \phi_{k-1}(i) \\
+\vdots & \vdots & \ddots & \vdots \\
+1 & \phi_1(\ndata) - \phi_1(i) & \dots & \phi_{k-1}(\ndata)- \phi_{k-1}(i)
+\end{bmatrix}
+\end{equation}
+%
+and the matrix
+\begin{equation}
+\mathbf{V}_{k-1}(i) = diag \left( K(\Phi_{k-1}(i), \Phi_{k-1}(1)), \dots, K(\Phi_{k-1}(i), \Phi_{k-1}(m)) \right).
+\end{equation}
+%
+We then calculate the smoothing matrix $\mathbf{S}_{k-1} \in \mathbb{R}^{\ndata \times \ndata}$, where
+\begin{equation}
+\mathbf{S}_{k-1} =
+\begin{bmatrix}
+e_1^T \left( \mathbf{X}_{k-1}^T(1) \mathbf{V}_{k-1}(1) \mathbf{X}_{k-1}(1) \right) ^{-1} \mathbf{X}_{k-1}^T(1) \mathbf{V}_{k-1}(1) \\
+e_1^T \left( \mathbf{X}_{k-1}^T(2) \mathbf{V}_{k-1}(2) \mathbf{X}_{k-1}(2) \right) ^{-1} \mathbf{X}_{k-1}^T(2) \mathbf{V}_{k-1}(2) \\
+\vdots \\
+e_1^T \left( \mathbf{X}_{k-1}^T(\ndata) \mathbf{V}_{k-1}(\ndata) \mathbf{X}_{k-1}(\ndata) \right) ^{-1} \mathbf{X}_{k-1}^T(\ndata) \mathbf{V}_{k-1}(\ndata) \\
+\end{bmatrix},
+\end{equation}
+%
+where $e_1^T = (1, 0, \dots, 0)$.
+%
+We can then write
+%
+\begin{equation}
+r_{k} = \sqrt{ \frac{\sum_{i=1}^n \left( \frac{ \phi_{k} (i) - \sum_{j=1}^\ndata \mathbf{S}_{k-1}(i,j) \phi_{k}(j) }{1-\mathbf{S}_{k-1}(i,i)} \right)^2} {\sum_{i=1}^\ndata \left( \phi_{k} (i) \right)^2 }} .
+\end{equation}
+%
+where $\mathbf{S}_{k-1}(i,j)$ denotes the $(i,j)$ entry of $\mathbf{S}_{k-1}$. 
 
 We propose using {\em only} those eigenvectors for which $r_k$ is large to embed the data, as this will yield a more parsimonious representation.
 %

@@ -12,7 +12,7 @@ From the discussions in \chap~\ref{ch:intro}~and~\ref{ch:multiscale}, the benefi
  data-driven reduction coordinates is their dependence on the specific data set processed,
 and not only on the physical model in question.
 %
-It is well known that, even in the simple linear case of Principal Component Analysis \cite{jolliffe2005principal},
+It is well known that, even in the simple linear case of principal component analysis \cite{jolliffe2005principal},
 different data sets on the same low-dimensional hyperplane in the ambient space
 will lead to different bases spanning the hyperplane - in effect, to different reduction coordinates $\mathbf{x}$.
 %
@@ -155,7 +155,7 @@ The Mahalanobis distance is invariant under affine transformations.
 %
 Thus, by assuming that the observation function $\measfn$ is bi-Lipschitz and smooth, and by using local linearization of the function, i.e., $\data(t) = \mathbf{J}(t) \mathbf{x}(t) + \boldsymbol{\epsilon}(t)$ where $\mathbf{J}(t)$ is the Jacobian of $\measfn(\mathbf{x}(t))$ and $\boldsymbol{\epsilon}(t)$ is the residual consisting of higher-order terms, it was shown by Singer and Coifman \cite{singer2008non} that $\mathbf{C}(t) = \mathbf{J}(t)\mathbf{J}^T(t)$ and that the Mahalanobis distance approximates the Euclidean distance between the corresponding samples of the underlying process to second order, i.e.,
 \begin{equation}
-	\| \mathbf{x}(t) - \mathbf{x}(\tau) \|^2 = d^2(\data(t), \data(\tau)) + \mathcal{O}(\| \data(t) - \data(\tau)\|^4).
+	\| \mathbf{x}(t) - \mathbf{x}(\tau) \|^2_M = \| \data(t) - \data(\tau)\|^2_2 + \mathcal{O}(\| \data(t) - \data(\tau)\|_2^4).
 \end{equation}
 %
 This result implies that the Mahalanobis distance is invariant to the measurement function $\measfn$, and hence,
@@ -967,7 +967,7 @@ These two chapters have described using the Mahalanobis distance with diffusion 
 %
 In the next chapter, we will address a third type of data (imaging data).
 %
-In this example, we will not be interested in removing the effects of fast variables or measurement functions, but instead factoring out rotational symmetries which arise from the experimental imaging setup.
+In this work, we will not be interested in removing the effects of fast variables or measurement functions, but instead factoring out rotational symmetries which arise from the experimental imaging setup.
 %
 We will present another extension of diffusion maps which allows us to simultaneously factor out symmetries and uncover structure in the imaging data.
 %

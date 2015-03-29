@@ -53,9 +53,9 @@ By using a particular manifold learning technique based on the construction of a
 \caption[Eigenfunctions of the Laplace-Beltrami operator on a two-dimensional strip]{(a) Two-dimensional continuous strip colored by the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$, and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$. (b) Two-dimensional strip with uniform sampling colored by the first and fourth (non-trivial) eigenvectors of the discrete Laplacian. (c) Two-dimensional strip with data sampled from a Gaussian distribution in $z_1$ and sampled uniformly in $z_2$, colored by the first and third (non-trivial) eigenvectors of the discrete Laplacian. Note that in all cases we uncover parameterizations which are one-to-one with $z_1$ and $z_2$.}
 \end{figure}
 
-In recent years, it has been noted that the eigenfunctions of the \emph{continuous} Laplace-Beltrami operator provide ``good" coordinates for a manifold \cite{jones2008}.
+In recent years, it has been noted that the eigenfunctions of the \emph{continuous} Laplace-Beltrami operator provide ``good" coordinates for a (perhaps nonlinear) manifold \cite{jones2008}.
 %
-Thus, we start by considering a continuous setting where rigorous analysis is available for specific examples.
+Thus, we begin by considering a continuous setting where rigorous analysis is available for specific examples.
 %
 %Using such an example, we will show that the existence of repeated eigendirections is inherent to the manifold learning setup based on Laplace operators, and that the identification of the unique eigendirections is nontrivial.
 %%
@@ -134,7 +134,7 @@ In subsequent chapters, we will use the $\alpha=0$ embedding unless otherwise no
 %
 Note that by setting $\alpha=1$, one can factor out the density effects in the weight matrix, and the discrete Laplacian matrix approaches the Laplace-Beltrami operator on the manifold $\manifold$.
 %
-The eigenvectors $\phi_0, \phi_1, \dots, \phi_{\ndata-1}$ of $\mathbf{A}$ approximate the eigenfunctions of the Laplace-Beltrami operator on $\manifold$,
+The eigenvectors $\phi_0, \phi_1, \dots, \phi_{\ndata-1}$ of $\mathbf{A}$ approximate the eigenfunctions of the continuous operator in \eqref{eq:limiting_operator} on $\manifold$,
 and the eigenvalues $\lambda_0, \lambda_1, \dots, \lambda_{\ndata-1}$ of $\mathbf{A}$ are related to the eigenvalues of the continuous operator by
 \begin{equation} \label{eq:evals_relationship}
 \lambda_k = \exp \left( -\frac{\epsilon^2}{4} \tilde{\lambda}_{k_1, k_2}  \right).
@@ -156,12 +156,12 @@ The standard diffusion maps embedding incorporates eigenvalue weights \cite{coif
 %
 where we order the eigenvectors such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{m-1}|$, and $\tau \ge 0$ is a parameter (in our examples, we will take $\tau=0$, which corresponds to the Laplacian Eigenmaps formulation).
 %
-Because the matrix $\mathbf{A}$ is row-stochastic ($\sum_j \mathbf{A}_{ij} = 1$),  $\lambda_0 = 1$ and $\phi_0$ is a trivial constant vector.
+Because the matrix $\mathbf{A}$ is row-stochastic ($\sum_j \mathbf{A}_{ij} = 1$),  $\lambda_0 = 1$ and $\phi_0$ is a trivial constant vector which is ignored.
 %
 The distance induced by this embedding is called the standard diffusion distance,
 %
 \begin{equation}
-D^2_\tau(z(i), z(j)) = \sum_{k=1}^{m-1} \lambda_k^{2 \tau} \left( \phi_k(i) - \phi_k(j)  \right)^2.
+D^2_\tau(\data(i), \data(j)) = \sum_{k=1}^{\ndata-1} \lambda_k^{2 \tau} \left( \phi_k(i) - \phi_k(j)  \right)^2.
 \end{equation}
 %
 The diffusion maps embedding therefore projects the data into a space where the Euclidean distance is equivalent to the diffusion distance.
@@ -183,7 +183,7 @@ Figures~\ref{subfig:strip_evecs_uniform}--\ref{subfig:strip_evecs_nonuniform} sh
 %
 In cases of both uniform and nonuniform sampling, the selected eigenvectors are one-to-one with $z_1$ and $z_2$, and thus parameterize the manifold.
 %
-However, we briefly note that the two diffusion maps coordinates which parameterize the manifold are not guaranteed to be the first two eigenvectors.
+However, we briefly note that the two diffusion maps coordinates which parameterize the manifold are not guaranteed to be the first two eigenvectors (when the eigenvectors are ordered by the corresponding eigenvalues).
 %
 This is the issue of ``repeated eigendirections,'' where some eigenvectors are higher harmonics of previous eigenvectors and do not capture any new directions in the data; we will discuss this issue in more detail in \chap~\ref{ch:harmonics}.
 %
@@ -315,7 +315,7 @@ alternatively, if there is a common region sampled by two data sets obtained fro
 %
 %We will return to the issue of embedding consistency for different data sets in our concluding discussion; for the moment, we will assume that our different sets sample the same region of data space in a representative enough way such that the correspondence between the sequences of retained eigenvectors for different embeddings is obvious.
 %
-Similarly, for the examples in \chap~\ref{ch:drosophila}, the sign of the eigenvector is important and is determined after analysis using {\em a priori} knowledge of the system dynamics.
+Similarly in \chap~\ref{ch:drosophila}, the sign of the eigenvector is important and is determined after analysis using {\em a priori} knowledge of the system dynamics.
 
 
 
@@ -351,17 +351,17 @@ Similarly, for the examples in \chap~\ref{ch:drosophila}, the sign of the eigenv
 \section{The Mahalanobis Distance}
 \label{sec:mahalanobis}
 
-The essential component of manifold learning algorithms (such as diffusion maps) is having an informative distance metric between data points, as one of the key assumptions is that points which have a small distance are close on the manifold.
+An essential component of manifold learning algorithms (such as diffusion maps) is having an informative distance metric between data points, as one of the key assumptions is that points which have a small distance are close on the manifold.
 %
 However, often the Euclidean distance is not meaningful or informative, and we require a more sophisticated metric.
 %
 Here, we will discuss the Mahalanobis distance \cite{mahalanobis1936generalized}, a metric which has some nice properties that will allow us to analyze data from multiscale stochastic systems in \chap~\ref{ch:multiscale} and data from chemical simulations in \chap~\ref{ch:merging}.
 
-Let $\mathbf{C}(t)$ be the covariance matrix associated with the measured sample $\data(t)$ (the specifics will be discussed in subsequent chapters).
+Let $\widehat{\mathbf{C}}(t)$ be the estimated covariance matrix associated with the measured sample $\data(t)$ (the specifics will be discussed in subsequent chapters).
 %
 We define a Riemannian metric between a pair of samples using the associated covariance matrices as
 \begin{equation}
-	d^2(\data(i), \data(j)) = 2 (\data(i) - \data(j))^T(\widehat{\mathbf{C}}(i) + \widehat{\mathbf{C}}(j))^{\dagger}(\data(i) - \data(j));
+	\| \data(i) - \data(j) \|^2_M =  \frac{1}{2} (\data(i) - \data(j))^T(\widehat{\mathbf{C}}(i) + \widehat{\mathbf{C}}(j))^{\dagger}(\data(i) - \data(j));
 	\label{eq:mahalanobis1}
 \end{equation}
 this is the Mahalanobis distance (and $^{\dagger}$ denotes a pseudoinverse, since $\widehat{\mathbf{C}}$ is most likely rank-deficient).
@@ -412,11 +412,11 @@ In practice, for a dynamical system, the covariance matrix can be estimated from
 \begin{equation} \label{eq:cov1}
 	\widehat{\mathbf{C}}(t) = \sum \limits _{\tau = t-L}^{t+L} (\data(\tau) - \widehat{\boldsymbol{\mu}}(t))(\data(\tau) - \widehat{\boldsymbol{\mu}}(t))^T,
 \end{equation}
-where $\widehat{\boldsymbol{\mu}}(t)$ is the empirical mean of the short trajectory of samples around time $t$ and $L$ is the size of the trajectory window.
+where $L$ is the size of the trajectory window and $\widehat{\boldsymbol{\mu}}(t)$ is the empirical mean of the short trajectory of samples around time $t$.
 %
 Alternatively, we can estimate the local covariance by using small bursts of simulation
 \begin{multline} \label{eq:cov2}
-\hat{\mathbf{C}}_{ij}(\data(t), \delta t)
+\widehat{\mathbf{C}}_{ij}(\data(t), \delta t)
 = \\
 \frac{1}{ \delta t} \left( \mathbb{E} \left[ \dataone_i (t+\delta t) \dataone_j (t+ \delta t) \mid \data(t) \right]
 - \mathbb{E} \left[ \dataone_i (t+\delta t) \mid \data(t) \right] \mathbb{E} \left[ \dataone_j (t+\delta t) \mid \data(t) \right] \right) ,
@@ -650,7 +650,7 @@ which can be computed in the same way from \eqref{eq:R_est}.
 %
 We then expect subsequent eigenvectors to contain information about the main direction(s) of data variability modulo the geometric symmetries.
 
-In general, the embedding coordinates are given by
+In general, the vector diffusion maps embedding coordinates are given by
 \begin{equation} \label{eq:vdm_coord}
 \psi_{k,l} (i) = \langle \phi_k(i), \phi_l(i) \rangle,
 \end{equation}
@@ -685,4 +685,4 @@ We therefore expect to see a ``spectral gap'' in the eigenvalues which separates
 %
 In vector diffusion maps, the importance of each coordinate is measured by the product of the corresponding eigenvalues (i.e., the importance of $\psi_{k,l}$ is given by $| \lambda_k \lambda_l |$).
 %
-We again expect to see a ``spectral gap'' in these eigenvalue products between those corresponding to meaningful coordinates (again, modulo higher harmonics) and those corresponding to noise. 
+We again expect to see a ``spectral gap'' in these eigenvalue products between those corresponding to meaningful coordinates (modulo higher harmonics) and those corresponding to noise. 

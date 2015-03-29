@@ -5,7 +5,7 @@
 
 Modeling dynamical systems is an essential component of most science and engineering disciplines.
 %
-Substantial research efforts are dedicated to constructing models for complex phenomena, such as chemical reactions \cite{dong2007simplification, gillespie1977exact, gallagher1986combined}, fluid flows \cite{anderson1995computational}, and gene expressions \cite{bar2004analyzing, storey2005significance}.
+Substantial research efforts are dedicated to constructing models for complex phenomena, such as chemical reactions \cite{dong2007simplification, gillespie1977exact, gallagher1986combined}, fluid flows \cite{anderson1995computational}, and gene expression profiles \cite{bar2004analyzing, storey2005significance}.
 %
 These models allow researchers to run very inexpensive {\em in silico} ``experiments'', and can also be incorporated into larger systems-level models and optimization routines \cite{daoutidis2013engineering, oluwole2006rigorous, rubert2014advanced}.
 
@@ -18,54 +18,6 @@ Furthermore, lower-dimensional models are computationally less expensive and can
 However, deciding on how many and what variables are required to (approximately) describe the system dynamics is a difficult task with no clear solution.
 
 
-
-
-
-%Over the past decade, the amount of available data has grown exponentially in many, if not all, scientific disciplines.
-%%
-%Computational speed has increased (according to Moore's law), allowing for larger and longer simulations, and
-%the cost of memory has decreased dramatically, such that data storage is no longer a bottleneck for most applications.
-%%
-%The Internet has allowed for the rapid sharing and exploration of new data sets, such that data from many groups and collaborators can be combined without any face-to-face interaction.
-%%
-%All of these advances have ushered us into the era of ``Big Data'', where the challenge is not obtaining the data, but rather, searching for the relevant trends and patterns within this seemingly endless sea of information.
-%
-%The prototypical examples of data science problems arise in consumer-driven applications. %
-%Tasks such as filtering email spam, predicting what a specific customer would like to purchase online, and extracting trends from Twitter and Facebook data have all led to interesting and novel data analysis algorithms.
-%%
-%However, the natural sciences and engineering have also witnessed a dramatic growth in the amount of available data, and data-driven algorithms have the potential to contribute to these fields as well.
-%
-%Machine learning tasks can be broadly divided into two categories: supervised and unsupervised.
-%%
-%In supervised learning, data consists of inputs and outputs, where each training data point consists of an input vector and an output response.
-%%
-%In contrast, unsupervised learning operates on unlabeled data, where the task is to uncover structure and patterns {\em within} the data set.
-%%
-%We will focus on this second task of unsupervised learning.
-%%
-%More specifically, we will focus on dimensionality reduction, where the goal is to reduce the dimensionality of the data while still retaining most of the relevant patterns and structure within the data set.
-%%
-%Reducing the dimensionality of a data set to two or three dimensions allows for easy visualization of the data set.
-%%
-%Furthermore, reducing the dimensionality makes computations, such as integrating a system of differential equations or fitting a model, easier and faster.
-
-
-%
-%
-%TODO: this is from JCP intro....
-%
-%The last decade has witnessed extensive advances in dimensionality reduction techniques:
-%finding meaningful low-dimensional descriptions of high-dimensional data \cite{tenenbaum2000global,roweis2000nonlinear,Donoho2003,Belkin2003,Coifman2006}.
-%
-%Often, high-dimensional data do not uniformly fill the entire ambient space, but rather lie on a lower-dimensional manifold.
-%
-%Discovering a parametrization of the manifold therefore yields a compact representation of the data, and may lead to efficient analysis and processing schemes.
-%
-%In particular, these developments have the potential to significantly enable the computational exploration
-%of physicochemical problems.
-%
-
-
 Traditionally, model reduction in engineering disciplines has been done using some {\em a priori} knowledge about separation of time scales,
 such as using the quasi-steady state approximation to reduce a network of chemical reactions \cite{bowen1963singular}.
 %
@@ -73,8 +25,7 @@ Alternatively, empirical knowledge about the system of interest has been used to
 %
 Progress variables and order parameters which effectively parameterize a system's dynamics, such as the radius of gyration in protein folding problems \cite{lazaridis1997new, kim2015systematic} or a  morphological feature which parameterizes an organism's developmental progress \cite{dubuis2013accurate, hamaratoglu2011dpp}, are often posited after many empirical observations and are not immediately obvious for new systems of interest.
 %
-However, dimensionality reduction algorithms allow for the systematic discovery of data-driven, low-dimensional descriptions that circumvent the need for such {\em a priori} knowledge, and the automated detection of a few good, coarse-grained
-order parameters can be invaluable in understanding and predicting system behavior.
+However, dimensionality reduction algorithms allow for the systematic discovery of data-driven, low-dimensional descriptions that circumvent the need for such {\em a priori} knowledge, and the automated detection of appropriate order parameters can be crucial for understanding and modeling system behavior.
 %
 %For example, such reduction coordinates may be the dihedral angles inferred from trajectories of the atoms of a macromolecule.
 %
@@ -109,9 +60,9 @@ Local linear embedding \cite{roweis2000nonlinear} does PCA {\em locally} on patc
 %
 Isomap \cite{tenenbaum2000global} first constructs a weighted graph on the data in which nearby data points are connected by stronger edges.
 %
-The algorithm then uses multidimensional scaling \cite{joseph1978multidimensional} to embed the data, where the distance between a pair of data points is given by the length of the shortest path between the pair in the graph.
+The algorithm then uses multidimensional scaling \cite{joseph1978multidimensional} to embed the data in a space where the Euclidean distance between a pair of data points is (approximately) length of the shortest path between the pair in the graph.
 %
-This graph-based distance attempts to approximate the geodesic distance along the manifold.
+This graph-based distance attempts to approximate the geodesic distance along the underlying manifold on which the data are presumed to lie.
 
 Simultaneously, there was renewed interest in algorithms for analyzing and extracting structure in graphs, due to the prevalence of network, internet, and social media data.
 %
@@ -140,24 +91,22 @@ In \chap~\ref{ch:math}, we outline the mathematical techniques common throughout
 %
 \chap~\ref{ch:multiscale} discusses using data-driven techniques for the analysis of multiscale stochastic data.
 %
-By introducing a more sophisticated metric, we uncover a parametrization of data which respects the underlying slow dynamical modes and is invariant to fast stochastic fluctuations, even when these fluctuations are large.
+By using the Mahalanobis distance \cite{mahalanobis1936generalized}, rather than the standard Euclidean distance, we uncover a parametrization of data which respects the underlying slow dynamical modes and is invariant to fast stochastic fluctuations, even when these fluctuations are large.
 %
-We present both theoretical analysis for our proposed approach, as well as demonstrate the approach on synthetic data sets.
+We present both theoretical analysis for our proposed approach, as well as illustrate the approach using synthetic data sets.
 %
-\chap~\ref{ch:merging} then discusses extracting a parametrization which is invariant to measurement/observation functions.
+\chap~\ref{ch:merging} then discusses extracting a parametrization of data which is invariant to the specific measurement function used to observe the underlying system.
 %
-In this case, we again use a more sophisticated metric which removes the effect of nonlinear observation/measurement functions, so that different observations of the same underlying dynamical system can be merged into a common framework.
+In this case, we use the Mahalanobis distance to removes the effect of nonlinear observation/measurement functions, so that different observations of the same dynamical system can be merged into a common framework.
 %
 We demonstrate this approach on two simulation data sets: (1) a simulation of a chemical reaction network, and (2) a molecular dynamics simulation of a small peptide fragment.
 %
-\chap~\ref{ch:drosophila} then discusses using manifold learning to extract the developmental dynamics from a set of fixed images.
+\chap~\ref{ch:drosophila} then discusses using manifold learning to extract developmental dynamics from a set of fixed images.
 %
 Here, we use vector diffusion maps (an extension of diffusion maps) to both register and temporally order experimental imaging data sets in developmental biology.
 %
-\chap~\ref{ch:harmonics} discusses the key issue in manifold learning of ``repeated eigendirections'', where subsequent modes can be higher harmonics of previous modes and parameterize the same direction in the data set.
+\chap~\ref{ch:harmonics} discusses the issue of ``repeated eigendirections'' in manifold learning, where subsequent modes can be higher harmonics of previous modes and parameterize the same direction in the data set.
 %
-We present an algorithm, based on local linear regression, for automatically detecting these repeated eigendirections which allows us to uncover the true dimensionality of the underlying manifold and the most parsimonious representation of the data, an essential task when constructing a reduced model.
+We present an algorithm, based on local linear regression, for automatically detecting these repeated eigendirections which allows us to uncover the most parsimonious representation of the data and deduce the true dimensionality of the underlying manifold, an essential task when constructing a reduced model.
 %
-\chap~\ref{ch:conclusion} then summarizes this work and offers some future potential research directions.
-%
-All of these examples address key issues in using and adapting manifold learning techniques to analyze data from dynamical systems. 
+\chap~\ref{ch:conclusion} then summarizes this work and offers some future potential research directions for using and adapting manifold learning techniques to analyze data from dynamical systems. 

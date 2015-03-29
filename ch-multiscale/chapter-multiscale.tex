@@ -125,7 +125,7 @@ dx_i(t) &= a_i(\mathbf{x}(t)) dt + dW_i(t), & \: 1 \le i \le \lowdimslow \\
 dx_i(t) &= \frac{a_i(\mathbf{x}(t))}{\epsilon} dt + \frac{1}{\sqrt{\epsilon}} dW_i(t) , & \: \lowdimslow+1 \le i \le \lowdim
 \end{aligned}
 \end{equation}
-where $W_i(t)$ are independent standard Brownian motions, $$\mathbf{x}(t)  = \begin{bmatrix} x_1(t) \\ \vdots \\ x_\lowdim(t) \end{bmatrix}^T \in \mathbb{R}^\lowdim$$, and $\epsilon \ll 1$.
+where $W_i(t)$ are independent standard Brownian motions, $\mathbf{x}(t)  =  \allowbreak \begin{bmatrix} x_1(t) & \cdots & x_\lowdim(t) \end{bmatrix}^T \allowbreak \in \mathbb{R}^\lowdim$, and $\epsilon \ll 1$.
 %
 In the simple case of a linear drift function, i.e., when $a_i(\mathbf{x}(t)) = \mu _i x_i$ with $\mu_i < 0$, the probability density function of $x_i$ approaches a Gaussian with
 (finite) variance $\mu_i$.
@@ -137,7 +137,7 @@ Thus, the last $\lowdim-\lowdimslow$ variables of \eqref{eq:general_SDE} rapidly
 A short burst of simulation will yield a cloud of points which is broadly distributed in the fast directions but narrowly distributed in the slow ones.
 %
 With the appropriate conditions on $a_i(\mathbf{x})$, the same can be said for more general drift
-functions, where $\mu_i$ are the eigenvalues of the Jacobian of $\mathbf{a}(\mathbf{x}) = \begin{bmatrix} a_1(\mathbf{x}) & \cdots & a_\lowdim(\mathbf{x}) \end{bmatrix}^T$ \cite{villani2009hypocoercivity}.
+functions, where $\mu_i$ are the eigenvalues of the Jacobian of $\mathbf{a}(\mathbf{x}) = \begin{bmatrix} a_1(\mathbf{x}) & \cdots & a_\lowdimslow(\mathbf{x}) & a_{\lowdimslow+1}(\mathbf{x})/\epsilon & \cdots & a_\lowdim(\mathbf{x})/\epsilon \end{bmatrix}^T$ \cite{villani2009hypocoercivity}.
 %
 Therefore, \eqref{eq:general_SDE} defines an $\lowdim$-dimensional stochastic system with $\lowdimslow$ slow
 variables and $\lowdim-\lowdimslow$ fast variables, and $\epsilon$ defines the time scale separation.
@@ -186,7 +186,7 @@ Gaussian distribution with covariance $\mathbf{C}_x$, the Mahalanobis distance b
 \end{equation}
 In particular,
 %%%YGK+CDS if $\mathbf{x}(t_1)$ and $\mathbf{x}(t_2)$ are samples
-for \eqref{eq:general_SDE}, whose covariance does not depend on $\mathbf{x}$,  $\mathbf{C}_x^{-1} = \mathrm{diag}(e_1, \ldots, e_\lowdim)$ is a constant matrix where
+for the SDE in \eqref{eq:general_SDE}, whose diffusion covariance does not depend on $\mathbf{x}$,  $\mathbf{C}_x^{-1} = \mathrm{diag}(e_1, \ldots, e_\lowdim)$ is a constant matrix where
 \begin{equation} \label{eq:e_def}
 \begin{aligned}
 e_i =& 1, \: & 1 \le i \le \lowdim_1 \\
@@ -223,6 +223,8 @@ As discussed in \cite{singer2008non}, assuming $\mathbf{f}$ is bilipschitz, the 
 \end{equation}
 %
 This approximation is accurate when $\| \data(t_2) - \data(t_1) \|$ is small.
+%
+We will use the Mahalanobis distances between pairs of data points in a diffusion maps calculation to uncover a parameterization of the data. 
 %
 Because we will integrate these distances into a manifold learning algorithm which only considers local distances, we can recover a parametrization of the data which is consistent with the underlying system variables $\mathbf{x}(t)$, even when the data are obscured by a function $\mathbf{f}$.
 %
@@ -301,7 +303,7 @@ The third source comes from finite sampling effects.
 %
 In this work, we will address and discuss the first two sources of error (the finite sampling effects are the subject of future research).
 %
-We can control the effects of the errors due to truncation of the Taylor expansion by adjusting $\dmeps$; the higher-order terms in this expansion will be small for points which are close, such that adjusting $\dmeps$ will allow us to only consider distances which are
+We can control the effects of the errors due to truncation of the Taylor expansion by adjusting $\dmeps$ in the diffusion maps calculation; the higher-order terms in this expansion will be small for points which are close, such that adjusting $\dmeps$ will allow us to only consider distances which are
 sufficiently accurate in our overall computation scheme.
 %
 Furthermore, we can control the errors incurred by disregarding the drift by adjusting the time scale of our simulation bursts $\delta t$.
@@ -387,10 +389,10 @@ To compute the Mahalanobis distance in \eqref{eq:mahalanobis_distance}, we requi
 %
 We will use simulation bursts to locally explore the dynamics on the manifold of observations in order to estimate the covariance at a point $\data(t)$ from data \cite{talmon2014manifold, talmon2014intrinsic}.
 %
-We write the elements of the estimated covariance $\hat{\mathbf{C}}(\data(t), \delta t)$ as
+We write the elements of the estimated covariance $\widehat{\mathbf{C}}(\data(t), \delta t)$ as
 %\begin{equation}
 \begin{multline}\label{eq:estimated_cov_expected_value}
-\hat{\mathbf{C}}_{ij}(\data(t), \delta t)
+\widehat{\mathbf{C}}_{ij}(\data(t), \delta t)
 = \\
 \frac{1}{\delta t} \left( \mathbb{E} \left[ \dataone_i (t+\delta t) \dataone_j (t+ \delta t) \mid \data(t) \right]
 - \mathbb{E} \left[ \dataone_i (t+\delta t) \mid \data(t) \right] \mathbb{E} \left[ \dataone_j (t+\delta t) \mid \data(t) \right] \right) ,
@@ -404,7 +406,7 @@ Due to the drift in the stochastic process and the (perhaps nonlinear) measureme
 %
 Define the error in this approximation as
 \begin{equation}
-\mathbf{E}_C(\data(t), \delta t) = \hat{\mathbf{C}}(\data(t), \delta t) - \mathbf{C}(\data(t)).
+\mathbf{E}_C(\data(t), \delta t) = \widehat{\mathbf{C}}(\data(t), \delta t) - \mathbf{C}(\data(t)).
 \end{equation}
 %
 %We know that, for a stochastic process following \eqref{eq:general_SDE} and observed through a function $\measfn$, the covariance $C$ is given by
@@ -445,7 +447,7 @@ From \eqref{eq:cov_error}, the error in the covariance is $\mathcal{O}(\delta t)
 We want to set $\delta t$ such that $\|\mathbf{E}_C \| \ll \| \mathbf{C} \|$
 (this is illustrated in \fig~\ref{fig:schematic}), so that the estimated covariances are accurate.
 %
-Note that in practice, we compute $\hat{\mathbf{C}}$ by running many simulations of length $\delta t$ starting from $\mathbf{x}(t)$, and use the sample average to approximate the expected values in \eqref{eq:estimated_cov_expected_value}.
+Note that in practice, we compute $\widehat{\mathbf{C}}$ by running many simulations of length $\delta t$ starting from $\mathbf{x}(t)$, and use the sample average to approximate the expected values in \eqref{eq:estimated_cov_expected_value}.
 %
 We therefore incur additional error due to finite sampling; this error is ignored for the purposes of this analysis, and quantifying this error is the subject of future research.
 
@@ -562,11 +564,11 @@ We want to choose $\delta t$ in a regime where $\| \mathbf{E}_C \| \ll \| \mathb
 When we do not analytically know the functions $\measfn$ or $\mathbf{g}$, we can find such a regime empirically by
 estimating the covariance for several values of $\delta t$.
 %
-This provides an estimate of $\hat{\mathbf{C}} = \mathbf{C} + \mathbf{E}_C$ as a function of $\delta t$.
+This provides an estimate of $\widehat{\mathbf{C}} = \mathbf{C} + \mathbf{E}_C$ as a function of $\delta t$.
 %
-From \fig~\ref{fig:cov_error}\subref*{subfig:cov_error1}, we expect a ``knee" in the plot of $\| \hat{\mathbf{C}} \|$ versus $\delta t$ when $\| \mathbf{E}_C \|$ becomes larger than $\| \mathbf{C}\|$.
+From \fig~\ref{fig:cov_error}\subref*{subfig:cov_error1}, we expect a ``knee" in the plot of $\| \widehat{\mathbf{C}} \|$ versus $\delta t$ when $\| \mathbf{E}_C \|$ becomes larger than $\| \mathbf{C}\|$.
 %
-\fig~\ref{fig:cov_error}\subref*{subfig:cov_error2} shows the empirical $\| \hat{\mathbf{C}} \|$ as a function of $\delta t$ for the data in \fig~\ref{fig:initial_data}, and the knee in this curve is consistent with the intersection in \fig~\ref{fig:cov_error}\subref*{subfig:cov_error1}.
+\fig~\ref{fig:cov_error}\subref*{subfig:cov_error2} shows the empirical $\| \widehat{\mathbf{C}} \|$ as a function of $\delta t$ for the data in \fig~\ref{fig:initial_data}, and the knee in this curve is consistent with the intersection in \fig~\ref{fig:cov_error}\subref*{subfig:cov_error1}.
 
 \begin{figure}[t]
 \centering
@@ -585,7 +587,7 @@ From \fig~\ref{fig:cov_error}\subref*{subfig:cov_error1}, we expect a ``knee" in
 \end{subfigure}
 %
 \caption[Errors in covariance estimation for linear multiscale example]{Errors in covariance estimation for linear example. (\subref*{subfig:cov_error1}
-) The analytical contributions to the covariance for the example in \sec~\ref{subsec:linear_example} as a function of $\delta t$. (\subref*{subfig:cov_error2}) The average estimated covariance $\| \hat{ \mathbf{C}} \|$ as a function of $\delta t$. The average is computed over $10$ data points and using $50$ sample points to estimate each covariance. The shaded yellow region indicates the range of $\delta t$ over which the errors in the estimated covariance are less than the norm of the covariance. }
+) The analytical contributions to the covariance for the example in \sec~\ref{subsec:linear_example} as a function of $\delta t$. (\subref*{subfig:cov_error2}) The average estimated covariance $\| \widehat{ \mathbf{C}} \|$ as a function of $\delta t$. The average is computed over $10$ data points and using $50$ sample points to estimate each covariance. The shaded yellow region indicates the range of $\delta t$ over which the errors in the estimated covariance are less than the norm of the covariance. }
 \label{fig:cov_error}
 \end{figure}
 
@@ -765,7 +767,7 @@ However, when $\dmeps^2$ corresponds to a region where $|E_M | \gg \|\data(t_2) 
 \label{subfig:cov_error_nonlinear2}
 \end{subfigure}
 %
-\caption[Errors in the Mahalanobis distance and the covariance estimation for nonlinear multi scale data]{Errors in the Mahalanobis distance and the covariance estimation for the nonlinear example in \eqref{eq:nonlinear_function}. (\subref*{subfig:dist_error_nonlinear1}) The analytical expressions for the contributions to the distance approximation as a function of $\| \data_2 - \data_1\|_2$. (\subref*{subfig:dist_error_nonlinear2}) The average estimated Mahalanobis distance $\| \data_2 - \data_1\|^2_M$ as a function of the distance $\| \data_2 - \data_1\|_2$. The line $\| \data_2 - \data_1\|^2_M = \| \data_2 - \data_1\|_2$ is shown for reference. The yellow region indicates the range in which $\sigma_{kernel}$ should be chosen. (\subref*{subfig:cov_error_nonlinear2}) The analytical expressions for the contributions to the covariance as a function of $\delta t$. (\subref*{subfig:cov_error_nonlinear2}) The average estimated covariance $\| \hat{\mathbf{C}} \|$ as a function of $\delta t$. The yellow region indicates the range of $\delta t$ over which the errors in the estimated covariance are small relative to the norm of the covariance. }
+\caption[Errors in the Mahalanobis distance and the covariance estimation for nonlinear multi scale data]{Errors in the Mahalanobis distance and the covariance estimation for the nonlinear example in \eqref{eq:nonlinear_function}. (\subref*{subfig:dist_error_nonlinear1}) The analytical expressions for the contributions to the distance approximation as a function of $\| \data_2 - \data_1\|_2$. (\subref*{subfig:dist_error_nonlinear2}) The average estimated Mahalanobis distance $\| \data_2 - \data_1\|^2_M$ as a function of the distance $\| \data_2 - \data_1\|_2$. The line $\| \data_2 - \data_1\|^2_M = \| \data_2 - \data_1\|_2$ is shown for reference. The yellow region indicates the range in which $\sigma_{kernel}$ should be chosen. (\subref*{subfig:cov_error_nonlinear2}) The analytical expressions for the contributions to the covariance as a function of $\delta t$. (\subref*{subfig:cov_error_nonlinear2}) The average estimated covariance $\| \widehat{\mathbf{C}} \|$ as a function of $\delta t$. The yellow region indicates the range of $\delta t$ over which the errors in the estimated covariance are small relative to the norm of the covariance. }
 \label{fig:cov_error_nonlinear}
 \end{figure}
 
@@ -802,7 +804,7 @@ We can also see the explicit dependence of the covariance error on the time scal
 %
 $\|\mathbf{C} \|$ and $\| \mathbf{E}_C\|  $ are plotted as a function of $\delta t$ in \fig~\ref{fig:cov_error_nonlinear}\subref*{subfig:cov_error_nonlinear1}; the shaded yellow portion denotes the region where $\| \mathbf{E}_C \| < \| \mathbf{C} \|$.
 %
-As in the previous example, we can empirically find where $\| \mathbf{E}_C \| \ll \| \mathbf{C} \|$  by plotting $\| \hat{\mathbf{C}} \|$ as a function of $\delta t $ and looking for a knee in the plot.
+As in the previous example, we can empirically find where $\| \mathbf{E}_C \| \ll \| \mathbf{C} \|$  by plotting $\| \widehat{\mathbf{C}} \|$ as a function of $\delta t $ and looking for a knee in the plot.
 %
 These results are shown in \fig~\ref{fig:cov_error_nonlinear}\subref*{subfig:cov_error_nonlinear2}.
 

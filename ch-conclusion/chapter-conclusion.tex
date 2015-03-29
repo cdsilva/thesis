@@ -3,11 +3,13 @@
 \chapter{Conclusions \label{ch:conclusion}}
 
 
-The focus of this dissertation was using nonlinear dimensionality reduction to analyze data from dynamical systems, in order to gain insight into the appropriate variables for writing coarse-scale models.
+The focus of this work was using nonlinear dimensionality reduction to analyze data from dynamical systems, in order to gain insight into the appropriate variables for writing coarse-scale models.
 %
 We adapted the diffusion maps algorithm, a manifold learning technique, to analyze several different types of data common in the study of dynamical systems.
 %
-Diffusion maps yields a parametrization of data which captures the macroscopic dynamics; subsequently,  these diffusion maps variables can serve as the appropriate variables with which to write an accurate coarse-scale model.
+With attention given to choosing appropriate observers and metrics, diffusion maps analysis yields a parametrization of data which captures the macroscopic dynamics.
+%
+Subsequently,  these diffusion maps variables can serve as the appropriate variables with which to write an accurate coarse-scale model.
 %
 Such data-driven methodologies are essential for constructing informative and simple models for new systems which are not well-studied and/or for which few hypotheses exist about the appropriate macroscopic variables and dynamics.
 
@@ -21,13 +23,15 @@ Furthermore, analysis was only presented for the case of ``bursts,'' where the c
 %
 It is important also to analyze the case of estimating the covariance from a single continuous trajectory (as was done in \chap~\ref{ch:merging}); the error analysis for this case will be more complex, as successive samples are now correlated, but the setting is more practical as it can be applied to a single data trajectory.
 %
-Lastly, the proposed methodology was only applied to synthetic data from a (relatively simple) stochastic system; in the future, one should consider applying these ideas to more complex experimental and/or simulation data sets which are known or thought to exhibit dynamics on multiple time scales.
+Lastly, the proposed methodology was only applied to synthetic data from a (relatively simple) stochastic system. 
+%
+In the future, one should consider applying these ideas to more complex experimental and/or simulation data sets which are known or thought to exhibit dynamics on multiple time scales.
 
 \chap~\ref{ch:merging} discussed using diffusion maps with the Mahalanobis distance to merge multiple observations/measurements of the same dynamical system into a single consistent framework, which we termed Nonlinear Intrinsic Variables (NIV).
 %
-Here, an interesting direction would be to use this methodology to compare several proposed models of the same system.
+Here, an interesting direction is to use this methodology to compare several proposed models of the same system.
 %
-For example, in molecular simulations, there are often well-established fine-scale, all-atom models; although these models are very accurate and describe all the relevant dynamics, they can be computationally intensive and impractical for large simulations.
+For example, in molecular simulations, there are well-established fine-scale, all-atom models; although these models are very accurate and describe all the relevant dynamics, they can be computationally intensive and impractical for large simulations.
 %
 To reduce computational costs, coarse models are constructed, often by first positing a mapping from the fine to coarse scale (e.g., each amino acid in a protein maps to a single ``bead''), and then fitting a dynamic model for the coarse scale which (approximately) replicates the fine-scale dynamics \cite{saunders2013coarse, izvekov2005systematic, chaimovich2011coarse}.
 %
@@ -39,9 +43,9 @@ However, it would be interesting to compare the NIV embeddings of the fine- and 
 
 In \chap~\ref{ch:drosophila}, we discussed reconstructing dynamics from snapshots in developmental biology.
 %
-In the future, it would be interesting to use vector diffusion maps to compare the developmental dynamics of several mutants.
+In the future, one could use vector diffusion maps to compare the developmental dynamics of several mutants.
 %
-By embedding images from several different mutants in the first {\em few} vector diffusion maps coordinates, one can not only uncover the developmental dynamics, but also compare the different developmental trajectories.
+By embedding images from several different mutants in the first {\em few} vector diffusion maps coordinates, one could not only uncover the developmental dynamics, but also compare the different developmental trajectories.
 %
 This would provide a measure of similarity based not on genetic backgrounds or phenotypic markers, but based on the developmental dynamics of the different organisms.
 %
@@ -53,8 +57,13 @@ The issue of repeated eigendirections is a crucial shortcoming of standard manif
 %
 Until now, detecting repeated eigendirections has mostly been done manually, a tedious task which is impractical when considering using diffusion maps in a larger modeling framework.
 %
-Therefore, this algorithm will be an extraordinarily useful tool for future diffusion maps analysis, both for constructing the most parsimonious and informative embedding for visualization purposes, as well as determining the number of variables required to write reduced models.
-
+We first illustrated our algorithm on several synthetic data sets. 
+%
+We then showed how our algorithm can analyze data from a simulation modeling cellular chemotaxis; here, we showed that we can detect changes in system dynamics and dimensionality directly from data.
+%
+This algorithm will be a useful tool for future diffusion maps analysis, both for constructing the most parsimonious and informative embedding for visualization purposes, as well as determining the number of variables required to write reduced models.
+%
 Clearly, there are many interesting research directions stemming from this work.
 %
-We are confident that these methods will find many applications in the analysis of dynamical systems.
+We are confident that the proposed methods will find many applications in the analysis of dynamical systems.
+
