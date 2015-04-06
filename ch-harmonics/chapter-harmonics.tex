@@ -15,9 +15,9 @@ As discussed in previous chapters, manifold learning algorithms have proven usef
 %%
 %For simulations, the governing model is often very high-dimensional and the macroscale dynamics are not obvious; for experimental systems, an explicit model is often unknown.
 %%
-%For such cases, data obtained from observations and/or simulations of the dynamical system combined with such methodologies gives rise to a low-dimensional description which can not only provide insight into the underlying dynamics, but also serve as a first step in constructing macroscale models which are consistent with the observed microscale behavior.
+%For such cases, data obtained from observations and/or simulations of the dynamical system combined with such methodologies gives rise to a low-dimensional description which can not only provide insight into the underlying dynamics, but also serve as a first step in constructing macroscale models which are consistent with the observed microscope behavior.
 %
-%Due to the complexity and range of microscale behaviors possible in dynamical systems, we use manifold learning, a class of nonlinear data-driven techniques, to analyze data.
+%Due to the complexity and range of microscope behaviors possible in dynamical systems, we use manifold learning, a class of nonlinear data-driven techniques, to analyze data.
 %%
 %Most manifold learning algorithms construct parameterizations of the data through the spectral analysis of a Laplace operator \cite{Belkin2003,coifman2005geometric,coifman2006geometric,singer2008non}.
 %%
@@ -31,7 +31,7 @@ Only recently have they been applied to experimental and simulation data, which 
 %
 A critical shortcoming of these methods is that from a geometric perspective, not all eigenvectors are guaranteed to parameterize unique directions within the data; some eigenvectors are ``repeated eigendirections'' which describe the same mode.
 %
-Identifying those eigenvectors is critical for obtaining a parametrization of the system which captures the true dimensionality of the macroscale dynamics.
+Identifying those eigenvectors is critical for obtaining a parameterization of the system which captures the true dimensionality of the macroscale dynamics.
 %
 This is a challenging task which is often done manually, and few methods have been proposed to automate the identification of the unique eigendirections \cite{gerber2007robust}.
 
@@ -58,7 +58,7 @@ We will show that this pipeline allows us to detect changes in the regime/mode o
 %%
 %However, in the case when the manifold is nonlinear, the set of coordinates is not readily apparent.
 %%
-%By using a particular manifold learning technique based on the construction of a Laplace operator, namely, diffusion maps, we will show how to extract a $\lowdim$-dimensional parametrization of the observations which is consistent with the geometry of the manifold \cite{Belkin2003, coifman2005geometric, singer2008non}.
+%By using a particular manifold learning technique based on the construction of a Laplace operator, namely, diffusion maps, we will show how to extract a $\lowdim$-dimensional parameterization of the observations which is consistent with the geometry of the manifold \cite{Belkin2003, coifman2005geometric, singer2008non}.
 
 %\subsection{Eigenfunctions of the Laplace-Beltrami operator}
 
@@ -108,13 +108,13 @@ To illustrate the issue of repeated eigendirections, we first return to the simp
 %\end{equation}
 %where $z_1$ and $z_2$ denote the two coordinates of the strip \cite{singer2008non}.
 %%
-%We note that the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$ and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$ are one-to-one with the $z_1$ and $z_2$ coordinates, respectively, and therefore yield a parametrization of the underlying manifold (see Figure~\ref{subfig:strip_efuncs}).
+%We note that the eigenfunctions $\tilde{\phi}_{1, 0} = \cos \left( {\pi z_1}/{L_1} \right)$ and $\tilde{\phi}_{0, 1} = \cos \left( {\pi z_2}/{L_2} \right)$ are one-to-one with the $z_1$ and $z_2$ coordinates, respectively, and therefore yield a parameterization of the underlying manifold (see Figure~\ref{subfig:strip_efuncs}).
 %%
 %Furthermore, the corresponding eigenvalues $\tilde{\lambda}_{1,0}$ and $\tilde{\lambda}_{0,1}$ provide a measure of $L_1$ versus $L_2$: as the ratio between $L_1$ and $L_2$ increases, the gap between $\tilde{\lambda}_{1,0}$ and $\tilde{\lambda}_{0,1}$ also increases (this will be discussed further in Section~\ref{sec:relative_lengths}).
 %
 The analytic form of the eigenfunctions in \eqref{eq:efuncs} illustrates the two issues we address in this chapter.
 %
-First, $z_1$ and $z_2$ are not necessarily decoupled in subsequent eigenfunctions, and a proper parametrization of the manifold is not necessarily given by first two eigenfunctions, even though the manifold is two-dimensional.
+First, $z_1$ and $z_2$ are not necessarily decoupled in subsequent eigenfunctions, and a proper parameterization of the manifold is not necessarily given by first two eigenfunctions, even though the manifold is two-dimensional.
 % TODO: address this in later section
 %
 Second, eigenfunctions with $k_1+k_2 \ge 2$ do not describe any additional directions along the strip; we will refer to these as ``repeated eigendirections,'' and we will refer to the eigenfunctions with $k_1+k_2 =1$ as ``unique eigendirections.''
@@ -132,7 +132,7 @@ The existence of these challenges in the continuous setting implies that, even i
 
 %In most applications, we are not given a description of the continuous manifold.
 %%
-%Instead, we are given data {\em sampled} from the underlying manifold, and the parametrization of the manifold needs to be uncovered from the data.
+%Instead, we are given data {\em sampled} from the underlying manifold, and the parameterization of the manifold needs to be uncovered from the data.
 %%
 %As discussed in \chap~\ref{ch:math}, diffusion maps constructs a matrix which, in the limit of infinite data, approximates the Laplace-Beltrami or Fokker-Planck operator on the manifold.
 %
@@ -170,7 +170,7 @@ The existence of these challenges in the continuous setting implies that, even i
 %\lambda_k = \exp \left( -\frac{\epsilon^2}{4} \tilde{\lambda}_{k_1, k_2}  \right).
 %\end{equation}
 %
-%As discussed previously, the eigenfunctions provide a parametrization of the manifold, such that $\lambda_j^\tau \phi_{j}(i)$ yields the $j^{th}$ embedding coordinate for $z(i)$, where $\tau \ge 0$ is a parameter (in our examples, we will take $\tau=0$).
+%As discussed previously, the eigenfunctions provide a parameterization of the manifold, such that $\lambda_j^\tau \phi_{j}(i)$ yields the $j^{th}$ embedding coordinate for $z(i)$, where $\tau \ge 0$ is a parameter (in our examples, we will take $\tau=0$).
 %%
 %This is the standard diffusion maps embedding \cite{coifman2005geometric, coifman2006geometric}, where we order the eigenvectors such that $|\lambda_0| \ge |\lambda_1| \ge \dots \ge |\lambda_{m-1}|$.
 %%
@@ -202,7 +202,7 @@ We note that, in contrast to our simple illustrative example, for most data sets
 
 \section{Identifying the Informative Eigenvectors }
 
-Common practice is to order the eigenvectors by the magnitude of the corresponding eigenvalues, assuming that the leading eigenvectors provide a parametrization of the underlying manifold.
+Common practice is to order the eigenvectors by the magnitude of the corresponding eigenvalues, assuming that the leading eigenvectors provide a parameterization of the underlying manifold.
 %
 However, as discussed in the previous section, some eigenvectors are higher harmonics of previous eigenvectors and do not describe new directions in the data set \cite{gerber2007robust}.
 %
@@ -338,7 +338,7 @@ We can then write
 r_{k} = \sqrt{ \frac{\sum_{i=1}^n \left( \frac{ \phi_{k} (i) - \sum_{j=1}^\ndata \mathbf{S}_{k-1}(i,j) \phi_{k}(j) }{1-\mathbf{S}_{k-1}(i,i)} \right)^2} {\sum_{i=1}^\ndata \left( \phi_{k} (i) \right)^2 }} .
 \end{equation}
 %
-where $\mathbf{S}_{k-1}(i,j)$ denotes the $(i,j)$ entry of $\mathbf{S}_{k-1}$. 
+where $\mathbf{S}_{k-1}(i,j)$ denotes the $(i,j)$ entry of $\mathbf{S}_{k-1}$.
 
 We propose using {\em only} those eigenvectors for which $r_k$ is large to embed the data, as this will yield a more parsimonious representation.
 %
@@ -593,11 +593,11 @@ Our main motivation for identifying the unique eigendirections is to facilitate 
 %
 In data from complex dynamical systems, noisy microscopic behavior often gives rise to coherent macroscopic dynamics.
 %
-In general, this mapping from microscale to macroscale is not always obvious.
+In general, this mapping from microscope to macroscale is not always obvious.
 %
-We will show how we can use our proposed methodology to extract a parametrization of data collected at the microscale which is consistent with the macroscopic behavior, without any {\em a priori} knowledge of the appropriate microscopic or macroscopic model.
+We will show how we can use our proposed methodology to extract a parameterization of data collected at the microscope which is consistent with the macroscopic behavior, without any {\em a priori} knowledge of the appropriate microscopic or macroscopic model.
 %
-Furthermore, determining the {\em true} dimensionality of such a parametrization by identifying the unique eigendirections reveals the requisite dimensionality of a reduced model which captures the relevant macroscopic behavior.
+Furthermore, determining the {\em true} dimensionality of such a parameterization by identifying the unique eigendirections reveals the requisite dimensionality of a reduced model which captures the relevant macroscopic behavior.
 %
 Knowing appropriate macroscopic variables and the true dimensionality can help inform modeling efforts and aid in the writing of accurate macroscale models.
 
@@ -613,7 +613,7 @@ This model serves as a ground truth and will allow us to verify our results whic
 %
 Thus far, we only considered synthetic data sets for which the Euclidean distance between data points served as an informative metric.
 %
-Here, we will show that our approach, when utilizing the appropriate statistical observers and affinity metric between pairs of observations, uncovers a parametrization of the microscopic data which is consistent with the macroscopic model.
+Here, we will show that our approach, when utilizing the appropriate statistical observers and affinity metric between pairs of observations, uncovers a parameterization of the microscopic data which is consistent with the macroscopic model.
 %
 Furthermore, we will show that changes in dynamical behavior resulting from changes in the system parameters can be automatically detected.
 
@@ -778,9 +778,9 @@ The two-dimensional reduced diffusion maps embeddings obtained from eigenvectors
 %
 In contrast, the standard diffusion maps embeddings using the two leading eigenvectors $\phi_1$ and $\phi_2$ produce uninformative embeddings for large values of $\lambda_{switch}$, as $\phi_2$ is a repeated eigendirection which does not parameterize any new directions in the data.
 %
-Furthermore, although the eigenvalue spectra do not exhibit any large spectral gaps, the gap between the eigenvalues which correspond to new directions in the data (colored in blue) increases with $\lambda_{switch}$, indicating that the underlying manifold becomes more narrow/one-dimensional, and the corresponding eigenvectors provide us with an informative two-dimensional parametrization of the data. %which is consistent with the expected macroscopic dynamics.
+Furthermore, although the eigenvalue spectra do not exhibit any large spectral gaps, the gap between the eigenvalues which correspond to new directions in the data (colored in blue) increases with $\lambda_{switch}$, indicating that the underlying manifold becomes more narrow/one-dimensional, and the corresponding eigenvectors provide us with an informative two-dimensional parameterization of the data. %which is consistent with the expected macroscopic dynamics.
 %
-It now becomes clear that looking at the eigenvectors {\em modulo} repeated eigendirections is essential for extracting an informative parametrization of the data, as well as characterizing the dimensionality of the data.
+It now becomes clear that looking at the eigenvectors {\em modulo} repeated eigendirections is essential for extracting an informative parameterization of the data, as well as characterizing the dimensionality of the data.
 
 \subsubsection{Analytic macroscopic description}
 
@@ -864,7 +864,7 @@ We analyzed the two sets of simulation data from Figure~\ref{fig:dmaps_embed_emd
 We empirically found that there is no appreciable correlation between the embedding coordinates and the macroscopic variables $p$ and $t$ (the correlations between the embedding coordinates and the governing macroscopic variables are all less than 60\%, with the correlations for the small $\lambda_{switch}$ case being less than 20\%)
 %
 %In contrast, the correlations between the embedding coordinates and the macroscopic variables when using EMD in the diffusion maps calculation are all greater than 80\%
-, and so using a metric which accurately describes the distances between observations is essential for obtaining an informative parametrization of data.
+, and so using a metric which accurately describes the distances between observations is essential for obtaining an informative parameterization of data.
 
 \subsubsection{Detecting changes in dimensionality}
 

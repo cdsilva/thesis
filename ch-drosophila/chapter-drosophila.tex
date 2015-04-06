@@ -1,10 +1,10 @@
 % !TEX root = ../thesis.tex
 
-\chapter{Reconstructing Dynamics from Fixed Images \label{ch:drosophila}}
+\chapter{Reconstructing Developmental Dynamics from Fixed Images \label{ch:drosophila}}
 
 \graphicspath{{ch-drosophila/figures/}}
 
-{\em This work was published in \citep{dsilva2015temporal}}
+{\em This work was published in \citep{dsilva2015temporal}.}
 
 \section{Introduction}
 
@@ -123,22 +123,22 @@ As a consequence, uncovering this direction should reveal the underlying dynamic
 %
 %After removing variability due to rotations, the developmental dynamics may be revealed by ordering the data along the one-dimensional curve that parameterizes most of the remaining variability in the data.
 %%
-%Such a curve can be discovered using diffusion maps \citep{coifman2005geometric}, a nonlinear dimensionality reduction technique that reveals a parametrization of data that lies on a low-dimensional manifold in high-dimensional space.
+%Such a curve can be discovered using diffusion maps \citep{coifman2005geometric}, a nonlinear dimensionality reduction technique that reveals a parameterization of data that lies on a low-dimensional manifold in high-dimensional space.
 %%
 %The idea is illustrated in \fig~\ref{fig:schematics}C, where the data are two-dimensional points which lie on a one-dimensional (nonlinear) curve.
 %%
-%We use {\it local} information about the data to find a parametrization which respects the underlying manifold geometry, so that points which are close in high-dimensional space (e.g., images which look similar) are close in our parametrization.
+%We use {\it local} information about the data to find a parameterization which respects the underlying manifold geometry, so that points which are close in high-dimensional space (e.g., images which look similar) are close in our parameterization.
 %%
 %This idea of locality is denoted by the color of the edges in \fig~\ref{fig:schematics}C:
 %data points which are close are connected by dark edges, and clearly, the dark edges are more ``informative" about the low-dimensional structure of the data.
 %%
-%The color in \fig~\ref{fig:schematics}D depicts the one-dimensional parametrization or ordering of the data that we can detect visually.
+%The color in \fig~\ref{fig:schematics}D depicts the one-dimensional parameterization or ordering of the data that we can detect visually.
 %%
 %A detailed example of using vector diffusion maps to register and order synthetic data is given in \fig~\ref{fig:1d_demo}.
 %%
 %In our working examples, each data point will be of much higher dimension (e.g., a pixelated image or three-dimensional voxel data), and so we cannot extract this low-dimensional structure visually.
 %%
-%Instead, we will use diffusion maps which automatically uncovers a parametrization of our high-dimensional data from the eigenvectors of the appropriate matrix (see \sec~\ref{sec:dmaps}).
+%Instead, we will use diffusion maps which automatically uncovers a parameterization of our high-dimensional data from the eigenvectors of the appropriate matrix (see \sec~\ref{sec:dmaps}).
 %%
 %Furthermore, the corresponding eigenvalues will allow us to test our assumption that our data approximately lie on a one-dimensional manifold (see \fig~\ref{fig:eigenvalues_images}).
 
@@ -732,9 +732,9 @@ In the examples presented here, we have focused on ordering the images in time u
 %
 In general, we can recover several coordinates which concisely and comprehensively describe the data set.
 %
-This parametrization can then be used for typical data analysis tasks, such as outlier detection and model fitting.
+This parameterization can then be used for typical data analysis tasks, such as outlier detection and model fitting.
 %
-Furthermore, images taken from different viewing directions can be analyzed, as the vector diffusion maps parametrization will organize the images according to the viewing angle \citep{singer2011viewing}.
+Furthermore, images taken from different viewing directions can be analyzed, as the vector diffusion maps parameterization will organize the images according to the viewing angle \citep{singer2011viewing}.
 %
 Another direction for future work is related to the joint analysis of data sets provided by different imaging approaches, such as merging live imaging data of tissue morphogenesis with snapshots of cell signaling and gene expression from fixed embryos \citep{krzic2012multiview, ichikawa2014live, rubel2010coupling, dsilva2013nonlinear}.
 %
@@ -746,6 +746,6 @@ In the previous chapters, we have discussed using diffusion maps to analyze diff
 %
 However, we have mostly ignored the issue of detecting the dimensionality of the underlying manifold.
 %
-Because of the issue of ``repeated eigendirections,'' where some diffusion maps coordinates are higher harmonics of previous coordinates and do not describe any new directions in the data, detecting how many and which coordinates one must retain to obtain an accurate parametrization of the data is a difficult issue.
+Because of ``repeated eigendirections,'' where some diffusion maps coordinates are higher harmonics of previous coordinates and do not describe any new directions in the data, detecting how many and which coordinates one must retain to obtain an accurate parameterization of the data is a difficult issue which must be reconciled for diffusion maps to be broadly applicable to the analysis of dynamical systems data.
 %
-In the next chapter, we will present a methodology to address this problem, an issue which must be reconciled for diffusion maps to be broadly applicable to the analysis of dynamical systems data.
+In the next chapter, we will present a methodology to address this problem. 

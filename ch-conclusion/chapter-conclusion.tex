@@ -3,17 +3,17 @@
 \chapter{Conclusions \label{ch:conclusion}}
 
 
-The focus of this work was using nonlinear dimensionality reduction to analyze data from dynamical systems, in order to gain insight into the appropriate variables for writing coarse-scale models.
+The focus of this work was using nonlinear dimensionality reduction techniques to analyze data from dynamical systems, in order to gain insight into the appropriate variables for formulating coarse-scale models.
 %
 We adapted the diffusion maps algorithm, a manifold learning technique, to analyze several different types of data common in the study of dynamical systems.
 %
-With attention given to choosing appropriate observers and metrics, diffusion maps analysis yields a parametrization of data which captures the macroscopic dynamics.
+When attention is given to choosing appropriate observers and metrics, diffusion maps analysis yields a parameterization of data which captures the macroscopic dynamics.
 %
-Subsequently,  these diffusion maps variables can serve as the appropriate variables with which to write an accurate coarse-scale model.
+Subsequently, these diffusion maps variables can serve as the appropriate variables in which to write an accurate coarse-scale model.
 %
 Such data-driven methodologies are essential for constructing informative and simple models for new systems which are not well-studied and/or for which few hypotheses exist about the appropriate macroscopic variables and dynamics.
 
-In \chap~\ref{ch:multiscale}, we studied data which exhibited dynamics on multiple time scales, and used diffusion maps with the Mahalanobis distance to extract a parametrization of the data which respects the {\em slow} variables in the underlying dynamical system.
+In \chap~\ref{ch:multiscale}, we studied data which exhibited dynamics on multiple time scales, and used diffusion maps with the Mahalanobis distance to extract a parameterization of the data which respects the {\em slow} variables in the underlying dynamical system.
 %
 There are both theoretical and experimental future research directions to pursue in this work.
 %
@@ -29,7 +29,7 @@ In the future, one should consider applying these ideas to more complex experime
 
 \chap~\ref{ch:merging} discussed using diffusion maps with the Mahalanobis distance to merge multiple observations/measurements of the same dynamical system into a single consistent framework, which we termed Nonlinear Intrinsic Variables (NIV).
 %
-Here, an interesting direction is to use this methodology to compare several proposed models of the same system.
+Here, an interesting direction for future work is to use this methodology to compare several proposed models of the same system.
 %
 For example, in molecular simulations, there are well-established fine-scale, all-atom models; although these models are very accurate and describe all the relevant dynamics, they can be computationally intensive and impractical for large simulations.
 %
@@ -43,27 +43,26 @@ However, it would be interesting to compare the NIV embeddings of the fine- and 
 
 In \chap~\ref{ch:drosophila}, we discussed reconstructing dynamics from snapshots in developmental biology.
 %
-In the future, one could use vector diffusion maps to compare the developmental dynamics of several mutants.
+%
+In the future, one could use vector diffusion maps to merge live and fixed imaging data in order to estimate the real time of fixed images.
+%
+Another direction for future work is using vector diffusion maps to compare the developmental dynamics of several mutants.
 %
 By embedding images from several different mutants in the first {\em few} vector diffusion maps coordinates, one could not only uncover the developmental dynamics, but also compare the different developmental trajectories.
 %
 This would provide a measure of similarity based not on genetic backgrounds or phenotypic markers, but based on the developmental dynamics of the different organisms.
-%
-Another direction for future work is merging live and fixed imaging data in order to estimate the real time of fixed images.
 
 Our final contribution, discussed in \chap~\ref{ch:harmonics}, was an algorithm for automatically detecting ``repeated eigendirections'' in diffusion maps embeddings.
 %
-The issue of repeated eigendirections is a crucial shortcoming of standard manifold learning techniques, as these eigendirections provide additional, uninformative embedding coordinates which obscure the true dimensionality of the underlying manifold.
+The issue of repeated eigendirections is a crucial shortcoming of standard manifold learning techniques, as these eigenvectors provide uninformative embedding coordinates which obscure the true dimensionality of the underlying manifold.
 %
 Until now, detecting repeated eigendirections has mostly been done manually, a tedious task which is impractical when considering using diffusion maps in a larger modeling framework.
 %
-We first illustrated our algorithm on several synthetic data sets. 
+We first illustrated our algorithm for the detection of repeated eigendirections using several synthetic data sets. 
 %
-We then showed how our algorithm can analyze data from a simulation modeling cellular chemotaxis; here, we showed that we can detect changes in system dynamics and dimensionality directly from data.
+We then showed that our methodology can detect changes in system dynamics and dimensionality directly from data, using a simulation of cellular chemotaxis.
 %
 This algorithm will be a useful tool for future diffusion maps analysis, both for constructing the most parsimonious and informative embedding for visualization purposes, as well as determining the number of variables required to write reduced models.
 %
-Clearly, there are many interesting research directions stemming from this work.
-%
-We are confident that the proposed methods will find many applications in the analysis of dynamical systems.
+Clearly, there are many interesting research directions stemming from this work, and we are confident that the proposed methods will find many applications in the analysis of dynamical systems.
 

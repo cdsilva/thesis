@@ -4,7 +4,7 @@
 
 \graphicspath{{ch-multiscale/figures/}}
 
-{\em This work was published in \citep{dsilva2015data}}
+{\em This work has been submitted for publication \citep{dsilva2015data}.}
 
 \section{Introduction}
 
@@ -55,7 +55,7 @@ In particular, we will use a manifold-learning based approach, as such methods c
 The core of most manifold learning methods is having a notion of similarity between data points,
 usually through a distance metric \cite{Belkin2003, Coifman2006, coifman2005geometric, roweis2000nonlinear, tenenbaum2000global}.
 %
-The distances are then integrated into a global parametrization of the data, typically through the solution of an eigenproblem.
+The distances are then integrated into a global parameterization of the data, typically through the solution of an eigenproblem.
 %
 In this chapter, we will analyze multiple time scale stochastic dynamical systems using data-driven methods.
 %
@@ -72,7 +72,7 @@ the underlying system variables through a complex, nonlinear function \cite{dsil
 %
 Here, we will show the analogy between removing the effects of such nonlinear observation functions (in the context of data analysis), and reducing a dynamical system to remove the effects of the fast variables.
 %
-Our approach will build a parametrization of the data which is consistent with the underlying slow variables.
+Our approach will build a parameterization of the data which is consistent with the underlying slow variables.
 %
 Because our approach is data-driven, we require no explicit description of the model, and can extract the underlying slow variables
 from either simulation or experimental data.
@@ -163,7 +163,7 @@ We assume that $\measfn: \mathbb{R}^\lowdim \mapsto \mathbb{R}^\highdim$, $\lowd
 %
 For our analysis, we require $\mathbf{g} = \measfn ^{-1}$ to be well-defined on $\manifold$, and both $\measfn$ and $\mathbf{g}$ to be continuously differentiable to fourth order.
 %
-Given data $\data(t_1),\ldots,\data(t_\ndata)$ on $\manifold$ we would like to recover a parametrization of the data that is one-to-one with the
+Given data $\data(t_1),\ldots,\data(t_\ndata)$ on $\manifold$ we would like to recover a parameterization of the data that is one-to-one with the
 slow variables $x_1, \dots, x_\lowdimslow$.
 
 %\section{Nonlinear Intrinsic Variables}
@@ -226,7 +226,7 @@ This approximation is accurate when $\| \data(t_2) - \data(t_1) \|$ is small.
 %
 We will use the Mahalanobis distances between pairs of data points in a diffusion maps calculation to uncover a parameterization of the data. 
 %
-Because we will integrate these distances into a manifold learning algorithm which only considers local distances, we can recover a parametrization of the data which is consistent with the underlying system variables $\mathbf{x}(t)$, even when the data are obscured by a function $\mathbf{f}$.
+Because we will integrate these distances into a manifold learning algorithm which only considers local distances, we can recover a parameterization of the data which is consistent with the underlying system variables $\mathbf{x}(t)$, even when the data are obscured by a function $\mathbf{f}$.
 %
 In \sec~\ref{sec:analysis}, we will show how we can approximate this distance directly from data $\data(t)$.
 
@@ -379,7 +379,7 @@ This will ensure that the errors in the Mahalanobis distance approximation do no
 
 On first inspection, it would appear that our analysis indicates that $\dmeps$ should be chosen arbitrarily small.
 %
-However, to obtain a meaningful parametrization of the data set, there must be a nonnegligible number of data points within a ball of radius $\dmeps$ around each sample.
+However, to obtain a meaningful parameterization of the data set, there must be a nonnegligible number of data points within a ball of radius $\dmeps$ around each sample.
 %
 Therefore, the sampling density on the underlying manifold provides a lower bound for $\sigma_{kernel}$.
 
@@ -472,7 +472,7 @@ $x_1$ is the slow variable, and $x_2$ is a fast noise whose equilibrium measure 
 %
 \fig~\ref{fig:initial_data} shows data simulated from this SDE colored by time.
 %
-We would like to recover a parametrization of this data which is one-to-one with the slow variable $x_1$.
+We would like to recover a parameterization of this data which is one-to-one with the slow variable $x_1$.
 
 \begin{figure}[t]
 \centering
@@ -692,7 +692,7 @@ For this example, the analytical covariance and inverse covariance are
 
 The fast and slow variables are now coupled through the function $\measfn$, and the Euclidean distance is not informative about the fast {\em or} the slow variables.
 %
-We need to use the Mahalanobis distance to obtain a parametrization that is consistent with the underlying fast-slow dynamics.
+We need to use the Mahalanobis distance to obtain a parameterization that is consistent with the underlying fast-slow dynamics.
 
 \begin{figure}[t]
 \centering
@@ -845,14 +845,14 @@ However, when $\delta t$ corresponds to a region where $\|\mathbf{E}_C \| \gg \|
 \includegraphics[height=\figheight]{dist_dy_nonlinear_dt2_kernel1}
 \end{subfigure}
 
-\caption[Analysis of nonlinear multiscale data for different parameter settings]{Data from \fig~\ref{fig:initial_data_nonlinear}, colored by the first diffusion maps variable $\phi_1$ using the Mahalanobis distance for three different parameter settings. The relevant values of $\delta t$ and $\sigma_{kernel}$ are indicated by the red dashed lines on the corresponding plots.  (Row~1) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{-2}$. Note that the parametrization is one-to-one with the slow variable.  (Row~2) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{1}$. We do not recover the slow variable because $\sigma_{kernel}$ is too large. (Row~3)  $\delta t = 10^{-3}$ and $\sigma_{kernel}^2 = 10^{-2}$. We do not recover the slow variable because $\delta t$ is too large.  }
+\caption[Analysis of nonlinear multiscale data for different parameter settings]{Data from \fig~\ref{fig:initial_data_nonlinear}, colored by the first diffusion maps variable $\phi_1$ using the Mahalanobis distance for three different parameter settings. The relevant values of $\delta t$ and $\sigma_{kernel}$ are indicated by the red dashed lines on the corresponding plots.  (Row~1) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{-2}$. Note that the parameterization is one-to-one with the slow variable.  (Row~2) $\delta t = 10^{-7}$ and $\sigma_{kernel}^2 = 10^{1}$. We do not recover the slow variable because $\sigma_{kernel}$ is too large. (Row~3)  $\delta t = 10^{-3}$ and $\sigma_{kernel}^2 = 10^{-2}$. We do not recover the slow variable because $\delta t$ is too large.  }
 \label{fig:colored_data_nonlinear_cases}
 \end{figure}
 
 
 \section{Discussion}
 
-We have presented a methodology to compute a parametrization of a data set which respects the slow variables in the underlying dynamical system.
+We have presented a methodology to compute a parameterization of a data set which respects the slow variables in the underlying dynamical system.
 %
 The approach utilizes diffusion maps, a kernel-based manifold learning technique, with the Mahalanobis distance as the metric.
 %
@@ -888,7 +888,7 @@ However, constructing such intermediates often requires additional {\em a priori
 
 Clearly, in our analysis, we have ignored the finite sampling effects in our estimation.
 %
-In reality, both the number of samples used to estimate the covariances, as well as the density of sampled points on the manifold, affect the recovered parametrization and provide additional constraints on $\delta t$ and $\dmeps$.
+In reality, both the number of samples used to estimate the covariances, as well as the density of sampled points on the manifold, affect the recovered parameterization and provide additional constraints on $\delta t$ and $\dmeps$.
 %
 Future work involves extending our analysis to the finite sample case, and providing guidelines for the amount of data required to apply our methodology.
 
@@ -898,4 +898,4 @@ With this interface established, one can now consider using such data-driven met
 %
 Such reduced models hold the promise of accelerated analysis and reduced simulation of dynamical systems whose effective dynamics are obscure upon simple inspection.
 %
-In the following chapter, we will exploit another feature of the Mahalanobis distance (its invariance to measurement/observation functions) to analyze and merge multiple data sets.
+In the following chapter, we will exploit another feature of the Mahalanobis distance (its invariance to measurement/observation functions) to merge multiple data sets obtained from different observations of the same underlying dynamical system.

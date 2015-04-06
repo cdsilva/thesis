@@ -1,10 +1,10 @@
 % !TEX root = ../thesis.tex
 
-\chapter{Merging Data from Dynamical Systems \label{ch:merging}}
+\chapter{Merging Data from Different Observations of Dynamical Systems \label{ch:merging}}
 
 \graphicspath{{ch-merging/figures/}}
 
-{\em This work was published in \citep{dsilva2013nonlinear}}
+{\em This work was published in \citep{dsilva2013nonlinear}.}
 
 \section{Introduction}
 
@@ -290,7 +290,7 @@ We remark that, while in diffusion maps \cite{coifman2005geometric}, the limitin
 here the Laplacian operator on the data that is based on the Mahalanobis distance converges to a limiting Laplacian operator on the
 manifold of the intrinsic variables $\mathbf{x}$.
 %
-The convergence to the limiting operator implies that the eigenvectors of $\mathbf{W}^{\alpha}$, which are used to represent the NIV, approximate the eigenfunctions of the limiting Fokker-Planck operator on the NIV manifold.
+The convergence to the limiting operator implies that the eigenvectors of $\tilde{\mathbf{W}}$, which are used to represent the NIV, approximate the eigenfunctions of the limiting Fokker-Planck operator on the NIV manifold.
 %
 As such, according to \eqref{eq:limiting_operator}, they depend on the potential.
 %
@@ -963,14 +963,14 @@ the bias due to drift variations.
 %
 We are confident that the exploration of these open questions will enable the use of our methodology in many interesting applications, such as merging data from molecular simulations at different levels of granularity, or merging simulation data with experimental observations.
 
-These two chapters have described using the Mahalanobis distance with diffusion maps to analyze two different types of data common in dynamical systems: data exhibiting dynamics on multiple time scales, and data obtained via several measurement/observation functions.
+We have described using the Mahalanobis distance with diffusion maps to analyze two different types of data common in dynamical systems: data exhibiting dynamics on multiple time scales, and data obtained via several measurement/observation functions.
 %
 In the next chapter, we will address a third type of data (imaging data).
 %
 In this work, we will not be interested in removing the effects of fast variables or measurement functions, but instead factoring out rotational symmetries which arise from the experimental imaging setup.
 %
-We will present another extension of diffusion maps which allows us to simultaneously factor out symmetries and uncover structure in the imaging data.
+We will present an extension of diffusion maps which allows us to simultaneously factor out symmetries and uncover patterns and structure in the imaging data set.
 %
-For this particular example, recovering structure in the data set will correspond to ordering the images in order to recover the relevant developmental dynamics.
+%For this particular example, recovering structure in the data set will correspond to ordering the images in order to recover the relevant developmental dynamics.
 
 

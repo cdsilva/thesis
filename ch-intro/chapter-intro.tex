@@ -56,7 +56,7 @@ The past twenty years have witnessed increased interest in algorithms which can 
 %
 Kernel principal components analysis \cite{scholkopf1997kernel} uses the ``kernel trick'' to perform PCA in a higher-dimensional, more complex basis which can capture nonlinearities.
 %
-Local linear embedding \cite{roweis2000nonlinear} does PCA {\em locally} on patches of the data, and then merges these linear patches together to obtain a global parametrization which can reveal nonlinear structure in the data.
+Local linear embedding \cite{roweis2000nonlinear} does PCA {\em locally} on patches of the data, and then merges these linear patches together to obtain a global parameterization which can reveal nonlinear structure in the data.
 %
 Isomap \cite{tenenbaum2000global} first constructs a weighted graph on the data in which nearby data points are connected by stronger edges.
 %
@@ -91,13 +91,13 @@ In \chap~\ref{ch:math}, we outline the mathematical techniques common throughout
 %
 \chap~\ref{ch:multiscale} discusses using data-driven techniques for the analysis of multiscale stochastic data.
 %
-By using the Mahalanobis distance \cite{mahalanobis1936generalized}, rather than the standard Euclidean distance, we uncover a parametrization of data which respects the underlying slow dynamical modes and is invariant to fast stochastic fluctuations, even when these fluctuations are large.
+By using the Mahalanobis distance \cite{mahalanobis1936generalized}, rather than the standard Euclidean distance, we uncover a parameterization of data which respects the underlying slow dynamical modes and is invariant to fast stochastic fluctuations, even when these fluctuations are large.
 %
-We present both theoretical analysis for our proposed approach, as well as illustrate the approach using synthetic data sets.
+We both present a theoretical analysis for our proposed approach, as well as illustrate the approach using synthetic data sets.
 %
-\chap~\ref{ch:merging} then discusses extracting a parametrization of data which is invariant to the specific measurement function used to observe the underlying system.
+\chap~\ref{ch:merging} then discusses extracting a parameterization of data which is invariant to the specific measurement function used to observe the underlying system.
 %
-In this case, we use the Mahalanobis distance to removes the effect of nonlinear observation/measurement functions, so that different observations of the same dynamical system can be merged into a common framework.
+In this case, we use the Mahalanobis distance to remove the effect of nonlinear observation/measurement functions, so that different observations of the same dynamical system can be merged into a common framework.
 %
 We demonstrate this approach on two simulation data sets: (1) a simulation of a chemical reaction network, and (2) a molecular dynamics simulation of a small peptide fragment.
 %
