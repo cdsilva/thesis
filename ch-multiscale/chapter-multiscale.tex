@@ -157,7 +157,7 @@ The aim of our work is to show how we can detect such slow variables {\em automa
 In general, we are not given the variables $\mathbf{x}(t)$ from the original SDE system, but instead, we are given some {\em observations}
  in the form $\data(t) = \measfn (\mathbf{x}(t))$.
 %
-We assume that $\measfn: \mathbb{R}^\lowdim \mapsto \mathbb{R}^\highdim$, $\lowdim \le \highdim$, is a deterministic (possibly nonlinear) function whose image is an $\lowdim$-dimensional manifold $\manifold$ in $\mathbb{R}^\highdim$.
+We assume that $\measfn: \mathbb{R}^\lowdim \mapsto \mathbb{R}^\highdim$, $\lowdim \le \highdim$, is a deterministic (possibly nonlinear) function whose image is a $\lowdim$-dimensional manifold $\manifold$ in $\mathbb{R}^\highdim$.
 %
 % TODO: check whether the inverse condition is not too strong (and we only need it to apply to the domain of the samples)
 %
@@ -510,7 +510,7 @@ using both the standard Euclidean distance and the Mahalanobis distance for the 
 %
 The data, colored by $\phi_1$ using the two different metrics, are shown in \fig~\ref{fig:NIV_versus_DMAPS}.
 %
-When using the standard Euclidean distance which does not account for the underlying dynamics, the first diffusion maps recovers the fast variable $x_2$, suggesting the fast modes is the dominant scale purely in terms of data analysis (\fig~\ref{fig:NIV_versus_DMAPS}\subref*{subfig:NIV_versus_DMAPS1}).
+When using the standard Euclidean distance which does not account for the underlying dynamics, the first diffusion maps eigenvector recovers the fast variable $x_2$, suggesting the fast modes is the dominant scale purely in terms of data analysis (\fig~\ref{fig:NIV_versus_DMAPS}\subref*{subfig:NIV_versus_DMAPS1}).
 %
 In contrast, the slow variable is recovered when using the Mahalanobis distance, as the coloring in \fig~\ref{fig:NIV_versus_DMAPS}\subref*{subfig:NIV_versus_DMAPS2} (where the data are colored by the first diffusion maps variable) is consistent with the coloring in \fig~\ref{fig:initial_data} (where the data are colored by time).
 
