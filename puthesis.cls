@@ -185,13 +185,12 @@
 %% Not necessary to specify the point size - we inherit it from above
 %% \LoadClass[12pt]{report}
 \LoadClass{report}
-%\setlength{\oddsidemargin}{.5in}   %{.4375in}
-\setlength{\oddsidemargin}{0in}   %{.4375in}
+\setlength{\oddsidemargin}{.5in}   %{.4375in}
 \setlength{\evensidemargin}{.5in} %{.4375in}
 \setlength{\topmargin}{-.5in}  %{-.5625in}
 \setlength{\footskip}{.25in} % to put page number 3/4" from the bottom of the page (1/4" from bottom of body text)
 \setlength{\textheight}{9in}
-\setlength{\textwidth}{6.5in}
+\setlength{\textwidth}{6in}
 
 %%% Alter LaTeX defaults to try to eliminate all widows and orphans
 \clubpenalty=10000

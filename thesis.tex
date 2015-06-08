@@ -6,12 +6,12 @@
 
 %%% For print copies
 %% set 'singlespace' option to set entire thesis to single space, and define "\printmode" to remove all hyperlinks for printed copies of the thesis. Delete all output files before changing this mode -- it will turn hyperref package on and off
-%\documentclass[12pt,lot, lof, singlespace]{puthesis}
-%\newcommand{\printmode}{}
+\documentclass[12pt,lot, lof, singlespace]{puthesis}
+\newcommand{\printmode}{}
 
 %%% For the electronic copy, use doublespacing, define "\proquestmode" to use outlined links, instead of colored links. 
-\documentclass[12pt,lot, lof]{puthesis}
-\newcommand{\proquestmode}{}
+%\documentclass[12pt,lot, lof]{puthesis}
+%\newcommand{\proquestmode}{}
 % I prefer proquestmode to be off for electronic copies for normal use, since the colored links are less distracting. However when printed in black and white, the colored links are difficult to read. 
 
 %%% For early drafts without some of the frontmatter
@@ -121,6 +121,7 @@
 % url package understands urls (with proper line-breaks) without hyperlinking them
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
+%\usepackage[top=1in,left=1.5in,bottom=1in,right=1in,footskip=0.25in]{geometry}
 
 \else
 
@@ -130,6 +131,10 @@
 % ProQuest requires a double spaced version (set previously). They will take an electronic copy, so we want links in the pdf, but also copies may be printed or made into microfilm in black and white, so we want outlined links instead of colored links.
 \usepackage{hyperref}
 \hypersetup{bookmarksnumbered}
+
+%\usepackage[top=1in,left=1in,bottom=1in,right=1in,footskip=0.25in]{geometry}
+\oddsidemargin 0in   %{.4375in}
+\textwidth 6.5in
 
 % copy the already-set title and author to use in the pdf properties
 \makeatletter
