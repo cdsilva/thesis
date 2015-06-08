@@ -120,7 +120,7 @@
 % Printed copy
 % url package understands urls (with proper line-breaks) without hyperlinking them
 \usepackage{url}
-
+\usepackage[hidelinks]{hyperref}
 
 \else
 
@@ -260,20 +260,15 @@
 
 % \include lets us split up the document (and each include starts a new page):
 \include{ch-intro/chapter-intro}
-%\include{ch-pastwork/chapter-pastwork}
 \include{ch-math/chapter-math}
 \include{ch-multiscale/chapter-multiscale}
 \include{ch-merging/chapter-merging}
 \include{ch-drosophila/chapter-drosophila}
 \include{ch-harmonics/chapter-harmonics}
-%\include{ch-glass/chapter-glass}
-%\include{ch-trpcage/chapter-trpcage}
 \include{ch-conclusion/chapter-conclusion}
 \appendix % all chapters following will be labeled as appendices
 \include{ch-multiscale/appendix-multiscale}
 \include{ch-merging/appendix-merging}
-%\include{ch-drosophila/appendix-drosophila}
-%\include{ch-appendicies/printing}
 
 
 % Make the bibliography single spaced
